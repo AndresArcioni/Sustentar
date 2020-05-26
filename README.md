@@ -1,10 +1,10 @@
 # grupo_4_3Ases
 
-Productos que brindaremos: productos sustentables.
-Audiencia objetivo: menores de 40 años.
+1- Productos que brindaremos: productos sustentables.
 
+2- Audiencia objetivo: menores de 40 años.
 
-Al estar dirigido a un publico joven, debemos generar un diseño en nuestra pagina que impacte en el usuario junto con buena interaccion para el mismo.
+3- Al estar dirigido a un publico joven, debemos generar un diseño en nuestra pagina que impacte en el usuario junto con buena interaccion para el mismo.
 
 REFERENCIAS:
 
