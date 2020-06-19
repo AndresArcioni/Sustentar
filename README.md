@@ -2,9 +2,23 @@
 
 1- Productos que brindaremos: productos sustentables.
 
-2- Audiencia objetivo: menores de 40 años.
+2- Audiencia objetivo: 
+    - 
+    -
+    -
 
 3- Al estar dirigido a un publico joven, debemos generar un diseño en nuestra pagina que impacte en el usuario junto con buena interaccion para el mismo.
+
+4- Tipografia: Playfair Display. 
+    link: https://fonts.google.com/specimen/Playfair+Display?preview.text=s+u+s+t+e+n+t+A+r&preview.text_type=custom 
+
+5- Colores: 
+    -#e0d1c6
+    -#baaa9e
+    -#dddbd1
+    -#c4c1ba
+    -#c9d6a3
+    -#7fa08c
 
 REFERENCIAS:
 
