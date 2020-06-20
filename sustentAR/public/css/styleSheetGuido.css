@@ -1,15 +1,39 @@
+* {
+    font-family: 'Playfair Display', serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+.container{
+    
+}
+
+.btnDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.botonContinuar{
+    border-radius: 50px;
+    margin-bottom: 5px;
+}
+
+/*=======CARRITO===========*/
 .carrito{
     width: 100%;
     border: black 3px solid;
+    margin: 1px;
 }
 
 .carrito .infoPrincipalDelProducto{
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 auto;
 }
 
 .carrito .infoPrincipalDelProducto img{
-    width: 40%;
+    height: 60%;
 }
 
 .carrito .infoPrincipalDelProducto p{
@@ -25,9 +49,53 @@
     justify-content: space-around;
 }
 
-
 .carrito .infoPrincipalDelProducto .dataContainer button{
     border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.cupon{
+    margin-top: 5px;
+    margin: 5px auto;
+    padding: 0 auto;
+}
+
+.cupon input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 50px;
+}
+
+.cupon button{
+    border-radius: 50px;
+}
+
+.separacion div{
+    border-bottom: black 1px solid;
+    font-weight: bold;
+    color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/*=======INFORMACION===========*/
+.registrodeUsuario{
     width: 100%;
-    height: 30px;
+}
+
+.registrodeUsuario h2{
+    text-align: center;
+}
+
+.formularioDeInformacion{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 auto;
+    justify-content: space-between;
+}
+
+.formularioDeInformacion input{
+    border-radius: 50px;
+    margin-bottom: 8px;
 }
