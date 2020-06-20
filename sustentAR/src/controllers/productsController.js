@@ -1,3 +1,2 @@
 
     //  <<--PRODUCTSCONTROLLER-->>   //
-    module.exports = 

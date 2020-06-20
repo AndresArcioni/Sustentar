@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body>
+    <div class="container">
+        
+        
+        <%- include('./partials/headerNavbar') %>
+
+        <h1>Carrito de compras</h1>
+
+        <div class="registrodeUsuario">
+            <img width="100px" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+            <h2>SustentAR</h2>
+
+            <ul>
+                <li><a href="">Carrito</a></li>
+                <li><a href="">Información</a></li>
+                <li><a href="">Envíos</a></li>
+                <li><a href="">Modo de pago</a></li>
+            </ul>
+
+            <form action="#">
+
+                <p><label for="nombre">Nombre</label></p>
+                <p><input type="text" id="nombre" name="nombre"></p>
+                <p><label for="apellido">Apellido</label></p>
+                <p><input type="text" id="apellido" name="apellido"></p>
+
+                <p><label for="email">E-mail</label></p>
+                <p><input type="email" id="email" name="email"></p>
+
+                <p><label for="dni">DNI</label></p>
+                <p><input type="text" id="dni" name="dni"></p>
+
+                <p><label for="direccion">Dirección</label></p>
+                <p><input type="text" id="direccion" name="direccion"></p>
+
+                <p><label for="cp">Codigo Postal</label></p>
+                <p><input type="text" id="cp" name="cp"></p>
+                <p><label for="entreCalles">Entre calles</label></p>
+                <p><input type="text" id="entreCalles" name="entreCalles"></p>
+
+                <p><label for="depto">Piso de departamento</label></p>
+                <p><input type="text" id="depto" name="depto"></p>
+                <p><label for="telefono">Telefono</label></p>
+                <p><input type="text" id="telefono" name="telefono"></p>
+
+                <p><button>Enviar</button></p>
+
+            </form>
+
+        </div>
+
+        <div class="carrito">
+
+        </div>
+    
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>
