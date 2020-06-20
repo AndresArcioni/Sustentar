@@ -11,3 +11,66 @@ h1 {
     color: seagreen;
     text-decoration: underline;
 }
+
+/*HEADER*/
+.main-header {
+    padding: 15px 0;
+    background-color: grey
+}
+
+.logo{
+    background-color: rebeccapurple;
+}
+
+.logo a img{
+    width: 100px;
+}
+
+
+
+/*NAVBAR*/
+.btn-toggle-navbar {
+    border-radius: 8px;
+    padding: 5px 15px;
+    margin-left: 10px;
+  }
+
+.main-navbar {
+    margin-top: 20px;
+    display: none;
+}
+  
+.nav-left, .nav-right{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 15px;
+    margin-left: 5px;
+    list-style: none;
+}
+
+.nav-left a,
+.nav-right a {
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-bottom: solid 1px var(--gray);
+}
+
+
+
+/*========================MEDIA QUERIES=======================================*/
+@media (min-width: 768px) {
+    .btn-toggle-navbar {
+        display: none;
+    }
+    .main-navbar,
+    .nav-left,
+    .nav-right {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
