@@ -6,6 +6,9 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 
 //  <<--RUTAS-->>   //
 router.get('/', mainController.root); /* GET - home page */
+router.get('/formulario', function(req, res){
+    res.render('formularioDeCargaDeProducto')
+})
 
 
 module.exports = router;
