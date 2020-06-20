@@ -4,7 +4,7 @@ module.exports = {
         res.render('home')
     },
     mostrarCarrito : function(req, res){
-        res.render('carritodeCompras');
+        res.render('carritoDeCompras');
     }
 };
 
