@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/Head') %> 
+</head>
+<body>
+    <body class="main-container">
+        <h1>Hola, <b>Usuario</b></h1>
+        <div class="edit-container">
+            <button>Editar</button>
+            <form action="">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" placeholder="Nombre">
+                <label for="apellido">Apellido</label>
+                <input type="text" name="apellido" placeholder="Apellido">
+                <br>
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="usuario@mail.com">
+                <br>
+                <label for="dni">DNI</label>
+                <input type="number" name="dni" placeholder="1234567">
+                <br>
+                <label for="direccion">Dirección</label>
+                <input type="text" name="direccion" placeholder="Direccion">
+                <br>
+                <label for="cp">C.P.</label>
+                <input type="number" name="cp" placeholder="C.P.">
+                <label for="entreCalles">Entre Calles</label>
+                <input type="text" name="entreCalles" placeholder="Entre Calles">
+                <br>
+                <label for="depto">Departamento, piso, etc</label>
+                <input type="text" name="depto" placeholder="Departamento, piso, ect">
+                <label for="telefono">Telefono</label>
+                <input type="number" name="telefono" placeholder="110000000">
+                <br>
+                <button>Guardar cambios</button>
+            </form>
+        </div>
+    </body>
+</body>
+</html>
