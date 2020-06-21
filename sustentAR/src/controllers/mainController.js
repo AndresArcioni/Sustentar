@@ -7,7 +7,7 @@ module.exports = {
         res.render('carritoDeCompras');
     },
     formularioProductos: function(req, res){
-        res.render('formularioDeCargaDeProductos')
+        res.render('formularioDeCargaDeProducto')
     }
 };
 
