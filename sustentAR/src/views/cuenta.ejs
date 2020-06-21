@@ -4,37 +4,41 @@
     <%- include('./partials/Head') %> 
 </head>
 <body>
-    <body class="main-container">
-        <h1>Hola, <b>Usuario</b></h1>
-        <div class="edit-container">
-            <button>Editar</button>
+    <body class="main-container-account">
+        <h1 class="saludo">Hola, <b>Usuario</b></h1>
+        <div class="edit row">
+           
+            <button class="col-2 editButton">Editar</button>
+                
             <form action="">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="nombre" placeholder="Nombre" class="col-3">
                 <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="text" name="apellido" placeholder="Apellido" class="col-3">
                 <br>
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="usuario@mail.com">
+                <input type="email" name="email" placeholder="usuario@mail.com" class="col-6">
                 <br>
                 <label for="dni">DNI</label>
-                <input type="number" name="dni" placeholder="1234567">
+                <input type="number" name="dni" placeholder="1234567" class="col-3">
                 <br>
                 <label for="direccion">Dirección</label>
-                <input type="text" name="direccion" placeholder="Direccion">
+                <input type="text" name="direccion" placeholder="Direccion" class="col-6">
                 <br>
                 <label for="cp">C.P.</label>
-                <input type="number" name="cp" placeholder="C.P.">
+                <input type="number" name="cp" placeholder="C.P." class="col-3">
                 <label for="entreCalles">Entre Calles</label>
-                <input type="text" name="entreCalles" placeholder="Entre Calles">
+                <input type="text" name="entreCalles" placeholder="Entre Calles" class="col-3">
                 <br>
                 <label for="depto">Departamento, piso, etc</label>
-                <input type="text" name="depto" placeholder="Departamento, piso, ect">
+                <input type="text" name="depto" placeholder="Departamento, piso, ect" class="col-3">
                 <label for="telefono">Telefono</label>
-                <input type="number" name="telefono" placeholder="110000000">
+                <input type="number" name="telefono" placeholder="110000000" class="col-3">
                 <br>
                 <button>Guardar cambios</button>
             </form>
+            
+        </div>
         </div>
     </body>
 </body>
