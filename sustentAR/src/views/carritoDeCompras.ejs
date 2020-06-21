@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head') %>
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> | sustentAR</title> <!-- Aca se debe imprimir el titulo correspondiente a cada seccion | HOME - | productos - | register -->
+        <!-- Font Awesome Stylesheet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <!-- Bootstrap Grid Stylesheet -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- sustentAR Tittle Icon -->
+        <!-- ACA VA EL ICONO DE LA PAGINA (EL DE LA PESTAÑA) -->
+        <!-- sustentAR Stylesheet -->
+        
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/styleSheetGuido.css">
+        
+</head>
 <body>
     <div class="container">
         
@@ -9,44 +25,90 @@
 
         <h1>Carrito de compras</h1>
 
+        <!--CARRITO-->
+        <div class="carrito row">
+            <div class="infoPrincipalDelProducto col-12">
+
+                <img class="col-5" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+
+                <div class="row dataContainer">
+                    <p class="col-12">Nombre del Producto</p>
+                    <p class="col-12">Precio</p>
+                    
+                    
+                    <p class="col-6">Color</p>
+                    <p class="col-6">Cantidad</p>
+                    <button type="button" class="col-12">Eliminar</button>
+                </div>
+
+            </div>
+
+            <div class="separacion col-12">
+                <div>
+                </div>
+            </div>
+
+            <div class="cupon col-12 row">
+                <input type="text" class="col-8">
+                <button type="button" class="col-4">Aplicar</button>
+            </div>
+
+            <div class="separacion col-12">
+                <div>
+                </div>
+            </div>
+
+            <div class="total col-12 row">
+                <p class="col-10">Subtotal</p>
+                <p class="col-2">$000</p>
+
+                <p class="col-10">Envíos</p>
+                <p class="col-2">$000</p>
+            </div>
+
+            <div class="separacion col-12">
+                <div>
+                </div>
+            </div>
+
+            <div class="total col-12 row">
+                <p class="col-10">Total</p>
+                <p class="col-2">$000</p>
+            </div>
+
+            <div class="btnDiv col-12">
+                <button type="button" class="botonContinuar">Continuar</button>
+            </div>
+            
+
+        </div>
+
+
+        <!--INFORMACION-->
         <div class="registrodeUsuario">
-            <img width="100px" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
             <h2>SustentAR</h2>
 
-            <ul>
-                <li><a href="">Carrito</a></li>
-                <li><a href="">Información</a></li>
-                <li><a href="">Envíos</a></li>
-                <li><a href="">Modo de pago</a></li>
-            </ul>
+            <form action="#" class="formularioDeInformacion row">
+                
+                <input class="col-5" placeholder="Nombre" type="text" id="nombre" name="nombre">
+                <input class="col-5" placeholder="Apellido" type="text" id="apellido" name="apellido">
 
-            <form action="#">
+                <input class="col-12" placeholder="E-mail" type="email" id="email" name="email">
 
-                <p><label for="nombre">Nombre</label></p>
-                <p><input type="text" id="nombre" name="nombre"></p>
-                <p><label for="apellido">Apellido</label></p>
-                <p><input type="text" id="apellido" name="apellido"></p>
+                <input class="col-5" placeholder="DNI" type="text" id="dni" name="dni">
 
-                <p><label for="email">E-mail</label></p>
-                <p><input type="email" id="email" name="email"></p>
+                <input class="col-12" placeholder="Dirección" type="text" id="direccion" name="direccion">
 
-                <p><label for="dni">DNI</label></p>
-                <p><input type="text" id="dni" name="dni"></p>
+                <input class="col-5" placeholder="Codigo Postal" type="text" id="cp" name="cp">
+                <input class="col-5" placeholder="Entre Calles" type="text" id="entreCalles" name="entreCalles">
 
-                <p><label for="direccion">Dirección</label></p>
-                <p><input type="text" id="direccion" name="direccion"></p>
+                <input class="col-5" placeholder="Departamento, Piso, etc." type="text" id="depto" name="depto">
+                <input class="col-5" placeholder="Telefono" type="text" id="telefono" name="telefono">
 
-                <p><label for="cp">Codigo Postal</label></p>
-                <p><input type="text" id="cp" name="cp"></p>
-                <p><label for="entreCalles">Entre calles</label></p>
-                <p><input type="text" id="entreCalles" name="entreCalles"></p>
-
-                <p><label for="depto">Piso de departamento</label></p>
-                <p><input type="text" id="depto" name="depto"></p>
-                <p><label for="telefono">Telefono</label></p>
-                <p><input type="text" id="telefono" name="telefono"></p>
-
-                <p><button>Enviar</button></p>
+                <div class="btnDiv col-12">
+                    <button class="botonContinuar">Enviar</button>
+                </div>
+                
 
             </form>
 
