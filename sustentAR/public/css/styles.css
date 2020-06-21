@@ -3,17 +3,7 @@
 * {
     font-family: 'Playfair Display', serif;
     box-sizing: border-box;
-    margin: 0;
-}
-
-.container{
-    
-}
-
-h1 {
-    text-align: center;
-    color: seagreen;
-    text-decoration: underline;
+    margin: 0, auto;
 }
 
 /*HEADER*/
@@ -24,10 +14,17 @@ h1 {
 
 .logo{
     background-color: rebeccapurple;
+    display: flex;
+    justify-content: center;
+}
+
+.logo h1 {
+    color: seagreen;
 }
 
 .logo a img{
     width: 100px;
+    border-radius: 50%;
 }
 
 
@@ -36,7 +33,6 @@ h1 {
 .btn-toggle-navbar {
     border-radius: 8px;
     padding: 5px 15px;
-    margin-left: 10px;
   }
 
 .main-navbar {

@@ -1,7 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<!-- Include Head -->
 <%- include('./partials/head') %>
 <body>
-    <h1>Bienvenidos a la | HOME</h1>
+
+
+    <div class="container-fluid"></div> <!-- Container -->
+
+
+    <!-- Header -->
+	<%- include('./partials/headerNavbar') %>
+    <!-- /Header -->
+    
+
+    <div class="banner">
+
+        <h2>Por que elegirnos?</h2>
+
+    </div>
+
+    <div class="container-products-wrapper"> <!-- ProductsContainer -->
+        <div class="row">
+            <div class="col-12">
+                <h2>Nuestros productos:</h2>    
+            </div>
+            <!-- Show the products -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <section class="product-box">
+                    <a href="/products/detail/idProduct"></a>
+                    <figure class="product-image">
+                        <img src="/img/default-image.png" alt="">   
+                    </figure>
+                    <article class="product-box-data">
+                        <h2 class=product-price>Precio</h2>
+                        <span class="product-discount">Desc</span>
+                        <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div> <!-- /ProductsContainer -->
+
+    
+    </div> <!-- /Container -->
+
+
 </body>
 </html>
