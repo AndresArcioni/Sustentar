@@ -7,5 +7,7 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 //  <<--RUTAS-->>   //
 router.get('/', mainController.root); /* GET - home page */
 router.get('/carrito', mainController.mostrarCarrito);
+router.get('/busquedaAvanzada', mainController.busquedaAvanzada);
+
 
 module.exports = router;
