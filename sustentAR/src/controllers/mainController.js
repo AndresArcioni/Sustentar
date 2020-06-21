@@ -6,8 +6,8 @@ module.exports = {
     mostrarCarrito : function(req, res){
         res.render('carritoDeCompras');
     },
-    formularioProductos: function(req, res){
-        res.render('formularioDeCargaDeProducto')
+    busquedaAvanzada: function(req, res){
+        res.render('busquedaDeProductos');
     }
 };
 
