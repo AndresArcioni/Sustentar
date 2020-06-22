@@ -8,6 +8,8 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 router.get('/', mainController.root); /* GET - home page */
 router.get('/carrito', mainController.mostrarCarrito);
 router.get('/busquedaAvanzada', mainController.busquedaAvanzada);
+router.get('/formularioProductos', mainController.formularioProductos)
+router.get('/cuenta', mainController.cuenta)
 
 
 module.exports = router;
