@@ -18,17 +18,24 @@
         
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         
         <%- include('./partials/headerNavbar') %>
         <div class="busqueda row">
             <input class="inputDeBusqueda col-8" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
         </div>
         
+        <div class="row">
+            <div class="phoneFilter col-4">
+                <div class="">
+                    <button type="button" class="botonDeFiltrar"><i class="fas fa-filter"></i>Desplegar Filtro</button>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
 
-            <div class="filtrosPC col-4 col-lg3">
+            <div class="filtrosPC col-3 col-lg-2">
                 <p class="tituloFiltro"><label for="">Categoría</label></p>
                 <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
                 <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
@@ -54,9 +61,9 @@
             </div>
     
 
-            <div class="productosDeBusqueda col-11 col-md-7">
+            <div class="productosDeBusqueda col-11 col-md-7 col-lg-9">
                 <article class="row col-12">
-                    <img class="col-4" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+                    <img class="col-2" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
                     <div class="productInfo col-8">
                         <p>Nombre del producto</p>
                         <p>$$ Precio $$</p>
@@ -69,7 +76,7 @@
                 </div>
 
                 <article class="row col-12">
-                    <img class="col-4" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+                    <img class="col-2" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
                     <div class="productInfo col-8">
                         <p>Nombre del producto</p>
                         <p>$$ Precio $$</p>
@@ -82,7 +89,7 @@
                 </div>
 
                 <article class="row col-12">
-                    <img class="col-4" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+                    <img class="col-2" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
                     <div class="productInfo col-8">
                         <p>Nombre del producto</p>
                         <p>$$ Precio $$</p>
@@ -95,7 +102,7 @@
                 </div>
 
                 <article class="row col-12">
-                    <img class="col-4" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+                    <img class="col-2" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
                     <div class="productInfo col-8">
                         <p>Nombre del producto</p>
                         <p>$$ Precio $$</p>
@@ -108,7 +115,7 @@
                 </div>
 
                 <article class="row col-12">
-                    <img class="col-4" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
+                    <img class="col-2" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
                     <div class="productInfo col-8">
                         <p>Nombre del producto</p>
                         <p>$$ Precio $$</p>

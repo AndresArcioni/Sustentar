@@ -153,6 +153,10 @@
 /*==============VISTA DE COMPRAS===================*/
 
 
+.phoneFilter div button{
+    border-radius: 50px;
+}
+
 .filtrosPC{
     width: 100%;
     height: 60%;
@@ -210,5 +214,8 @@
 @media (min-width: 768px) {
     .filtrosPC{
         visibility: initial;
+    }
+    .phoneFilter{
+        visibility: collapse;
     }
 }
