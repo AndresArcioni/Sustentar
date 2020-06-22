@@ -4,12 +4,11 @@
     margin: 0 auto;
     padding: 0 auto;
 }
-.container{
+.container-fluid{
     width: 100%;
     margin: 0 auto;
     padding: 0 auto;
 }
-
 
 /*==============SECCION DE CARRITO===================*/
 
@@ -22,6 +21,11 @@
 .botonContinuar{
     border-radius: 50px;
     margin-bottom: 5px;
+}
+
+.botonContinuar a{
+    text-decoration: none;
+    color: black;
 }
 
 /*=======CARRITO===========*/
@@ -46,6 +50,10 @@
     padding-top: 10px;
     padding-right: 5px;
     height: 30px;
+}
+
+.carrito .infoPrincipalDelProducto .deleteButton{
+    text-align: right;
 }
 
 .dataContainer{
@@ -145,6 +153,10 @@
 /*==============VISTA DE COMPRAS===================*/
 
 
+.phoneFilter div button{
+    border-radius: 50px;
+}
+
 .filtrosPC{
     width: 100%;
     height: 60%;
@@ -202,5 +214,8 @@
 @media (min-width: 768px) {
     .filtrosPC{
         visibility: initial;
+    }
+    .phoneFilter{
+        visibility: collapse;
     }
 }

@@ -21,39 +21,62 @@
     <div class="container-fluid">
         <%- include('./partials/headerNavbar') %>
         <div class="container">
-            <h1>Carrito de compras</h1>
-            <!--CARRITO-->
+            <!--INFO FINAL DEL PRODUCTO-->
             <div class="carrito row">
                 <div class="infoPrincipalDelProducto col-12">
-    
+
                     <img class="col-3" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
-    
+
                     <div class="row dataContainer col-8">
                         <p class="col-12">Nombre del Producto</p>
                         <p class="col-12">Precio</p>
-                        
-                        
+                    
+                    
                         <p class="col-6">Color</p>
                         <p class="col-6">Cantidad</p>
-                        <div class="col-12 deleteButton">
-                            <button type="button">Eliminar</button>
-                        </div>
-                        
+                    
                     </div>
-    
+
                 </div>
-    
+
                 <div class="separacion col-12">
                     <div>
                     </div>
                 </div>
-    
-                <div class="btnDiv col-12">
-                    <button type="button" class="botonContinuar"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+
+                <div class="cupon col-12 row">
+                    <input type="text" class="col-8">
+                    <button type="button" class="col-4">Aplicar</button>
                 </div>
-                
-    
+
+                <div class="separacion col-12">
+                    <div>
+                    </div>
+                </div>
+
+                <div class="total col-12 row">
+                    <p class="col-10">Subtotal</p>
+                    <p class="col-2">$000</p>
+
+                    <p class="col-10">Envíos</p>
+                    <p class="col-2">$000</p>
+                </div>
+
+                <div class="separacion col-12">
+                    <div>
+                    </div>
+                </div>
+
+                <div class="total col-12 row">
+                    <p class="col-10">Total</p>
+                    <p class="col-2">$000</p>
+                </div>
+
+                <div class="btnDiv col-12">
+                    <button type="button" class="botonContinuar"><a href="/">Confirmar Compra</a></button>
+                </div>
             </div>
+        </div>
     </div>
 
     <%- include('./partials/scripts') %>
