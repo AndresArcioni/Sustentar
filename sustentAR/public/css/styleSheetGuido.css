@@ -24,6 +24,11 @@
     margin-bottom: 5px;
 }
 
+.botonContinuar a{
+    text-decoration: none;
+    color: black;
+}
+
 /*=======CARRITO===========*/
 .carrito{
     width: 100%;
