@@ -3,9 +3,6 @@
 * {
     font-family: 'Playfair Display', serif;
     box-sizing: border-box;
-<<<<<<< HEAD
-    margin: 0, auto;
-=======
     margin: 0;
 }
 
@@ -18,7 +15,6 @@ h1 {
     text-align: center;
     color: seagreen;
     text-decoration: underline;
->>>>>>> c99d48285b622990af29721df69daf2809b8bcdc
 }
 
 /*HEADER*/
@@ -36,7 +32,6 @@ h1 {
 }
 
 .logo{
-<<<<<<< HEAD
     background-color: rebeccapurple;
     display: flex;
     justify-content: center;
@@ -44,12 +39,6 @@ h1 {
 
 .logo h1 {
     color: seagreen;
-=======
-}
-
-.logo a{
-    
->>>>>>> c99d48285b622990af29721df69daf2809b8bcdc
 }
 
 .logo a img{
