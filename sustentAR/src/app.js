@@ -13,7 +13,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // ************ Route System require and use() ************ //
 const mainRouter = require('./routes/index.js'); // Ruta HOME
+const carritoRouter = require('./routes/carritoDeComprasRouter.js');// Ruta Carrito
+
 app.use('/', mainRouter);
+app.use('/carrito', carritoRouter);
 
 // ************ Route System require and use() ************ //
 app.listen(3000, () => console.log("Servidor corriendo en el puerto 3000"));
