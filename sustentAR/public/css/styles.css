@@ -33,8 +33,13 @@ h1 {
 
 .logo{
     background-color: rebeccapurple;
+}
+
+.logo .logoContainer{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    background-color: chartreuse;
 }
 
 .logo h1 {
@@ -44,14 +49,22 @@ h1 {
 .logo a img{
     width: 100px;
     border-radius: 50%;
+    background-color: blue;
+    
 }
 
 
 /*NAVBAR*/
+.burgerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .btn-toggle-navbar {
     border-radius: 8px;
-    padding: 5px 15px;
-  }
+    align-items: center;
+}
 
 .main-navbar {
     margin-top: 20px;
