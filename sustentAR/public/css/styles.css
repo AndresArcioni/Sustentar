@@ -7,7 +7,9 @@
 }
 
 .container{
-    
+    margin: 0 auto;
+    width: 100%;
+    background-color: lawngreen;
 }
 
 h1 {
@@ -18,18 +20,29 @@ h1 {
 
 /*HEADER*/
 .main-header {
+    width: 100%;
+    margin: 0 auto;
     padding: 15px 0;
-    background-color: grey
+    background-color: grey;
+}
+
+.headerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .logo{
     background-color: rebeccapurple;
 }
 
+.logo a{
+    
+}
+
 .logo a img{
     width: 100px;
 }
-
 
 
 /*NAVBAR*/
