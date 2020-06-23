@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="main-container-account">
-       
+            <%- include('./partials/headerNavbar') %> 
             <section class="container-edit">
 
                 <article class="container-saludo">
@@ -24,52 +24,54 @@
                         
                     <form class="formulario-editar-cuenta row" action="">
 
-                        <div class="col-5 col-sm-4">
-                            <label for="nombre">Nombre</label>
+                        <div class="col-5 col-sm-4 form-div"  nombre">
+                            <label id="label nombre" for="nombre">Nombre</label>
                             <input type="text" name="apellido" placeholder="Apellido"> 
                         </div>
 
-                        <div class="col-5 col-sm-4">
-                            <label for="apellido" >Apellido</label>
+                        <div class="col-5 col-sm-4 form-div" >
+                            <label id="label apellido" for="apellido">Apellido</label>
                             <input type="text" name="nombre" placeholder="Nombre">
                         </div>
 
+                        <div class="col-10 col-sm-10 form-div email">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="usuario@mail.com">
+                        </div>
+
+
+                        <div class="col-4 col-sm-10">
+                            <label for="dni">DNI</label>
+                            <input type="text" name="dni" placeholder="1234547" >
+                        </div>
                         
+                        <div class="col-4 col-sm-10">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" name="direccion" placeholder="Direccion">
+                        </div>
                         
+                        <div class="col-4 col-sm-10">
+                            <label for="cp">C.P.</label>
+                            <input type="text" name="cp" placeholder="C.P.">
+                        </div>
 
-                        <br>
+                        <div class="col-4 col-sm-10">
+                            <label for="entreCalles">Entre Calles</label>
+                            <input type="text" name="entreCalles" placeholder="Entre Calles">
+                        </div>
+                        
+                        <div class="col-4 col-sm-10">
+                            <label for="depto">Departamento, piso, etc</label>
+                            <input type="text" name="depto" placeholder="Departamento, piso, ect" >
+                        </div>
 
-                        <label for="email">Email</label>
-                        <input type="email" name="email" placeholder="usuario@mail.com" class="col-4 col-sm-10">
+                        <div class="col-4 col-sm-10">
+                            <label for="telefono">Telefono</label>
+                            <input type="text" name="telefono" placeholder="110000000">
+                        </div>
 
-                        <br>
-
-                        <label for="dni">DNI</label>
-                        <input type="text" name="dni" placeholder="1234547" class="col-3 col-sm-4">
-
-                        <br>
-
-                        <label for="direccion">Dirección</label>
-                        <input type="text" name="direccion" placeholder="Direccion" class="col-4 col-sm-10">
-
-                        <br>
-
-                        <label for="cp">C.P.</label>
-                        <input type="text" name="cp" placeholder="C.P." class="col-3 col-sm-4">
-
-                        <label for="entreCalles">Entre Calles</label>
-                        <input type="text" name="entreCalles" placeholder="Entre Calles" class="col-3 col-sm-4">
-
-                        <br>
-
-                        <label for="depto">Departamento, piso, etc</label>
-                        <input type="text" name="depto" placeholder="Departamento, piso, ect" class="col-3 col-sm-4">
-
-                        <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono" placeholder="110000000" class="col-3 col-sm-4">
-
-                        <div>
-                            <button class="col-3 col-sm-4 boton-guardar">Guardar cambios</button>
+                        <div class="col-3 col-sm-4">
+                            <button  class="boton-guardar">Guardar cambios</button>
                         </div>
 
                     </form>

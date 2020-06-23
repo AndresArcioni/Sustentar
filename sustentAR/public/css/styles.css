@@ -111,24 +111,25 @@ h1 {
 EDITAR CUENTA=================
 */
 
-section {
+.container-edit {
     background-color: #c4c1ba;
     border: 2px solid #c4c1ba;
  
 }
 
 
-article {
+.container-saludo, .form-article {
     background-color: #dddbd1;
     border: 2px solid  #dddbd1;
     width: 80%;
     margin-left: 10%;
     box-sizing: border-box;
+    padding: 10px;
 }
 
 
 
-input{
+/* input{
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
@@ -139,18 +140,18 @@ label{
     margin-top: 15px;
     margin-left: 10px;
     box-sizing: border-box;
-}
+} */
 
 /*SALUDO--------------------------*/
 
 .container-saludo {
    margin-top: 30px; 
-   padding-left: 25%;
 }
 
-h1 .saludo {
-    /* padding: 5px; */
+.saludo {
     text-align: center;
+    color: black;
+    text-decoration: none;
 }
 
 /*FORMULARIO----------------------*/
@@ -158,10 +159,12 @@ h1 .saludo {
 .formulario-editar-cuenta {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
+.form-div{
+    justify-content: space-around;
 
+}
 
 .boton-editar {
     display: block;
@@ -171,10 +174,12 @@ h1 .saludo {
     border-radius: 10px;
     border-style: solid;
     border-color: #baaa9e;
+    transition: transform .7s ease;
 }
 
 .boton-editar:hover, .boton-guardar:hover{
-    background: red;
+    background: #ffebdd;
+    transform: scale(1.1);
 }
 
 
@@ -187,4 +192,5 @@ h1 .saludo {
     border-radius: 10px;
     border-style: solid;
     border-color: #baaa9e;
+    transition: transform .7s ease;
 }
