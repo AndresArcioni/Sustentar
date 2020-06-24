@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+   
+    <%- include('./partials/Head') %>
+    <link rel="stylesheet" href="/css/styleSheetGuido.css">
+    <body>
+
+        <%- include('./partials/headerNavbar') %>
+        <div class="container">
+            <!--<h1>Carrito de compras</h1>-->
+            <!--CARRITO-->
+            <div class="carrito row">
+                <div class="infoPrincipalDelProducto col-12">
+                
+                    <img class="col-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
+                
+                    <div class="row dataContainer col-8">
+                        <h2 class="col-12">Nombre del Producto</h4>
+                        <h3 class="col-12">Precio</h4>
 
 
-<%- include('./partials/Head') %>
-<link rel="stylesheet" href="/css/styleSheetGuido.css">
-<body>
-    
-    <%- include('./partials/Header') %>
-    <div class="container">
-        <!--<h1>Carrito de compras</h1>-->
-        <!--CARRITO-->
-        <div class="carrito row">
-            <div class="infoPrincipalDelProducto col-12">
-    
-                <img class="col-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
-    
-                <div class="row dataContainer col-8">
-                    <h2 class="col-12">Nombre del Producto</h4>
-                    <h3 class="col-12">Precio</h4>
-                        
-                        
-                    <h4 class="col-6">Color</h4>
-                    <h4 class="col-6">Cantidad</h4>
-                    <div class="col-12 deleteButton">
-                        <button type="button">Eliminar</button>
+                        <h4 class="col-6">Color</h4>
+                        <h4 class="col-6">Cantidad</h4>
+                        <div class="col-12 deleteButton">
+                            <button type="button">Eliminar</button>
+                        </div>
+
                     </div>
-                        
-                </div>
 
-                <div class="separacion col-12">
-                    <div>
+                    <div class="separacion col-12">
+                        <div>
+                        </div>
                     </div>
+                
+                    <div class="btnDiv col-12">
+                        <button type="button" class="botonContinuar"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+                    </div>
+                
                 </div>
-        
-                <div class="btnDiv col-12">
-                    <button type="button" class="botonContinuar"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
-                </div>
-    
             </div>
         </div>
-    </div>
 
-    <%- include('./partials/scripts') %>
-</body>
+        <%- include('./partials/scripts') %>
+    </body>
 </html>
