@@ -151,7 +151,9 @@ header .container nav ul li a:hover {
 }
 
 .form-article{
-    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    /* box-sizing: border-box; */
 }
 
 
@@ -171,6 +173,7 @@ header .container nav ul li a:hover {
 /*FORMULARIO----------------------*/
 
 .formulario-editar-cuenta {
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -181,10 +184,23 @@ header .container nav ul li a:hover {
     justify-content: space-between;
 }
 
+.etiqueta{
+    font-size: 12px;
+
+}
+
+
+
+.campo {
+    height: 20px;
+}
+
+
+
 .boton-editar {
     display: block;
-    margin-top: 10px;
-    margin-left: 72%;
+    margin-top: 5%;
+    margin-left: 60%;
     background-color: #e0d1c6;
     border-radius: 10px;
     border-style: solid;
@@ -198,7 +214,7 @@ header .container nav ul li a:hover {
 }
 
 .boton-guardar {
-    margin-top: 10px;
+    margin-top: 5%;
     margin-left: 33%;
     margin-bottom: 10px;
     background-color: #e0d1c6;
