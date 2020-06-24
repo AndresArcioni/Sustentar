@@ -1,15 +1,3 @@
-* {
-    font-family: 'Playfair Display', serif;
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0 auto;
-}
-.container-fluid{
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 auto;
-}
-
 /*==============SECCION DE CARRITO===================*/
 
 .btnDiv{
@@ -29,6 +17,7 @@
 }
 
 /*=======CARRITO===========*/
+
 .carrito{
     width: 100%;
     border: black 3px solid;
@@ -151,8 +140,6 @@
 
 
 /*==============VISTA DE COMPRAS===================*/
-
-
 .phoneFilter div button{
     border-radius: 50px;
 }
