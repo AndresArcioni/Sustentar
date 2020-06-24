@@ -2,39 +2,39 @@
 <html lang="en">
 
 <%- include('./partials/Head') %>
+<link rel="stylesheet" href="/css/styleSheetGuido.css">
+
 <body>
     
-        <%- include('./partials/Header') %>
-        <div class="container">
-            <!--INFORMACION-->
-            <div class="registrodeUsuario">
-                <h2>SustentAR</h2>
+    <%- include('./partials/Header') %>
+    <div class="container">
+        <!--INFORMACION-->
+        <div class="registrodeUsuario">
+            <h2>SustentAR</h2>
+            <form action="#" class="formularioDeInformacion row">
+            
+                <input class="col-5" placeholder="Nombre" type="text" id="nombre" name="nombre">
+                <input class="col-5" placeholder="Apellido" type="text" id="apellido" name="apellido">
 
-                <form action="#" class="formularioDeInformacion row">
+                <input class="col-8" placeholder="E-mail" type="email" id="email" name="email">
                 
-                    <input class="col-6" placeholder="Nombre" type="text" id="nombre" name="nombre">
-                    <input class="col-6" placeholder="Apellido" type="text" id="apellido" name="apellido">
-
-                    <input class="col-12" placeholder="E-mail" type="email" id="email" name="email">
-
-                    <input class="col-6" placeholder="DNI" type="text" id="dni" name="dni">
-
-                    <input class="col-12" placeholder="Dirección" type="text" id="direccion" name="direccion">
-
-                    <input class="col-6" placeholder="Codigo Postal" type="text" id="cp" name="cp">
-                    <input class="col-6" placeholder="Entre Calles" type="text" id="entreCalles" name="entreCalles">
-
-                    <input class="col-6" placeholder="Departamento, Piso, etc." type="text" id="depto" name="depto">
-                    <input class="col-6" placeholder="Telefono" type="text" id="telefono" name="telefono">
-
-                    <div class="btnDiv col-12">
-                        <button type="button" class="botonContinuar"><a href="modoDePago">Confirmar</a></button>
-                    </div>
+                <input class="col-5" placeholder="DNI" type="text" id="dni" name="dni">
                 
-
-                </form>
-            </div>
+                <input class="col-8" placeholder="Dirección" type="text" id="direccion" name="direccion">
+                
+                <input class="col-5" placeholder="Codigo Postal" type="text" id="cp" name="cp">
+                <input class="col-5" placeholder="Entre Calles" type="text" id="entreCalles" name="entreCalles">
+                
+                <input class="col-5" placeholder="Departamento, Piso, etc." type="text" id="depto" name="depto">
+                <input class="col-5" placeholder="Telefono" type="text" id="telefono" name="telefono">
+                
+                <div class="btnDiv col-12">
+                    <button type="button" class="botonContinuar"><a href="modoDePago">Confirmar</a></button>
+                </div>
+            
+            </form>
         </div>
+    </div>
     
 
     <%- include('./partials/scripts') %>

@@ -2,66 +2,62 @@
 <html lang="en">
 
 <%- include('./partials/Head') %>
+<link rel="stylesheet" href="/css/styleSheetGuido.css">
+
 <body>
-    <%- include('./partials/Header') %>
-        <div class="container">
-            <!--INFO FINAL DEL PRODUCTO-->
-            <div class="carrito row">
-                <div class="infoPrincipalDelProducto col-12">
-
-                    <img class="col-3" src="../img/Logo_de_PaginaWeb.jpeg" alt="">
-
-                    <div class="row dataContainer col-8">
-                        <p class="col-12">Nombre del Producto</p>
-                        <p class="col-12">Precio</p>
-                    
-                    
-                        <p class="col-6">Color</p>
-                        <p class="col-6">Cantidad</p>
-                    
-                    </div>
-
-                </div>
-
-                <div class="separacion col-12">
-                    <div>
-                    </div>
-                </div>
-
-                <div class="cupon col-12 row">
-                    <input type="text" class="col-8">
-                    <button type="button" class="col-4">Aplicar</button>
-                </div>
-
-                <div class="separacion col-12">
-                    <div>
-                    </div>
-                </div>
-
-                <div class="total col-12 row">
-                    <p class="col-10">Subtotal</p>
-                    <p class="col-2">$000</p>
-
-                    <p class="col-10">Envíos</p>
-                    <p class="col-2">$000</p>
-                </div>
-
-                <div class="separacion col-12">
-                    <div>
-                    </div>
-                </div>
-
-                <div class="total col-12 row">
-                    <p class="col-10">Total</p>
-                    <p class="col-2">$000</p>
-                </div>
-
-                <div class="btnDiv col-12">
-                    <button type="button" class="botonContinuar"><a href="/">Confirmar Compra</a></button>
+<%- include('./partials/Header') %>
+    <div class="container">
+        <!--INFO FINAL DEL PRODUCTO-->
+        <div class="carrito row">
+            <div class="infoPrincipalDelProducto col-12">
+                <img class="col-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
+                <div class="row dataContainer col-8">
+                    <h2 class="col-12">Nombre del Producto</h4>
+                    <h3 class="col-12">Precio</h4>
+                                  
+                    <h4 class="col-6">Color</h4>
+                    <h4 class="col-6">Cantidad</h4>
+                
                 </div>
             </div>
-        </div>
 
+            <div class="separacion col-12">
+                <div>
+                </div>
+            </div>
+
+            <div class="cupon col-12 row">
+                <input type="text" class="col-2 inputStyle">
+                <button type="button" class="col-1">Aplicar</button>
+            </div>
+
+            <div class="separacion col-12">
+                <div>
+                </div>
+            </div>
+
+            <div class="total col-12 row">
+                <h4 class="col-11">Subtotal</h4>
+                <h4 class="col-1">$000</h4>
+                <h4 class="col-11">Envíos</h4>
+                <h4 class="col-1">$000</h4>
+            </div>
+
+            <div class="separacion col-12">
+                <div>
+                </div>
+            </div>
+
+            <div class="total col-12 row">
+                <h3 class="col-11">Total</h3>
+                <h3 class="col-1">$000</h3>
+            </div>
+
+            <div class="btnDiv col-12">
+                <button type="button" class="botonContinuar"><a href="/">Confirmar Compra</a></button>
+            </div>
+        </div>
+    </div>
     <%- include('./partials/scripts') %>
 </body>
 </html>

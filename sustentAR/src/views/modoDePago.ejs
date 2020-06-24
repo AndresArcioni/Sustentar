@@ -2,41 +2,40 @@
 <html lang="en">
 
 <%- include('./partials/Head') %>
+<link rel="stylesheet" href="/css/styleSheetGuido.css">
+
 <body>
-    
-        <%- include('./partials/Header') %>
-        <div class="container">
-            <!--MODO DE PAGO-->
-            <div class="modoDePago row">
-                <p>Seleccione una forma de pago</p>
-                <div class="botonesDePago col-12">
-                    <button type="button" class="col-3 botonContinuar"><i class="fab fa-cc-visa"></i></button>
-                    <button type="button" class="col-3 botonContinuar"><i class="fab fa-cc-mastercard"></i></button>
-                    <button type="button" class="col-3 botonContinuar"><i class="fab fa-cc-amex"></i></i></button>
-                    <button type="button" class="col-3 botonContinuar">Mercado Pago</button>
-                </div>
 
-                <form action="#" class="tarjetaForm col-12 row">
-                    <input class="col-7" placeholder="DNI" type="text" id="dni" name="dni">
-    
-                    <input class="col-7" placeholder="Numero de la tarjeta" type="text" id="tarjetaID" name="tarjetaID">
-    
-                    <input class="col-8" placeholder="Nombre del Titular de la tarjeta" type="text" id="titularDeTarjeta" name="titularDeTarjeta">
-                    <input class="col-4" placeholder="Codigo de Seguridad" type="text" id="codSeguridad" name="codSeguridad">
-                
-                    <input class="col-4" placeholder="Fecha de nacimiento" type="text" id="fNacimiento" name="fNacimiento">
-                
-    
-                    <div class="btnDiv col-12">
-                        <button type="button" class="botonContinuar"><a href="finalizarCompra">Confirmar</a></button>
-                    </div>
-                </form>
-            
+    <%- include('./partials/Header') %>
+    <div class="container">
+        <!--MODO DE PAGO-->
+        <div class="modoDePago row">
+            <h3>Seleccione una forma de pago</h3>
+            <div class="botonesDePago col-12">
+                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-visa"></i></button>
+                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-mastercard"></i></button>
+                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-amex"></i></i></button>
+                <button type="button" class="col-2 botonStyle">Mercado Pago</button>
             </div>
-        </div>
-        
-    
+            <form action="#" class="tarjetaForm col-12 row">
+                <input class="col-7 inputStyle" placeholder="DNI" type="text" id="dni" name="dni">
 
+                <input class="col-7 inputStyle" placeholder="Numero de la tarjeta" type="text" id="tarjetaID" name="tarjetaID">
+
+                <input class="col-8 inputStyle" placeholder="Nombre del Titular de la tarjeta" type="text" id="titularDeTarjeta" name="titularDeTarjeta">
+                <input class="col-4 inputStyle" placeholder="Codigo de Seguridad" type="text" id="codSeguridad" name="codSeguridad">
+            
+                <input class="col-4 inputStyle" placeholder="Fecha de nacimiento" type="text" id="fNacimiento" name="fNacimiento">
+            
+
+                <div class="btnDiv col-12">
+                    <button type="button" class="botonContinuar botonStyle"><a href="finalizarCompra">Confirmar</a></button>
+                </div>
+            </form>
+        
+        </div>
+    </div>
+    
     <%- include('./partials/scripts') %>
 </body>
 </html>
