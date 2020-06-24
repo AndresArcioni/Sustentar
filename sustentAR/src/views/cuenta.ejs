@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <%- include('./partials/Head') %> 
-</head>
+
+ <%- include('./partials/Head') %> 
+
 <body>
     <div class="main-container-account">
             <%- include('./partials/headerNavbar') %> 
-            <section class="container-edit">
-
+            <section class="container-edit container-fluid">
                 <article class="container-saludo">
                     <br>
                      <h1 class="saludo">Hola, <b>Usuario</b></h1>
@@ -24,14 +23,16 @@
                         
                     <form class="formulario-editar-cuenta row" action="">
 
-                        <div class="col-5 col-sm-4 form-div"  nombre">
-                            <label id="label nombre" for="nombre">Nombre</label>
-                            <input type="text" name="apellido" placeholder="Apellido"> 
+                        <div class="col-10 col-sm-4 form-div row"  nombre>
+                            <label id="label nombre" class="col-12" for="nombre">Nombre</label>
+                            <input class="col-6" type="text" name="nombre" placeholder="Nombre">
+                           
                         </div>
 
-                        <div class="col-5 col-sm-4 form-div" >
-                            <label id="label apellido" for="apellido">Apellido</label>
-                            <input type="text" name="nombre" placeholder="Nombre">
+                        <div class="col-5 col-sm-4 form-div row" >
+                            <label id="label apellido" class="col-12" for="apellido">Apellido</label>
+                            <input class="col-6" 
+                            type="text" name="apellido" placeholder="Apellido"> 
                         </div>
 
                         <div class="col-10 col-sm-10 form-div email">
@@ -40,37 +41,37 @@
                         </div>
 
 
-                        <div class="col-4 col-sm-10">
+                        <div class="col-4 col-sm-10 form-div>
                             <label for="dni">DNI</label>
                             <input type="text" name="dni" placeholder="1234547" >
                         </div>
                         
-                        <div class="col-4 col-sm-10">
+                        <div class="col-4 col-sm-10 form-div">
                             <label for="direccion">Dirección</label>
                             <input type="text" name="direccion" placeholder="Direccion">
                         </div>
                         
-                        <div class="col-4 col-sm-10">
+                        <div class="form-div col-4 col-sm-10">
                             <label for="cp">C.P.</label>
                             <input type="text" name="cp" placeholder="C.P.">
                         </div>
 
-                        <div class="col-4 col-sm-10">
+                        <div class="col-4 col-sm-10 form-div">
                             <label for="entreCalles">Entre Calles</label>
                             <input type="text" name="entreCalles" placeholder="Entre Calles">
                         </div>
                         
-                        <div class="col-4 col-sm-10">
+                        <div class="col-4 col-sm-10 form-div">
                             <label for="depto">Departamento, piso, etc</label>
                             <input type="text" name="depto" placeholder="Departamento, piso, ect" >
                         </div>
 
-                        <div class="col-4 col-sm-10">
+                        <div class="col-4 col-sm-10 form-div">
                             <label for="telefono">Telefono</label>
                             <input type="text" name="telefono" placeholder="110000000">
                         </div>
 
-                        <div class="col-3 col-sm-4">
+                        <div class="col-3 col-sm-4 form-div">
                             <button  class="boton-guardar">Guardar cambios</button>
                         </div>
 

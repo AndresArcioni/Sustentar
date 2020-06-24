@@ -127,6 +127,10 @@ EDITAR CUENTA=================
     padding: 10px;
 }
 
+.form-article{
+    box-sizing: border-box;
+}
+
 
 
 /* input{
@@ -162,8 +166,9 @@ label{
 }
 
 .form-div{
-    justify-content: space-around;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .boton-editar {
