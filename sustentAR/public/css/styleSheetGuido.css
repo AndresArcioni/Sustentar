@@ -54,7 +54,12 @@ body{
 
 
 
-
+.tarjetaForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /*agregar un margin*/
+}
 
 
 
@@ -141,6 +146,9 @@ body{
     padding-bottom: 15px;
 }
 
+
+.navbarDisplay{
+}
 
 
 @media (min-width: 768px) {
