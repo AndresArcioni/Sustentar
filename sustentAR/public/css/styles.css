@@ -137,17 +137,19 @@ header .container nav ul li a:hover {
 .container-edit {
     background-color: #c4c1ba;
     border: 2px solid #c4c1ba;
- 
+    display: flex;
+    flex-wrap: wrap;
 }
 
 
 .container-saludo, .form-article {
     background-color: #dddbd1;
     border: 2px solid  #dddbd1;
-    width: 80%;
-    margin-left: 10%;
+    width: 65%;
     box-sizing: border-box;
     padding: 10px;
+    justify-content: center;
+    margin-bottom: 25px;
 }
 
 .form-article{
@@ -168,6 +170,12 @@ header .container nav ul li a:hover {
     text-align: center;
     color: black;
     text-decoration: none;
+}
+
+/*INFO USUARIO--------------------------*/
+
+.info-usuario{
+    margin-top: 12px;
 }
 
 /*FORMULARIO----------------------*/
@@ -222,6 +230,12 @@ header .container nav ul li a:hover {
     border-color: #baaa9e;
     transition: transform .7s ease;
     font-size: 13px;
+}
+
+@media(max-width: 400px){
+    .container-saludo, .form-article{
+        width: 80%;
+    }
 }
 
 /*=============SECCION DE CARRITO==================*/
