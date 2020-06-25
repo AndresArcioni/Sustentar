@@ -194,7 +194,7 @@ header .container nav ul li a:hover {
 
 .etiqueta{
     font-size: 12px;
-
+    margin-top: 5px;
 }
 
 
@@ -231,6 +231,15 @@ header .container nav ul li a:hover {
     transition: transform .7s ease;
     font-size: 13px;
 }
+
+
+.boton-editar:focus, .boton-guardar:focus{
+    background: #ffebdd;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid rgb(189, 138, 138);
+}
+
 
 @media(max-width: 400px){
     .container-saludo, .form-article{
