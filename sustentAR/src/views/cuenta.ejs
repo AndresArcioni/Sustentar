@@ -18,10 +18,11 @@
      
                 <article class="form-article ">
                     
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod nihil facere fugiat iste cum maxime totam labore? Quo facilis, inventore exercitationem quaerat unde voluptatibus distinctio ducimus sed autem similique quia.</p>
                     
-                    <button class="col-4 boton-editar">Editar</button>
+                    <button class="col-4 boton-editar" data-toggle="collapse" data-target="#content">Editar</button>
                  
-                    <form class="formulario-editar-cuenta  row" action="">
+                    <form class="formulario-editar-cuenta  row collapse" action="" id="content">
 
                         <div class="col-7 col-sm-6 form-div row"  nombre>
                             <label class="etiqueta col-12" id="label nombre"  for="nombre">Nombre</label>
@@ -73,14 +74,16 @@
                         </div>
 
                         <div class="col-12 col-sm-12 form-div row">
-                            <button  class="boton-guardar col-5">Guardar cambios</button>
+                            <button  class="boton-guardar col-7">Guardar cambios</button>
                         </div>
 
                     </form>
+                    
             </article>
         </section>
         <!-- </div>
         </div> -->
+        <%- include('./partials/scripts') %> 
     </div>
 </body>
 </html>
