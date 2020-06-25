@@ -447,13 +447,31 @@ header .container nav ul li a:hover {
     justify-content: center;
 }
 
+/*
+FORMULARIO DE PRODUCTOS =====================
+*/
 
 
+/*
+CONTAINER CATEGORIA =====================
+*/
 
+.categoria-container, .datos-container{
+    background-color: red;
+    box-sizing: border-box;
+}
 
+.categoria-container{
+    margin-bottom: 15px;
+}
 
+.formulario-productos-container{
+    background-color: royalblue;
+}
 
-
+/*
+CONTAINER DATOS =====================
+*/
 
 
 

@@ -4,75 +4,83 @@
   <%- include('./partials/Head') %> 
 </head>
 <body>
-    <%- include('/partials/Header') %> 
-    <div class="main-container-products-form">
-        <div class="category-container">
-            <header>
-                <div>
-                    <a href="/src/views/home.ejs">Home</a>
-                    <a href="/src/views/busquedaDeProductos.ejs">Comprar</a>
-                    <a href="/src/views/home.ejs"><img src="/public/img/Logo de Pagina Web.jpeg" alt="Logo"></a>
-                    <a href="/src/views/cuenta.ejs">Cuenta</a>
-                    <a href="/src/views/carritoDeCompras.ejs">Carrito</a>
-                </div>
-            </header>
-           <form action="" method="POST">
-               <h3>
-                   <label for="">Seleccione la categoría del producto</label>
-               </h3>
-               <p><input type="radio" name="categoria" value="decoracion">Decoración</p>
-               <p><input type="radio" name="categoria" value="baño">Baño</p>
-               <p><input type="radio" name="categoria" value="cocina">Cocina</p>
-               <p><input type="radio" name="categoria" value="otros">Otros</p>
-           </form>
-        </div>
-        <div class="form-container">
-            <form action="" method="POST">
-                <h3>
-                    <label for="">Ingrese los datos del producto</label>
-                </h3>
-                <input type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto">
-                <input type="text" id="idProducto" placeholder="Id..." name="idProducto">
-                <br>
-                <br>
-                <textarea name="descripcionProducto" id="descripcionProducto" cols="50" rows="10" placeholder="Descripción"></textarea>
-                <br>
-                <label for="">Colores disponibles</label>
-                <select name="colores" id="colores">
-                    <option disabled="" selected="">Seleccionar...</option>
-                    <option value="amarillo">Amarillo</option>
-                    <option value="naranja">Naranja</option>
-                    <option value="rojo">Rojo</option>
-                    <option value="Rosa">Rosa</option>
-                    <option value="Violeta">Violeta</option>
-                    <option value="azul">Azul</option>
-                    <option value="celeste">Celeste</option>
-                    <option value="verde-oscuro">Verde oscuro</option>
-                    <option value="verde-claro">Verde claro</option>
-                    <option value="blanco">Blanco</option>
-                    <option value="negro">Negro</option>
-                    <option value="marron">Marron</option>
-                    <option value="beige">Beige</option>
-                    <option value="otro">Otro</option>
-                </select>
-                <div class="sustentabilidad">
-                <p><input type="checkbox" name="sustenabilidad" value="vegano">Vegano</p>
-                <p><input type="checkbox" name="sustenabilidad" value="cruelty-free">Cruelty Free</p>
-                <p><input type="checkbox" name="sustenabilidad" value="fair-trade">Fair Trade</p>
-                <p><input type="checkbox" name="sustenabilidad" value="envoltorio-sustentable">Envoltorio Sustentable</p>
-                </div>
-                <label for="">
-                    <h4>Añadir imágenes</h4>
-                </label>
-                <input type="file" name="img">
-                <input type="file" name="img">
-                <input type="file" name="img">
-                <br>
-                <button>Publicar producto</button>
 
-            </form>
-        </div>
+    <%- include('./partials/Header') %> 
+
+    <div class="main-container-formulario-productos container">
+
+        <section class="formulario-productos-container row">
+
+            <article class="col-10 categoria-container">
+        
+                <form action="" method="POST" class="row">
+                    <h3 class="col-12">
+                        <label for="">Seleccione la categoría del producto</label>
+                    </h3>
+                    <p class="col-5 col-sm-3"><input type="radio" name="categoria" value="decoracion">Decoración</p>
+                    <p class="col-5 col-sm-3"><input type="radio" name="categoria" value="baño">Baño</p>
+                    <p class="col-5 col-sm-3"><input type="radio" name="categoria" value="cocina">Cocina</p>
+                    <p class="col-5 col-sm-3"><input type="radio" name="categoria" value="otros">Otros</p>
+                </form>
+
+            </article>
+
+            <article class="col-10 datos-container">
+
+                <form action="" method="POST">
+                    <h3>
+                        <label for="">Ingrese los datos del producto</label>
+                    </h3>
+
+                    <input type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto">
+
+                    <input type="text" id="idProducto" placeholder="Id..." name="idProducto">
+                  
+                    <textarea name="descripcionProducto" id="descripcionProducto" cols="50" rows="10" placeholder="Descripción"></textarea>
+                    
+                    <label for="">Colores disponibles</label>
+                    <select name="colores" id="colores">
+                        <option disabled="" selected="">Seleccionar...</option>
+                        <option value="amarillo">Amarillo</option>
+                        <option value="naranja">Naranja</option>
+                        <option value="rojo">Rojo</option>
+                        <option value="Rosa">Rosa</option>
+                        <option value="Violeta">Violeta</option>
+                        <option value="azul">Azul</option>
+                        <option value="celeste">Celeste</option>
+                        <option value="verde-oscuro">Verde oscuro</option>
+                        <option value="verde-claro">Verde claro</option>
+                        <option value="blanco">Blanco</option>
+                        <option value="negro">Negro</option>
+                        <option value="marron">Marron</option>
+                        <option value="beige">Beige</option>
+                        <option value="otro">Otro</option>
+                    </select>
+
+                    <div class="sustentabilidad">
+                        <p><input type="checkbox" name="sustenabilidad" value="vegano">Vegano</p>
+                        <p><input type="checkbox" name="sustenabilidad" value="cruelty-free">Cruelty Free</p>
+                        <p><input type="checkbox" name="sustenabilidad" value="fair-trade">Fair Trade</p>
+                        <p><input type="checkbox" name="sustenabilidad" value="envoltorio-sustentable">Envoltorio Sustentable</p>
+                    </div>
+
+                    <label for="">
+                        <h4>Añadir imágenes</h4>
+                    </label>
+
+                    <input type="file" name="img">
+                    <input type="file" name="img">
+                    <input type="file" name="img">
+
+                    <button>Publicar producto</button>
+
+                </form>
+
+            </article>
+
+        </section>
         <%- include('./partials/footer') %> 
     </div>
+    <%- include('./partials/scripts') %> 
 </body>
 </html>
