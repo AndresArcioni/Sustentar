@@ -9,6 +9,10 @@
     list-style-type: none;
 }
 
+body{
+    background-color: #dddbd1;
+}
+
 html {
     font-size: 15px;
 }
@@ -16,10 +20,6 @@ html {
 .container{
     margin: 0 auto;
     width: 100%;
-}
-
-.container-fluid{
-    
 }
 
 .busquedaContainer{
@@ -268,9 +268,12 @@ header .container nav ul li a:hover {
 /*=======CARRITO===========*/
 
 .carrito{
-    width: 100%;
-    border: black 3px solid;
-    margin: 1px;
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .carrito .infoPrincipalDelProducto{
@@ -278,10 +281,6 @@ header .container nav ul li a:hover {
     flex-wrap: wrap;
     margin: 0 auto;
     padding: 0 auto;
-}
-
-.carrito .infoPrincipalDelProducto img{
-    
 }
 
 .carrito .infoPrincipalDelProducto p{
@@ -332,11 +331,13 @@ header .container nav ul li a:hover {
 
 /*=======INFORMACION===========*/
 .registrodeUsuario{
-    width: 100%;
-    border: black 3px solid;
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
     margin: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .registrodeUsuario h2{
@@ -352,18 +353,21 @@ header .container nav ul li a:hover {
 }
 
 .formularioDeInformacion input{
-    border-radius: 50px;
-    margin-bottom: 8px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /*==========MODO DE PAGO=============*/
 
 .modoDePago{
-    width: 100%;
-    border: black 3px solid;
-    margin: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .modoDePago .botonesDePago{
     display: flex;
@@ -377,9 +381,11 @@ header .container nav ul li a:hover {
 .modoDePago .tarjetaForm{
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
     margin: 0 auto;
     padding: 0 auto;
     /*justify-content: space-between;*/
+    /*agregar un margin*/
 }
 
 .modoDePago .tarjetaForm input{
@@ -389,6 +395,13 @@ header .container nav ul li a:hover {
 
 
 /*==============VISTA DE COMPRAS===================*/
+.busquedaContainer{
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .phoneFilter div button{
     border-radius: 50px;
 }
@@ -397,7 +410,6 @@ header .container nav ul li a:hover {
     width: 100%;
     height: 60%;
     
-    border: black 3px solid;
     margin: 1px;
     margin-left: 15px;
     padding-left: 5px;
@@ -428,13 +440,16 @@ header .container nav ul li a:hover {
 }
 
 .productosDeBusqueda{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    border-radius: 10px;
     width: 100%;
-    border: black 3px solid;
     margin: 1px;
     margin-left: 15px;
     padding-left: 5px;
     padding-right: 5px;
-
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .busqueda{
@@ -446,6 +461,12 @@ header .container nav ul li a:hover {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.checkboxFilter{
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
 
 /*
 FORMULARIO DE PRODUCTOS =====================
@@ -474,6 +495,17 @@ CONTAINER DATOS =====================
 */
 
 
+
+/*===============ESTILOS GENERICOS==========================*/
+
+.botonStyle{
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+.inputStyle{
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
 
 /*========================MEDIA QUERIES=======================================*/
 @media (min-width: 768px) {
@@ -504,5 +536,23 @@ CONTAINER DATOS =====================
     }
     header .container nav ul li:last-child {
         margin: 0;
+    }
+
+    
+    .phoneFilter{
+        width: 0;
+        height: 0;
+        visibility: collapse;
+    }
+
+    .filtrosPC{
+        width: 100%;
+        height: 60%;
+        
+        margin: 1px;
+        margin-left: 15px;
+        padding-left: 5px;
+        visibility: visible;
+        
     }
 }
