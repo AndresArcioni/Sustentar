@@ -446,13 +446,15 @@ header .container nav ul li a:hover {
 }
 
 .busqueda{
-    background-color: grey;
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
     padding-top: 5px;
     padding-bottom: 10px;
     margin-bottom: 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 17px;
 }
 
 .checkboxFilter{

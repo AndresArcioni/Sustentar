@@ -1,166 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('./partials/Head') %>
-
-<body>
-    <%- include('./partials/Header') %>
-    <div class="container">
-        <div class="busquedaContainer">
-            <div class="busqueda row">
-                <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
-            </div>
-    
-            <nav class="navbar navbar-expand-md mb-2 phoneFilter">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-filter"></i>Desplegar Filtro
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <h4><label for="">Categoría</label></h4>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
-    
-                    <h4>Color</h4>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color1">Color 1</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color2">Color 2</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color3">Color 3</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color4">Color 4</p>
-    
-                    <h4>Estado</h4>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="nuevo">Nuevo</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="usado">Usado</p>
-    
-                    <h4>Precio</h4>
-                    <input class="col-5 minMax inputStyle" placeholder="Minimo" type="text" id="min" name="min">
-                    <input class="col-5 minMax inputStyle" placeholder="Maximo" type="text" id="max" name="max">
-                    
-                    
-                    <div class="">
-                        <button type="button" class="botonStyle">Continuar</button>
-                    </div>
+    <%- include('./partials/Head') %>
+    <body>
+        <%- include('./partials/Header') %>
+        <div class="container">
+            <div class="busquedaContainer">
+                <div class="busqueda row">
+                    <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
                 </div>
-            </nav>
+            
 
-            <div class="row">
                 
-                <div class="filtrosPC col-3 col-lg-2">
-                    <p class="tituloFiltro"><label for="">Categoría</label></p>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
-    
-                    <p class="tituloFiltro">Color</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color1">Color 1</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color2">Color 2</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color3">Color 3</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="color" value="color4">Color 4</p>
-    
-                    <p class="tituloFiltro">Estado</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="nuevo">Nuevo</p>
-                    <p class="checkboxFilter"><input type="checkbox" name="categoria" value="usado">Usado</p>
-    
-                    <p class="tituloFiltro">Precio</p>
-                    <input class="col-5 minMax" placeholder="Minimo" type="text" id="min" name="min">
-                    <input class="col-5 minMax" placeholder="Maximo" type="text" id="max" name="max">
+                <nav class="mb-2 phoneFilter">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#filter">
+                        <i class="fas fa-filter"></i>Filtrar
+                    </button>
                     
+                    <div class="collapse" id="filter">
+                        <h4><label for="">Categoría</label></h4>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
                     
-                    <div class="">
-                        <button type="button" class="botonDeFiltrar">Continuar</button>
-                    </div>
-                </div>
-        
-    
-                <div class="productosDeBusqueda col-11 col-md-7 col-lg-9">
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/Diversion24.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
-                        </div>
-                    </article>
-    
-                    <div class="separacion col-12">
-                        <div>
-                        </div>
-                    </div>
-    
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/Jabon15.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
-                        </div>
-                    </article>
-    
-                    <div class="separacion col-12">
-                        <div>
-                        </div>
-                    </div>
-    
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/Maceta21.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
-                        </div>
-                    </article>
-    
-                    <div class="separacion col-12">
-                        <div>
-                        </div>
-                    </div>
-    
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/PastaDeDientes28.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
-                        </div>
-                    </article>
-    
-                    <div class="separacion col-12">
-                        <div>
-                        </div>
-                    </div>
-    
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/Velas12.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
-                        </div>
-                    </article>
+                        <h4>Color</h4>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color1">Color 1</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color2">Color 2</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color3">Color 3</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color4">Color 4</p>
+                    
+                        <h4>Estado</h4>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="nuevo">Nuevo</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="usado">Usado</p>
+                    
+                        <h4>Precio</h4>
+                        <input class="col-5 minMax inputStyle" placeholder="Minimo" type="text" id="min" name="min">
+                        <input class="col-5 minMax inputStyle" placeholder="Maximo" type="text" id="max" name="max">
 
-                    <div class="separacion col-12">
-                        <div>
+
+                        <div class="">
+                            <button type="button" class="botonStyle">Continuar</button>
                         </div>
                     </div>
-    
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/Velas12.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
-                        </div>
-                    </article>
+                </nav>
 
-                    <div class="separacion col-12">
-                        <div>
+                <div class="row">
+
+                    <div class="filtrosPC col-3 col-lg-2">
+                        <p class="tituloFiltro"><label for="">Categoría</label></p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
+                    
+                        <p class="tituloFiltro">Color</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color1">Color 1</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color2">Color 2</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color3">Color 3</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color4">Color 4</p>
+                    
+                        <p class="tituloFiltro">Estado</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="nuevo">Nuevo</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="usado">Usado</p>
+                    
+                        <p class="tituloFiltro">Precio</p>
+                        <input class="col-5 minMax" placeholder="Minimo" type="text" id="min" name="min">
+                        <input class="col-5 minMax" placeholder="Maximo" type="text" id="max" name="max">
+
+
+                        <div class="">
+                            <button type="button" class="botonDeFiltrar">Continuar</button>
                         </div>
                     </div>
-    
-                    <article class="row col-12">
-                        <img class="col-2" src="../images/productos/Velas12.jpg" alt="">
-                        <div class="productInfo col-8">
-                            <p>Nombre del producto</p>
-                            <p>$$ Precio $$</p>
+                
+                
+                    <div class="productosDeBusqueda col-11 col-md-7 col-lg-9">
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/Diversion24.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
+                    
+                        <div class="separacion col-12">
+                            <div>
+                            </div>
                         </div>
-                    </article>
+                    
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/Jabon15.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
+                    
+                        <div class="separacion col-12">
+                            <div>
+                            </div>
+                        </div>
+                    
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/Maceta21.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
+                    
+                        <div class="separacion col-12">
+                            <div>
+                            </div>
+                        </div>
+                    
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/PastaDeDientes28.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
+                    
+                        <div class="separacion col-12">
+                            <div>
+                            </div>
+                        </div>
+                    
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/Velas12.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
 
+                        <div class="separacion col-12">
+                            <div>
+                            </div>
+                        </div>
+                    
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/Velas12.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
+
+                        <div class="separacion col-12">
+                            <div>
+                            </div>
+                        </div>
+                    
+                        <article class="row col-12">
+                            <img class="col-5 col-lg-2" src="../images/productos/Velas12.jpg" alt="">
+                            <div class="productInfo col-7 col-lg-8">
+                                <p>Nombre del producto</p>
+                                <p>$$ Precio $$</p>
+                            </div>
+                        </article>
+
+                    </div>
                 </div>
             </div>
+
         </div>
-                
-    </div>
-    <%- include('./partials/scripts') %>
-</body>
+        <%- include('./partials/scripts') %>
+    </body>
 </html>
