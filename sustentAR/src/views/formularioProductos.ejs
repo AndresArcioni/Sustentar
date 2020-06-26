@@ -26,56 +26,61 @@
             </article>
 
             <article class="col-10 datos-container">
+                <h3>
+                    <label for="">Ingrese los datos del producto</label>
+                </h3>
 
-                <form action="" method="POST">
-                    <h3>
-                        <label for="">Ingrese los datos del producto</label>
-                    </h3>
+                <div class="datos-productos-container">
+                    <form class="row" action="" method="POST">                  
+                        
+                        <div class="col6"> 
+                            <input type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto">
+                        </div>
 
-                    <input type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto">
-
-                    <input type="text" id="idProducto" placeholder="Id..." name="idProducto">
-                  
-                    <textarea name="descripcionProducto" id="descripcionProducto" cols="50" rows="10" placeholder="Descripción"></textarea>
+                        <div class="col-6">
+                            <input type="text" id="idProducto" placeholder="Id..." name="idProducto">
+                        </div>
                     
-                    <label for="">Colores disponibles</label>
-                    <select name="colores" id="colores">
-                        <option disabled="" selected="">Seleccionar...</option>
-                        <option value="amarillo">Amarillo</option>
-                        <option value="naranja">Naranja</option>
-                        <option value="rojo">Rojo</option>
-                        <option value="Rosa">Rosa</option>
-                        <option value="Violeta">Violeta</option>
-                        <option value="azul">Azul</option>
-                        <option value="celeste">Celeste</option>
-                        <option value="verde-oscuro">Verde oscuro</option>
-                        <option value="verde-claro">Verde claro</option>
-                        <option value="blanco">Blanco</option>
-                        <option value="negro">Negro</option>
-                        <option value="marron">Marron</option>
-                        <option value="beige">Beige</option>
-                        <option value="otro">Otro</option>
-                    </select>
+                        <textarea name="descripcionProducto" id="descripcionProducto" cols="50" rows="10" placeholder="Descripción"></textarea>
+                        
+                        <label for="">Colores disponibles</label>
+                        <select name="colores" id="colores">
+                            <option disabled="" selected="">Seleccionar...</option>
+                            <option value="amarillo">Amarillo</option>
+                            <option value="naranja">Naranja</option>
+                            <option value="rojo">Rojo</option>
+                            <option value="Rosa">Rosa</option>
+                            <option value="Violeta">Violeta</option>
+                            <option value="azul">Azul</option>
+                            <option value="celeste">Celeste</option>
+                            <option value="verde-oscuro">Verde oscuro</option>
+                            <option value="verde-claro">Verde claro</option>
+                            <option value="blanco">Blanco</option>
+                            <option value="negro">Negro</option>
+                            <option value="marron">Marron</option>
+                            <option value="beige">Beige</option>
+                            <option value="otro">Otro</option>
+                        </select>
 
-                    <div class="sustentabilidad">
-                        <p><input type="checkbox" name="sustenabilidad" value="vegano">Vegano</p>
-                        <p><input type="checkbox" name="sustenabilidad" value="cruelty-free">Cruelty Free</p>
-                        <p><input type="checkbox" name="sustenabilidad" value="fair-trade">Fair Trade</p>
-                        <p><input type="checkbox" name="sustenabilidad" value="envoltorio-sustentable">Envoltorio Sustentable</p>
-                    </div>
+                        <div class="sustentabilidad">
+                            <p><input type="checkbox" name="sustenabilidad" value="vegano">Vegano</p>
+                            <p><input type="checkbox" name="sustenabilidad" value="cruelty-free">Cruelty Free</p>
+                            <p><input type="checkbox" name="sustenabilidad" value="fair-trade">Fair Trade</p>
+                            <p><input type="checkbox" name="sustenabilidad" value="envoltorio-sustentable">Envoltorio Sustentable</p>
+                        </div>
 
-                    <label for="">
-                        <h4>Añadir imágenes</h4>
-                    </label>
+                        <label for="">
+                            <h4>Añadir imágenes</h4>
+                        </label>
 
-                    <input type="file" name="img">
-                    <input type="file" name="img">
-                    <input type="file" name="img">
+                        <input type="file" name="img">
+                        <input type="file" name="img">
+                        <input type="file" name="img">
 
-                    <button>Publicar producto</button>
+                        <button>Publicar producto</button>
 
-                </form>
-
+                    </form>
+                </div>
             </article>
 
         </section>
