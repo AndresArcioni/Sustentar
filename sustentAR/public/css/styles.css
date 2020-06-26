@@ -486,11 +486,6 @@ FORMULARIO DE PRODUCTOS =====================
 CONTAINER CATEGORIA =====================
 */
 
-/* input[type='radio']{
-    background-color: salmon;
-} */
-
-
 .categoria-container, .datos-container{
     background-color: #dddbd1;
     box-sizing: border-box;
@@ -537,6 +532,10 @@ CONTAINER DATOS =====================
 
 .datos-productos-container form div input, textarea, select{
     margin: 9px;
+}
+
+.datos-productos-container form div textarea{
+    margin-left: -11%;
 }
 
 input[type='radio'], input[type='checkbox']{
