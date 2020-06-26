@@ -479,6 +479,7 @@ FORMULARIO DE PRODUCTOS =====================
 
 .titulo-articulo, .titulo-imagenes{
     text-align: center;
+    margin-top: 20px;
 }
 
 /*
@@ -491,7 +492,7 @@ CONTAINER CATEGORIA =====================
 
 
 .categoria-container, .datos-container{
-    background-color: red;
+    background-color: #dddbd1;
     box-sizing: border-box;
 }
 
@@ -500,7 +501,7 @@ CONTAINER CATEGORIA =====================
 }
 
 .formulario-productos-container{
-    background-color: royalblue;
+    background-color: #c4c1ba;
 }
 
 /*
@@ -509,30 +510,94 @@ CONTAINER DATOS =====================
 
 .datos-container div form{
     box-sizing: border-box;
+  
 }
 
 .datos-container div form div{
     margin: 0;
     padding: 0;
+    justify-content: space-evenly;
+}
+
+.datos-container div form div button{
+    margin: 30px;
+    background-color: #e0d1c6;
+    border-style: solid;
+    border-color: #baaa9e;
 }
 
 .datos-productos-container form div label{
    font-size: 12px;
+   padding-top: 5px;
+}
+
+.datos-productos-container form div select{
+    font-size: 12px;
+}
+
+.datos-productos-container form div input, textarea, select{
+    margin: 9px;
+}
+
+input[type='radio'], input[type='checkbox']{
+    margin: 10px;
 }
 
 input[type='file'] {
     font-size: 12px;  
   }
 
+input[type='file']:focus{
+    outline: none;
+    box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
+  }
+
+@media(min-width: 584px){
+    .datos-productos-container form div p{
+        font-size: 11px;
+    }
+}
+
+@media(min-width: 992px){
+    .datos-productos-container form{
+        padding: 29px;
+    }
+
+    .formulario-productos-container{
+        padding: 70px;
+        padding-top: 20px;
+        }
+
+}
+
 /*===============ESTILOS GENERICOS==========================*/
 
 .botonStyle{
     border-radius: 10px;
     margin-bottom: 5px;
+    transition: transform .7s ease;
 }
+
+.botonStyle:hover{
+    transform: scale(1.1);
+}
+
+.botonStyle:focus{
+    background: #ffebdd;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid rgb(189, 138, 138)
+}
+
 .inputStyle{
-    border-radius: 10px;
+    border:1px solid rgb(118, 118, 118);
+    border-radius: 1px;
     margin-bottom: 5px;
+}
+
+.inputStyle:focus{
+    outline: none;
+    box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
 }
 
 /*========================MEDIA QUERIES=======================================*/
