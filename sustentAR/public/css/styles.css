@@ -306,16 +306,12 @@ header .container nav ul li a:hover {
     margin-top: 5px;
     margin: 5px auto;
     padding: 0 auto;
+    /*margin-left: 7%;*/
 }
+
 
 .cupon input{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 50px;
-}
-
-.cupon button{
-    border-radius: 50px;
+    margin-right: 10px;
 }
 
 .separacion div{

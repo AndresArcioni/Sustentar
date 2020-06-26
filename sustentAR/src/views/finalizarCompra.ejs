@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('./partials/Head') %>
+    <%- include('./partials/Head') %>
 
-<body>
-<%- include('./partials/Header') %>
-    <div class="container">
-        <!--INFO FINAL DEL PRODUCTO-->
-        <div class="carrito row">
-            <div class="infoPrincipalDelProducto col-12">
-                <img class="col-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
-                <div class="row dataContainer col-8">
-                    <h2 class="col-12">Nombre del Producto</h4>
-                    <h3 class="col-12">Precio</h4>
-                                  
-                    <h4 class="col-6">Color</h4>
-                    <h4 class="col-6">Cantidad</h4>
-                
+    <body>
+        <%- include('./partials/Header') %>
+
+        <div class="container">
+            <!--INFO FINAL DEL PRODUCTO-->
+            <div class="carrito row">
+                <div class="infoPrincipalDelProducto col-12">
+                    <img class="col-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
+                    <div class="row dataContainer col-8">
+                        <h2 class="col-12">Nombre del Producto</h4>
+                        <h3 class="col-12">Precio</h4>
+
+                        <h4 class="col-12">Cantidad</h4>
+                        <h4 class="col-12">Color</h4>
+                        
+
+                        <div class="cupon col-12 row">
+                            <input type="text" class="col-sm-7 col-lg-4 inputStyle">
+                            <button type="button" class="col-sm-4 col-lg-3 botonStyle">Aplicar</button>
+                        </div>
+                        
+                    </div>
                 </div>
-            </div>
 
-            <div class="separacion col-12">
-                <div>
+                <div class="separacion col-12">
+                    <div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="cupon col-12 row">
-                <input type="text" class="col-2 inputStyle">
-                <button type="button" class="col-1 botonStyle">Aplicar</button>
-            </div>
-
-            <div class="separacion col-12">
-                <div>
+                <!--<div class="cupon col-12 row">
+                    <input type="text" class="col-2 inputStyle">
+                    <button type="button" class="col-3 botonStyle">Aplicar</button>
                 </div>
-            </div>
 
-            <div class="total col-12 row">
-                <h4 class="col-11">Subtotal</h4>
-                <h4 class="col-1">$000</h4>
-                <h4 class="col-11">Envíos</h4>
-                <h4 class="col-1">$000</h4>
-            </div>
+                <div class="separacion col-12">
+                    <div>
+                    </div>
+                </div>-->
 
-            <div class="separacion col-12">
-                <div>
+                <div class="total col-12 row">
+                    <h4 class="col-6 col-lg-11 col-md-9">Subtotal</h4>
+                    <h4 class="col-1">$000</h4>
+                    <h4 class="col-6 col-lg-11 col-md-9">Envíos</h4>
+                    <h4 class="col-1">$000</h4>
                 </div>
-            </div>
 
-            <div class="total col-12 row">
-                <h3 class="col-11">Total</h3>
-                <h3 class="col-1">$000</h3>
-            </div>
+                <div class="separacion col-12">
+                    <div>
+                    </div>
+                </div>
 
-            <div class="btnDiv col-12">
-                <button type="button" class="botonContinuar botonStyle"><a href="/">Confirmar Compra</a></button>
+                <div class="total col-12 row">
+                    <h3 class="col-6 col-lg-11 col-md-9">Total</h3>
+                    <h3 class="col-1">$000</h3>
+                </div>
+
+                <div class="btnDiv col-12">
+                    <button type="button" class="botonContinuar botonStyle"><a href="/">Confirmar Compra</a></button>
+                </div>
             </div>
         </div>
-    </div>
-    <%- include('./partials/scripts') %>
-</body>
+        <%- include('./partials/scripts') %>
+    </body>
 </html>
