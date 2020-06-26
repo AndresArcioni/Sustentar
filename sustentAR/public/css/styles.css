@@ -252,14 +252,11 @@ header .container nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: right;
+    margin-top: 25px;
 }
 
-.botonContinuar{
-    border-radius: 50px;
-    margin-bottom: 5px;
-}
 
-.botonContinuar a{
+.botonStyle a{
     text-decoration: none;
     color: black;
 }
@@ -353,10 +350,10 @@ header .container nav ul li a:hover {
 }
 
 .formularioDeInformacion input{
-    border-radius: 10px;
+    /*border-radius: 10px;
     margin-bottom: 15px;
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 5px;*/
 }
 
 /*==========MODO DE PAGO=============*/

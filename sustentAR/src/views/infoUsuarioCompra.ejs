@@ -1,42 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('./partials/Head') %>
-<link rel="stylesheet" href="/css/styleSheetGuido.css">
+    <%- include('./partials/Head') %>
 
-<body>
-    
-    <%- include('./partials/Header') %>
-    <div class="container">
-        <!--INFORMACION-->
-        <div class="registrodeUsuario">
-            <h2>SustentAR</h2>
-            <form action="#" class="formularioDeInformacion row">
-            
-                <input class="col-5" placeholder="Nombre" type="text" id="nombre" name="nombre">
-                <input class="col-5" placeholder="Apellido" type="text" id="apellido" name="apellido">
+    <body>
+        <%- include('./partials/Header') %>
 
-                <input class="col-8" placeholder="E-mail" type="email" id="email" name="email">
-                
-                <input class="col-5" placeholder="DNI" type="text" id="dni" name="dni">
-                
-                <input class="col-8" placeholder="Dirección" type="text" id="direccion" name="direccion">
-                
-                <input class="col-5" placeholder="Codigo Postal" type="text" id="cp" name="cp">
-                <input class="col-5" placeholder="Entre Calles" type="text" id="entreCalles" name="entreCalles">
-                
-                <input class="col-5" placeholder="Departamento, Piso, etc." type="text" id="depto" name="depto">
-                <input class="col-5" placeholder="Telefono" type="text" id="telefono" name="telefono">
-                
-                <div class="btnDiv col-12">
-                    <button type="button" class="botonContinuar"><a href="modoDePago">Confirmar</a></button>
-                </div>
-            
-            </form>
+        <div class="container">
+            <!--INFORMACION-->
+            <div class="registrodeUsuario">
+                <h2>SustentAR</h2>
+
+
+
+                <form class="formulario-editar-cuenta  row" action="" id="content">
+
+                    <div class="col-7 col-sm-6 form-div row"  nombre>
+                        <label class="etiqueta col-12" id="label nombre"  for="nombre">Nombre</label>
+                        <input class="campo col-10" type="text" name="nombre" placeholder="Nombre">
+                       
+                    </div>
+
+                    <div class="col-7 col-sm-6 form-div row" >
+                        <label class="etiqueta col-12" id="label apellido"  for="apellido">Apellido</label>
+                        <input class="campo col-10" 
+                        type="text" name="apellido" placeholder="Apellido"> 
+                    </div>
+
+                    <div class="col-12 col-sm-12 form-div row email">
+                        <label class="etiqueta col-12" for="email" >Email</label>
+                        <input class="campo col-10" type="email" name="email" placeholder="usuario@mail.com">
+                    </div>
+
+
+                    <div class="col-7 col-sm-6 form-div row">
+                        <label class="etiqueta col-12" for="dni">DNI</label>
+                        <input class="campo col-10" type="text" name="dni" placeholder="1234547" >
+                    </div>
+                    
+                    <div class="col-12 col-sm-12 form-div row">
+                        <label class="etiqueta col-12" for="direccion">Dirección</label>
+                        <input class="campo col-10" type="text" name="direccion" placeholder="Direccion">
+                    </div>
+                    
+                    <div class="form-div col-7 col-sm-6 row">
+                        <label class="etiqueta col-12" for="cp">C.P.</label>
+                        <input class="campo col-10" type="text" name="cp" placeholder="C.P.">
+                    </div>
+
+                    <div class="col-7 col-sm-6 form-div row">
+                        <label class="etiqueta col-12" for="entreCalles">Entre Calles</label>
+                        <input class="campo col-10" type="text" name="entreCalles" placeholder="Entre Calles">
+                    </div>
+                    
+                    <div class="col-7 col-sm-6 form-div row">
+                        <label class="etiqueta col-12" for="depto">Departamento, piso, etc</label>
+                        <input class="campo col-10" type="text" name="depto" placeholder="Departamento, piso, ect" >
+                    </div>
+
+                    <div class="col-7 col-sm-6 form-div row">
+                        <label class="etiqueta col-12" for="telefono">Telefono 
+                        </label>
+                        <input class="campo col-10" type="text" name="telefono" placeholder="110000000">
+                    </div>
+
+                    <div class="btnDiv col-12">
+                        <button type="button" class="botonStyle"><a href="modoDePago">Confirmar</a></button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-    </div>
-    
 
-    <%- include('./partials/scripts') %>
-</body>
+
+        <%- include('./partials/scripts') %>
+    </body>
 </html>
