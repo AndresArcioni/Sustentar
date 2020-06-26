@@ -469,13 +469,26 @@ header .container nav ul li a:hover {
 
 
 /*
+=====================
 FORMULARIO DE PRODUCTOS =====================
 */
 
+::placeholder{
+    font-size: 12px;
+}
+
+.titulo-articulo, .titulo-imagenes{
+    text-align: center;
+}
 
 /*
 CONTAINER CATEGORIA =====================
 */
+
+/* input[type='radio']{
+    background-color: salmon;
+} */
+
 
 .categoria-container, .datos-container{
     background-color: red;
@@ -494,7 +507,22 @@ CONTAINER CATEGORIA =====================
 CONTAINER DATOS =====================
 */
 
+.datos-container div form{
+    box-sizing: border-box;
+}
 
+.datos-container div form div{
+    margin: 0;
+    padding: 0;
+}
+
+.datos-productos-container form div label{
+   font-size: 12px;
+}
+
+input[type='file'] {
+    font-size: 12px;  
+  }
 
 /*===============ESTILOS GENERICOS==========================*/
 
