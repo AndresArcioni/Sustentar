@@ -12,27 +12,45 @@
         <div class="modoDePago row">
             <h3>Seleccione una forma de pago</h3>
             <div class="botonesDePago col-12">
-                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-visa"></i></button>
-                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-mastercard"></i></button>
-                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-amex"></i></i></button>
+                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-visa fa-2x"></i></button>
+                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-mastercard fa-2x"></i></button>
+                <button type="button" class="col-2 botonStyle"><i class="fab fa-cc-amex fa-2x"></i></i></button>
                 <button type="button" class="col-2 botonStyle">Mercado Pago</button>
             </div>
-            <form action="#" class="tarjetaForm col-12 row">
-                <input class="col-7 inputStyle" placeholder="DNI" type="text" id="dni" name="dni">
 
-                <input class="col-7 inputStyle" placeholder="Numero de la tarjeta" type="text" id="tarjetaID" name="tarjetaID">
-                <input class="col-3 inputStyle" placeholder="Codigo de Seguridad" type="text" id="codSeguridad" name="codSeguridad">
+            <form class="formulario-editar-cuenta  row" action="" id="content">
 
-                <input class="col-9 inputStyle" placeholder="Nombre del Titular de la tarjeta" type="text" id="titularDeTarjeta" name="titularDeTarjeta">
-            
-                <input class="col-4 inputStyle" placeholder="Fecha de nacimiento" type="text" id="fNacimiento" name="fNacimiento">
-            
+                <div class="col-7 col-sm-7 form-div row"  nombre>
+                    <label class="etiqueta col-12" id=""  for="">DNI</label>
+                    <input class="campo col-10" type="text" name="dni" id="dni" placeholder="DNI">
+                   
+                </div>
+
+                <div class="col-8 col-sm-8 form-div row">
+                    <label class="etiqueta col-12" for="">Numero de tarjeta</label>
+                    <input class="campo col-10" type="text" name="nroTarjeta" id="nroTarjeta" placeholder="Numero de tarjeta"> 
+                </div>
+
+                <div class="col-4 col-sm-4 form-div row">
+                    <label class="etiqueta col-12" for="" >Codigo</label>
+                    <input class="campo col-10" type="email" name="codSeguridad" id="codSeguridad" placeholder="Codigo de Seguridad">
+                </div>
+
+
+                <div class="col-8 col-sm-8 form-div row">
+                    <label class="etiqueta col-12" for="">Nombre del titular</label>
+                    <input class="campo col-10" type="text" name="nombreTitular" id="nombreTitular" placeholder="Nombre del Titular" >
+                </div>
+                
+                <div class="col-7 col-sm-7 form-div row">
+                    <label class="etiqueta col-12" for="">Fecha de nacimiento</label>
+                    <input class="campo col-10" type="text" name="f-Nacimiento" id="f-Nacimiento" placeholder="Fecha de Nacimiento">
+                </div>
 
                 <div class="btnDiv col-12">
-                    <button type="button" class="botonContinuar botonStyle"><a href="finalizarCompra">Confirmar</a></button>
+                    <button type="button" class="botonStyle"><a href="finalizarCompra">Confirmar</a></button>
                 </div>
             </form>
-        
         </div>
     </div>
     
