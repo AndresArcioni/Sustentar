@@ -11,6 +11,6 @@ router.get('/cuenta', mainController.cuenta)
 router.get('/login', mainController.login)
 
 router.get('/registro', mainController.registro)
-
+router.get('/misCompras', mainController.misCompras);
 
 module.exports = router;

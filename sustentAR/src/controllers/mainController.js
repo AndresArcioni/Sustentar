@@ -11,6 +11,9 @@ module.exports = {
     },
     registro: function(req, res){
         res.render('registro')
+    },
+    misCompras: function(req, res){
+        res.render('misCompras');
     }
 };
 

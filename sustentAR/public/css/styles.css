@@ -482,6 +482,31 @@ header .container nav ul li a:hover {
 }
 
 
+/*===================MIS COMPRAS===========================*/
+.misCompras{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.misCompras h4{
+    margin-left: 15px;
+}
+
+.misCompras h6{
+    margin-left: 15px;
+}
+
+.misCompras .productoComprado{
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 /*
 =====================
 FORMULARIO DE PRODUCTOS =====================
