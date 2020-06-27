@@ -8,5 +8,9 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 router.get('/', mainController.root); /* GET - home page */
 router.get('/cuenta', mainController.cuenta)
 
+router.get('/login', mainController.login)
+
+router.get('/registro', mainController.registro)
+
 
 module.exports = router;

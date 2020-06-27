@@ -563,13 +563,56 @@ input[type='file']:focus{
         }
 
 }
+/*===============
+LOGIN
+==========================*/
+
+.recordar{
+    font-size: 10px;
+    height: 15px;
+    margin: 0;
+}
+
+.boton-recordar{
+    margin:0
+}
+
+/*===============
+REGISTRO
+==========================*/
+
+.registro-container{
+    margin-top: 40px;  
+    background-color: #aeb895;
+
+}
+
+.formulario-registro-container{
+      background-color: #c9d6a3;
+}
+
+.formulario-registro-container form h3{
+    text-align: center;
+    margin: 15px;
+}
+
+.formulario-registro-container form div{
+    text-align: center;
+}
+
+.formulario-registro-container form div button{
+    margin: 30px;
+    background-color: #b8c497e8;
+    border: 1px solid #7e836f;
+}
+
 
 /*===============ESTILOS GENERICOS==========================*/
 
 .botonStyle{
     border-radius: 10px;
     margin-bottom: 5px;
-    transition: transform .7s ease;
+    transition: transform .7s ease-in-out;
 }
 
 .botonStyle:hover{
@@ -577,10 +620,9 @@ input[type='file']:focus{
 }
 
 .botonStyle:focus{
-    background: #ffebdd;
     text-decoration: none;
     outline: none;
-    border: 2px solid rgb(189, 138, 138)
+    box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
 }
 
 .inputStyle{
