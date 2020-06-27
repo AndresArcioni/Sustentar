@@ -610,6 +610,15 @@ input[type='file']:focus{
 /*===============
 LOGIN
 ==========================*/
+@keyframes slide {
+        0%   { transform: translate(0px,0px); }
+        100% { transform: translate(0px,10px); }
+      }
+.formulario-registro-container form{
+       animation-name: slide;
+       animation-duration: 3s; 
+       animation-fill-mode: forwards;   
+}
 
 .recordar{
     font-size: 10px;
