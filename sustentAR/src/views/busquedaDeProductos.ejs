@@ -10,8 +10,6 @@
                     <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
                 </div>
             
-
-                
                 <nav class="mb-2 phoneFilter">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#filter">
                         <i class="fas fa-filter"></i>Filtrar
@@ -19,18 +17,11 @@
                     
                     <div class="collapse" id="filter">
                         <h4><label for="">Categoría</label></h4>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
-                    
-                        <h4>Color</h4>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color1">Color 1</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color2">Color 2</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color3">Color 3</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color4">Color 4</p>
-                    
-                        <h4>Estado</h4>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="nuevo">Nuevo</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="usado">Usado</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="decoracion">Decoración</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="cocina">Cocina</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="baño">Baño</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="otros">Otros</p>
+
                     
                         <h4>Precio</h4>
                         <input class="col-5 minMax inputStyle" placeholder="Minimo" type="text" id="min" name="min">
@@ -43,122 +34,100 @@
                     </div>
                 </nav>
 
-                <div class="row">
+                <div class="pcFilterContainer">
+                    <div class="filtrosPC row">
 
-                    <div class="filtrosPC col-3 col-lg-2">
-                        <p class="tituloFiltro"><label for="">Categoría</label></p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria1">Categoría 1</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="categoria2">Categoría 2</p>
-                    
-                        <p class="tituloFiltro">Color</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color1">Color 1</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color2">Color 2</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color3">Color 3</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="color" value="color4">Color 4</p>
-                    
-                        <p class="tituloFiltro">Estado</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="nuevo">Nuevo</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="usado">Usado</p>
-                    
-                        <p class="tituloFiltro">Precio</p>
-                        <input class="col-5 minMax" placeholder="Minimo" type="text" id="min" name="min">
-                        <input class="col-5 minMax" placeholder="Maximo" type="text" id="max" name="max">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#contenedorDeFiltros">
+                            <i class="fas fa-filter"></i>Filtrar
+                        </button>
 
-
-                        <div class="">
-                            <button type="button" class="botonDeFiltrar">Continuar</button>
-                        </div>
-                    </div>
-                
-                
-                    <div class="productosDeBusqueda col-11 col-md-7 col-lg-9">
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/Diversion24.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
+                        <div class=" collapse col-12" id="contenedorDeFiltros">
+                            <button class="collapseFiltros botonStyle col-2" type="button" data-toggle="collapse" data-target="#collapseFiltro">
+                                Categoria
+                            </button>
+                            <div class=" collapse col-12" id="collapseFiltro">
+                                <button class="col-2 botonStyle">Decoración</button>
+                                <button class="col-2 botonStyle">Cocina</button>
+                                <button class="col-2 botonStyle">Baño</button>
+                                <button class="col-2 botonStyle">Otros</button>
+    
+                                <input class="col-4 minMax" placeholder="Minimo" type="text" id="min" name="min">
+                                <input class="col-4 minMax" placeholder="Maximo" type="text" id="max" name="max">
                             </div>
-                        </article>
-                    
-                        <div class="separacion col-12">
-                            <div>
-                            </div>
-                        </div>
-                    
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/Jabon15.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
-                            </div>
-                        </article>
-                    
-                        <div class="separacion col-12">
-                            <div>
+                            
+                            <div class="col-12"></div>
+    
+    
+                            <button class="collapseFiltros botonStyle col-2" type="button" data-toggle="collapse" data-target="#collapseOrdenar">
+                                Ordenar por 
+                            </button>
+                            <div class="collapse col-12 row" id="collapseOrdenar">
+                                <button class="col-4 botonStyle">Mayor precio</button>
+                                <button class="col-4 botonStyle">Menor precio</button>
+                                <button class="col-4 botonStyle">Destacados</button>
                             </div>
                         </div>
-                    
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/Maceta21.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
-                            </div>
-                        </article>
-                    
-                        <div class="separacion col-12">
-                            <div>
-                            </div>
-                        </div>
-                    
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/PastaDeDientes28.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
-                            </div>
-                        </article>
-                    
-                        <div class="separacion col-12">
-                            <div>
-                            </div>
-                        </div>
-                    
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/Velas12.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
-                            </div>
-                        </article>
-
-                        <div class="separacion col-12">
-                            <div>
-                            </div>
-                        </div>
-                    
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/Velas12.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
-                            </div>
-                        </article>
-
-                        <div class="separacion col-12">
-                            <div>
-                            </div>
-                        </div>
-                    
-                        <article class="row col-12">
-                            <img class="col-5 col-lg-2" src="../images/productos/Velas12.jpg" alt="">
-                            <div class="productInfo col-7 col-lg-8">
-                                <p>Nombre del producto</p>
-                                <p>$$ Precio $$</p>
-                            </div>
-                        </article>
 
                     </div>
+                </div>
+
+                <div class="productosDeBusqueda col-12 col-md-7 col-lg-12">
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/Diversion24.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/Jabon15.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/Maceta21.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/PastaDeDientes28.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/Velas12.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/Jabon15.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+
+                    <div class="producto col-6 col-lg-4 row">
+                        <img class="col-12" src="../images/productos/Jabon15.jpg" alt="">
+                        <div class="productInfo col-12">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
