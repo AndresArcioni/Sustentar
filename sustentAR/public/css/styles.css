@@ -548,7 +548,7 @@ CONTAINER DATOS =====================
 }
 
 .datos-container div form div{
-    margin: 0;
+    margin: 10px;
     padding: 0;
     justify-content: space-evenly;
 }
@@ -573,9 +573,9 @@ CONTAINER DATOS =====================
     margin: 9px;
 }
 
-.datos-productos-container form div textarea{
+/* .datos-productos-container form div textarea{
     margin-left: -11%;
-}
+} */
 
 input[type='radio'], input[type='checkbox']{
     margin: 10px;
