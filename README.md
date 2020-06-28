@@ -3,9 +3,9 @@
 1- Productos que brindaremos: productos sustentables.
 
 2- Audiencia objetivo: 
-    - 
-    -
-    -
+    1- 
+    2-
+    3-
 
 3- Al estar dirigido a un publico joven, debemos generar un diseño en nuestra pagina que impacte en el usuario junto con buena interaccion para el mismo.
 
