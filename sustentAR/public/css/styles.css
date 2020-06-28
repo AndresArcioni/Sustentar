@@ -1,163 +1,747 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-/*===================================
-- COLORS
-=================================== */
-/*
-    color: #e0d1c6
-    color: #baaa9e
-    color: #dddbd1
-    color: #c4c1ba
-    color: #c9d6a3
-    color: #7fa08c
-
-*/
-/*===================================
-- GENERAL
-=================================== */
-
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
-    margin: 0;
+    margin: 0 auto;
+    padding: 0 auto;
     text-decoration: none;
-    list-style: none;
+    list-style-type: none;
 }
 
-
-/*===================================
-- CONTAINER
-=================================== */
-
-.container-fluid {
-    padding: 0;
-}
-
-
-/* ===================================
-- HEADER
-=================================== */
-
-header.main-header {
-    background-image: url(/images/hojas.jpg);
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    margin: 0;
-    padding: 5px;
-}
-
-header.main-header div.wrapper-logo{
-    display: inline-block;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-}
-
-header.main-header div.wrapper-logo h1 {
-    margin-top: 10px;
-    font-weight: 200;
-    color: #e0d1c6;
-    margin-left: 8px;
-}
-
-header.main-header div.wrapper-logo a {}
-
-header.main-header div.wrapper-logo a img{
-    width: 70px;
-    border-radius: 50%;
-}
-
-header.main-header div.main-search {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-header.main-header div.main-search form {}
-
-header.main-header div.main-search form input[type="text"] {
-
-}
-
-header.main-header div.main-search form input[type="submit"] {}
-
-
-/* ===================================
-- NAVBAR
-=================================== */
-
-nav {
-    display: flex;
-    justify-content: space-between;
-}
-
-nav div.icons-right,
-nav div.icons-left {
-    height: fit-content;
-}
-
-nav button {
-    border-radius: 8px;
+body{
     background-color: #dddbd1;
 }
 
-nav ul.nav-left, ul.nav-right{
+html {
+    font-size: 15px;
+}
+
+.container{
+    margin: 0 auto;
+    width: 100%;
+}
+
+.busquedaContainer{
+    background-color: #dddbd1;
+    border: 2px solid  #dddbd1;
+
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    text-decoration: underline;
+}
+
+
+header {
+    background-color: green;
+    padding-top: 15px;
+}
+
+header .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+header .container a.logo img {
+    height: 100px;
+}
+
+.logoContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.logoContainer h1{
+    text-align: center;
+}
+
+header .container form {
+    width: 60%;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 3px;
+    background-color: white;
+    padding: 0 9px;
+}
+
+header .container form input {
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+header .container form input:focus {
+    outline-color: red;
+}
+
+header .container form button {
+    border: none;
+    background: none;
+    margin: 8px 0;
+    border-left: 1px solid #ebebeb;
+    color: #666;
+}
+
+header .container p.cuotas {
+    width: 100%;
+    text-align: center;
+    margin: 14px 0;
+}
+
+header .container p.cuotas i {
+    padding: 0;
+}
+
+header .container nav {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+}
+header .container nav button.burger {
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background: white;
+    color: black;
+}
+
+header .container nav ul.menu-productos, header .container nav ul.menu-usuarios {
     display: none;
 }
 
-nav ul.nav-left li,
-nav ul.nav-right li {}
-
-nav ul.nav-left li a,
-nav ul.nav-right li a {
-    display: flex;
+header .container nav ul li a {
+    color: rgba(0, 0, 0, 0.7);
+    transition: color 0.1s ease-in-out;
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
     border-bottom: solid 1px var(--gray);
 }
-
-
-/* ===================================
-- SEARCH Va dentro o no de NAV?
-=================================== */
-
-header div.main-search{}
-header div.main-search form {}
-header div.main-search form input {}
-header div.main-search form button.btn-toggle-search {}
-
-
-/* ===================================
-- BANNER
-=================================== */
-
-div .container-fluid .banner {
-    background.color: red;
-    
+header .container nav ul li a:hover {
+    color: rgba(0, 0, 0, 1);
 }
 
-div .container-fluid .banner a {}
-
-div .container-fluid .banner a img {}
-
-div .container-fluid .banner h2 {}
 
 
-/* ===================================
-- SECTION
-=================================== */
 
+
+/*========EDITAR CUENTA==========*/
+
+
+.container-edit {
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.container-saludo, .form-article {
+    background-color: #dddbd1;
+    border: 2px solid  #dddbd1;
+    width: 65%;
+    box-sizing: border-box;
+    padding: 10px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.form-article{
+    display: flex;
+    flex-wrap: wrap;
+    /* box-sizing: border-box; */
+}
+
+
+
+/*SALUDO--------------------------*/
+
+.container-saludo {
+   margin-top: 30px; 
+}
+
+.saludo {
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+/*INFO USUARIO--------------------------*/
+
+.info-usuario{
+    margin-top: 12px;
+}
+
+/*FORMULARIO----------------------*/
+
+.formulario-editar-cuenta {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.etiqueta{
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+
+.campo {
+    height: 20px;
+}
+
+
+
+.boton-editar {
+    display: block;
+    margin-top: 5%;
+    margin-left: 60%;
+    background-color: #e0d1c6;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #baaa9e;
+    transition: transform .7s ease;
+}
+
+.boton-editar:hover, .boton-guardar:hover{
+    background: #ffebdd;
+    transform: scale(1.1);
+}
+
+.boton-guardar {
+    margin-top: 5%;
+    margin-bottom: 10px;
+    background-color: #e0d1c6;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #baaa9e;
+    transition: transform .7s ease;
+    font-size: 13px;
+}
+
+
+.boton-editar:focus, .boton-guardar:focus{
+    background: #ffebdd;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid rgb(189, 138, 138);
+}
+
+
+@media(max-width: 400px){
+    .container-saludo, .form-article{
+        width: 80%;
+    }
+}
+
+/*=============SECCION DE CARRITO==================*/
+.btnDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-top: 25px;
+}
+
+
+.botonStyle a{
+    text-decoration: none;
+    color: black;
+}
+
+
+/*=======CARRITO===========*/
+
+.carrito{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    margin: 1px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.carrito .infoPrincipalDelProducto{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.carrito .infoPrincipalDelProducto p{
+    padding-top: 10px;
+    padding-right: 5px;
+    height: 30px;
+}
+
+.carrito .infoPrincipalDelProducto .deleteButton{
+    text-align: right;
+}
+
+.dataContainer{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.carrito .infoPrincipalDelProducto .dataContainer button{
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.cupon{
+    margin-top: 5px;
+    margin: 5px auto;
+    padding: 0 auto;
+    /*margin-left: 7%;*/
+}
+
+
+.cupon input{
+    margin-right: 10px;
+}
+
+.separacion div{
+    border-bottom: black 1px solid;
+    font-weight: bold;
+    color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/*=======INFORMACION===========*/
+.registrodeUsuario{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    margin: 1px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.registrodeUsuario h2{
+    text-align: center;
+}
+
+.formularioDeInformacion{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 auto;
+    justify-content: space-between;
+}
+
+.formularioDeInformacion input{
+    /*border-radius: 10px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;*/
+}
+
+/*==========MODO DE PAGO=============*/
+
+.modoDePago{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    margin: 1px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.modoDePago .botonesDePago{
+    display: flex;
+    flex-wrap: wrap;  
+    justify-content: space-between; 
+}
+.modoDePago .botonesDePago button{
+    width: 20%;
+}
+
+.modoDePago .tarjetaForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 0 auto;
+    /*justify-content: space-between;*/
+    /*agregar un margin*/
+}
+
+.modoDePago .tarjetaForm input{
+    border-radius: 50px;
+    margin-bottom: 8px;
+}
+
+
+/*==============VISTA DE COMPRAS===================*/
+.busquedaContainer{
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+.collapseFiltros{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.filtrosPC{
+    width: 0;
+    height: 0;
+    
+    margin: 1px;
+    margin-left: 15px;
+    padding-left: 5px;
+    visibility: collapse;
+}
+
+.filtrosPC .botonDeFiltrar{
+    border-radius: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.filtrosPC .tituloFiltro{
+    margin-bottom: 0px;
+    margin-top: 3px;
+    font-weight: 700;
+}
+
+.filtrosPC .checkboxFilter{
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
+
+.filtrosPC .minMax{
+    border-radius: 50px;
+    margin-left: 10px;
+}
+
+.productosDeBusqueda{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    border-radius: 10px;
+    width: 100%;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.productosDeBusqueda .producto{
+    margin-bottom: 10px;
+}
+
+.productosDeBusqueda .producto:after{
+    content:"";
+    position: absolute;
+    left: 170px;
+    height: 100px;
+    border-right: 1px solid #b1b1b1;
+
+}
+
+.busqueda{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 17px;
+}
+
+.checkboxFilter{
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+
+/*===================MIS COMPRAS===========================*/
+.misCompras{
+    background-color: #c4c1ba;
+    border: 2px solid #c4c1ba;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.misCompras h4{
+    margin-left: 15px;
+}
+
+.misCompras h6{
+    margin-left: 15px;
+}
+
+.misCompras .productoComprado{
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/*
+=====================
+FORMULARIO DE PRODUCTOS =====================
+*/
+
+::placeholder{
+    font-size: 12px;
+}
+
+.titulo-articulo, .titulo-imagenes{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*
+CONTAINER CATEGORIA =====================
+*/
+
+.categoria-container, .datos-container{
+    background-color: #dddbd1;
+    box-sizing: border-box;
+}
+
+.categoria-container{
+    margin-bottom: 15px;
+}
+
+.formulario-productos-container{
+    background-color: #c4c1ba;
+}
+
+/*
+CONTAINER DATOS =====================
+*/
+
+.datos-container div form{
+    box-sizing: border-box;
+  
+}
+
+.datos-container div form div{
+    margin: 10px;
+    padding: 0;
+    justify-content: space-evenly;
+}
+
+.datos-container div form div button{
+    margin: 30px;
+    background-color: #e0d1c6;
+    border-style: solid;
+    border-color: #baaa9e;
+}
+
+.datos-productos-container form div label{
+   font-size: 12px;
+   padding-top: 5px;
+}
+
+.datos-productos-container form div select{
+    font-size: 12px;
+}
+
+.datos-productos-container form div input, textarea, select{
+    margin: 9px;
+}
+
+/* .datos-productos-container form div textarea{
+    margin-left: -11%;
+} */
+
+input[type='radio'], input[type='checkbox']{
+    margin: 10px;
+}
+
+input[type='file'] {
+    font-size: 12px;  
+  }
+
+input[type='file']:focus{
+    outline: none;
+    box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
+  }
+
+@media(min-width: 584px){
+    .datos-productos-container form div p{
+        font-size: 11px;
+    }
+}
+
+@media(min-width: 992px){
+    .datos-productos-container form{
+        padding: 29px;
+    }
+
+    .formulario-productos-container{
+        padding: 70px;
+        padding-top: 20px;
+        }
+
+}
+/*===============
+LOGIN
+==========================*/
+@keyframes slide {
+        0%   { transform: translate(0px,0px); }
+        100% { transform: translate(0px,10px); }
+      }
+.formulario-registro-container form{
+       animation-name: slide;
+       animation-duration: 3s; 
+       animation-fill-mode: forwards;   
+}
+
+.recordar{
+    font-size: 10px;
+    height: 15px;
+    margin: 0;
+}
+
+.boton-recordar{
+    margin:0
+}
+
+/*===============
+REGISTRO
+==========================*/
+
+.registro-container{
+    margin-top: 40px;  
+    background-color: #aeb895;
+
+}
+
+.formulario-registro-container{
+      background-color: #c9d6a3;
+}
+
+.formulario-registro-container form h3{
+    text-align: center;
+    margin: 15px;
+}
+
+.formulario-registro-container form div{
+    text-align: center;
+}
+
+.formulario-registro-container form div button{
+    margin: 30px;
+    background-color: #b8c497e8;
+    border: 1px solid #7e836f;
+}
+
+
+/*===============ESTILOS GENERICOS==========================*/
+
+.botonStyle{
+    border-radius: 10px;
+    margin-bottom: 5px;
+    transition: transform .7s ease-in-out;
+}
+
+.botonStyle:hover{
+    transform: scale(1.1);
+}
+
+.botonStyle:focus{
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
+}
+
+.inputStyle{
+    border:1px solid rgb(118, 118, 118);
+    border-radius: 1px;
+    margin-bottom: 5px;
+}
+
+.inputStyle:focus{
+    outline: none;
+    box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
+}
 
 /*========================MEDIA QUERIES=======================================*/
 @media (min-width: 768px) {
-    .btn-toggle-navbar {
-        display: none;
+    header .container form {
+        width: 45%;
     }
-    .main-navbar,
-    .nav-left,
-    .nav-right {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+
+    header .container p.cuotas {
+        width: 25%;
+        margin-top: 0;
+        text-align: right;
+    }
+
+    header .container nav button.burger {
+      display: none;  
+    }
+    header .container nav {
         justify-content: space-between;
+    }
+    header .container nav ul.menu-productos, header .container nav ul.menu-usuarios {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    header .container nav ul li {
+        margin-right: 10px;
+    }
+    header .container nav ul li:last-child {
+        margin: 0;
+    }
+
+    
+    .phoneFilter{
+        width: 0;
+        height: 0;
+        visibility: collapse;
+    }
+
+    .filtrosPC{
+        width: 100%;
+        height: 60%;
+        
+        margin: 1px;
+        margin-left: 15px;
+        padding-left: 5px;
+        visibility: visible;
+    }
+
+    .productosDeBusqueda .producto:after{
+        content:"";
+        position: static;
+        right: 0;
+        height: 0;
+        border-right: 0;
     }
 }

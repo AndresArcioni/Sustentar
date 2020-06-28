@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> | sustentAR</title> <!-- Aca se debe imprimir el titulo correspondiente a cada seccion | HOME - | productos - | register -->
-        <!-- Font Awesome Stylesheet -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <!-- Bootstrap Grid Stylesheet -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <!-- sustentAR Tittle Icon -->
-        <!-- ACA VA EL ICONO DE LA PAGINA (EL DE LA PESTAÑA) -->
-        <!-- sustentAR Stylesheet -->
-        
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/styleSheetGuido.css">
-        
-</head>
+<%- include('./partials/Head') %>
+<link rel="stylesheet" href="/css/styleSheetGuido.css">
+
 <body>
-    <div class="container-fluid">
-        <%- include('./partials/headerNavbar') %>
-        <div class="container">
-            <!--MODO DE PAGO-->
-            <div class="modoDePago row">
-                <p>Seleccione una forma de pago</p>
-                <div class="botonesDePago col-12">
-                    <button type="button" class="col-3 botonContinuar"><i class="fab fa-cc-visa"></i></button>
-                    <button type="button" class="col-3 botonContinuar"><i class="fab fa-cc-mastercard"></i></button>
-                    <button type="button" class="col-3 botonContinuar"><i class="fab fa-cc-amex"></i></i></button>
-                    <button type="button" class="col-3 botonContinuar">Mercado Pago</button>
+
+    <%- include('./partials/Header') %>
+    <div class="container">
+        <!--MODO DE PAGO-->
+        <div class="modoDePago row">
+            <h3>Seleccione una forma de pago</h3>
+            <div class="botonesDePago col-12">
+                <button type="button" class="col-3 col-lg-2 botonStyle"><i class="fab fa-cc-visa fa-2x"></i></button>
+                <button type="button" class="col-3 col-lg-2 botonStyle"><i class="fab fa-cc-mastercard fa-2x"></i></button>
+                <button type="button" class="col-3 col-lg-2 botonStyle"><i class="fab fa-cc-amex fa-2x"></i></i></button>
+                <button type="button" class="col-3 col-lg-2 botonStyle"><i class="fas fa-handshake fa-2x"></i></button>
+            </div>
+
+            <form class="formulario-editar-cuenta  row" action="" id="content">
+
+                <div class="col-7 col-sm-7 form-div row"  nombre>
+                    <label class="etiqueta col-12" id=""  for="">DNI</label>
+                    <input class="campo col-10" type="text" name="dni" id="dni" placeholder="DNI">
+                   
                 </div>
 
-                <form action="#" class="tarjetaForm col-12 row">
-                    <input class="col-7" placeholder="DNI" type="text" id="dni" name="dni">
-    
-                    <input class="col-7" placeholder="Numero de la tarjeta" type="text" id="tarjetaID" name="tarjetaID">
-    
-                    <input class="col-8" placeholder="Nombre del Titular de la tarjeta" type="text" id="titularDeTarjeta" name="titularDeTarjeta">
-                    <input class="col-4" placeholder="Codigo de Seguridad" type="text" id="codSeguridad" name="codSeguridad">
-                
-                    <input class="col-4" placeholder="Fecha de nacimiento" type="text" id="fNacimiento" name="fNacimiento">
-                
-    
-                    <div class="btnDiv col-12">
-                        <button type="button" class="botonContinuar"><a href="finalizarCompra">Confirmar</a></button>
-                    </div>
-                </form>
-            
-            </div>
-        </div>
-        
-    </div>
+                <div class="col-8 col-sm-8 form-div row">
+                    <label class="etiqueta col-12" for="">Numero de tarjeta</label>
+                    <input class="campo col-10" type="text" name="nroTarjeta" id="nroTarjeta" placeholder="Numero de tarjeta"> 
+                </div>
 
+                <div class="col-4 col-sm-4 form-div row">
+                    <label class="etiqueta col-12" for="" >Codigo</label>
+                    <input class="campo col-10" type="text" name="codSeguridad" id="codSeguridad" placeholder="Codigo de Seguridad">
+                </div>
+
+
+                <div class="col-8 col-sm-8 form-div row">
+                    <label class="etiqueta col-12" for="">Nombre del titular</label>
+                    <input class="campo col-10" type="text" name="nombreTitular" id="nombreTitular" placeholder="Nombre del Titular" >
+                </div>
+                
+                <div class="col-7 col-sm-7 form-div row">
+                    <label class="etiqueta col-12" for="">Fecha de nacimiento</label>
+                    <input class="campo col-10" type="text" name="f-Nacimiento" id="f-Nacimiento" placeholder="Fecha de Nacimiento">
+                </div>
+
+                <div class="btnDiv col-12">
+                    <button type="button" class="botonStyle"><a href="finalizarCompra">Confirmar</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <%- include('./partials/scripts') %>
 </body>
 </html>
