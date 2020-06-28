@@ -251,7 +251,7 @@ header .container nav ul li a:hover {
 .btnDiv{
     display: flex;
     flex-wrap: wrap;
-    justify-content: right;
+    justify-content: flex-end;
     margin-top: 25px;
 }
 
