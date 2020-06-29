@@ -27,13 +27,12 @@ html {
 h1 {
     text-align: center;
     color: black;
-    text-decoration: underline;
 }
 
 
 header {
     background-color: green;
-    padding-top: 15px;
+    padding: 15px 0px;
 }
 
 header .container {
@@ -128,7 +127,23 @@ header .container nav ul li a:hover {
 header div.main-search {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
+
+header div.main-search form {
+
+}
+
+header div.main-search form input {
+    border: none;
+}
+
+header div.main-search form button {
+    border: none;
+}
+
+
+
 
 
 /*========BANNER==========*/
@@ -817,6 +832,15 @@ REGISTRO
         border-right: 0;
     }
 }
+
+@media (max-width: 768px) {
+   div.footer-container div {
+       margin: 0;
+       padding: 0;
+       padding: 10px;
+   } 
+}
+
 
 
 /*===============
