@@ -4,7 +4,8 @@
     <%- include('./partials/Head') %>
     <body>
         <%- include('./partials/Header') %>
-        <div class="container">
+        <div class="container-fluid">
+            
             <div class="busquedaContainer">
                 <div class="busqueda row">
                     <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
@@ -148,6 +149,7 @@
             </div>
 
         </div>
-        <%- include('./partials/scripts') %>
+        <%- include('./partials/footer.ejs') %>
+    <%- include('./partials/scripts.ejs') %> 
     </body>
 </html>

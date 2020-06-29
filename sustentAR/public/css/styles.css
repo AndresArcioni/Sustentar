@@ -22,7 +22,6 @@ html {
 .busquedaContainer{
     background-color: #dddbd1;
     border: 2px solid  #dddbd1;
-
 }
 
 h1 {
@@ -344,8 +343,18 @@ section div.productsList article div h4.product-discount:after {
 }
 
 .carrito .infoPrincipalDelProducto .dataContainer button{
-    border-radius: 50px;
+    
     margin-bottom: 10px;
+}
+
+button.colorBoton{
+    background-color: #e0d1c6;
+    border-color: #baaa9e;
+}
+
+button.continuar{
+    background-color:#39b54a;
+    border-color: #39b54a;
 }
 
 .cupon{
@@ -353,11 +362,7 @@ section div.productsList article div h4.product-discount:after {
     margin: 5px auto;
     padding: 0 auto;
     /*margin-left: 7%;*/
-}
-
-
-.cupon input{
-    margin-right: 10px;
+    justify-content: space-between;
 }
 
 .separacion div{
@@ -429,7 +434,7 @@ section div.productsList article div h4.product-discount:after {
 }
 
 .modoDePago .tarjetaForm input{
-    border-radius: 50px;
+    
     margin-bottom: 8px;
 }
 
@@ -459,7 +464,7 @@ section div.productsList article div h4.product-discount:after {
 }
 
 .filtrosPC .botonDeFiltrar{
-    border-radius: 50px;
+    
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -475,8 +480,8 @@ section div.productsList article div h4.product-discount:after {
     margin-left: 10px;
 }
 
-.filtrosPC .minMax{
-    border-radius: 50px;
+input.minMax{
+    border-radius: 10px;
     margin-left: 10px;
 }
 
@@ -783,7 +788,11 @@ REGISTRO
         margin: 0;
     }
 
-    
+    .busquedaContainer{
+        background-color: #dddbd1;
+        border: 2px solid  #dddbd1;
+        width: 80%;
+    }
     .phoneFilter{
         width: 0;
         height: 0;

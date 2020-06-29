@@ -8,6 +8,15 @@
         <div class="container">
             <!--<h1>Carrito de compras</h1>-->
             <!--CARRITO-->
+
+            <div class="">
+                <h4>
+                    <a href="/busquedaAvanzada">
+                        <i class="fas fa-chevron-left"> Seguir comprando</i>
+                    </a>
+                </h4>
+            </div>
+
             <div class="carrito row">
                 <div class="infoPrincipalDelProducto col-12">
                 
@@ -23,22 +32,29 @@
                     </div>
 
                     <div class="btnDiv col-12">
-                        <button type="button" class="botonStyle">Eliminar</button>
+                        <button type="button" class="colorBoton botonStyle">Eliminar</button>
                     </div>
 
                     <div class="separacion col-12">
                         <div>
                         </div>
                     </div>
-                
+
                     <div class="btnDiv col-12">
-                        <button type="button" class="botonContinuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+                        <button type="button" class="colorBoton botonStyle"><a href="/busquedaAvanzada">Seguir Comprando</a></button>
                     </div>
+                    <div class="btnDiv col-12">
+                        <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+                    </div>
+                
+                    
+                    
                 
                 </div>
             </div>
         </div>
 
-        <%- include('./partials/scripts') %>
+        <%- include('./partials/footer.ejs') %>
+        <%- include('./partials/scripts.ejs') %> 
     </body>
 </html>
