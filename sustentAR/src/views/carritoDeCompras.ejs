@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-   
-    <%- include('./partials/Head') %>
-    <body>
 
-        <%- include('./partials/Header') %>
-        <div class="container-fluid">
-            <div class="container">
-                <!--<h1>Carrito de compras</h1>-->
-                <!--CARRITO-->
+<%- include('./partials/Head') %>
+<body>
     
-                <div class="">
-                    <h4>
-                        <a href="/busquedaAvanzada">
-                            <i class="fas fa-chevron-left"> Seguir comprando</i>
-                        </a>
-                    </h4>
-                </div>
-    
-                <div class="carrito row">
-                    <div class="infoPrincipalDelProducto col-12">
+    <%- include('./partials/Header') %>
+    <div class="container-fluid">
+        <div class="container">
+            <!--<h1>Carrito de compras</h1>-->
+            <!--CARRITO-->
+            
+            <div class="btnDiv">
+                <button type="button" class="colorBoton botonStyle"><a href="/busquedaAvanzada">Seguir Comprando</a></button>
+            </div>
+            
+            <div class="carrito row">
+                <div class="infoPrincipalDelProducto col-12">
                     
-                        <img class="col-7 col-lg-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
+                    <img class="col-7 col-lg-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
                     
-                        <div class="row dataContainer col-12 col-lg-8">
-                            <h2 class="col-12">Nombre del Producto</h4>
+                    <div class="row dataContainer col-12 col-lg-8">
+                        <h2 class="col-12">Nombre del Producto</h4>
                             <h3 class="col-12">Precio</h4>
-    
-                            <h4 class="col-12">Cantidad</h4>
-                            <h4 class="col-12">Color</h4>
+                                
+                                <h4 class="col-12">Cantidad</h4>
+                                <h4 class="col-12">Color</h4>
+                                
+                            </div>
+                            
+                            <div class="btnDiv col-12">
+                                <button type="button" class="colorBoton botonStyle">Eliminar</button>
+                            </div>
+                            
+                            <div class="separacion col-12">
+                                <div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="btnDiv col-12">
+                                <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+                            </div>
+                            
+                            
+                            
                             
                         </div>
-    
-                        <div class="btnDiv col-12">
-                            <button type="button" class="colorBoton botonStyle">Eliminar</button>
-                        </div>
-    
-                        <div class="separacion col-12">
-                            <div>
-                            </div>
-                        </div>
-    
-                        <div class="btnDiv col-12">
-                            <button type="button" class="colorBoton botonStyle"><a href="/busquedaAvanzada">Seguir Comprando</a></button>
-                        </div>
-                        <div class="btnDiv col-12">
-                            <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
-                        </div>
-                    
-                        
-                        
-                    
                     </div>
                 </div>
+                
             </div>
-    
-        </div>
-        
-        <%- include('./partials/footer.ejs') %>
-        <%- include('./partials/scripts.ejs') %> 
-    </body>
-</html>
+            
+            <%- include('./partials/footer.ejs') %>
+            <%- include('./partials/scripts.ejs') %> 
+        </body>
+        </html>

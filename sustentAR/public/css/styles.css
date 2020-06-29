@@ -34,7 +34,8 @@ h1 {
 
 
 header {
-    background-color: green;
+    background-image: url("/images/productos/Header6.jpg");
+    background-size: cover;
     padding: 15px 0px;
 }
 
@@ -101,12 +102,13 @@ header .container nav {
     margin-bottom: 15px;
     display: flex;
 }
+
 header .container nav button.burger {
-    border: none;
-    border-radius: 3px;
+    border: 2px solid black;
     padding: 5px 10px;
-    background: white;
+    background: transparent;
     color: black;
+    z-index: 1;
 }
 
 header .container nav ul.menu-productos, header .container nav ul.menu-usuarios {
@@ -125,17 +127,27 @@ header .container nav ul li a:hover {
     color: rgba(0, 0, 0, 1);
 }
 
+header nav button.burger {
+    z-index: 1  ;
+}
+
+nav div ul li a {
+    font-weight: 700;
+}
+
+
 /*========Main Search==========*/
 
 header div.main-search {
+    width: 100%;
     display: flex;
+    position: absolute;
+    top: 165px;
+    left: calc(content-box / 2  );
     align-items: center;
     margin-top: 10px;
 }
 
-header div.main-search form {
-
-}
 
 header div.main-search form input {
     border: none;
@@ -151,17 +163,22 @@ header div.main-search form button {
 
 /*========BANNER==========*/
 
-#carouselExampleIndicators {
-    max-width: 1140px;
-    max-height: 400px;
+#carouselIndicators {
+    width: 100%;
+    max-height: 300px;
     overflow: hidden;
+}
+
+#carouselIndicators div.carousel-item img {
+    width: 100%;
+    max-height: 300px;
 }
 
 
 /*========Section ProductsList (HOME)==========*/
 
 section div.productsList {
-    margin: 20px 5px;
+    padding-top: 15px;
 }
 
 section div.productsList article div {
@@ -371,8 +388,8 @@ button.colorBoton{
 }
 
 button.continuar{
-    background-color:#39b54a;
-    border-color: #39b54a;
+    background-color:#c9d6a3;
+    border-color: #7fa08c;
 }
 
 .cupon{
@@ -860,14 +877,18 @@ a {
     text-decoration: none;
     color: black;
     font-size: small;
+    /*falta clase*/
 }
 
 a:hover {
     text-decoration: none;
     color: black;
+    /*falta clase*/
 }
 
 #whatsappIcon {
     color: black;
     margin-right: 4px;
+    border-radius: 5px;
 }
+
