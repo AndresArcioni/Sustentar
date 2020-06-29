@@ -619,6 +619,9 @@ LOGIN
        animation-duration: 3s; 
        animation-fill-mode: forwards;   
 }
+.container-recordar{
+    margin-bottom: 18px;
+}
 
 .recordar{
     font-size: 10px;
@@ -629,6 +632,21 @@ LOGIN
 .boton-recordar{
     margin:0
 }
+
+.formulario-registro-container form div p {
+    font-size: 12px;
+}
+
+.formulario-registro-container form div p a{
+    text-decoration: none;
+    color: #3d4627;
+}
+
+.formulario-registro-container form div p a:hover{
+    text-decoration: none;
+    color: #595e4ba4;
+}
+
 
 /*===============
 REGISTRO
