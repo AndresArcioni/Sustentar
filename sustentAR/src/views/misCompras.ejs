@@ -5,22 +5,24 @@
 
     <body>
         <%- include('./partials/Header') %>
-
-        <div class="container">
-            <div class="misCompras">
-                <h4>Mis compras</h4>
-
-                <div class="productoComprado row">
-                    <img class="col-3" src="../images/productos/Diversion24.jpg" alt="">
-                    <div class="productInfo col-9">
-                        <h5>Nombre del producto</h5>
-                        <p>$$ Precio $$</p>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="misCompras">
+                    <h4>Mis compras</h4>
+    
+                    <div class="productoComprado row">
+                        <img class="col-3" src="../images/productos/Diversion24.jpg" alt="">
+                        <div class="productInfo col-9">
+                            <h5>Nombre del producto</h5>
+                            <p>$$ Precio $$</p>
+                        </div>
                     </div>
+    
+                    <h6>No has realizado compras</h6>
                 </div>
-
-                <h6>No has realizado compras</h6>
             </div>
         </div>
+        
 
 
         <%- include('./partials/footer.ejs') %>
