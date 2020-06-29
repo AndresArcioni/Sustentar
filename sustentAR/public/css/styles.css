@@ -9,17 +9,14 @@
     list-style-type: none;
 }
 
-body{
-    background-color: #dddbd1;
-}
 
 html {
     font-size: 15px;
 }
 
-.container{
+.container-fluid {
     margin: 0 auto;
-    width: 100%;
+    background-color: #dddbd1;
 }
 
 .busquedaContainer{
@@ -127,6 +124,54 @@ header .container nav ul li a:hover {
     color: rgba(0, 0, 0, 1);
 }
 
+/*========Main Search==========*/
+
+header div.main-search {
+    display: flex;
+    align-items: center;
+}
+
+
+/*========BANNER==========*/
+
+#carouselExampleIndicators {
+    max-width: 1140px;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+
+/*========Section ProductsList (HOME)==========*/
+
+section div.productsList {
+    margin: 20px 5px;
+}
+
+section div.productsList article div {
+    margin-left: 10px;
+}
+
+section div.productsList h2 {
+    margin-bottom: 15px;
+}
+
+
+section div.productsList article div h3.product-price:before {
+    content: "$ ";
+}
+
+section div.productsList article div h4.product-discount {
+    color:#39b54a
+}
+
+section div.productsList article div h4.product-discount:hover {
+    color:black;
+    font-size: x-large;
+}
+
+section div.productsList article div h4.product-discount:after {
+    content: "% OFF";
+}
 
 
 
@@ -346,12 +391,12 @@ header .container nav ul li a:hover {
     justify-content: space-between;
 }
 
-.formularioDeInformacion input{
-    /*border-radius: 10px;
+/*.formularioDeInformacion input{
+    border-radius: 10px;
     margin-bottom: 15px;
     margin-left: 5px;
-    margin-right: 5px;*/
-}
+    margin-right: 5px;
+}*/
 
 /*==========MODO DE PAGO=============*/
 
@@ -762,4 +807,31 @@ REGISTRO
         height: 0;
         border-right: 0;
     }
+}
+
+
+/*===============
+FOOTER
+==========================*/
+
+
+/* footer div.footer-container div {
+    aca iria barra divisora entre cada div del footer
+}*/
+
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: small;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+#whatsappIcon {
+    color: black;
+    margin-right: 4px;
 }
