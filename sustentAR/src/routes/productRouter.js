@@ -5,7 +5,11 @@ const path = require('path');
 const productsController = require(path.join(__dirname, '../controllers/productsController.js'));
 
 
-router.get('/busquedaAvanzada', productsController.busquedaAvanzada);
+router.get('/busqueda', productsController.busqueda);
+
 router.get('/formularioProductos', productsController.formularioProductos);
+
+router.get('/detail/:productId/', productsController.detail);
+
 
 module.exports = router;

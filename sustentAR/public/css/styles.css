@@ -138,16 +138,22 @@ nav div ul li a {
 
 /*========Main Search==========*/
 
-header div.main-search {
+header div.container-main-search {
     width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header div.main-search {
+    width: 45%;
     display: flex;
     position: absolute;
     top: 165px;
-    left: calc(content-box / 2  );
+    /*left: calc( / 2);*/
     align-items: center;
     margin-top: 10px;
 }
-
 
 header div.main-search form input {
     border: none;
@@ -157,7 +163,28 @@ header div.main-search form button {
     border: none;
 }
 
+.toLeft{
+    margin-left: auto;
+}
 
+.toRight{
+    margin-right: auto;
+}
+
+.cuentaCollapseAbs{
+    position: none;
+}
+
+.card{
+    background-color: transparent;
+}
+
+.seguirComprando{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
 
 
 
@@ -181,6 +208,10 @@ section div.productsList {
     padding-top: 15px;
 }
 
+section div.productsList article {
+    background-color: rgba(255, 255, 255, 0.37);
+}
+
 section div.productsList article div {
     margin-left: 10px;
 }
@@ -190,7 +221,7 @@ section div.productsList h2 {
 }
 
 
-section div.productsList article div h3.product-price:before {
+h3.product-price:before {
     content: "$ ";
 }
 
@@ -851,7 +882,25 @@ REGISTRO
         height: 0;
         border-right: 0;
     }
+
+    .toLeft{
+        margin-left: -10px;
+    }
+    
+    .toRight{
+        margin-right: -10px;
+    }
+    
+    .cuentaCollapseAbs{
+        position: absolute;
+        z-index: 5;
+    }
+    
+    .card{
+        background-color: #7fa08c;
+    }
 }
+
 
 @media (max-width: 768px) {
    div.footer-container div {
