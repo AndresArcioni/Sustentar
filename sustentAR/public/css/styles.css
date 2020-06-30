@@ -932,6 +932,11 @@ FOOTER
     background-color: rgba(167, 176, 184, 0.753);
 }
 
+.nosotros-container p{
+    text-align: center;
+    margin-bottom: 4px;
+}
+
 footer div div h4{
     height: 20px;
     font-size: 13px;
@@ -943,7 +948,8 @@ footer div div p{
 }
 
 .redes-container p{
-    margin: 10px;
+    margin: 5px ;
+    padding: 0;
 }
 
 .redes-container p a i{
