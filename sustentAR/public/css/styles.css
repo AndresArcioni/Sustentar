@@ -150,9 +150,13 @@ header div.main-search {
     display: flex;
     position: absolute;
     top: 165px;
-    /*left: calc( / 2);*/
-    align-items: center;
+    /*align-items: center;*/
+    justify-content: center;
     margin-top: 10px;
+}
+
+header div.main-search form {
+    
 }
 
 header div.main-search form input {
