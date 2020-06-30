@@ -11,17 +11,36 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                
+                <ul class="navbar-nav toLeft">
                     <li><a href="/">Home</a></li>
                     <li><a href="/busquedaAvanzada">Comprar</a></li>
                     
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav toRight">
                     <li><a href="/carrito">Carrito</a></li>
-                    <li><a href="/cuenta">Cuenta</a></li>
-                    <li><a href="/misCompras">Mis compras</a></li>
+                    <li>
+                        <a href="" class="cuentaToggler" type="" data-toggle="collapse" data-target="#cuentaCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            Cuenta <i class="fas fa-chevron-down"></i> 
+                        </a>
+                        <div class="collapse cuentaCollapseAbs" id="cuentaCollapse">
+                            <div class="card card-body">
+                                <a href="/misCompras">Historial</a>
+                                <a href="#">Editar</a>
+                            </div>
+                            
+                        </div>
+                    </li>
                 </ul>
+                
+                
             </div>
+
+            
         </nav>
+
+        
+        
     </div>
+    
 </header>
