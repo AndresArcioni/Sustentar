@@ -18,7 +18,7 @@ const productRouter = require('./routes/productRouter.js');// Ruta de productos
 
 app.use('/', mainRouter);
 app.use('/carrito', carritoRouter);
-app.use('/', productRouter);
+app.use('/product', productRouter);
 
 // ************ Route System require and use() ************ //
 app.listen(3000, () => console.log("Servidor corriendo en el puerto 3000"));
