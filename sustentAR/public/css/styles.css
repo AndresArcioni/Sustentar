@@ -208,12 +208,23 @@ header div.main-search form button {
 
 /*========Section ProductsList (HOME)==========*/
 
+#section-home-products {
+    background-color: #dddbd1;
+}
+/*
+section h2 {
+    margin: 0;
+    text-align: center;
+}
+
 section div.productsList {
     padding-top: 15px;
 }
 
 section div.productsList article {
     background-color: rgba(255, 255, 255, 0.37);
+    padding: 15px;
+    box-sizing: content-box;
 }
 
 section div.productsList article div {
@@ -222,7 +233,7 @@ section div.productsList article div {
 
 section div.productsList h2 {
     margin-bottom: 15px;
-}
+}*/
 
 
 h3.product-price:before {
@@ -828,6 +839,8 @@ REGISTRO
 }
 
 /*========================MEDIA QUERIES=======================================*/
+
+
 @media (min-width: 768px) {
     header .container form {
         width: 45%;
@@ -916,8 +929,7 @@ REGISTRO
 
 
 
-
-/*===============
+/*==========================
 FOOTER
 ==========================*/
 
@@ -964,16 +976,12 @@ footer div div a, footer div div span a{
     text-decoration: none;
     color: black;
     font-size: small;
-    /*falta clase*/
 }
 
 footer div div a:hover, footer div div span a:hover{
     text-decoration: none;
     color: rgba(0, 0, 0, 0.685);
-    /*falta clase*/
 }
-
-
 
 #whatsappIcon {
     color: black;
