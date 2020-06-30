@@ -211,49 +211,74 @@ header div.main-search form button {
 #section-home-products {
     background-color: #dddbd1;
 }
-/*
+
 section h2 {
-    margin: 0;
-    text-align: center;
+    padding: 10px 0;
 }
-
-section div.productsList {
-    padding-top: 15px;
-}
-
-section div.productsList article {
-    background-color: rgba(255, 255, 255, 0.37);
-    padding: 15px;
-    box-sizing: content-box;
-}
-
-section div.productsList article div {
-    margin-left: 10px;
-}
-
-section div.productsList h2 {
-    margin-bottom: 15px;
-}*/
-
 
 h3.product-price:before {
     content: "$ ";
 }
 
-section div.productsList article div h4.product-discount {
+section div.productsList article a {
+    text-decoration: none;
+    color: black;
+}
+
+h6.product-discount {
     color:#39b54a
 }
 
-section div.productsList article div h4.product-discount:hover {
+section div.productsList article a div h6.product-discount:hover {
     color:black;
-    font-size: x-large;
+    font-size: large;
 }
 
-section div.productsList article div h4.product-discount:after {
+h6.product-discount:after {
     content: "% OFF";
 }
 
 
+
+/*======== /detalleDelProducto ==========*/
+
+
+#carouselProductIndicators .carousel-indicators {
+    position: inherit;
+}
+
+#carouselProductIndicators ol img {
+    width: 100px;
+    height: 100px;
+}
+
+#contenedor-detalle-producto {
+    padding-top: 10px;
+}
+#carouselProductIndicators {
+    width: 45%;
+}
+
+#contenedor-detalle-producto h4 {
+    width: 80%;
+}
+
+#contenedor-detalle-producto .product-detail-container h3, #contenedor-detalle-producto .product-detail-container h6{
+    display: inline-block;
+}
+
+#contenedor-detalle-producto .product-detail-container h6 {
+    margin-left: 10px;
+}
+
+#contenedor-detalle-producto div.aside a img {
+    width: 100%;
+    height: 15%;
+}
+
+.product-detail-wrapper {
+    text-align: center;
+}
 
 
 /*========EDITAR CUENTA==========*/
@@ -371,6 +396,15 @@ section div.productsList article div h4.product-discount:after {
         width: 80%;
     }
 }
+
+
+
+@media(max-width: 575px) {
+    section div.productsList article {
+        text-align: center;
+    }
+}
+
 
 /*=============SECCION DE CARRITO==================*/
 .btnDiv{
@@ -564,6 +598,10 @@ button.continuar{
 input.minMax{
     border-radius: 10px;
     margin-left: 10px;
+}
+
+.botonFiltro {
+    margin-left: 15px;
 }
 
 .productosDeBusqueda{
@@ -933,15 +971,16 @@ REGISTRO
 FOOTER
 ==========================*/
 
-.nosotros-container{
-    height: 155px;
-}
 
 .footer-container{
     font-size: 10px;
     padding: 20px;
     text-align: center;
     background-color: rgba(167, 176, 184, 0.753);
+}
+
+.nosotros-container{
+    height: 155px;
 }
 
 .nosotros-container p{
@@ -988,4 +1027,3 @@ footer div div a:hover, footer div div span a:hover{
     margin-right: 4px;
     border-radius: 5px;
 }
-
