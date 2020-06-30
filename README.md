@@ -59,6 +59,10 @@ REFERENCIAS:
 
 5- https://land-book.com/websites/11824-bloomscape-living-room-ready-plants-delivered-to-your-door
 
+TRELLO:
+
+https://trello.com/b/WoUHcqS7/front-end
+
 
 
 
