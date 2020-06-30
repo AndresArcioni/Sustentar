@@ -863,28 +863,58 @@ REGISTRO
 
 
 
+
 /*===============
 FOOTER
 ==========================*/
 
+.nosotros-container{
+    height: 155px;
+}
 
-/* footer div.footer-container div {
-    aca iria barra divisora entre cada div del footer
-}*/
+.footer-container{
+    font-size: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(167, 176, 184, 0.753);
+}
 
+footer div div h4{
+    height: 20px;
+    font-size: 13px;
+}
 
-a {
+footer div div p{
+    margin: 0;
+    height: 30px;
+}
+
+.redes-container p{
+    margin: 10px;
+}
+
+.redes-container p a i{
+    text-align: center;
+}
+
+footer div div span a i p{
+    font-size: 15px;
+}
+
+footer div div a, footer div div span a{
     text-decoration: none;
     color: black;
     font-size: small;
     /*falta clase*/
 }
 
-a:hover {
+footer div div a:hover, footer div div span a:hover{
     text-decoration: none;
-    color: black;
+    color: rgba(0, 0, 0, 0.685);
     /*falta clase*/
 }
+
+
 
 #whatsappIcon {
     color: black;
