@@ -8,7 +8,7 @@ const productsController = require(path.join(__dirname, '../controllers/products
 router.get('/busqueda', productsController.busqueda);
 
 router.get('/formularioProductos', productsController.formularioProductos);
-
+router.get('/formularioProductos/:idProducto', productsController.editarProducto);
 router.get('/detail/:productId/', productsController.detail);
 router.post('/detail/:productId/', productsController.agregarACarrito);
 

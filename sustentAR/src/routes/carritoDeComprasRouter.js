@@ -4,6 +4,7 @@ const path = require('path');
 const carritoController = require(path.join(__dirname, '../controllers/carritoController.js'));
 
 router.get('/', carritoController.mostrarCarrito);
+router.post('/', carritoController.comprarProducto);
 router.get('/infoUsuarioCompra', carritoController.editarInfoUsuario);
 router.get('/modoDePago', carritoController.selecionarModoDePago);
 router.get('/finalizarCompra', carritoController.finalizarCompra);

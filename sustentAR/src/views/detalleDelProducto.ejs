@@ -13,6 +13,7 @@
         
         
         <div class="row">
+            
             <div id="carouselProductIndicators" class="carousel slide" data-ride="carousel">
                 
                 <div class="carousel-inner">
@@ -49,7 +50,6 @@
                     <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
                 </div>
                 <form action="/product/detail/1" method="POST" class="row">
-                    
                     <div class="col-12">
                         <label for="">Cantidad</label>
                         <select action="/product/detail/1" method="POST" name="cantidad" id="cantidad" class="inputStyle">
@@ -60,11 +60,12 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                    <button name="botonAgregar" id="aCarrito" method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
-                    <button formaction="/carrito" name="botonComprar" id="comprarProducto" method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
+                    <button name="botonAgregar" id="aCarrito" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                    <button formaction="/carrito" name="botonComprar" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
                 </form>
-                
-                
+                <div class="row">
+                    <button type="button" class="ml-3 mt-4 col-12 boton-editar botonStyle"><a href="/product/formularioProductos/1">Editar Producto</a></button>
+                </div>
             </div> 
             
         </div>
