@@ -8,5 +8,8 @@ module.exports = {
     },
     detail: function(req, res) {
         res.render('detalleDelProducto')
+    },
+    agregarACarrito : function(req, res){
+        res.send(req.body);
     }
 }

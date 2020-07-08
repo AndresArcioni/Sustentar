@@ -10,6 +10,6 @@ router.get('/busqueda', productsController.busqueda);
 router.get('/formularioProductos', productsController.formularioProductos);
 
 router.get('/detail/:productId/', productsController.detail);
-
+router.post('/detail/:productId/', productsController.agregarACarrito);
 
 module.exports = router;

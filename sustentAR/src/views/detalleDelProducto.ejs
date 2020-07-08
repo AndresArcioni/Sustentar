@@ -48,6 +48,22 @@
                     <h6 class="product-discount">Desc</h6>
                     <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
                 </div>
+                <form action="/product/detail/1" method="POST" class="row">
+                    
+                    <div class="col-12">
+                        <label for="">Cantidad</label>
+                        <select action="/product/detail/1" method="POST" name="cantidad" id="cantidad" class="inputStyle">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <button name="botonAgregar" id="aCarrito" method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                    <button formaction="/carrito" name="botonComprar" id="comprarProducto" method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
+                </form>
+                
                 
             </div> 
             
