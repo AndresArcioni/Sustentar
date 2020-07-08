@@ -23,5 +23,11 @@ module.exports = {
     editarProducto : function(req, res){
         let data = req.params;
         res.send(data);
+    },
+    crearProducto: function(req, res){
+        let nuevoProducto = {
+            categoria: req.body.categoria,
+            nombre: req.body.nombreProducto
+        }
     }
 }
