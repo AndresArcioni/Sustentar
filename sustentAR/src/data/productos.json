@@ -5,7 +5,7 @@
         "nombreProducto": "Rasuradora Metalica",
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pharetra urna, sit amet sollicitudin mauris. Etiam velit urna, pulvinar et velit nec, aliquam rhoncus dui. Praesent ut neque quam. Donec vel nisl euismod, lacinia elit id, blandit ipsum. Phasellus in mauris viverra, mollis nisl sit amet, porttitor velit.",
         "colores": "null",
-        "sustentabilidad": "Cruelty Free, Envoltorio Sustentable",
+        "sustentabilidad": ["Cruelty Free", "Envoltorio Sustentable"],
         "imagen1": "",
         "imagen2": "",
         "imagen3": "",
