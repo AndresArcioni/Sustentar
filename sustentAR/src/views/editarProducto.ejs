@@ -13,7 +13,7 @@
 
             <article class="col-10 categoria-container">
                 
-                <form action="/product/editarProducto/<%= producto.id %>?_method=PUT" method="POST" class="row">    
+                <form action="/product/editarProducto/<%=producto.id%>?_method=PUT" method="POST" class="row">    
                     <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
 
                     <% if(producto.categoria == 'Decoracion') { %>

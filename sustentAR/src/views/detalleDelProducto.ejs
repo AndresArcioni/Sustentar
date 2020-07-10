@@ -64,7 +64,7 @@
                     <button formaction="/carrito" name="botonComprar" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
                 </form>
                 <div class="row">
-                    <button type="button" class="ml-3 mt-4 col-12 boton-editar botonStyle"><a href="/product/editarProducto/:idProducto">Editar Producto</a></button>
+                    <button type="button" class="ml-3 mt-4 col-12 boton-editar botonStyle"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
                     <form class="col-12 row" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
                         <button type="submit" class="ml-3 mt-4 col-12 boton-editar botonStyle">Eliminar Producto</button>
                     </form>
