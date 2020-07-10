@@ -1,0 +1,23 @@
+/* =================================
+            -.GENERAL.-
+================================= */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 auto;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+html {
+    font-size: 15px;
+}
+
+.container-fluid {
+    margin: 0 auto;
+    background-color: #dddbd1;
+    border: 2px solid  #dddbd1;
+}

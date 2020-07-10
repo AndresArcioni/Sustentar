@@ -1,0 +1,65 @@
+/* =================================
+            -.FOOTER.-
+================================= */
+
+
+.footer-container {
+    font-size: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(167, 176, 184, 0.753);
+}
+
+.nosotros-container {
+    height: 155px;
+}
+
+.nosotros-container p {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+footer div div h4{
+    height: 20px;
+    font-size: 13px;
+}
+
+footer div div p{
+    margin: 0;
+    height: 30px;
+}
+
+.redes-container p{
+    margin: 5px ;
+    padding: 0;
+}
+
+.redes-container p a i{
+    text-align: center;
+}
+
+footer div div a i p{
+    font-size: 15px;
+}
+
+footer div div a, footer div div a{
+    text-decoration: none;
+    color: black;
+    font-size: small;
+}
+
+footer div div a:hover, footer div div a:hover{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.685);
+}
+
+#whatsappIcon {
+    color: black;
+    margin-right: 4px;
+    border-radius: 5px;
+}
+
+#whatsappIcon:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.685);
+}

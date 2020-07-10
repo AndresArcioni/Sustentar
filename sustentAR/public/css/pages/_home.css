@@ -1,0 +1,61 @@
+/* =================================
+            --- /HOME ---
+================================= */
+
+
+.busquedaContainer{
+    background-color: #dddbd1;
+    border: 2px solid  #dddbd1;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+
+/*========BANNER==========*/
+
+#carouselIndicators {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+#carouselIndicators div.carousel-item img {
+    width: 100%;
+    max-height: 300px;
+}
+
+
+/*========Section ProductsList (HOME)==========*/
+
+#section-home-products {
+    background-color: #dddbd1;
+}
+
+section h2 {
+    padding: 10px 0;
+}
+
+h3.product-price:before {
+    content: "$ ";
+}
+
+section div.productsList article a {
+    text-decoration: none;
+    color: black;
+}
+
+h6.product-discount {
+    color:#39b54a
+}
+
+section div.productsList article a div h6.product-discount:hover {
+    color:black;
+    font-size: large;
+}
+
+h6.product-discount:after {
+    content: "% OFF";
+}

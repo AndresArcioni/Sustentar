@@ -1,0 +1,157 @@
+/* =================================
+            -.HEADER.-
+================================= */
+
+
+header {
+    background-image: url("/images/productos/Header6.jpg");
+    background-size: cover;
+    padding: 15px 0px;
+}
+
+header .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+header .container a.logo img {
+    height: 100px;
+}
+
+.logoContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.logoContainer h1{
+    text-align: center;
+}
+
+header .container form {
+    width: 60%;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 3px;
+    background-color: white;
+    padding: 0 9px;
+}
+
+header .container form input {
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+header .container form input:focus {
+    outline-color: red;
+}
+
+header .container form button {
+    border: none;
+    background: none;
+    margin: 8px 0;
+    border-left: 1px solid #ebebeb;
+    color: #666;
+}
+
+header .container p.cuotas {
+    width: 100%;
+    text-align: center;
+    margin: 14px 0;
+}
+
+header .container p.cuotas i {
+    padding: 0;
+}
+
+header .container nav {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+header .container nav button.burger {
+    border: 2px solid black;
+    padding: 5px 10px;
+    background: transparent;
+    color: black;
+    z-index: 1;
+}
+
+header .container nav ul.menu-productos, header .container nav ul.menu-usuarios {
+    display: none;
+}
+
+header .container nav ul li a {
+    color: rgba(0, 0, 0, 0.7);
+    transition: color 0.1s ease-in-out;
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-bottom: solid 1px var(--gray);
+}
+header .container nav ul li a:hover {
+    color: rgba(0, 0, 0, 1);
+}
+
+header nav button.burger {
+    z-index: 1  ;
+}
+
+nav div ul li a {
+    font-weight: 700;
+}
+
+
+/*========Main Search==========*/
+
+header div.container-main-search {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header div.main-search {
+    width: 45%;
+    display: flex;
+    position: absolute;
+    top: 165px;
+    /*align-items: center;*/
+    justify-content: center;
+    margin-top: 10px;
+}
+
+header div.main-search form {
+    
+}
+
+header div.main-search form input {
+    border: none;
+}
+
+header div.main-search form button {
+    border: none;
+}
+
+.toLeft{
+    margin-left: auto;
+}
+
+.toRight{
+    margin-right: auto;
+}
+
+.card{
+    background-color: transparent;
+}
+
+.seguirComprando{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 25px;
+}

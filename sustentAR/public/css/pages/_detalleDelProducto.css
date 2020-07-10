@@ -1,0 +1,41 @@
+/* =================================
+      --- /detalleDelProducto ---
+================================= */
+
+
+#carouselProductIndicators .carousel-indicators {
+    position: inherit;
+}
+
+#carouselProductIndicators ol img {
+    width: 100px;
+    height: 100px;
+}
+
+#contenedor-detalle-producto {
+    padding-top: 10px;
+}
+#carouselProductIndicators {
+    width: 45%;
+}
+
+#contenedor-detalle-producto h4 {
+    width: 80%;
+}
+
+#contenedor-detalle-producto .product-detail-container h3, #contenedor-detalle-producto .product-detail-container h6{
+    display: inline-block;
+}
+
+#contenedor-detalle-producto .product-detail-container h6 {
+    margin-left: 10px;
+}
+
+#contenedor-detalle-producto div.aside a img {
+    width: 100%;
+    height: 15%;
+}
+
+.product-detail-wrapper {
+    text-align: center;
+}

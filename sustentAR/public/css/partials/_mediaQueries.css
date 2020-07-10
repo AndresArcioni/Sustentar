@@ -1,0 +1,103 @@
+/* =================================
+        -.MEDIAQUERIES.-
+================================= */
+
+
+@media (min-width: 768px) {
+    header .container form {
+        width: 45%;
+    }
+
+    header .container p.cuotas {
+        width: 25%;
+        margin-top: 0;
+        text-align: right;
+    }
+
+    header .container nav button.burger {
+      display: none;  
+    }
+    header .container nav {
+        justify-content: space-between;
+    }
+    header .container nav ul.menu-productos, header .container nav ul.menu-usuarios {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    header .container nav ul li {
+        margin-right: 10px;
+    }
+    header .container nav ul li:last-child {
+        margin: 0;
+    }
+
+    .busquedaContainer{
+        background-color: #dddbd1;
+        border: 2px solid  #dddbd1;
+        width: 80%;
+    }
+    .phoneFilter{
+        width: 0;
+        height: 0;
+        visibility: collapse;
+    }
+
+    .filtrosPC{
+        width: 100%;
+        height: 60%;
+        
+        margin: 1px;
+        margin-left: 15px;
+        padding-left: 5px;
+        visibility: visible;
+    }
+
+    .productosDeBusqueda .producto:after{
+        content:"";
+        position: static;
+        right: 0;
+        height: 0;
+        border-right: 0;
+    }
+
+    .toLeft{
+        margin-left: -10px;
+    }
+    
+    .toRight{
+        margin-right: -10px;
+    }
+    
+    .cuentaCollapseAbs{
+        position: absolute;
+        z-index: 5;
+    }
+    
+    .card{
+        background-color: #7fa08c;
+    }
+}
+
+@media (max-width: 768px) {
+   div.footer-container div {
+       margin: 0;
+       padding: 0;
+       padding: 10px;
+   } 
+}
+
+@media(max-width: 575px) {
+    section div.productsList article {
+        text-align: center;
+    }
+}
+
+@media(max-width: 400px){
+    .container-saludo, .form-article{
+        width: 80%;
+    }
+}
+
+
