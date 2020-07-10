@@ -7,31 +7,31 @@
     <div class="container">
         <div class="registro-container row">
             <div class="formulario-registro-container col-10 col-lg-5 d-inline-flex justify-content-center">
-                <form action="" class="row d-inline-flex justify-content-center">
+                <form action="/user/registro" method="POST" class="row d-inline-flex justify-content-center">
                     <h3 class="col-12">Registrate</h3>
                     <div class="col-8 col-lg-10">
                         <label for="">Nombre</label>
                         <br>
-                        <input class="inputStyle" type="text" name="" id="">
+                        <input class="inputStyle" type="text" name="nombre" id="">
                     </div>
 
                     <div class="col-8 col-lg-10">
                         <label for="">Apellido</label>
                         <br>
-                        <input class="inputStyle" type="text">
+                        <input class="inputStyle" type="text" name="apellido">
                     </div>
                     <div class="col-8 col-lg-102">
                         <label for="">Email</label>
                         <br>
-                        <input class="inputStyle" type="email" name="" id="">
+                        <input class="inputStyle" type="email" name="email" id="">
                     </div>
                     <div class="col-8 col-lg-10">
                         <label for="">Contraseña</label>
                         <br>
-                        <input class="inputStyle" type="password">
+                        <input class="inputStyle" type="password" name="contrasenia">
                     </div>
                     <div class="col-12">
-                        <button class="botonStyle">Crear Cuenta</button>
+                        <button type="submit"  class="botonStyle">Crear Cuenta</button>
                     </div>
                 </form>
             </div>
