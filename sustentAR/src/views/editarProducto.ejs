@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/Head') %> 
+</head>
+<body>
+
+    <%- include('./partials/Header') %> 
+    <div class="container-fluid">
+    <div class="main-container-formulario-productos container">
+
+        <section class="formulario-productos-container row">
+
+            <article class="col-10 categoria-container">
+                
+                <form action="/product/editarProducto/<%= producto.id %>?_method=PUT" method="POST" class="row">    
+                    <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
+
+                    <% if(producto.categoria == 'Decoracion') { %>
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" checked>Decoración</p>
+                    <% } else { %>
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" >Decoración</p>
+                    <% } %>
+                    <% if(producto.categoria == 'Baño') { %>
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio" checked>Baño</p>
+                    <% } else { %>
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio">Baño</p>
+                    <% } %>  
+                           
+                    <% if(producto.categoria == 'Cocina') { %>
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina" checked>Cocina</p>                      
+                    <% } else {%> 
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina">Cocina</p>  
+                    <% } %> 
+                    
+                    <% if(producto.categoria == 'Otros') { %>
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros" checked>Otros</p>
+                    <% } else {%> 
+                        <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros">Otros</p>  
+                    <% } %> 
+                    
+                </form>
+
+            </article>
+
+            <article class="col-10 datos-container">
+                <h3 class="titulo-articulo">
+                    Editar producto
+                </h3>
+
+                <div class="datos-productos-container">
+                    <form class="row" action="/product/editarProducto/<%= producto.id %>?_method=put" method="post">                  
+                        
+                        <div class="col-6 row "> 
+                            <label class="col-12" for="">Nombre</label>
+                            <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto" value="<%=producto.nombreProducto%>">
+                        </div>                        
+                        <div class="col-10 row">
+                            <label class="col-12" for="">Descripción</label>
+                            <textarea class="inputStyle col-11" name="descripcionProducto" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"><%= producto.descripcion %></textarea>
+                        </div>
+                        
+                        <div class="col-10 row">
+                            <label class="seleccion-color col-lg-5" for="" value="">Colores disponibles</label>
+                            <select class="col-lg-5 
+                            inputStyle" name="colores" id="colores">
+                                <option value="">Seleccionar...</option>
+
+                                <% if(producto.colores == "amarillo") { %>
+                                <option value="amarillo" selected>Amarillo</option>
+                                <% } else { %>
+                                <option value="amarillo">Amarillo</option>
+                                <% } %>
+
+                                <% if(producto.colores == "rojo") { %>
+                                <option value="rojo" selected>Rojo</option>
+                                <% } else { %>
+                                <option value="rojo">Amarillo</option>
+                                <% } %>
+
+                                <% if(producto.colores == "Rosa") { %>
+                                <option value="Rosa" selected>Rosa</option>
+                                <% } else { %>
+                                <option value="Rosa">Rosa</option>
+                                <% } %>
+
+                                <% if(producto.colores == "azul") { %>
+                                <option value="azul" selected>Azul</option>
+                                <% } else { %>
+                                <option value="azul">Azul</option>
+                                <% } %>
+
+                                <% if(producto.colores == "verde-claro") { %>
+                                <option value="verde-claro" selected>Verde</option>
+                                <% } else { %>
+                                <option value="verde-claro">Verde</option>    
+                                <% } %>
+
+                                <% if(producto.colores == "blanco") { %>
+                                <option value="blanco" selected>Blanco</option>
+                                <% } else { %>
+                                <option value="blanco">Blanco</option>
+                                <% } %>
+
+                                <% if(producto.colores == "negro") { %>
+                                <option value="negro" selected>Negro</option>
+                                <% } else { %>
+                                <option value="negro">Negro</option>
+                                <% } %>
+
+                                <% if(producto.colores == "marron") { %>
+                                <option value="marron" selected>Marron</option>
+                                <% } else { %>
+                                <option value="marron">Marron</option>
+                                <% } %>
+
+                                <% if(producto.colores == "otro") { %>
+                                <option value="otro" selected>Otro</option>
+                                <% } else { %>
+                                <option value="otro">Otro</option>
+                                <% } %>
+                                
+                            </select>
+                        </div>     
+
+                        <div class="col-12 sustentabilidad row">
+                            
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='Vegano'
+                                <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
+                                    <%= (producto.sustentabilidad[i] == 'Vegano') ? 'checked' : '' %>
+                                <% } %>  
+                            >Vegano</p>
+
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='Cruelty-free'
+                                <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
+                                    <%= (producto.sustentabilidad[i] == 'Cruelty-free') ? 'checked' : '' %>
+                                <% } %>  
+                            >Cruelty-free</p>
+
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='fair-trade'
+                                <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
+                                    <%= (producto.sustentabilidad[i] == 'fair-trade') ? 'checked' : '' %>
+                                <% } %>  
+                            >fair-trade</p>
+                                
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='Envoltorio-sustentable'
+                                <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
+                                    <%= (producto.sustentabilidad[i] == 'Envoltorio-sustentable') ? 'checked' : '' %>
+                                <% } %>  
+                            >Envoltorio-sustentable</p>
+                                
+                        </div>
+
+                        <div class="col-12 row">
+                            <label class="col-12" for="">
+                                <h4 class="titulo-imagenes">Añadir imágenes</h4>
+                            </label>
+
+                            <input class=" col-10 col-lg-3" type="file" name="img">
+                            <input class=" col-10 col-lg-3" type="file" name="img">
+                            <input class=" col-10 col-lg-3" type="file" name="img">
+
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-center">
+                            <button class="botonStyle col-8" type="submit"><a href=""></a>Guardar cambios</button>
+                        </div>
+
+                    </form>
+                </div>
+            </article>
+
+        </section>
+        
+    </div>
+    <%- include('./partials/footer') %> 
+    </div>
+    <%- include('./partials/scripts') %> 
+</body>
+</html>

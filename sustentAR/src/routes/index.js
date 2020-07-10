@@ -6,11 +6,6 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 
 //  <<--RUTAS-->>   //
 router.get('/', mainController.root); /* GET - home page */
-router.get('/cuenta', mainController.cuenta)
 
-router.get('/login', mainController.login)
-
-router.get('/registro', mainController.registro)
-router.get('/misCompras', mainController.misCompras);
 
 module.exports = router;

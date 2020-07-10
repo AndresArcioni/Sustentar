@@ -5,11 +5,13 @@ const path = require('path');
 const productsController = require(path.join(__dirname, '../controllers/productsController.js'));
 
 
-router.get('/busqueda', productsController.busqueda);
-
+router.get('/listadoDeProductos', productsController.listarProductos);
 router.get('/formularioProductos', productsController.formularioProductos);
-router.get('/formularioProductos/:idProducto', productsController.editarProducto);
-router.get('/detail/:productId/', productsController.detail);
-router.post('/detail/:productId/', productsController.agregarACarrito);
+router.post('/formularioProductos', productsController.crearProducto);
+router.get('/editarProducto/:idProducto', productsController.editarProducto);
+router.put('/editarProducto/:idProducto', productsController.actualizarProducto);
+router.get('/detail/:idProducto', productsController.detail);
+router.post('/detail/:idProducto', productsController.agregarACarrito);
+router.delete('/borrar/:idProducto', productsController.borrarProducto);
 
 module.exports = router;
