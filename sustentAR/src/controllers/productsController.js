@@ -42,7 +42,7 @@ module.exports = {
             }
         }
         fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
-        res.send('Actualizando producto');
+        res.redirect('/product/listadoDeProductos');
     },
     crearProducto: function(req, res){
         let nuevoProducto = {
