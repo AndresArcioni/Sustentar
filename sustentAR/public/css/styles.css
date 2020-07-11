@@ -378,6 +378,15 @@ input.minMax{
     color: rgba(0, 0, 0, 0.685);
 }
 
+.productosDeBusqueda .producto img {
+    transition: all 1s ease; 
+}
+
+.productosDeBusqueda .producto img:hover {
+    transform: scale(1.02);
+    transition: all 1s ease; 
+}
+
 .busqueda{
     background-color: #c4c1ba;
     border: 2px solid #c4c1ba;

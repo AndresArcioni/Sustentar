@@ -34,6 +34,23 @@ h1 {
     background-color: #dddbd1;
 }
 
+.productsList article a {
+    text-decoration: none;
+}
+
+.productsList article a:hover {
+    color: rgba(0, 0, 0, 0.596);
+}
+
+.productsList article a img {
+    transition: all 1s ease; 
+}
+
+.productsList article a img:hover {
+    transform: scale(1.02);
+    transition: all 1s ease; 
+}
+
 section h2 {
     padding: 10px 0;
 }
