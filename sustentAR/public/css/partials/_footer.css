@@ -31,25 +31,22 @@ footer div div h4{
     text-align: center;
 }
 
-.redes-container a{
+.redes-container a {
     margin-left: 20px;
     padding: 0;
-}
-
-.contacto-container {
-    font-size: 1.8em;
-    padding-bottom: 5px;
-}
-
-footer div div a, footer div div a{
     text-decoration: none;
     color: black;
     font-size: small;
 }
 
-footer div div a:hover, footer div div a:hover{
+.redes-container a i:hover{
     text-decoration: none;
     color: rgba(0, 0, 0, 0.685);
+}
+
+.contacto-container {
+    font-size: 1.8em;
+    padding-bottom: 5px;
 }
 
 #whatsappIcon {
