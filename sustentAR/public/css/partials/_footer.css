@@ -3,12 +3,7 @@
 ================================= */
 
 
-footer {
-    width: 105% /*Por que? Preguntar a Herni*/
-}
-
 .footer-container {
-    width: 100%;
     height: fit-content;
     box-sizing: border-box;
     font-size: 10px;

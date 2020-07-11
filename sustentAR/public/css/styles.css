@@ -4,9 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 @import 'partials/_general.css';
+@import 'partials/_mediaQueries.css';
 @import 'partials/_header.css';
 @import 'partials/_footer.css';
-@import 'partials/_mediaQueries.css';
 
 @import 'pages/_home.css';
 @import 'pages/_detalleDelProducto.css';
