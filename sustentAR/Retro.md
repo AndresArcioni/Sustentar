@@ -1,4 +1,4 @@
-                                            --Retrospectiva:--
+                                            --Retrospectiva(Sprint 2):--
 
 1- Comenzar a hacer: 
             ☺ Empezar acomunicar bien lo que vamos a estar haciendo, para que haya continuidad en la estetica.
@@ -15,3 +15,26 @@
 
 5- Dejar de hacer: 
             ☺ No dejar las cosas para ultimo momento.
+
+                                            --Retrospectiva(Sprint 3):--
+
+1- Comenzar a hacer: 
+            ☺ Push mas consecutivos, asi todos tienen la ultima version del proyecto
+            ☺ El resumen de las reuniones diarias/semanales.
+
+2- Hacer mas:  
+            ☺ Hacer mas live share
+            ☺ Googlear los errores
+
+3- Continuar haciendo: 
+            ☺ Division de tareas equitativamente. 
+            ☺ Arrancar con tiempo las tareas
+            ☺ Reuniones por zoom
+            ☺ Solucionar problemas en conjunto
+
+4- Hacer menos: 
+            ☺ undefined
+
+5- Dejar de hacer: 
+            ☺ null 
+
