@@ -61,15 +61,15 @@
                             <button class="collapseFiltros botonStyle col-2" type="button" data-toggle="collapse" data-target="#collapseFiltro">
                                 Categoria
                             </button>
-                            <div class=" collapse col-12" id="collapseFiltro">
-                                <button class="col-2 botonStyle botonFiltro">Decoración</button>
-                                <button class="col-2 botonStyle botonFiltro">Cocina</button>
-                                <button class="col-2 botonStyle botonFiltro">Baño</button>
-                                <button class="col-2 botonStyle botonFiltro">Otros</button>
+                            <form action="" method="GET" class="collapse col-12" id="collapseFiltro">
+                                <button type="submit" name="filtroDeCategoria" value="decoracion" class="col-2 botonStyle botonFiltro">Decoración</button>
+                                <button type="submit" name="filtroDeCategoria" value="cocina" class="col-2 botonStyle botonFiltro">Cocina</button>
+                                <button type="submit" name="filtroDeCategoria" value="banio" class="col-2 botonStyle botonFiltro">Baño</button>
+                                <button type="submit" name="filtroDeCategoria" value="otros" class="col-2 botonStyle botonFiltro">Otros</button>
     
                                 <input class="col-4 minMax" placeholder="Minimo" type="text" id="min" name="min">
                                 <input class="col-4 minMax" placeholder="Maximo" type="text" id="max" name="max">
-                            </div>
+                            </form>
                             
                             <div class="col-12"></div>
     
@@ -77,11 +77,11 @@
                             <button class="collapseFiltros botonStyle col-2" type="button" data-toggle="collapse" data-target="#collapseOrdenar">
                                 Ordenar por 
                             </button>
-                            <div class="collapse col-12 row" id="collapseOrdenar">
-                                <button class="col-2 botonStyle botonFiltro">Mayor precio</button>
-                                <button class="col-2 botonStyle botonFiltro">Menor precio</button>
-                                <button class="col-2 botonStyle botonFiltro">Destacados</button>
-                            </div>
+                            <form class="collapse col-12 row" id="collapseOrdenar">
+                                <button type="submit" name="ordenar" value="mayor" class="col-2 botonStyle botonFiltro">Mayor precio</button>
+                                <button type="submit" name="ordenar" value="menor" class="col-2 botonStyle botonFiltro">Menor precio</button>
+                                <button type="submit" name="ordenar" value="destacado" class="col-2 botonStyle botonFiltro">Destacados</button>
+                            </form>
                         </div>
 
                     </div>
@@ -90,12 +90,12 @@
                 <div class="productosDeBusqueda col-12 col-md-12 col-lg-12">
                     <% for(let i = 0; i < productos.length; i++) { %>
                         
-                        <div class="producto col-6 col-lg-4 row">
+                        <div class="producto col-12 col-sm-6 col-lg-4 row">
                             <a href="/product/detail/<%= productos[i].id %>">
                             <img class="col-12" src="<%= productos[i].imagen1 %>" alt="">
                             <div class="productInfo col-12">
                                 <h3><%= productos[i].nombreProducto %></h3>
-                                <h3 class=product-price><%= productos[i].precio %></h3>
+                                <h3 class=product-price>$<%= productos[i].precio %></h3>
                             </div>
                             </a>
                         </div>   
