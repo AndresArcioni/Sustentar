@@ -7,8 +7,7 @@ productos = JSON.parse(productos);
     //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
     listarProductos: function(req, res){
-        //mandar productos como objeto para la vista asi se puede usar el EJS dinamico
-        res.render('listadoDeProductos');
+        res.render('listadoDeProductos', {productos: productos});
     },
     formularioProductos: function(req, res){
         res.render('formularioProductos')
@@ -38,7 +37,11 @@ module.exports = {
     actualizarProducto : function(req, res){
         for (let i = 0; i < productos.length; i++){
             if(req.params.idProducto == productos[i].id){
-                productos[i] = req.body;
+                let productoActualizado = {
+                    id: productos[i].id,
+                    ...req.body
+                }
+                productos[i] = productoActualizado;
             }
         }
         fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
