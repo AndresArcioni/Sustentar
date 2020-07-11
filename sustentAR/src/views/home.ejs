@@ -102,46 +102,20 @@
             <div class="container">
                 <h2>Nuestros productos</h2>
                 <div class="productsList row">
-                    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                        <a href="/product/detail/1"><img src="/images/default-image.png" alt="">
-                            <div>
-                                <h3 class=product-price>Precio</h3>
-                                <h6 class="product-discount">Desc</h6>
-                                <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
-                                <img src="" alt="">
-                            </div>
-                        </a>
-                    </article>
-                    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                        <a href="/product/detail/1"><img src="/images/default-image.png" alt="">
-                            <div>
-                                <h3 class=product-price>Precio</h3>
-                                <h6 class="product-discount">Desc</h6>
-                                <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
-                                <img src="" alt="">
-                            </div>
-                        </a>
-                    </article>
-                    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                        <a href="/product/detail/1"><img src="/images/default-image.png" alt="">
-                            <div>
-                                <h3 class=product-price>Precio</h3>
-                                <h6 class="product-discount">Desc</h6>
-                                <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
-                                <img src="" alt="">
-                            </div>
-                        </a>
-                    </article>
-                    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                        <a href="/product/detail/1"><img src="/images/default-image.png" alt="">
-                            <div>
-                                <h3 class=product-price>Precio</h3>
-                                <h6 class="product-discount">Desc</h6>
-                                <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, inventore.</p>
-                                <img src="" alt="">
-                            </div>
-                        </a>
-                    </article>
+
+                    <% for(let i = 0; i < productos.length; i++){ %>
+                        <article class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <a href="/product/detail/<%= productos[i].id %>"><img class="col-12" src="<%= productos[i].imagen1 %>" alt="">
+                                <div>
+                                    <h2><%= productos[i].nombreProducto %></h2>
+                                    <h3 class=product-price><%= productos[i].precio %></h3>
+                                    <h6 class="product-discount">Desc</h6>
+                                    <p class="product-description"><%= productos[i].descripcion %></p>
+                                    <img src="" alt="">
+                                </div>
+                            </a>
+                        </article>
+                    <% } %>
                 </div>    
             </div>
         </section>

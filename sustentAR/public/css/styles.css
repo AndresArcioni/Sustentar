@@ -468,12 +468,22 @@ input[type='radio'], input[type='checkbox']{
 
 input[type='file'] {
     font-size: 12px;  
-  }
+}
 
 input[type='file']:focus{
     outline: none;
     box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
-  }
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a :hover{
+    text-decoration: none;
+    color: black;
+}
 
 @media(min-width: 584px){
     .datos-productos-container form div p{
