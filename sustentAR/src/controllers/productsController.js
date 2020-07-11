@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('path');   
+const path = require('path');
 
 let productos = fs.readFileSync(path.join(__dirname, '../data/productos.json'), 'utf8');
 productos = JSON.parse(productos);
@@ -35,11 +35,21 @@ module.exports = {
         res.render('editarProducto', {producto : producto})
     },
     actualizarProducto : function(req, res){
+        res.send(req.body);
         for (let i = 0; i < productos.length; i++){
             if(req.params.idProducto == productos[i].id){
                 let productoActualizado = {
                     id: productos[i].id,
                     ...req.body
+                }
+                if(productoActualizado.imagen1 == ""){
+                    productoActualizado.imagen1 = productos[i].imagen1;
+                }
+                if(productoActualizado.imagen2 == ""){
+                    productoActualizado.imagen2 = productos[i].imagen2;
+                }
+                if(productoActualizado.imagen3 == ""){
+                    productoActualizado.imagen3 = productos[i].imagen3;
                 }
                 productos[i] = productoActualizado;
             }

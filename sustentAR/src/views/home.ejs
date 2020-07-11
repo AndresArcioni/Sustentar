@@ -109,13 +109,19 @@
                                 <div>
                                     <h4><%= productos[i].nombreProducto %></h4>
                                     <h5 class="product-price"><%= productos[i].precio %></h5>
-                                    <h6 class="product-discount"><%= productos[i].descuento %> </h6>
-                                    <p class="product-description"><%= productos[i].descripcion %></p>
-                                    <img src="" alt="">
+                                    <% if(productos[i].descuento != " "){ %>
+                                        <h6 class="product-discount"> <%= productos[i].descuento %> </h6>
+                                    <% }%>
                                 </div>
                             </a>
                         </article>
                     <% } %>
+                    <div class="d-flex justify-content-center col-7">
+                        <a href="/product/listadoDeProductos" class="col-12">
+                            <button class="col-12 botonStyle">Ver más productos</button>
+                        </a>
+                    </div>
+
                 </div>    
             </div>
         </section>

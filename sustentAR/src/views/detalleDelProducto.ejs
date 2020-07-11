@@ -62,10 +62,10 @@
                         <button name="botonAgregar" id="aCarrito" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
                         <button formaction="/carrito" name="botonComprar" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
                     </form>
-                    <div class="row">
-                        <button type="button" class="ml-3 mt-4 col-12 boton-editar botonStyle"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
-                        <form class="col-12" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
-                            <button type="submit" class="ml-3 mt-4 col-12 boton-editar botonStyle">Eliminar Producto</button>
+                    <div class="row d-flex justify-content-center">
+                        <button type="button" class="ml-3 mt-4 col-6 boton-editar botonStyle"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
+                        <form class="col-6" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
+                            <button type="submit" class="ml-1 mt-4 col-12 boton-editar botonStyle">Eliminar Producto</button>
                         </form>
                     </div>
                 </div> 

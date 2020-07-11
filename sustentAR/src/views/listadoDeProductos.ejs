@@ -94,8 +94,12 @@
                             <a href="/product/detail/<%= productos[i].id %>">
                             <img class="col-12" src="<%= productos[i].imagen1 %>" alt="">
                             <div class="productInfo col-12">
-                                <h3><%= productos[i].nombreProducto %></h3>
-                                <h3 class=product-price>$<%= productos[i].precio %></h3>
+                                <h4><%= productos[i].nombreProducto %></h4>
+
+                                <h5 class="product-price"><%= productos[i].precio %></h5>
+                                <% if(productos[i].descuento != " "){ %>
+                                    <h6 class="product-discount"> <%= productos[i].descuento %> </h6>
+                                <% }%>
                             </div>
                             </a>
                         </div>   
