@@ -45,7 +45,8 @@ module.exports = {
         res.redirect('/user/login');
     },
     misCompras: function(req, res){
-        res.render('misCompras');
+        let productosComprados = [];
+        res.render('misCompras', {productosComprados: productosComprados});
     }, 
     editarCuenta: function(req, res){
         for(let i = 0; i < usuarios.length; i++){

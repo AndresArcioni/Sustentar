@@ -9,16 +9,18 @@
             <div class="container">
                 <div class="misCompras">
                     <h4>Mis compras</h4>
-    
-                    <div class="productoComprado row">
-                        <img class="col-3" src="../images/productos/Diversion24.jpg" alt="">
-                        <div class="productInfo col-9">
-                            <h5>Nombre del producto</h5>
-                            <p>$$ Precio $$</p>
+                    <% for(let i = 0; i < productosComprados.length; i++){ %>
+                        <div class="productoComprado row">
+                            <img class="col-3" src="../images/productos/Diversion24.jpg" alt="">
+                            <div class="productInfo col-9">
+                                <h5>Nombre del producto</h5>
+                                <p>$$ Precio $$</p>
+                            </div>
                         </div>
-                    </div>
-    
-                    <h6>No has realizado compras</h6>
+                    <% } %>
+                    <% if(productosComprados.length == 0) %>
+                        <h6>No has realizado compras</h6>
+                    <% } %>
                 </div>
             </div>
         </div>
