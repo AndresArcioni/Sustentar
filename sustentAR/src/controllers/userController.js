@@ -5,6 +5,11 @@ let bcrypt = require('bcryptjs');
 let usuarios = fs.readFileSync(path.join(__dirname, '../data/usuarios.json'), 'utf8');
 usuarios = JSON.parse(usuarios);
 
+
+let productos = fs.readFileSync(path.join(__dirname, '../data/productos.json'), 'utf8');
+productos = JSON.parse(productos);
+
+
 //  <<--USERCONTROLLER-->>   //
 module.exports = {
     cuenta: function(req, res){
@@ -45,7 +50,7 @@ module.exports = {
         res.redirect('/user/login');
     },
     misCompras: function(req, res){
-        let productosComprados = [];
+        let productosComprados = []; 
         res.render('misCompras', {productosComprados: productosComprados});
     }, 
     editarCuenta: function(req, res){

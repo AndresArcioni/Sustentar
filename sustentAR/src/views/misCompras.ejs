@@ -8,17 +8,18 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="misCompras">
-                    <h4>Mis compras</h4>
+                    <h3 class="ml-3">Mis compras</h3>
                     <% for(let i = 0; i < productosComprados.length; i++){ %>
                         <div class="productoComprado row">
-                            <img class="col-3" src="../images/productos/Diversion24.jpg" alt="">
+                            <img class="col-3" src="<%= productosComprados[i].imagen1 %>" alt="">
                             <div class="productInfo col-9">
-                                <h5>Nombre del producto</h5>
-                                <p>$$ Precio $$</p>
+                                <h5><%=productosComprados[i].nombreProducto%></h5>
+                                <p>$<%=productosComprados[i].precio%></p>
                             </div>
                         </div>
                     <% } %>
-                    <% if(productosComprados.length == 0) %>
+                    <% if(productosComprados.length == 0) { %>
+                        <br>
                         <h6>No has realizado compras</h6>
                     <% } %>
                 </div>
@@ -27,7 +28,7 @@
         
 
 
-        <%- include('./partials/footer.ejs') %>
-    <%- include('./partials/scripts.ejs') %> 
+        <%- include('./partials/footer') %> 
+        <%- include('./partials/scripts') %>
     </body>
 </html>

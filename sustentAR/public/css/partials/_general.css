@@ -17,6 +17,7 @@ html {
 }
 
 .container-fluid {
+    min-height: 380px;
     margin: 0 auto;
     background-color: #dddbd1;
     border: 2px solid  #dddbd1;
