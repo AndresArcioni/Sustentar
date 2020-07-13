@@ -13,7 +13,12 @@ productos = JSON.parse(productos);
 //  <<--USERCONTROLLER-->>   //
 module.exports = {
     cuenta: function(req, res){
-        res.render('cuenta', {usuario : usuarios[0]})//VER QUE PONER ACA
+        for(let i = 0; i < usuarios.length; i++){
+            if(usuarios[i].id == req.params.idUsuario){
+                res.render('cuenta', {usuario : usuarios[i]})
+            }
+        }
+        res.render('cuenta', {usuario : usuarios[0]})
     },
     login: function(req, res){
         res.render('login')
