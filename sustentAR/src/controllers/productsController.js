@@ -35,7 +35,6 @@ module.exports = {
         res.render('editarProducto', {producto : producto})
     },
     actualizarProducto : function(req, res){
-        res.send(req.body);
         for (let i = 0; i < productos.length; i++){
             if(req.params.idProducto == productos[i].id){
                 let productoActualizado = {
