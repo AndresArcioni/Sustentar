@@ -55,13 +55,25 @@
                             <label class="col-12" for="">Nombre</label>
                             <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto" value="<%=producto.nombreProducto%>">
                         </div>            
-                        <div class="col-5 row "> 
+                        <div class="col-3 col-lg-5 row "> 
                             <label class="col-12" for="">Precio</label>
                             <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="Precio" value="<%= producto.precio %> " >
-                        </div>               
+                        </div>
+                        <div class="col-5 col-lg-5 row "> 
+                            <label class="col-12" for="">Stock</label>
+                            <input class="inputStyle col-11" type="text" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %> ">
+                        </div>    
+                        <div class="col-5 col-lg-5 row "> 
+                            <label class="col-12" for="">Descuento</label>
+                            <% if(producto.descuento == " "){ %> 
+                                <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="">
+                            <% } else {%> 
+                            <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %> ">
+                            <% } %> 
+                        </div>                  
                         <div class="col-10 row">
                             <label class="col-12" for="">Descripción</label>
-                            <textarea class="inputStyle col-11" name="descripcionProducto" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"><%= producto.descripcion %></textarea>
+                            <textarea class="inputStyle col-11" name="descripcionProducto" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"><%= producto.descripcionProducto %></textarea>
                         </div>
                         
                         <div class="col-10 row">
@@ -129,25 +141,25 @@
 
                         <div class="col-12 sustentabilidad row">
                             
-                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='Vegano'
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='Vegano'
                                 <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
                                     <%= (producto.sustentabilidad[i] == 'Vegano') ? 'checked' : '' %>
                                 <% } %>  
                             >Vegano</p>
 
-                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='Cruelty-free'
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='Cruelty-free'
                                 <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
                                     <%= (producto.sustentabilidad[i] == 'Cruelty-free') ? 'checked' : '' %>
                                 <% } %>  
                             >Cruelty-free</p>
 
-                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='fair-trade'
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='fair-trade'
                                 <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
                                     <%= (producto.sustentabilidad[i] == 'fair-trade') ? 'checked' : '' %>
                                 <% } %>  
                             >fair-trade</p>
                                 
-                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustenabilidad' value='Envoltorio-sustentable'
+                            <p class='col-5 col-lg-3'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='Envoltorio-sustentable'
                                 <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
                                     <%= (producto.sustentabilidad[i] == 'Envoltorio-sustentable') ? 'checked' : '' %>
                                 <% } %>  
