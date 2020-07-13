@@ -57,7 +57,7 @@
                         </div>            
                         <div class="col-3 col-lg-5 row "> 
                             <label class="col-12" for="">Precio</label>
-                            <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="Precio" value="<%= producto.precio %> " >
+                            <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="precio" value="<%= producto.precio %> " >
                         </div>
                         <div class="col-5 col-lg-5 row "> 
                             <label class="col-12" for="">Stock</label>
@@ -68,7 +68,7 @@
                             <% if(producto.descuento == " "){ %> 
                                 <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="">
                             <% } else {%> 
-                            <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %> ">
+                                <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %> ">
                             <% } %> 
                         </div>                  
                         <div class="col-10 row">
