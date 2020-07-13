@@ -350,20 +350,20 @@ input.minMax{
     border: 2px solid #c4c1ba;
     border-radius: 10px;
     width: 100%;
-    padding-right: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 
 .productosDeBusqueda .producto{
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
 }
 
+/*
 .productosDeBusqueda .producto:after{
     content:"";
     position: absolute;
@@ -371,7 +371,7 @@ input.minMax{
     height: 100px;
     border-right: 1px solid #b1b1b1;
 
-}
+}*/
 
 .productosDeBusqueda .producto a:hover{
     text-decoration: none;
