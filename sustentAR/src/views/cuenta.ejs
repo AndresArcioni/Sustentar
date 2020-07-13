@@ -9,7 +9,7 @@
             <section class="container-edit container-fluid">
                 <article class="container-saludo">
                     <br>
-                     <h1 class="saludo">Hola, <b><%= usuario.nombre%></b></h1>
+                     <h1 class="saludo">Hola, <b><%=usuario.nombre%></b></h1>
                      <br>
                 </article>
 
@@ -19,69 +19,69 @@
                 <article class="form-article ">
                     
                     <div class="info-usuario">
-                        <h3><%= usuario.nombre + " " + usuario.apellido %></h3>
-                        <p><%= usuario.email %></p>
-                        <p><%= usuario.dni %> </p>
-                        <p><%= usuario.direccion + " " + usuario.depto %> 
+                        <h3><%=usuario.nombre + " " + usuario.apellido%></h3>
+                        <p><%=usuario.email%></p>
+                        <p><%=usuario.dni%></p>
+                        <p><%=usuario.direccion + " " + usuario.depto%> 
                         </p>
-                        <p><%= usuario.entreCalles %> </p>
-                        <p><%= usuario.codigoPostal + " " + usuario.ciudad %></p>
-                        <p><%= usuario.nroTelefono %></p>
+                        <p><%=usuario.entreCalles%> </p>
+                        <p><%=usuario.codigoPostal + " " + usuario.ciudad%></p>
+                        <p><%=usuario.nroTelefono%></p>
 
                        
                     </div>
                     
                     <button class="botonStyle col-4 boton-editar" data-toggle="collapse" data-target="#content">Editar</button>
                  
-                    <form class="formulario-editar-cuenta  row collapse" method="POST" action="/user/cuenta/<%= usuario.id %>?_method=put" id="content">
+                    <form class="formulario-editar-cuenta  row collapse" method="POST" action="/user/cuenta/<%=usuario.id%>?_method=put" id="content">
 
                         <div class="col-7 col-sm-6 form-div row"  nombre>
                             <label class="etiqueta col-12" id="label nombre"  for="nombre">Nombre</label>
-                            <input class="inputStyle campo col-10" type="text" name="nombre" placeholder="Nombre" value="<%= usuario.nombre %>">
+                            <input class="inputStyle campo col-10" type="text" name="nombre" placeholder="Nombre" value="<%=usuario.nombre%>">
                            
                         </div>
 
                         <div class="col-7 col-sm-6 form-div row" >
                             <label class="etiqueta col-12" id="label apellido"  for="apellido">Apellido</label>
                             <input class="inputStyle campo col-10" 
-                            type="text" name="apellido" placeholder="Apellido" value="<%= usuario.apellido %> "> 
+                            type="text" name="apellido" placeholder="Apellido" value="<%=usuario.apellido%> "> 
                         </div>
 
                         <div class="col-12 col-sm-12 form-div row email">
                             <label class="etiqueta col-12" for="email" >Email</label>
-                            <input class="inputStyle campo col-10" type="email" name="email" placeholder="usuario@mail.com" value="<%= usuario.email %>">
+                            <input class="inputStyle campo col-10" type="email" name="email" placeholder="usuario@mail.com" value="<%=usuario.email%>">
                         </div>
 
 
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="dni">DNI</label>
-                            <input class="inputStyle campo col-10" type="text" name="dni" placeholder="1234547" value="<%= usuario.dni %>" >
+                            <input class="inputStyle campo col-10" type="text" name="dni" placeholder="1234547" value="<%=usuario.dni%>" >
                         </div>
                         
                         <div class="col-12 col-sm-12 form-div row">
                             <label class="etiqueta col-12" for="direccion">Dirección</label>
-                            <input class="inputStyle campo col-10" type="text" name="direccion" placeholder="Direccion" value="<%= usuario.direccion %>">
+                            <input class="inputStyle campo col-10" type="text" name="direccion" placeholder="Direccion" value="<%=usuario.direccion%>">
                         </div>
                         
                         <div class="form-div col-7 col-sm-6 row">
                             <label class="etiqueta col-12" for="cp">C.P.</label>
-                            <input class="inputStyle campo col-10" type="text" name="codigoPostal" placeholder="C.P." value="<%= usuario.codigoPostal %>">
+                            <input class="inputStyle campo col-10" type="text" name="codigoPostal" placeholder="C.P." value="<%=usuario.codigoPostal%>">
                         </div>
 
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="entreCalles">Entre Calles</label>
-                            <input class="inputStyle campo col-10" type="text" name="entreCalles" placeholder="Entre Calles" value="<%= usuario.entreCalles %>">
+                            <input class="inputStyle campo col-10" type="text" name="entreCalles" placeholder="Entre Calles" value="<%=usuario.entreCalles %>">
                         </div>
                         
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="depto" ">Departamento, piso, etc</label>
-                            <input class="inputStyle campo col-10" type="text" name="depto" placeholder="Departamento, piso, ect" value="<%= usuario.depto %>">
+                            <input class="inputStyle campo col-10" type="text" name="depto" placeholder="Departamento, piso, ect" value="<%=usuario.depto%>">
                         </div>
 
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="telefono">Telefono 
                             </label>
-                            <input class="inputStyle campo col-10" type="text" name="nroTelefono" placeholder="110000000" value="<%= usuario.nroTelefono %>">
+                            <input class="inputStyle campo col-10" type="text" name="nroTelefono" placeholder="110000000" value="<%=usuario.nroTelefono%>">
                         </div>
 
                         <div class="col-12 col-sm-12 form-div row d-inline-flex justify-content-center">
