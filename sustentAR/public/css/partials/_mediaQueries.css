@@ -33,6 +33,14 @@
         margin: 0;
     }
 
+    .toLeft li, .toRight li{
+        background-color: rgba(157, 185, 150, 0.438);
+    }
+    
+    .toLeft li:hover, .toRight li:hover{
+        background-color: rgba(180, 216, 171, 0.438);
+    }
+
     .busquedaContainer{
         background-color: #dddbd1;
         border: 2px solid  #dddbd1;
