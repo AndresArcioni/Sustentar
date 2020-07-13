@@ -53,22 +53,22 @@
                         
                         <div class="col-6 row "> 
                             <label class="col-12" for="">Nombre</label>
-                            <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProdcuto" value="<%=producto.nombreProducto%>">
+                            <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProducto" value="<%=producto.nombreProducto%>">
                         </div>            
                         <div class="col-3 col-lg-5 row "> 
                             <label class="col-12" for="">Precio</label>
-                            <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="precio" value="<%= producto.precio %> " >
+                            <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="precio" value="<%= producto.precio %>" >
                         </div>
                         <div class="col-5 col-lg-5 row "> 
                             <label class="col-12" for="">Stock</label>
-                            <input class="inputStyle col-11" type="text" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %> ">
+                            <input class="inputStyle col-11" type="text" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %>">
                         </div>    
                         <div class="col-5 col-lg-5 row "> 
                             <label class="col-12" for="">Descuento</label>
                             <% if(producto.descuento == " "){ %> 
-                                <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="">
+                                <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value=" ">
                             <% } else {%> 
-                                <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %> ">
+                                <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %>">
                             <% } %> 
                         </div>                  
                         <div class="col-10 row">
@@ -95,9 +95,9 @@
                                 <% } %>
 
                                 <% if(producto.colores == "Rosa") { %>
-                                <option value="Rosa" selected>Rosa</option>
+                                <option value="rosa" selected>Rosa</option>
                                 <% } else { %>
-                                <option value="Rosa">Rosa</option>
+                                <option value="rosa">Rosa</option>
                                 <% } %>
 
                                 <% if(producto.colores == "azul") { %>
