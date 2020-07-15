@@ -77,66 +77,76 @@
                         </div>
                         
                         <div class="col-10 row">
-                            <label class="seleccion-color col-lg-5" for="" value="">Colores disponibles</label>
-                            <select class="col-lg-5 
-                            inputStyle" name="colores" id="colores">
-                                <option value="">Seleccionar...</option>
+                                <form class="col-lg-5" name="colores" id="colores">
+                                    
+                                    <label for="colores" id="colores">Colores</label>
 
-                                <% if(producto.colores == "amarillo") { %>
-                                <option value="amarillo" selected>Amarillo</option>
-                                <% } else { %>
-                                <option value="amarillo">Amarillo</option>
-                                <% } %>
+                                    <% if(producto.colores == "amarillo") { %>
+                                        <input type="checkbox" id="color-amarillo" name="color-amarillo" value="Amarillo" checked>
+                                    <% } else { %>
+                                        <input type="checkbox" id="color-amarillo" name="color-amarillo" value="Amarillo">
+                                    <% } %>
+                                    <label for="color-amarillo">Amarillo</label><br>
+                                    
+                                    <% if(producto.colores == "rojo") { %>
+                                        <input type="checkbox" id="color-rojo" name="color-rojo" value="rojo" checked>>
+                                    <% } else { %>
+                                        <input type="checkbox" id="color-rojo" name="color-rojo" value="rojo">  
+                                    <% } %>
+                                    <label for="color-rojo">Rojo</label><br>
 
-                                <% if(producto.colores == "rojo") { %>
-                                <option value="rojo" selected>Rojo</option>
-                                <% } else { %>
-                                <option value="rojo">Amarillo</option>
-                                <% } %>
+                                    <% if(producto.colores == "Rosa") { %>
+                                        <input type="checkbox" id="color-rosa" name="color-rosa" value="rosa" checked>
+                                    <% } else { %>
+                                        <input type="checkbox" id="color-rosa" name="color-rosa" value="rosa">
+                                    <% } %>
+                                    <label for="color-rosa">Rosa</label><br>
 
-                                <% if(producto.colores == "Rosa") { %>
-                                <option value="rosa" selected>Rosa</option>
-                                <% } else { %>
-                                <option value="rosa">Rosa</option>
-                                <% } %>
+                                    <% if(producto.colores == "azul") { %>
+                                        <input type="checkbox" id="color-azul" name="color-azul" value="azul" checked>
+                                    <% } else { %>
+                                        <input type="checkbox" id="color-azul" name="color-azul" value="azul">
+                                    <% } %>
+                                    <label for="color-azul">Azul</label><br>
 
-                                <% if(producto.colores == "azul") { %>
-                                <option value="azul" selected>Azul</option>
-                                <% } else { %>
-                                <option value="azul">Azul</option>
-                                <% } %>
+                                    <% if(producto.colores == "verde") { %>
+                                        <input type="checkbox" id="color-verde" name="color-verde" value="verde" checked>
+                                    <% } else { %>   
+                                        <input type="checkbox" id="color-verde" name="color-verde" value="verde">
+                                    <% } %>
+                                    <label for="color-verde">Verde</label><br>
 
-                                <% if(producto.colores == "verde-claro") { %>
-                                <option value="verde-claro" selected>Verde</option>
-                                <% } else { %>
-                                <option value="verde-claro">Verde</option>    
-                                <% } %>
+                                    <% if(producto.colores == "blanco") { %>
+                                        <input type="checkbox" id="color-blanco" name="color-blanco" value="blanco" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-blanco" name="color-blanco" value="blanco">
+                                        <% } %>
+                                    <label for="color-blanco">Blanco</label><br>
 
-                                <% if(producto.colores == "blanco") { %>
-                                <option value="blanco" selected>Blanco</option>
-                                <% } else { %>
-                                <option value="blanco">Blanco</option>
-                                <% } %>
+                                    <% if(producto.colores == "negro") { %>
+                                        <input type="checkbox" id="color-negro" name="color-negro" value="negro" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-negro" name="color-negro" value="negro">
+                                        <% } %>
+                                    <label for="color-negro">Negro</label><br>
 
-                                <% if(producto.colores == "negro") { %>
-                                <option value="negro" selected>Negro</option>
-                                <% } else { %>
-                                <option value="negro">Negro</option>
-                                <% } %>
+                                    <% if(producto.colores == "marron") { %>
+                                        <input type="checkbox" id="color-marron" name="color-marron" value="marron" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-marron" name="color-marron" value="marron">
+                                        <% } %>
+                                    <label for="color-marron">Marron</label><br>
 
-                                <% if(producto.colores == "marron") { %>
-                                <option value="marron" selected>Marron</option>
-                                <% } else { %>
-                                <option value="marron">Marron</option>
-                                <% } %>
+                                    <% if(producto.colores == "otro") { %>
+                                        <input type="checkbox" id="color-otro" name="color-otro" value="otro" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-otro" name="color-otro" value="otro">
+                                        <% } %>
+                                    <label for="color-otro">Otro</label><br>
 
-                                <% if(producto.colores == "otro") { %>
-                                <option value="otro" selected>Otro</option>
-                                <% } else { %>
-                                <option value="otro">Otro</option>
-                                <% } %>
-                                
-                            </select>
+
+                                        </form>
+                            
                         </div>     
 
                         <div class="col-12 sustentabilidad row">
