@@ -639,6 +639,12 @@ a :hover{
     box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
 }
 
+.formColorDiv{
+    padding-left: 0;
+    padding-right: 0;
+    margin
+}
+
 @media (min-width: 768px) {
     .busquedaContainer{
         background-color: #dddbd1;
