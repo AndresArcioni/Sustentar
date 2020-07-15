@@ -8,11 +8,22 @@
     border: 2px solid  #dddbd1;
 }
 
-h1 {
-    text-align: center;
-    color: black;
+.logoContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+}
+.logoContainer h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.logoContainer a {
+    margin: 0;
+}
 
 /*========BANNER==========*/
 
