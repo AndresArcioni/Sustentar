@@ -38,3 +38,28 @@
 5- Dejar de hacer: 
             ☺ null 
 
+
+                                        --Retrospectiva(Sprint 4):--
+
+1- Comenzar a hacer: 
+            ☺ Empezar a pensar en los proximos sprints
+            ☺ Leer mas documentación
+
+2- Hacer mas:  
+            ☺ Push mas consecutivos, asi todos tienen la ultima version del proyecto.
+            ☺ El resumen de las reuniones diarias/semanales.
+            ☺ Seguir mejorando las vistas.
+            
+3- Continuar haciendo: 
+            ☺ Live share.
+            ☺ Googlear los errores.
+            ☺ Division de tareas equitativamente. 
+            ☺ Arrancar con tiempo las tareas.
+            ☺ Reuniones por zoom.
+            ☺ Solucionar problemas en conjunto.
+
+4- Hacer menos: 
+            ☺ ''.
+
+5- Dejar de hacer: 
+            ☺ req.files[0].filename
