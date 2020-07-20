@@ -13,14 +13,12 @@
                      <br>
                 </article>
 
-                <!-- <br>
-                <br> -->
-     
+               
                 <article class="form-article ">
 
-                    <input type="file" name="avatar">
                     
-                    <div class="info-usuario">
+                    <div class="info-usuario" >
+                        <img class="avatar-usuario" src="/images/usuarios/<%= usuario.avatar %>" alt="avatar">
                         <h3><%= usuario.nombre + " " + usuario.apellido %></h3>
                         <p><%= usuario.email %></p>
                         <p><%= usuario.dni %> </p>
@@ -84,6 +82,12 @@
                             <label class="etiqueta col-12" for="telefono">Telefono 
                             </label>
                             <input class="inputStyle campo col-10" type="text" name="nroTelefono" placeholder="110000000" value="<%= usuario.nroTelefono %>">
+                        </div>
+
+                        <div class="col-12 col-lg-6 form-div row">
+                            <label class="etiqueta col-12" for="avatar">Avatar 
+                            </label>
+                            <input class="inputStyle campo col-10" type="file" name="avatar">
                         </div>
 
                         <div class="col-12 col-sm-12 form-div row d-inline-flex justify-content-center">

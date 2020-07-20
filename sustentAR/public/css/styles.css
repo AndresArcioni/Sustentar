@@ -35,6 +35,15 @@
 
 /*========EDITAR CUENTA==========*/
 
+.avatar-usuario {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 15px;
+    margin-left: 30px;
+    border: solid 4px rgba(175, 160, 160, 0.712);
+}
+
 
 .container-edit {
     background-color: #c4c1ba;
@@ -503,6 +512,7 @@ input[type='radio'], input[type='checkbox']{
 
 input[type='file'] {
     font-size: 12px;  
+    border: none;
 }
 
 input[type='file']:focus{

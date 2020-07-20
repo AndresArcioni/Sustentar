@@ -97,6 +97,7 @@ module.exports = {
                 usuarios[i].ciudad =  (req.body.ciudad == undefined) ? " " : req.body.ciudad;
                 usuarios[i].entreCalles =  (req.body.entreCalles == undefined) ? " " : req.body.entreCalles;
                 usuarios[i].nroTelefono = (req.body.nroTelefono == undefined) ? " " : req.body.nroTelefono;
+                usuarios[i].avatar = (req.files[0] == undefined) ? " " : req.files[0].filename;
 
                 fs.writeFileSync(path.join(__dirname, '../data/usuarios.json'), JSON.stringify(usuarios));
 
