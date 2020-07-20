@@ -53,27 +53,32 @@ module.exports = {
     },
     registrarNuevoUsuario : function(req, res, next){
 
-        //let errors = 
-
-        let nuevoUsuario = {
-            id: Number(usuarios.length+1),
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
-            email: req.body.email,
-            avatar: req.files[0].filename, 
-            dni: " ",
-            direccion: " ",
-            depto: " ",
-            codigoPostal: " ",
-            ciudad: " ",
-            entreCalles: " ",
-            nroTelefono: " "
+        let errores = validationResult(req);
+        
+        if(errores.isEmpty()){
+            let nuevoUsuario = {
+                id: Number(usuarios.length+1),
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
+                email: req.body.email,
+                avatar: (req.files[0].filename == undefined) ? req.files[0].filename = '/images/Logo_de_PaginaWeb.png' : req.files[0].filename, 
+                dni: " ",
+                direccion: " ",
+                depto: " ",
+                codigoPostal: " ",
+                ciudad: " ",
+                entreCalles: " ",
+                nroTelefono: " "
+            }
+            usuarios.push(nuevoUsuario);
+            fs.writeFileSync(path.join(__dirname, '../data/usuarios.json'), JSON.stringify(usuarios));
+    
+            res.redirect('/user/login');
+        } else {
+            res.render('registro', {errores : errores.errors});
         }
-        usuarios.push(nuevoUsuario);
-        fs.writeFileSync(path.join(__dirname, '../data/usuarios.json'), JSON.stringify(usuarios));
-
-        res.redirect('/user/login');
+  
     },
     misCompras: function(req, res){
         let productosComprados = []; 

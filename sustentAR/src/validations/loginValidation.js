@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-let bcrypt = require('bcryptjs');  
+const bcrypt = require('bcryptjs');  
 const {check, validationResult, body} = require('express-validator');
 let usuarios = fs.readFileSync(path.join(__dirname, '../data/usuarios.json'), 'utf8');
 usuarios = JSON.parse(usuarios);
@@ -24,5 +24,4 @@ module.exports = [
         }
         return false;
     }).withMessage('La contraseña ingresada no corresponde al usuario')
-    
 ]
