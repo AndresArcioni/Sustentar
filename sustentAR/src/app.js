@@ -23,9 +23,10 @@ const mainRouter = require('./routes/index.js'); // Ruta HOME
 const carritoRouter = require('./routes/carritoDeComprasRouter.js');// Ruta Carrito
 const productRouter = require('./routes/productRouter.js');// Ruta de productos
 const userRouter = require('./routes/userRouter.js');
+const accesoMiddleware = require('./middlewares/accesoMiddleware')
 
 app.use('/', mainRouter);
-app.use('/carrito', carritoRouter);
+app.use('/carrito', accesoMiddleware, carritoRouter);
 app.use('/product', productRouter);
 app.use('/user', userRouter);
 

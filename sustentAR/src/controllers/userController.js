@@ -54,7 +54,7 @@ module.exports = {
     registrarNuevoUsuario : function(req, res, next){
 
         let errores = validationResult(req);
-        
+
         if(errores.isEmpty()){
             let nuevoUsuario = {
                 id: Number(usuarios.length+1),
@@ -62,7 +62,7 @@ module.exports = {
                 apellido: req.body.apellido,
                 contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
                 email: req.body.email,
-                avatar: (req.files[0].filename == undefined) ? req.files[0].filename = '/images/Logo_de_PaginaWeb.png' : req.files[0].filename, 
+                avatar: (req.files[0] == undefined) ? '/images/Logo_de_PaginaWeb.png'  : req.files[0].filename , 
                 dni: " ",
                 direccion: " ",
                 depto: " ",
