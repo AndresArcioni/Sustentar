@@ -7,21 +7,45 @@
     <div class="container">
         <div class="login-container row">
             <div class="formulario-registro-container col-10 col-lg-8 d-inline-flex justify-content-center">
+                
                 <form action="" method="POST" class="row d-inline-flex justify-content-center">
                     <h3 class="col-12">Iniciar Sesión</h3>
+
                    
-                    <div class="col-8 col-lg-102">
+                    <div class="col-7 col-lg-12">
                         <label for="">Email</label>
                         <br>
                         <input class="inputStyle" type="email" name="email">
+                        <div class="col-8 col-lg-12" role="alert">
+                            <% if(typeof errores != 'undefined'){ %>
+                                <% for(let i = 0; i < errores.length; i++){ %>
+                                    <% if(errores[i].param == "email"){ %>
+                                        <small class="text-danger"> <%= errores[i].msg%>  </small>
+                                    <% } %> 
+                                <% } %>
+                             
+                            <% } %> 
+                        </div>
+                        
                     </div>
                     <div class="col-8 col-lg-10">
                         <label for="">Contraseña</label>
                         <br>
                         <input class="inputStyle" type="password" name="contrasenia">
+                        <div class="col-8 col-lg-12" role="alert">
+                            <% if(typeof errores != 'undefined'){ %>
+                                <% for(let i = 0; i < errores.length; i++){ %>
+                                    <% if(errores[i].param == "contrasenia"){ %>
+                                        <small class="text-danger"> <%= errores[i].msg%>  </small>
+                                    <% } %> 
+                                <% } %>
+                             
+                            <% } %> 
+                            
+                        </div>
                     </div>
                     <div class="col-8 col-lg-10  container-recordar">
-                           <p class="recordar"><input type="checkbox" name="">Recordame</p>
+                           <p class="recordar"><input type="checkbox" name="recordame">Recordame</p>
                             
                     </div>
                     <div class="col-8 col-lg-10  ">
