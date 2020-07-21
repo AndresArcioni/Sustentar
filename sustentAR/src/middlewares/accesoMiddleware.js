@@ -1,12 +1,9 @@
-function cuentaMiddleware(req, res, next){
-    if(req.cookies.idUsuario){
-        next();
+function accesoMiddleware(req, res, next){
+    if(req.session.idUsuarioSession == undefined){
+        res.redirect('/user/login')
     } else {
-        if(req.session.idUsuarioSession){
-            next();
-        }
+        next()
     }
-    res.redirect('/user/login')
 }
 
-module.exports = cuentaMiddleware;
+module.exports = accesoMiddleware;
