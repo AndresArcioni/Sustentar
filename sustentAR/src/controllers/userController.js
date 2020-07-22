@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path'); 
 let bcrypt = require('bcryptjs');  
+const validarUsuario = require('../validations/validarUsuario.js');
 const {check, validationResult, body} = require('express-validator');
 
 let usuarios = fs.readFileSync(path.join(__dirname, '../data/usuarios.json'), 'utf8');
@@ -46,7 +47,6 @@ module.exports = {
             }
         }
         res.render('login', {errores : errores.errors});
-        
     },
     registro: function(req, res){
         res.render('registro')
@@ -82,7 +82,15 @@ module.exports = {
     },
     misCompras: function(req, res){
         let productosComprados = []; 
-        res.render('misCompras', {productosComprados: productosComprados});
+
+        let usuario = validarUsuario(req, res);
+        if(usuario){
+            res.render('misCompras', {productosComprados: productosComprados, usuario : usuario});
+        }else{
+            res.render('misCompras', {productosComprados: productosComprados});
+        }
+
+        
     }, 
     editarCuenta: function(req, res){
         for(let i = 0; i < usuarios.length; i++){

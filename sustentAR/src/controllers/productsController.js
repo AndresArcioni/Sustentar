@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const validarUsuario = require('../validations/validarUsuario.js');
 
 let productos = fs.readFileSync(path.join(__dirname, '../data/productos.json'), 'utf8');
 productos = JSON.parse(productos);
@@ -7,7 +8,15 @@ productos = JSON.parse(productos);
     //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
     listarProductos: function(req, res){
-        res.render('listadoDeProductos', {productos: productos});
+
+        let usuario = validarUsuario(req, res);
+        if(usuario){
+            res.render('listadoDeProductos', {productos: productos, usuario : usuario});
+        }else{
+            res.render('listadoDeProductos', {productos: productos});
+        }
+
+        
     },
     formularioProductos: function(req, res){
         res.render('formularioProductos')
@@ -19,10 +28,19 @@ module.exports = {
                 producto = productos[i];
             }
         }
-        res.render('detalleDelProducto', {producto : producto})
+
+        let usuario = validarUsuario(req, res);
+        if(usuario){
+            res.render('detalleDelProducto', {producto : producto, usuario : usuario})
+        }else{
+            res.render('detalleDelProducto', {producto : producto})
+        }
+        
+        
     },
     agregarACarrito : function(req, res){
         let data = req.body;
+        //ACA TIENE QUE SUMAR AL CARRITO DEL USUARIO
         res.send(req.body);
     },
     editarProducto : function(req, res){
@@ -32,7 +50,13 @@ module.exports = {
                 producto = productos[i];
             }
         }
-        res.render('editarProducto', {producto : producto})
+
+        let usuario = validarUsuario(req, res);
+        if(usuario){
+            res.render('editarProducto', {producto: producto, usuario : usuario})
+        }else{
+            res.render('editarProducto', {producto: producto})
+        }
     },
     actualizarProducto : function(req, res){
         for (let i = 0; i < productos.length; i++){
@@ -63,7 +87,13 @@ module.exports = {
         }
         productos.push(nuevoProducto);
         fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
-        res.render('listadoDeProductos');
+
+        let usuario = validarUsuario(req, res);
+        if(usuario){
+            res.render('listadoDeProductos', {usuario : usuario})
+        }else{
+            res.render('listadoDeProductos')
+        }
     },
     borrarProducto : function(req, res){
         console.log(req.params.idProducto);
