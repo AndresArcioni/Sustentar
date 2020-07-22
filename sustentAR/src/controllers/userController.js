@@ -62,7 +62,7 @@ module.exports = {
                 apellido: req.body.apellido,
                 contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
                 email: req.body.email,
-                avatar: (req.files[0] == undefined) ? '/images/Logo_de_PaginaWeb.png'  : req.files[0].filename , 
+                avatar: (req.files[0] == undefined) ? '/images/Logo_de_PaginaWeb.png'  : req.files[0].filename, 
                 dni: " ",
                 direccion: " ",
                 depto: " ",
@@ -93,6 +93,7 @@ module.exports = {
         
     }, 
     editarCuenta: function(req, res){
+
         for(let i = 0; i < usuarios.length; i++){
             if(usuarios[i].id == req.params.idUsuario){
                 usuarios[i].nombre =  req.body.nombre;
@@ -105,8 +106,7 @@ module.exports = {
                 usuarios[i].ciudad =  (req.body.ciudad == undefined) ? " " : req.body.ciudad;
                 usuarios[i].entreCalles =  (req.body.entreCalles == undefined) ? " " : req.body.entreCalles;
                 usuarios[i].nroTelefono = (req.body.nroTelefono == undefined) ? " " : req.body.nroTelefono;
-                usuarios[i].avatar = (req.files == undefined) ? usuarios[i].avatar : req.files[0].filename;
-
+                usuarios[i].avatar = (req.files[0] == undefined) ? usuarios[i].avatar : req.files[0].filename;
                 fs.writeFileSync(path.join(__dirname, '../data/usuarios.json'), JSON.stringify(usuarios));
                 res.render('cuenta', {usuario: usuarios[i]})
             }

@@ -59,20 +59,21 @@ module.exports = {
         }
     },
     actualizarProducto : function(req, res){
+        
         for (let i = 0; i < productos.length; i++){
             if(req.params.idProducto == productos[i].id){
                 let productoActualizado = {
                     id: productos[i].id,
-                    ...req.body
-                }
-                if(productoActualizado.imagen1 == ""){
-                    productoActualizado.imagen1 = productos[i].imagen1;
-                }
-                if(productoActualizado.imagen2 == ""){
-                    productoActualizado.imagen2 = productos[i].imagen2;
-                }
-                if(productoActualizado.imagen3 == ""){
-                    productoActualizado.imagen3 = productos[i].imagen3;
+                    nombreProducto: req.body.nombreProducto,
+                    precio: req.body.precio,
+                    stock: req.body.stock,
+                    descuento: req.body.descuento,
+                    descripcionProducto: req.body.descripcionProducto,
+                    colores: req.body.colores,
+                    sustentabilidad: req.body.sustentabilidad,
+                    imagen1: (req.files[0].filename == undefined) ? productos[i].imagen1 : req.files[0].filename,
+                    imagen2: (req.files[1].filename == undefined) ? productos[i].imagen2: req.files[1].filename,
+                    imagen3: (req.files[2].filename == undefined) ? productos[i].imagen3 : req.files[2].filename,
                 }
                 productos[i] = productoActualizado;
             }

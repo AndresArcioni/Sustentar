@@ -33,7 +33,7 @@
                     
                     <button class="botonStyle col-4 boton-editar" data-toggle="collapse" data-target="#content">Editar</button>
                  
-                    <form class="formulario-editar-cuenta  row collapse" method="POST" action="/user/cuenta/<%= usuario.id %>?_method=put" id="content">
+                    <form class="formulario-editar-cuenta  row collapse" action="/user/cuenta/<%= usuario.id %>?_method=put" method="POST" id="content" enctype="multipart/form-data">
 
                         <div class="col-7 col-sm-6 form-div row"  nombre>
                             <label class="etiqueta col-12" id="label nombre"  for="nombre">Nombre</label>
