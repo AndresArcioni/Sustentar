@@ -65,8 +65,3 @@ https://trello.com/b/WoUHcqS7/front-end
 
 https://trello.com/b/nc9tMQ8g/back-end
 
-
-
-
-
-

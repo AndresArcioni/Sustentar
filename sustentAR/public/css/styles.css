@@ -108,13 +108,9 @@
     margin-top: 5px;
 }
 
-
-
 .campo {
     height: 20px;
 }
-
-
 
 .boton-editar {
     display: block;
@@ -143,7 +139,6 @@
     font-size: 13px;
 }
 
-
 .boton-editar:focus, .boton-guardar:focus{
     background: #ffebdd;
     text-decoration: none;
@@ -153,9 +148,8 @@
 
 
 
-
-
 /*=============SECCION DE CARRITO==================*/
+
 .btnDiv{
     display: flex;
     flex-wrap: wrap;
@@ -449,10 +443,16 @@ FORMULARIO DE PRODUCTOS =====================
     font-size: 12px;
 }
 
-.titulo-articulo, .titulo-imagenes{
+.titulo-articulo {
+    margin-top: 10px;
     text-align: center;
-    margin-top: 20px;
 }
+
+.titulo-imagenes{
+    text-align: center;
+    margin: 0;
+}
+
 
 /*
 CONTAINER CATEGORIA =====================
@@ -486,8 +486,7 @@ CONTAINER DATOS =====================
     justify-content: space-evenly;
 }
 
-.datos-container div form div button{
-    margin: 30px;
+.datos-container div form div button {
     background-color: #e0d1c6;
     border-style: solid;
     border-color: #baaa9e;
@@ -647,6 +646,14 @@ a :hover{
 .inputStyle:focus{
     outline: none;
     box-shadow: 0 0 12px 0px #0000008c, 0 0 5px #7e7f80cc;
+}
+
+.inputSeleccionarArchivo {
+    display: none;
+}
+
+#botonSeleccionarImg {
+    height: fit-content;
 }
 
 

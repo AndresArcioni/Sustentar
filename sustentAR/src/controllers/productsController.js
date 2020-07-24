@@ -71,9 +71,9 @@ module.exports = {
                     descripcionProducto: req.body.descripcionProducto,
                     colores: req.body.colores,
                     sustentabilidad: req.body.sustentabilidad,
-                    imagen1: (req.files[0].filename == undefined) ? productos[i].imagen1 : req.files[0].filename,
-                    imagen2: (req.files[1].filename == undefined) ? productos[i].imagen2: req.files[1].filename,
-                    imagen3: (req.files[2].filename == undefined) ? productos[i].imagen3 : req.files[2].filename,
+                    imagen1: (!req.files[0]) ? productos[i].imagen1 : req.files[0].filename,
+                    imagen2: (!req.files[1]) ? productos[i].imagen2: req.files[1].filename,
+                    imagen3: (!req.files[2]) ? productos[i].imagen3 : req.files[2].filename,
                 }
                 productos[i] = productoActualizado;
             }
@@ -104,6 +104,8 @@ module.exports = {
                 fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
         
         }})
+        //PARA BORRAR LA IMAGEN AL BORRAR EL PRODUCTO
+        //fs.unlinkSync(path.join(ruta de la imagen, nombre de la imagen));
         res.redirect('/product/listadoDeProductos');
     }
 }
