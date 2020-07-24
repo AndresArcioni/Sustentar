@@ -16,7 +16,7 @@
     height: 130px;
 }
 .logoContainer h1{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }

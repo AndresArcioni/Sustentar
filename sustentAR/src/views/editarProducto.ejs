@@ -17,28 +17,30 @@
                     <form action="/product/editarProducto/<%=producto.id%>?_method=PUT" method="POST">    
                         <h3 class="titulo-articulo">Seleccione la categoría del producto</h3>
                         <div class="col-12">
-                            <% if(producto.categoria == 'Decoracion') { %>
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" checked>Decoración</span>
-                            <% } else { %>
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" >Decoración</span>
-                            <% } %>
-                            <% if(producto.categoria == 'Baño') { %>
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio" checked>Baño</span>
-                            <% } else { %>
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio">Baño</span>
-                            <% } %>  
+                            <div class="row">
+                                <% if(producto.categoria == 'Decoracion') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" checked>Deco.</span>
+                                <% } else { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" >Deco.</span>
+                                <% } %>
+                                <% if(producto.categoria == 'Baño') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio" checked>Baño</span>
+                                <% } else { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio">Baño</span>
+                                <% } %>  
+
+                                <% if(producto.categoria == 'Cocina') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina" checked>Cocina</span>                      
+                                <% } else {%> 
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina">Cocina</span>  
+                                <% } %> 
                                 
-                            <% if(producto.categoria == 'Cocina') { %>
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina" checked>Cocina</span>                      
-                            <% } else {%> 
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina">Cocina</span>  
-                            <% } %> 
-                            
-                            <% if(producto.categoria == 'Otros') { %>
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros" checked>Otros</span>
-                            <% } else {%> 
-                                <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros">Otros</span>  
-                            <% } %>
+                                <% if(producto.categoria == 'Otros') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros" checked>Otros</span>
+                                <% } else {%> 
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros">Otros</span>  
+                                <% } %>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -55,31 +57,31 @@
                     <form action="/product/editarProducto/<%= producto.id %>?_method=put" method="post" enctype="multipart/form-data">                  
                         
                         <div class="row">
-                            <div class="col-6"> 
+                            <div class="col-10"> 
                                 <div class="row">
-                                    <label for="">Nombre</label>
+                                    <label class="col-11" for="">Nombre</label>
                                     <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProducto" value="<%=producto.nombreProducto%>">
                                 </div>
                             </div>            
-                            <div class="col-3 col-lg-5">
+                            <div class="col-10 col-md-2">
                                 <div class="row">
-                                    <label for="">Precio</label>
-                                    <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="precio" value="<%= producto.precio %>" >
+                                    <label class="col-12" for="">Precio</label>
+                                    <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="$Precio..." name="precio" value="<%= producto.precio %>" >
                                 </div>
                             </div>
-                            <div class="col-5 col-lg-5">
+                            <div class="col-10 col-md-2">
                                 <div class="row">
-                                    <label for="">Stock</label>
-                                    <input class="inputStyle col-11" type="text" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %>">
+                                    <label class="col-12" for="">Stock</label>
+                                    <input class="inputStyle col-6 col-md-11" type="text" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %>">
                                 </div>
                             </div>    
-                            <div class="col-5 col-lg-5">
+                            <div class="col-10 col-md-2">
                                 <div class="row">
-                                    <label for="">Descuento</label>
+                                    <label class="col-12" for="">Descuento</label>
                                     <% if(producto.descuento == " "){ %> 
-                                        <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value=" ">
+                                        <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="Descuento %..." name="descuento" value=" ">
                                     <% } else {%> 
-                                        <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %>">
+                                        <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %>">
                                     <% } %>
                                 </div> 
                             </div>                  
@@ -204,7 +206,7 @@
                                 <div class="row">
                                     <h4 class="col-12 mb-3 titulo-imagenes">Añadir imágenes</h4>
                                     <div class="col-12 col-md-3 mt-2 mb-3 row">
-                                        <img style="width:100%" src="/images/productos/<%= producto.imagen1 %>" alt="">
+                                        <img class="col-12" src="/images/productos/<%= producto.imagen1 %>" alt="">
                                         <input class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen1">
                                         <input type="button" id="botonSeleccionarImg" value="Seleccionar imagen">
                                     </div>
