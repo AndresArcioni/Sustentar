@@ -74,6 +74,19 @@
                 
             </div>
             
+            <div class="interesar container-fluid">
+                <h3 class="mas-productos">Productos que te pueden interesar...</h3>
+                <div class="scroll container" >
+                    
+                    <% for(let i = 0 ; i < productos.length ; i++){ %> 
+                    <a href="/product/detail/<%= productos[i].id %> ">
+                    <img src="/images/productos/<%= productos[i].imagen1 %> " alt="">
+                    <p><%= productos[i].nombreProducto %> </p>
+                    <p><button>Ver</button></p>
+                    </a>
+                    <% } %> 
+                </div>
+            </div>
             
         </div>
         

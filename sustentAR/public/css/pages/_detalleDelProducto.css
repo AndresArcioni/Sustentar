@@ -39,3 +39,62 @@
 .product-detail-wrapper {
     text-align: center;
 }
+
+.interesar {
+    margin-top: 25px;
+    background-color:rgba(199, 196, 189, 0.479) ;
+}
+
+.mas-productos {
+    margin: 15px;
+}
+
+.scroll{
+    overflow: auto;
+    white-space: nowrap;
+    padding: 20px; 
+    margin-bottom: 30px;
+}
+
+
+.scroll a {
+    display: inline-block;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.scroll a:hover{
+    font-size: 17px;
+    background-color:rgba(199, 192, 175, 0.479);
+    color: black;
+    border-radius: 5px;
+}
+
+.scroll a img{
+    height: 140px;
+    width: auto;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.scroll a p {
+    font-size: 15px;
+    margin: 5px;
+    text-align: center;
+}
+
+
+
+.scroll a button {
+    font-size: 10px;
+    border-radius: 3px;
+    width: 70px;
+    padding: 5px;
+    background-color: rgba(185, 183, 177, 0.479);
+    border: 2px solid rgba(245, 245, 245, 0.664);
+}
+
+.scroll a button:hover{
+    background-color: rgba(158, 156, 152, 0.479);
+
+}

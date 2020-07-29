@@ -31,9 +31,9 @@ module.exports = {
 
         let usuario = validarUsuario(req, res);
         if(usuario){
-            res.render('detalleDelProducto', {producto : producto, usuario : usuario})
+            res.render('detalleDelProducto', {producto : producto, usuario : usuario, productos: productos})
         }else{
-            res.render('detalleDelProducto', {producto : producto})
+            res.render('detalleDelProducto', {producto : producto, productos: productos})
         }
         
         
