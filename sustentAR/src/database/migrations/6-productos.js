@@ -26,8 +26,11 @@ module.exports = {
      descripcion : {
       type : Sequelize.DataTypes.TEXT,
       allowNull : false
-     }
+     },
+      created_at: Sequelize.DataTypes.DATE,
+      updated_at: Sequelize.DataTypes.DATE
    })
+  
   },
 
   down: async (queryInterface, Sequelize) => {
