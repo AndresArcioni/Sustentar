@@ -3,6 +3,12 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('carrito_productos', {
+      id:{
+        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+        primaryKey: true,
+        autoIncrement: true,
+        unique: true
+      },
       id_producto: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull : false,

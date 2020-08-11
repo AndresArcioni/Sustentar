@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     
     const Productos_sustentabilidad = sequelize.define(alias, cols, config);
 
-    Productos_sustentabilidad.associate = function(models){
+    /*Productos_sustentabilidad.associate = function(models){
         Productos_sustentabilidad.belongsToMany(models.Sustentabilidad, {
             as: 'sustentabilidad',
             through: 'productos_sustentabilidad',
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'id_producto',
             otherKey: 'id'
         })
-    }
+    }*/
 
     return Productos_sustentabilidad
 }
