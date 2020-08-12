@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const {check, validationResult, body} = require('express-validator');
 let usuarios = fs.readFileSync(path.join(__dirname, '../data/usuarios.json'), 'utf8');
 usuarios = JSON.parse(usuarios);
+const db = require('../database/models');
 
 
 module.exports = [
@@ -22,12 +23,19 @@ module.exports = [
         .isLength({min: 8})
         .withMessage('La contrasenia deberia tener un minimo de 8 caracteres'),
     body('email')
-        .custom(function(emailIngresado){
-            for(let i = 0 ; i < usuarios.length ; i++) {
-                if(usuarios[i].email == emailIngresado) {
-                    return false
+        .custom(async function(emailIngresado){
+            let emailValido = await db.Usuario.findOne({
+                where: {
+                    email: emailIngresado
                 }
-            }
-            return true;
+            })
+            .then(function(resultado){
+                if(resultado){
+                    return false;
+                }else{
+                    return true;
+                }
+            })
+            
         }).withMessage('Este email ya esta registrado')
 ]

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Colores.associate = function(models){
         Colores.belongsToMany(models.Producto, {
-            as:'productoColores',
+            as:'productos',
             through:'producto_colores',
             foreignKey: 'id_producto',
             otherKey: 'id'
