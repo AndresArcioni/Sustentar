@@ -47,11 +47,21 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(45)
         },
         telefono: {
-            ype: DataTypes.INTEGER(11)
+            type: DataTypes.INTEGER(11)
         },
         imagen_usuario:{
             type: DataTypes.STRING(225)
-        }
+        },
+        carrito_id: {
+            type: DataTypes.INTEGER(10).UNSIGNED,
+            allowNull: false
+        },
+        historial_compras_id: {
+            type: DataTypes.INTEGER(10).UNSIGNED,
+            allowNull: false
+        },
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE
     };
     let config = {
         tableName: 'usuarios',
@@ -65,10 +75,8 @@ module.exports = (sequelize, DataTypes) => {
             as: 'carrito',
             foreignKey: 'carrito_id'
         })
-    };
 
-    Usuario.associate = function(models) {
-        Usuario.hasMany(models.Historial_Compras, {
+        Usuario.hasMany(models.Historial_compra, {
             as: 'historial_compras',
             foreignKey: 'historial_compras_id'
         })

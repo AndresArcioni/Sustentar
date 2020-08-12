@@ -12,7 +12,7 @@ module.exports = {
         type : Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull : false,
         references : {
-          model : 'carrito',
+          model : 'carritos',
           key : 'id'
         }
       }

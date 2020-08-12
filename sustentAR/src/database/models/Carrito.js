@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'carrito'
+    let alias = 'Carrito'
     let cols = {
         id : {
             type: DataTypes.INTEGER(10).UNSIGNED,
@@ -8,14 +8,14 @@ module.exports = (sequelize, DataTypes) => {
             unique: true
         },
         total : {
-            type: DataTypes.INTEGER(10)
+            type: DataTypes.DECIMAL(6,2)
         }
     }
     let config = {
-        tablename : 'carrito',
-        timestamp : false
+        tablename : 'carritos',
+        timestamps : false
     }
-    const Carrito = sequelize.defin(alias, cols, config);
+    const Carrito = sequelize.define(alias, cols, config);
 
     Carrito.associate = function(models){
         Carrito.belongsTo(models.Historial_Compras, {
@@ -28,10 +28,15 @@ module.exports = (sequelize, DataTypes) => {
         Carrito.belongsTo(models.Usuario, {
             as : 'usuario',
             foreignKey : 'carrito_id'
-        })
+        })/*
+        Carrito.hasMany(models.Producto, {
+            as: 'carrito_productos',
+            through: 'carrito_productos',
+            foreignKey: 'id_producto',
+            otherKey: 'id'
+        })*/
     }
 
-    //agregar la relacion con carrito_pridctos
 
     return Carrito;
 }

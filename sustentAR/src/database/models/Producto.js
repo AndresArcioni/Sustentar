@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Productos'
+    let alias = 'Producto'
     let cols = {
         id : {
           type : DataTypes.INTEGER(10).UNSIGNED,
@@ -35,13 +35,30 @@ module.exports = (sequelize, DataTypes) => {
     const Productos = sequelize.define(alias, cols, config)
 
     Productos.associate = function(models){
-      Productos.hasMany(models.Imagen_Productos, {
+      /*
+      Productos.hasMany(models.Imagen_Producto, {
           as : 'imagen_productos',
           foreignKey: 'id_producto'
       })
+      Productos.hasMany(models.Colores, {
+        as: 'producto_colores',
+        through: 'producto_colores',
+        foreignKey: 'id_colores',
+        otherKey: 'id'
+      })
+      Productos.hasMany(models.Sustentabilidad, {
+        as: 'sustentabilidad',
+        through: 'productos_sustentabilidad',
+        foreignKey: 'id_producto',
+        otherKey: 'id'
+      })*/
+      Productos.belongsToMany(models.Carrito, {
+        as: 'carritoProductos',
+        through: 'carrito_productos',
+        foreignKey: 'id_producto',
+        otherKey: 'id'
+      })
     }
-    // falta la relacion con la tabla productos_colores
-    //agregar la relacion con carrito_pridctos
 
     return Productos
 }

@@ -1,12 +1,18 @@
 module.exports = (sequelize, DataTypes) => {
     let alias = 'Carrito_productos'
     let cols = {
+        id:{
+            type: DataTypes.INTEGER(10).UNSIGNED,
+            primaryKey: true,
+            autoIncrement: true,
+            unique: true
+        },
         id_producto: {
-          type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+          type: DataTypes.INTEGER(10).UNSIGNED,
           allowNull : false
         },
         id_carrito: {
-          type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+          type: DataTypes.INTEGER(10).UNSIGNED,
           allowNull : false
         }
     }
@@ -16,22 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         underscores: true
     }
     const Carrito_productos = sequelize.define(alias, cols, config);
-
-    Carrito_productos.associate = function(models){
-        Carrito_Producto.belongsToMany(models.Carrito, {
-            as: 'carrito',
-            through: 'carrito_productos',
-            foreignKey: 'id_carrito',
-            otherKey: 'id'
-        })
-        
-        Carrito_productos.belongsToMany(models.Producto, {
-            as: 'productos',
-            through: 'carrito_productos',
-            foreignKey: 'id_producto',
-            otherKey: 'id'
-        })
-    }
 
     return Carrito_productos;
 }

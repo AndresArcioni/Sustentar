@@ -16,8 +16,16 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     }
     const Sustentabilidad = sequelize.define(alias, cols, config)
+    
+    Sustentabilidad.associate = function(models){
+        Sustentabilidad.belongsToMany(models.Producto, {
+            as: 'productoSustentabilidad',
+            through: 'productos_sustentabilidad',
+            foreignKey: 'id_sustentabilidad',
+            otherKey: 'id'
+        })
+    }
 
-    //falta la relacion con la tabla producto_sustentabilidad
 
     return Sustentabilidad;
 }

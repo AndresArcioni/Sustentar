@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Producto_sustentabilidad'
+    let alias = 'Producto_color'
     let cols = {
-        id:{
+        id: {
             type: DataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
             autoIncrement: true,
@@ -11,18 +11,18 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.INTEGER(10).UNSIGNED,
           allowNull : false
         },
-        id_sustentabilidad: {
+        id_colores: {
           type: DataTypes.INTEGER(10).UNSIGNED,
-          allowNull : false
+          allowNull: false
         }
     }
     let config = {
-        tablename: 'productos_sustentabilidad',
+        tablename: 'productos_colores',
         timestamps: false,
         underscores: true
     }
     
-    const Productos_sustentabilidad = sequelize.define(alias, cols, config);
+    const Productos_Colores = sequelize.define(alias, cols, config);
 
-    return Productos_sustentabilidad
+    return Productos_Colores;
 }

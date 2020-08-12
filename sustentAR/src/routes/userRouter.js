@@ -20,13 +20,21 @@ let storage = multer.diskStorage({
 
 let upload = multer({storage:storage});
 
+//PERFIL USUARIO
 router.get('/cuenta/:idUsuario', accesoMiddleware, userController.cuenta);
 router.put('/cuenta/:idUsuario', upload.any(), userController.editarCuenta);
+
+//LOGIN
 router.get('/login', userController.login);
 router.post('/login', loginValidation, userController.ingresarCuenta);
+
+//REGISTRO
 router.get('/registro', userController.registro);
 router.post('/registro', upload.any(), registerValidation, userController.registrarNuevoUsuario);
+
 router.get('/misCompras/:idUsuario', accesoMiddleware, userController.misCompras);
+
+//LOGOUT
 router.get('/logout', accesoMiddleware, userController.logout);
 
 module.exports = router;

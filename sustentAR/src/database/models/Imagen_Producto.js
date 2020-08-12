@@ -1,14 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Imagen_productos'
+    let alias = 'Imagen_producto'
     let cols = {
         id:{
-          type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+          type: DataTypes.INTEGER(10).UNSIGNED,
           primaryKey: true,
           autoIncrement: true,
           unique: true
         },
         nombre:{
-          type: Sequelize.DataTypes.STRING(225)
+          type: DataTypes.STRING(225)
         }
     }
     let config = {

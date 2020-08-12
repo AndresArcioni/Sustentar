@@ -3,6 +3,7 @@ const path = require('path');
 let bcrypt = require('bcryptjs');  
 const validarUsuario = require('../validations/validarUsuario.js');
 const {check, validationResult, body} = require('express-validator');
+const db = require('../database/models');
 
 let usuarios = fs.readFileSync(path.join(__dirname, '../data/usuarios.json'), 'utf8');
 usuarios = JSON.parse(usuarios);
@@ -57,7 +58,6 @@ module.exports = {
 
         if(errores.isEmpty()){
             let nuevoUsuario = {
-                id: Number(usuarios.length+1),
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
@@ -69,12 +69,48 @@ module.exports = {
                 codigoPostal: " ",
                 ciudad: " ",
                 entreCalles: " ",
-                nroTelefono: " "
+                nroTelefono: " ",
+                rol: '',
+                created_at: new Date(),
+                updated_at: new Date(),
+                carrito_id: '',
+                historial_compras_id: ''
             }
-            usuarios.push(nuevoUsuario);
-            fs.writeFileSync(path.join(__dirname, '../data/usuarios.json'), JSON.stringify(usuarios));
-    
-            res.redirect('/user/login');
+
+            db.Carrito.create({
+                total: 0
+            })
+            .then(function(result){
+
+                nuevoUsuario.carrito_id = result.id;
+
+                db.Historial_compra.create({
+                    id_carrito: result.id
+                })
+                .then(function(resultado){
+                    nuevoUsuario.historial_compras_id = resultado.id;
+
+                    db.Usuario.create(nuevoUsuario)
+                    .then(function(){
+                        res.redirect('/user/login')
+                    })
+                })                
+            })
+            
+            /*
+            .then(function(result){
+                result.carrito_id = db.Carrito.create({
+                    total: 0
+                })
+            })
+            .then(function(result){
+                result.historial_compras_id = db.Historial_Compra.create()
+                res.redirect('/user/login')
+            })*/
+            .catch(function(e){
+                res.send(e);
+            })
+                       
         } else {
             res.render('registro', {errores : errores.errors});
         }

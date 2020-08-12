@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const validarUsuario = require('../validations/validarUsuario.js');
+const db = require('../database/models');
 
 let productos = fs.readFileSync(path.join(__dirname, '../data/productos.json'), 'utf8');
 productos = JSON.parse(productos);
