@@ -33,77 +33,39 @@ module.exports = {
         res.render('login')
     },
     ingresarCuenta: function(req, res, next){
+<<<<<<< HEAD
         // let errores = validationResult(req);
         /*return res.send(errores);*/
+=======
+        
+        let errores = validationResult(req);
+>>>>>>> 54bae6b76c54958b3e4fe484cb4b9467dedc9390
 
+        if(errores.isEmpty()){
             db.Usuario.findAll()
-            .then(function(resultados) {
-                for(let i = 0; i < resultados.length; i++){
-                    if(resultados[i].dataValues.email == req.body.email && bcrypt.compareSync(req.body.contrasenia, resultados[i].dataValues.contrasenia)){
-                        res.redirect('/');
+            .then(function(usuarios) {
+                for(let i = 0; i < usuarios.length; i++) {
+                    if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.contrasenia, usuarios[i].contrasenia)) {
+                        req.session.idUsuarioSession = usuarios[i].id;
+                        if(req.body.recordame != undefined) {
+                            res.cookie('idUsuario', usuarios[i].id, {maxAge: 60000 * 60 * 24 * 7}) 
+                        }
+                        res.redirect('/')
                     }
                 }
-                /*
-                if(bcrypt.compareSync(req.body.contrasenia, resultado.dataValues.contrasenia)){
-
-                    req.session.idUsuarioSession = resultado.dataValues.id;
-                    if(req.body.recordame != undefined){
-                        res.cookie('idUsuario', resultado.dataValues.id, {maxAge: 604800000});
-                    }
-                    return res.redirect('/');
-                }*/
-                  
             })
-            res.render('login');
-        
-        // console.log(errores.errors);
-        /*
-        return res.render('login', {errores : [
-            {
-                msg: 'hola'
-            },
-            {
-                msg: 'hola'
-            }
-        ]});*/
-
-        /*verify: function(req, res, next) {
-               let errors = validationResult(req);
-               db.Usuario.findAll()
-               .then(function(usuarios) {
-                 if(errors.isEmpty()) {
-                   for(let i = 0; i < usuarios.length; i++) {
-                     if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.password, usuarios[i].password)) {
-                       req.session.emailUsuario = usuarios[i].email;
-                       if(req.body.remember != undefined) {
-                         res.cookie('authRemember', usuarios[i].email, {maxAge: 60000 * 60 * 24 * 7}) Vigente 1 semana!
-                       }
-                      res.redirect('/users')
-                     }
-                   }
-                   return res.render('login', {
-                     errors: {
-                       email: {
-                         msg: 'Credenciales inválidas. Inserta un email registrado y su respectiva contraseña'
-                       }
-                     }
-                   })
-                 } else {
-                   res.render('login', {
-                     errors: errors.mapped(),
-                     old: req.body
-                   })
-                 }
-               }
-               )},*/
+        }else{
+            res.render('login', {errores: errores})
+        }
+    
     },
     registro: function(req, res){
         res.render('registro')
     },
     registrarNuevoUsuario : function(req, res, next){
-
+        
         let errores = validationResult(req);
-
+        
         if(errores.isEmpty()){
             let nuevoUsuario = {
                 nombre: req.body.nombre,
@@ -124,20 +86,20 @@ module.exports = {
                 carrito_id: '',
                 historial_compras_id: ''
             }
-
+            
             db.Carrito.create({
                 total: 0
             })
             .then(function(result){
-
+                
                 nuevoUsuario.carrito_id = result.id;
-
+                
                 db.Historial_compra.create({
                     id_carrito: result.id
                 })
                 .then(function(resultado){
                     nuevoUsuario.historial_compras_id = resultado.id;
-
+                    
                     db.Usuario.create(nuevoUsuario)
                     .then(function(){
                         res.redirect('/user/login')
@@ -147,26 +109,26 @@ module.exports = {
             .catch(function(e){
                 res.send(e);
             })
-                       
+            
         } else {
             res.render('registro', {errores : errores.errors});
         }
-  
+        
     },
     misCompras: function(req, res){
         let productosComprados = []; 
-
+        
         let usuario = validarUsuario(req, res);
         if(usuario){
             res.render('misCompras', {productosComprados: productosComprados, usuario : usuario});
         }else{
             res.render('misCompras', {productosComprados: productosComprados});
         }
-
+        
         
     }, 
     editarCuenta: function(req, res){
-
+        
         db.Usuario.update({
             nombre: req.body.nombre,
             apellido: req.body.apellido,
