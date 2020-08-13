@@ -33,7 +33,7 @@ module.exports = {
         res.render('login')
     },
     ingresarCuenta: function(req, res, next){
-        let errores = validationResult(req);
+        // let errores = validationResult(req);
         /*return res.send(errores);*/
 
             db.Usuario.findAll()
@@ -144,17 +144,6 @@ module.exports = {
                     })
                 })                
             })
-            
-            /*
-            .then(function(result){
-                result.carrito_id = db.Carrito.create({
-                    total: 0
-                })
-            })
-            .then(function(result){
-                result.historial_compras_id = db.Historial_Compra.create()
-                res.redirect('/user/login')
-            })*/
             .catch(function(e){
                 res.send(e);
             })
