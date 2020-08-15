@@ -3,16 +3,23 @@ const path = require('path');
 const validarUsuario = require('../validations/validarUsuario.js');
 const db = require('../database/models');
 
-let productos = fs.readFileSync(path.join(__dirname, '../data/productos.json'), 'utf8');
-productos = JSON.parse(productos);
+
+//Traemos los productos de la DB
+function obtenerProductos(){
+    db.Producto.findAll()
+    .then(function(listadoDeProductos){
+        return listadoDeProductos.json()
+    })
+}
+
 
     //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
     listarProductos: function(req, res){
 
-        let usuario = validarUsuario(req, res);
-        if(usuario){
-            res.render('listadoDeProductos', {productos: productos, usuario : usuario});
+        let productos = obtenerProductos();
+        if(req.session.idUsuario != undefined){
+            res.redirect('listadoDeProductos', {productos: productos, usuario : req.session.idUsuario});
         }else{
             res.render('listadoDeProductos', {productos: productos});
         }
@@ -79,11 +86,64 @@ module.exports = {
                 productos[i] = productoActualizado;
             }
         }
-        fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
-        res.redirect('/product/listadoDeProductos');
     },
     crearProducto: function(req, res){
-        let nuevoProducto = {
+
+        //productos, imagen_productos, producto_colores, productos_sustentabillidad, productos_categoria
+        db.ImagenProducto.create({
+            nombre: 'pirulo',
+            id_producto: 1
+        })
+        .then(function(result){
+           return res.send(result);
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+
+        db.Producto.create({
+            nombre: req.body.nombre,
+            precio: req.body.precio,
+            stock: req.body.stock,
+            descuento: req.body.descuento,
+            descripcion: req.body.descripcion
+        })
+        .then(function(nuevoProducto){
+
+            
+
+            db.ProductoColor.create({
+                id_producto: nuevoProducto.id,
+                id_color: color
+            })
+            .then(function(result){
+                console.log('color: ' + result);
+            })
+
+            db.ProductoSustentabilidad.create({
+                id_producto: nuevoProducto.id,
+                id_sustentabilidad: req.body.sustentabilidad[i]
+            })
+            .then(function(result){
+                console.log('sust: ' + result);
+            })
+
+            db.ProductoCategoria.create({
+                id_producto: nuevoProducto.id,
+                id_categoria: req.body.categoria[i]
+            })
+            .then(function(result){
+                console.log('categoria: ' + result);
+            })
+
+        }).then(function(producto){
+            //res.redirect('/product/listadoDeProductos/');
+            res.redirect('/')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+        /*let nuevoProducto = {
             id: Number(productos.length + 1),
             ...req.body
         }
@@ -95,7 +155,7 @@ module.exports = {
             res.render('listadoDeProductos', {usuario : usuario})
         }else{
             res.render('listadoDeProductos')
-        }
+        }*/
     },
     borrarProducto : function(req, res){
         console.log(req.params.idProducto);

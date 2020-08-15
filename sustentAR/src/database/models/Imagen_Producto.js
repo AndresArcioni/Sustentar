@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Imagen_producto'
+    let alias = 'ImagenProducto'
     let cols = {
         id:{
           type: DataTypes.INTEGER(10).UNSIGNED,
@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         nombre:{
           type: DataTypes.STRING(225)
+        },
+        id_producto:{
+            type: DataTypes.INTEGER(10).UNSIGNED
         }
     }
     let config = {

@@ -5,29 +5,19 @@ const validarUsuario = require('../validations/validarUsuario.js');
 const {check, validationResult, body} = require('express-validator');
 const db = require('../database/models');
 
-let usuarios = fs.readFileSync(path.join(__dirname, '../data/usuarios.json'), 'utf8');
-usuarios = JSON.parse(usuarios);
-
-
-let productos = fs.readFileSync(path.join(__dirname, '../data/productos.json'), 'utf8');
-productos = JSON.parse(productos);
-
 
 //  <<--USERCONTROLLER-->>   //
 module.exports = {
     cuenta: function(req, res){
-        for(let i = 0; i < usuarios.length; i++){
-            if(req.cookies.idUsuario == undefined){
-                if(usuarios[i].id == req.session.idUsuarioSession){
-                    res.render('cuenta', {usuario : usuarios[i]})
-                }
-            }else{
-                if(usuarios[i].id == req.cookies.idUsuario){
-                    res.render('cuenta', {usuario : usuarios[i]})
-                }
+
+        db.Usuario.findOne({
+            where: {
+                id: (req.cookies.idUsuario != undefined) ? req.cookies.idUsuario : req.session.idUsuarioSession
             }
-        }
-        res.send('ERROR');
+        })
+        .then(function(usuario){
+            res.render('cuenta', {usuario : usuario})
+        })
     },
     login: function(req, res){
         res.render('login')
@@ -67,14 +57,14 @@ module.exports = {
                 apellido: req.body.apellido,
                 contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
                 email: req.body.email,
-                imagen_usuario: (req.files[0] == undefined) ? '/images/Logo_de_PaginaWeb.png'  : req.files[0].filename, 
+                imagen_usuario: (req.files[0] == undefined) ? '/images/usuarios/Logo_de_PaginaWeb.png'  : req.files[0].filename, 
                 dni: " ",
-                direccion: " ",
-                depto: " ",
-                codigoPostal: " ",
+                domicilio: " ",
+                departamento: " ",
+                codigo_postal: " ",
                 ciudad: " ",
-                entreCalles: " ",
-                nroTelefono: " ",
+                entre_calles: " ",
+                telefono: " ",
                 rol: '',
                 created_at: new Date(),
                 updated_at: new Date(),
@@ -101,21 +91,9 @@ module.exports = {
                     })
                 })                
             })
-            
-            /*
-            .then(function(result){
-                result.carrito_id = db.Carrito.create({
-                    total: 0
-                })
-            })
-            .then(function(result){
-                result.historial_compras_id = db.Historial_Compra.create()
-                res.redirect('/user/login')
-            })*/
             .catch(function(e){
                 res.send(e);
             })
-            
         } else {
             res.render('registro', {errores : errores.errors});
         }
@@ -131,7 +109,6 @@ module.exports = {
             res.render('misCompras', {productosComprados: productosComprados});
         }
         
-        
     }, 
     editarCuenta: function(req, res){
         
@@ -141,7 +118,7 @@ module.exports = {
             email: req.body.email,
             /*contrasenia: ,AGREGAR FUNCIONALIDAD*/
             dni: (req.body.dni == undefined) ? " " : req.body.dni,
-            domicilio: (req.body.direccion == undefined) ? " " : req.body.domicilio,
+            domicilio: (req.body.domicilio == undefined) ? " " : req.body.domicilio,
             codigo_postal: (req.body.codigo_postal == undefined) ? " " : req.body.codigo_postal,
             entre_calles: (req.body.entre_calles == undefined) ? " " : req.body.entre_calles,
             departamento: (req.body.departamento == undefined) ? " " :  req.body.departamento,
@@ -154,28 +131,12 @@ module.exports = {
                 id: req.params.idUsuario
             }
         })
-        .then(function(resultado){
-            res.render('cuenta', {usuario: resultado})
+        .then(function(usuario){
+            res.redirect('/user/cuenta/' + req.params.idUsuario);
         })
-        
-        for(let i = 0; i < usuarios.length; i++){
-            if(usuarios[i].id == req.params.idUsuario){
-                usuarios[i].nombre =  req.body.nombre;
-                usuarios[i].apellido = req.body.apellido;
-                usuarios[i].email = req.body.email; 
-                usuarios[i].dni =  (req.body.dni == undefined) ? " " : req.body.dni;
-                usuarios[i].direccion = (req.body.direccion == undefined) ? " " : req.body.direccion;
-                usuarios[i].depto = (req.body.depto == undefined) ? " " :  req.body.depto;
-                usuarios[i].codigoPostal = (req.body.codigoPostal == undefined) ? " " : req.body.codigoPostal;
-                usuarios[i].ciudad =  (req.body.ciudad == undefined) ? " " : req.body.ciudad;
-                usuarios[i].entreCalles =  (req.body.entreCalles == undefined) ? " " : req.body.entreCalles;
-                usuarios[i].nroTelefono = (req.body.nroTelefono == undefined) ? " " : req.body.nroTelefono;
-                usuarios[i].avatar = (!req.files[0]) ? usuarios[i].avatar : req.files[0].filename;
-                fs.writeFileSync(path.join(__dirname, '../data/usuarios.json'), JSON.stringify(usuarios));
-                res.render('cuenta', {usuario: usuarios[i]})
-            }
-        }
-        res.render('error');
+        .catch(function(error){
+            res.send(error)
+        })
     },
     logout: function(req, res, next){
         req.session.destroy();

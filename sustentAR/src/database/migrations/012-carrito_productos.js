@@ -11,7 +11,7 @@ module.exports = {
       },
       id_producto: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull : false,
+        allowNull : true,
         references : {
           model : 'productos',
           key : 'id'
@@ -19,7 +19,7 @@ module.exports = {
       },
       id_carrito: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull : false,
+        allowNull : true,
         references : {
           model : 'carritos',
           key : 'id'

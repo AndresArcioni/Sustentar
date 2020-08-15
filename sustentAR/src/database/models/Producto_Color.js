@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Producto_color'
+    let alias = 'ProductoColor'
     let cols = {
         id: {
             type: DataTypes.INTEGER(10).UNSIGNED,
