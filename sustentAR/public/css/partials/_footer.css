@@ -21,7 +21,7 @@ footer.container-fluid {
 
 .nosotros-container p {
     text-align: center;
-    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 footer div div h4{
@@ -49,6 +49,11 @@ footer div div h4{
 .contacto-container {
     font-size: 1.8em;
     padding-bottom: 5px;
+}
+
+.contacto-container h4 {
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .contacto-container div p, .contacto-container div a {
