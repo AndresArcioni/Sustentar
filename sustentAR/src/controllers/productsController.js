@@ -89,52 +89,42 @@ module.exports = {
     },
     crearProducto: function(req, res){
 
-        //productos, imagen_productos, producto_colores, productos_sustentabillidad, productos_categoria
-        db.ImagenProducto.create({
-            nombre: 'pirulo',
-            id_producto: 1
-        })
-        .then(function(result){
-           return res.send(result);
-        })
-        .catch(function(error){
-            res.send(error)
-        })
-
         db.Producto.create({
             nombre: req.body.nombre,
             precio: req.body.precio,
             stock: req.body.stock,
             descuento: req.body.descuento,
-            descripcion: req.body.descripcion
+            descripcion: req.body.descripcion,
+            id_categoria: req.body.categoria
         })
         .then(function(nuevoProducto){
 
+            let imagenes = req.files.map(elemento => {
+                return {
+                    nombre: elemento.filename,
+                    id_producto: nuevoProducto.id
+                }
+            })
+            db.Imagen_producto.bulkCreate(imagenes);
+
+            let colores = req.body.color.map(elemento => {
+                return {
+                    id_producto: nuevoProducto.id,
+                    id_colores: elemento
+                }
+            })
+            db.Productos_colores.bulkCreate(colores)
+
+            let sustentabilidad = req.body.sustentabilidad.map(elemento => {
+                return {
+                    id_producto: nuevoProducto.id,
+                    id_sustentabilidad: elemento
+                }
+            })
+            db.Productos_sustentabilidad.bulkCreate(sustentabilidad);
             
-
-            db.ProductoColor.create({
-                id_producto: nuevoProducto.id,
-                id_color: color
-            })
-            .then(function(result){
-                console.log('color: ' + result);
-            })
-
-            db.ProductoSustentabilidad.create({
-                id_producto: nuevoProducto.id,
-                id_sustentabilidad: req.body.sustentabilidad[i]
-            })
-            .then(function(result){
-                console.log('sust: ' + result);
-            })
-
-            db.ProductoCategoria.create({
-                id_producto: nuevoProducto.id,
-                id_categoria: req.body.categoria[i]
-            })
-            .then(function(result){
-                console.log('categoria: ' + result);
-            })
+            /* ARREGLAR RELACIONES*/
+            
 
         }).then(function(producto){
             //res.redirect('/product/listadoDeProductos/');
@@ -143,19 +133,6 @@ module.exports = {
         .catch(function(error){
             res.send(error)
         })
-        /*let nuevoProducto = {
-            id: Number(productos.length + 1),
-            ...req.body
-        }
-        productos.push(nuevoProducto);
-        fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
-
-        let usuario = validarUsuario(req, res);
-        if(usuario){
-            res.render('listadoDeProductos', {usuario : usuario})
-        }else{
-            res.render('listadoDeProductos')
-        }*/
     },
     borrarProducto : function(req, res){
         console.log(req.params.idProducto);

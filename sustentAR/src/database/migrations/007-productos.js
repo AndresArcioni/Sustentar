@@ -27,6 +27,14 @@ module.exports = {
       type : Sequelize.DataTypes.TEXT,
       allowNull : false
      },
+     id_categoria: {
+      type : Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+      allowNull : false,
+      references: {
+        model: 'categorias',
+        key: 'id'
+      }
+     },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE
    })

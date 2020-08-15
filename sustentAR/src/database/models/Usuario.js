@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'carrito_id'
         })
 
-        Usuario.hasMany(models.Historial_Compra, {
+        Usuario.hasMany(models.Historial_compra, {
             as: 'historial_compras',
             foreignKey: 'historial_compras_id'
         })
