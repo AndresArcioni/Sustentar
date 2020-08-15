@@ -33,13 +33,8 @@ module.exports = {
         res.render('login')
     },
     ingresarCuenta: function(req, res, next){
-<<<<<<< HEAD
-        // let errores = validationResult(req);
-        /*return res.send(errores);*/
-=======
         
         let errores = validationResult(req);
->>>>>>> 54bae6b76c54958b3e4fe484cb4b9467dedc9390
 
         if(errores.isEmpty()){
             db.Usuario.findAll()
