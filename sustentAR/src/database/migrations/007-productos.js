@@ -13,7 +13,7 @@ module.exports = {
        allowNull : false,
      },
      precio : {
-       type : Sequelize.DataTypes.DECIMAL(6,3),
+       type : Sequelize.DataTypes.DECIMAL(6,2),
        allowNull : false,
      },
      stock : {
@@ -21,7 +21,7 @@ module.exports = {
        allowNull : false
      },
      descuento : {
-       type : Sequelize.DataTypes.INTEGER(10),
+       type : Sequelize.DataTypes.INTEGER(10)
      },
      descripcion : {
       type : Sequelize.DataTypes.TEXT,

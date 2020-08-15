@@ -439,6 +439,10 @@ input.minMax{
 FORMULARIO DE PRODUCTOS =====================
 */
 
+#form-categoria div p {
+    font-size: 13px;
+}
+
 ::placeholder{
     font-size: 12px;
 }

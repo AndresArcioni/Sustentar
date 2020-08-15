@@ -18,10 +18,10 @@
                     
                     <div class="collapse" id="filter">
                         <h4><label for="">Categoría</label></h4>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="decoracion">Decoración</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="cocina">Cocina</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="baño">Baño</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value="otros">Otros</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=1>Baño</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=2>Cocina</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=3>Decoración</p>
+                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=4>Otros</p>
 
                     
                         <h4>Precio</h4>
@@ -62,10 +62,10 @@
                                 Categoria
                             </button>
                             <form action="" method="GET" class="collapse col-12" id="collapseFiltro">
-                                <button type="submit" name="filtroDeCategoria" value="decoracion" class="col-2 botonStyle botonFiltro">Decoración</button>
-                                <button type="submit" name="filtroDeCategoria" value="cocina" class="col-2 botonStyle botonFiltro">Cocina</button>
-                                <button type="submit" name="filtroDeCategoria" value="banio" class="col-2 botonStyle botonFiltro">Baño</button>
-                                <button type="submit" name="filtroDeCategoria" value="otros" class="col-2 botonStyle botonFiltro">Otros</button>
+                                <button type="submit" name="filtroDeCategoria" value=1 class="col-2 botonStyle botonFiltro">Baño</button>
+                                <button type="submit" name="filtroDeCategoria" value=2 class="col-2 botonStyle botonFiltro">Cocina</button>
+                                <button type="submit" name="filtroDeCategoria" value=3 class="col-2 botonStyle botonFiltro">Decoración</button>
+                                <button type="submit" name="filtroDeCategoria" value=4 class="col-2 botonStyle botonFiltro">Otros</button>
     
                                 <input class="col-4 minMax" placeholder="Minimo" type="text" id="min" name="min">
                                 <input class="col-4 minMax" placeholder="Maximo" type="text" id="max" name="max">
@@ -91,12 +91,13 @@
                     <% for(let i = 0; i < productos.length; i++) { %>
                         
                         <div class="producto col-10 col-sm-6 col-lg-4 row">
+                            
                             <a href="/product/detail/<%= productos[i].id %>">
                             <div>
-                                <img class="col-12" src="/images/productos/<%= productos[i].imagen1 %>" alt="">
+                                <img class="col-12" src="/images/productos/<%= productos[i].imagenes[0].nombre %>" alt="">
                             </div>
                             <div class="productInfo col-12">
-                                <h4><%= productos[i].nombreProducto %></h4>
+                                <h4><%= productos[i].nombre %></h4>
 
                                 <h5 class="product-price"><%= productos[i].precio %></h5>
                                 <% if(productos[i].descuento != " "){ %>

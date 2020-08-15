@@ -5,7 +5,7 @@ const db = require('../database/models');
 
 
 //Traemos los productos de la DB
-function obtenerProductos(){
+async function obtenerProductos(){
     db.Producto.findAll()
     .then(function(listadoDeProductos){
         return listadoDeProductos.json()
@@ -15,21 +15,51 @@ function obtenerProductos(){
 
     //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
-    listarProductos: function(req, res){
+    listarProductos: async function(req, res){//Falta traer caetogiras p/poder filtrar
 
-        let productos = obtenerProductos();
-        if(req.session.idUsuario != undefined){
-            res.redirect('listadoDeProductos', {productos: productos, usuario : req.session.idUsuario});
-        }else{
-            res.render('listadoDeProductos', {productos: productos});
-        }
-
+        db.Producto.findAll({
+            include: [{association: 'imagenes'}]
+        })
+        .then(function(listadoDeProductos){
+            return listadoDeProductos
+        })
+        .then(function(productos){
+            if(req.session.idUsuario != undefined){
+                res.redirect('listadoDeProductos', {productos: productos, usuario : req.session.idUsuario});
+            }else{
+                res.render('listadoDeProductos', {productos: productos});
+            }
+        })
+        .catch(function(error) {
+            res.send(error)
+        })
         
     },
     formularioProductos: function(req, res){
         res.render('formularioProductos')
     },
     detail: function(req, res) {
+
+
+        db.Producto.findByPk(req.params.idProducto, {
+            include: [{association: 'imagenes'}]
+        })
+        .then(function(producto){
+            // return res.send(producto);
+            db.Producto.findAll({
+                include: [{association: 'imagenes'}]
+            })
+            .then(function(productos){
+                if(req.session.idUsuario != undefined){
+                    res.render('detalleDelProducto', {producto : producto,  usuario : req.session.idUsuario, productos: productos})
+                }else{
+                    res.render('detalleDelProducto', {producto : producto, productos: productos})
+                }
+            })
+            
+        })
+
+        /*
         let producto;
         for(let i = 0; i < productos.length; i++){
             if(productos[i].id == req.params.idProducto){
@@ -43,7 +73,7 @@ module.exports = {
         }else{
             res.render('detalleDelProducto', {producto : producto, productos: productos})
         }
-        
+        */
         
     },
     agregarACarrito : function(req, res){
@@ -52,6 +82,10 @@ module.exports = {
         res.send(req.body);
     },
     editarProducto : function(req, res){
+
+
+
+
         let producto;
         for(let i = 0; i < productos.length; i++){
             if(productos[i].id == req.params.idProducto){
@@ -88,17 +122,16 @@ module.exports = {
         }
     },
     crearProducto: function(req, res){
-
+        //return res.send(req.body)
         db.Producto.create({
             nombre: req.body.nombre,
-            precio: req.body.precio,
+            precio: Number(req.body.precio),
             stock: req.body.stock,
-            descuento: req.body.descuento,
+            descuento: Number(req.body.descuento),
             descripcion: req.body.descripcion,
             id_categoria: req.body.categoria
         })
         .then(function(nuevoProducto){
-
             let imagenes = req.files.map(elemento => {
                 return {
                     nombre: elemento.filename,
@@ -122,14 +155,9 @@ module.exports = {
                 }
             })
             db.Productos_sustentabilidad.bulkCreate(sustentabilidad);
-            
-            /* ARREGLAR RELACIONES*/
-            
 
         }).then(function(producto){
-            res.send(producto)
-            //res.redirect('/product/listadoDeProductos/');
-            // res.redirect('/')
+            res.redirect('/product/listadoDeProductos/');
         })
         .catch(function(error){
             res.send(error)
