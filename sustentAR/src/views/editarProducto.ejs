@@ -19,26 +19,26 @@
                         <div class="col-12">
                             <div class="row">
                                 <% if(producto.categoria == 'Decoracion') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" checked>Deco.</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="3" checked>Deco.</span>
                                 <% } else { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Decoracion" >Deco.</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="3" >Deco.</span>
                                 <% } %>
                                 <% if(producto.categoria == 'Baño') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio" checked>Baño</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="1" checked>Baño</span>
                                 <% } else { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Banio">Baño</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="1">Baño</span>
                                 <% } %>  
 
                                 <% if(producto.categoria == 'Cocina') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina" checked>Cocina</span>                      
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="2" checked>Cocina</span>                      
                                 <% } else {%> 
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Cocina">Cocina</span>  
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="2">Cocina</span>  
                                 <% } %> 
                                 
                                 <% if(producto.categoria == 'Otros') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros" checked>Otros</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="4" checked>Otros</span>
                                 <% } else {%> 
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="Otros">Otros</span>  
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="4">Otros</span>  
                                 <% } %>
                             </div>
                         </div>
@@ -97,74 +97,74 @@
                                 <div class="row">
                                     <label class="col-12" for="colores" id="colores">Colores</label>
                                     <div class="col-5 col-sm-3 formColorDiv">
-                                        <% if(producto.colores == "azul") { %>
-                                            <input type="checkbox" id="color-azul" name="color-azul" value="azul" checked>
+                                        <% if(producto.colores == "amarillo") { %>
+                                            <input type="checkbox" id="color-amarillo" name="color-amarillo" value="1" checked>
                                         <% } else { %>
-                                            <input type="checkbox" id="color-azul" name="color-azul" value="azul">
+                                            <input type="checkbox" id="color-amarillo" name="color-amarillo" value="1">
+                                        <% } %>
+                                        <label for="color-amarillo">Amarillo</label>
+                                    </div>
+                                    <div class="col-5 col-sm-3 formColorDiv">
+                                        <% if(producto.colores == "azul") { %>
+                                            <input type="checkbox" id="color-azul" name="color-azul" value="2" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-azul" name="color-azul" value="2">
                                         <% } %>
                                         <label for="color-azul">Azul</label>
                                     </div>
                                     <div class="col-5 col-sm-3 formColorDiv">
-                                        <% if(producto.colores == "rojo") { %>
-                                            <input type="checkbox" id="color-rojo" name="color-rojo" value="rojo" checked>>
+                                        <% if(producto.colores == "blanco") { %>
+                                            <input type="checkbox" id="color-blanco" name="color-blanco" value="3" checked>
                                         <% } else { %>
-                                            <input type="checkbox" id="color-rojo" name="color-rojo" value="rojo">  
+                                            <input type="checkbox" id="color-blanco" name="color-blanco" value="3">
+                                        <% } %>
+                                        <label for="color-blanco">Blanco</label>
+                                    </div>
+                                    <div class="col-5 col-sm-3 formColorDiv">
+                                        <% if(producto.colores == "marron") { %>
+                                            <input type="checkbox" id="color-marron" name="color-marron" value="4" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-marron" name="color-marron" value="4">
+                                        <% } %>
+                                        <label for="color-marron">Marron</label>
+                                    </div>
+                                    <div class="col-5 col-sm-3 formColorDiv">
+                                        <% if(producto.colores == "negro") { %>
+                                            <input type="checkbox" id="color-negro" name="color-negro" value="5" checked>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-negro" name="color-negro" value="5">
+                                        <% } %>
+                                        <label for="color-negro">Negro</label>
+                                    </div>
+                                    <div class="col-5 col-sm-3 formColorDiv">
+                                        <% if(producto.colores == "rojo") { %>
+                                            <input type="checkbox" id="color-rojo" name="color-rojo" value="6" checked>>
+                                        <% } else { %>
+                                            <input type="checkbox" id="color-rojo" name="color-rojo" value="6">  
                                         <% } %>
                                         <label for="color-rojo">Rojo</label>
                                     </div>
                                     <div class="col-5 col-sm-3 formColorDiv">
                                         <% if(producto.colores == "Rosa") { %>
-                                            <input type="checkbox" id="color-rosa" name="color-rosa" value="rosa" checked>
+                                            <input type="checkbox" id="color-rosa" name="color-rosa" value="7" checked>
                                         <% } else { %>
-                                            <input type="checkbox" id="color-rosa" name="color-rosa" value="rosa">
+                                            <input type="checkbox" id="color-rosa" name="color-rosa" value="7">
                                         <% } %>
                                         <label for="color-rosa">Rosa</label>
                                     </div>
                                     <div class="col-5 col-sm-3 formColorDiv">
-                                        <% if(producto.colores == "amarillo") { %>
-                                            <input type="checkbox" id="color-amarillo" name="color-amarillo" value="Amarillo" checked>
-                                        <% } else { %>
-                                            <input type="checkbox" id="color-amarillo" name="color-amarillo" value="Amarillo">
-                                        <% } %>
-                                        <label for="color-amarillo">Amarillo</label>
-                                    </div>
-                                    <div class="col-5 col-sm-3 formColorDiv">
                                         <% if(producto.colores == "verde") { %>
-                                            <input type="checkbox" id="color-verde" name="color-verde" value="verde" checked>
+                                            <input type="checkbox" id="color-verde" name="color-verde" value="8" checked>
                                         <% } else { %>   
-                                            <input type="checkbox" id="color-verde" name="color-verde" value="verde">
+                                            <input type="checkbox" id="color-verde" name="color-verde" value="8">
                                         <% } %>
                                         <label for="color-verde">Verde</label>
                                     </div>
                                     <div class="col-5 col-sm-3 formColorDiv">
-                                        <% if(producto.colores == "blanco") { %>
-                                            <input type="checkbox" id="color-blanco" name="color-blanco" value="blanco" checked>
-                                        <% } else { %>
-                                            <input type="checkbox" id="color-blanco" name="color-blanco" value="blanco">
-                                        <% } %>
-                                        <label for="color-blanco">Blanco</label>
-                                    </div>
-                                    <div class="col-5 col-sm-3 formColorDiv">
-                                        <% if(producto.colores == "negro") { %>
-                                            <input type="checkbox" id="color-negro" name="color-negro" value="negro" checked>
-                                        <% } else { %>
-                                            <input type="checkbox" id="color-negro" name="color-negro" value="negro">
-                                        <% } %>
-                                        <label for="color-negro">Negro</label>
-                                    </div>
-                                    <div class="col-5 col-sm-3 formColorDiv">
-                                        <% if(producto.colores == "marron") { %>
-                                            <input type="checkbox" id="color-marron" name="color-marron" value="marron" checked>
-                                        <% } else { %>
-                                            <input type="checkbox" id="color-marron" name="color-marron" value="marron">
-                                        <% } %>
-                                        <label for="color-marron">Marron</label>
-                                    </div>
-                                    <div class="col-5 col-sm-3 formColorDiv">
                                         <% if(producto.colores == "otro") { %>
-                                            <input type="checkbox" id="color-otro" name="color-otro" value="otro" checked>
+                                            <input type="checkbox" id="color-otro" name="color-otro" value="9" checked>
                                         <% } else { %>
-                                            <input type="checkbox" id="color-otro" name="color-otro" value="otro">
+                                            <input type="checkbox" id="color-otro" name="color-otro" value="9">
                                         <% } %>
                                         <label for="color-otro">Otro</label>
                                     </div>
@@ -176,27 +176,27 @@
                                 <div class="row">
                                     <label class="col-12">Categoria</label>
     
-                                    <p class='col-6 col-md-4'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='Vegano'
+                                    <p class='col-6 col-md-4'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='4'
                                         <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
-                                            <%= (producto.sustentabilidad[i] == 'Vegano') ? 'checked' : '' %>
+                                            <%= (producto.sustentabilidad[i] == 4) ? 'checked' : '' %>
                                         <% } %>  
                                     >Vegano</p>
     
-                                    <p class='col-6 col-md-6'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='Cruelty-free'
+                                    <p class='col-6 col-md-6'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='1'
                                         <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
-                                            <%= (producto.sustentabilidad[i] == 'Cruelty-free') ? 'checked' : '' %>
+                                            <%= (producto.sustentabilidad[i] == 1) ? 'checked' : '' %>
                                         <% } %>  
                                     >Cruelty-free</p>
     
-                                    <p class='col-6 col-md-4'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='fair-trade'
+                                    <p class='col-6 col-md-4'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='3'
                                         <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
-                                            <%= (producto.sustentabilidad[i] == 'fair-trade') ? 'checked' : '' %>
+                                            <%= (producto.sustentabilidad[i] == '3') ? 'checked' : '' %>
                                         <% } %>  
                                     >Fair-trade</p>
                                         
-                                    <p class='col-6 col-md-6'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='Envoltorio-sustentable'
+                                    <p class='col-6 col-md-6'><input class='inputStyle' type='checkbox' name='sustentabilidad' value='2'
                                         <% for(let i = 0 ; i < producto.sustentabilidad.length; i++) { %>
-                                            <%= (producto.sustentabilidad[i] == 'Envoltorio-sustentable') ? 'checked' : '' %>
+                                            <%= (producto.sustentabilidad[i] == 2) ? 'checked' : '' %>
                                         <% } %>  
                                     >Envoltorio-sustentable</p>
                                 </div> 

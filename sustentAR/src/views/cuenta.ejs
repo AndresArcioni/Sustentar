@@ -22,7 +22,7 @@
                         <h3><%= usuario.nombre + " " + usuario.apellido %></h3>
                         <p><%= usuario.email %></p>
                         <p><%= usuario.dni %> </p>
-                        <p><%= usuario.domicilio + " " + usuario.epartamento %> 
+                        <p><%= usuario.domicilio + " " + usuario.departamento %> 
                         </p>
                         <p><%= usuario.entre_calles %> </p>
                         <p><%= usuario.codigo_postal + " " + usuario.ciudad %></p>
@@ -59,36 +59,36 @@
                         </div>
                         
                         <div class="col-12 col-sm-12 form-div row">
-                            <label class="etiqueta col-12" for="direccion">Dirección</label>
-                            <input class="inputStyle campo col-10" type="text" name="direccion" placeholder="Direccion" value="<%= usuario.direccion %>">
+                            <label class="etiqueta col-12" for="domicilio">Dirección</label>
+                            <input class="inputStyle campo col-10" type="text" name="domicilio" placeholder="Direccion" value="<%= usuario.domicilio %>">
                         </div>
                         
                         <div class="form-div col-7 col-sm-6 row">
-                            <label class="etiqueta col-12" for="cp">C.P.</label>
-                            <input class="inputStyle campo col-10" type="text" name="codigoPostal" placeholder="C.P." value="<%= usuario.codigoPostal %>">
+                            <label class="etiqueta col-12" for="codigo_postal">C.P.</label>
+                            <input class="inputStyle campo col-10" type="text" name="codigo_postal" placeholder="C.P." value="<%= usuario.codigo_postal %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">
-                            <label class="etiqueta col-12" for="entreCalles">Entre Calles</label>
-                            <input class="inputStyle campo col-10" type="text" name="entreCalles" placeholder="Entre Calles" value="<%= usuario.entreCalles %>">
+                            <label class="etiqueta col-12" for="entre_calles">Entre Calles</label>
+                            <input class="inputStyle campo col-10" type="text" name="entre_calles" placeholder="Entre Calles" value="<%= usuario.entre_calles %>">
                         </div>
                         
                         <div class="col-12 col-lg-6 form-div row">
-                            <label class="etiqueta col-12" for="depto" ">Departamento, piso, etc</label>
-                            <input class="inputStyle campo col-10" type="text" name="depto" placeholder="Departamento, piso, ect" value="<%= usuario.depto %>">
+                            <label class="etiqueta col-12" for="departamento" >Departamento, piso, etc</label>
+                            <input class="inputStyle campo col-10" type="text" name="departamento" placeholder="Departamento, piso, ect" value="<%= usuario.departamento %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">
                             <label class="etiqueta col-12" for="telefono">Telefono 
                             </label>
-                            <input class="inputStyle campo col-10" type="text" name="nroTelefono" placeholder="110000000" value="<%= usuario.nroTelefono %>">
+                            <input class="inputStyle campo col-10" type="text" name="telefono" placeholder="110000000" value="<%= usuario.telefono %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">
-                            <img class="col-12" src="/images/usuarios/<%= usuario.avatar %> " alt="">
-                            <label class="etiqueta col-12" for="avatar">Avatar 
+                            <img class="col-12" src="/images/usuarios/<%= usuario.imagen_usuario %> " alt="">
+                            <label class="etiqueta col-12" for="imagen_usuario">Avatar 
                             </label>
-                            <input class="inputStyle campo col-10" type="file" name="avatar">
+                            <input class="inputStyle campo col-10" type="file" name="imagen_usuario">
                         </div>
 
                         <div class="col-12 col-sm-12 form-div row d-inline-flex justify-content-center">

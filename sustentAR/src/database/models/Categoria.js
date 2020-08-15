@@ -1,0 +1,30 @@
+module.exports = (sequelize, DataTypes) => {
+    let alias = 'Categoria'
+    let cols = {
+        id : {
+        type: DataTypes.INTEGER(10).UNSIGNED,
+        primaryKey: true,
+        autoIncrement: true,
+        unique: true
+        },
+        nombre : {
+            type: DataTypes.STRING(150)
+        }
+    }
+    let config = {
+        tablename:'categorias',
+        timestamps: false
+    }
+    const Categoria = sequelize.define(alias, cols, config)
+    
+    Categoria.associate = function(models){
+        Categoria.belongsToMany(models.Producto, {
+            as: 'productos',
+            through: 'productos_categoria',
+            foreignKey: 'id_categoria',
+            otherKey: 'id'
+        })
+    }
+
+    return Categoria;
+}

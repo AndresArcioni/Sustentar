@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'ProductoSustentabilidad'
+    let alias = 'ProductoCategoria'
     let cols = {
         id:{
             type: DataTypes.INTEGER(10).UNSIGNED,
@@ -11,18 +11,18 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.INTEGER(10).UNSIGNED,
           allowNull : false
         },
-        id_sustentabilidad: {
+        id_categoria: {
           type: DataTypes.INTEGER(10).UNSIGNED,
           allowNull : false
         }
     }
     let config = {
-        tablename: 'productos_sustentabilidad',
+        tablename: 'productos_categorias',
         timestamps: false,
         underscores: true
     }
     
-    const Productos_sustentabilidad = sequelize.define(alias, cols, config);
+    const Productos_categoria = sequelize.define(alias, cols, config);
 
-    return Productos_sustentabilidad
+    return Productos_categoria;
 }
