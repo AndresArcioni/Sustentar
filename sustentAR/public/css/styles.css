@@ -450,7 +450,11 @@ FORMULARIO DE PRODUCTOS =====================
 
 .titulo-imagenes{
     text-align: center;
-    margin: 0;
+    margin: 5px;
+}
+
+.imagenes input{
+    margin: 10px;
 }
 
 
@@ -495,6 +499,12 @@ CONTAINER DATOS =====================
 .datos-productos-container form div label{
    font-size: 12px;
    padding-top: 5px;
+}
+
+
+
+.datos-productos-container div{
+    margin: 5px;
 }
 
 .datos-productos-container form div select{

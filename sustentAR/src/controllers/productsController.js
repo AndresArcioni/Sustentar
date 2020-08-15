@@ -127,8 +127,9 @@ module.exports = {
             
 
         }).then(function(producto){
+            res.send(producto)
             //res.redirect('/product/listadoDeProductos/');
-            res.redirect('/')
+            // res.redirect('/')
         })
         .catch(function(error){
             res.send(error)

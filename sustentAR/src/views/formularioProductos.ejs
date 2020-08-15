@@ -14,7 +14,7 @@
             <article class="col-10 categoria-container">
                 
         <form action="" method="POST" class="row" id="form-categoria" enctype="multipart/form-data">
-            <div> 
+            <div class="row  d-flex justify-content-center"> 
                    <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
                   
                    <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="1">Baño</p>
@@ -32,32 +32,32 @@
                 </h3>
 
                 <div class="datos-productos-container">
-                    <div>                  
+                    <div class="row  d-flex justify-content-center">                  
                         
-                        <div class="col-6 row "> 
+                        <div class="col-8 col-lg-6 row "> 
                             <label class="col-12" for="">Nombre</label>
                             <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombre">
                         </div>    
-                        <div class="col-3 col-lg-5 row "> 
+                        <div class="col-6 col-lg-5 row "> 
                             <label class="col-12" for="">Precio</label>
                             <input class="inputStyle col-11" type="text" id="" placeholder="$Precio..." name="precio">
                         </div>
-                        <div class="col-5 col-lg-5 row "> 
+                        <div class="col-6 col-lg-5 row "> 
                             <label class="col-12" for="">Stock</label>
                             <input class="inputStyle col-11" type="text" id="stock" placeholder="Stock..." name="stock">
                         </div>    
-                        <div class="col-5  col-lg-5 row "> 
+                        <div class="col-6  col-lg-5 row "> 
                             <label class="col-12" for="">Descuento</label>
                             <input class="inputStyle col-11" type="text" id="" placeholder="Descuento %..." name="descuento">
                         </div>                          
-                        <div class="col-10 row">
+                        <div class="col-11 row">
                             <label class="col-12" for="">Descripción</label>
                             <textarea class="inputStyle col-11" name="descripcion" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"></textarea>
                         </div>
                         
                         <div class="col-12">
                             <!--name="colores" id="colores"-->
-                            <div class="row">
+                            <div class="row d-flex justify-content-center">
                                 <label class="col-12" for="colores" id="colores">Colores</label>
                                 <div class="col-5 col-sm-3 formColorDiv">
                                     <input type="checkbox" id="color-amarillo" name="color" value="1">                                              
@@ -98,15 +98,16 @@
                             </div>
                         </div>
 
-                        <div class="col-12 sustentabilidad row">                            
-                            <p class="col-5 col-lg-3"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=1>Cruelty Free</p>
-                            <p class="col-5 col-lg-3"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=2>Envoltorio Sustentable</p>
-                            <p class="col-5 col-lg-3"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=3>Fair Trade</p>
-                            <p class="col-5 col-lg-3"><input class="inputStyle" type="checkbox" name="sustentabilidad" value=4>Vegano</p>
+                        <div class="col-12 sustentabilidad row d-flex justify-content-space-evenly">
+                            <label class="col-12" for="sustentabilidad" id="sustentabilidad">Sustentabilidad</label>                            
+                            <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=1>Cruelty Free</p>
+                            <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=2>Envoltorio Sustentable</p>
+                            <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=3>Fair Trade</p>
+                            <p class="col-5 col-lg-5"><input class="inputStyle" type="checkbox" name="sustentabilidad" value=4>Vegano</p>
                             
                         </div>
 
-                        <div class="col-12 row">
+                        <div class="imagenes col-12 row d-flex justify-content-center">
                             <label class="col-12" for="">
                                 <h4 class="titulo-imagenes">Añadir imágenes</h4>
                             </label>
