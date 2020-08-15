@@ -16,30 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `carrito`
---
-
-DROP TABLE IF EXISTS `carrito`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `carrito` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `total` decimal(6,2) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `carrito`
---
-
-LOCK TABLES `carrito` WRITE;
-/*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `carrito_productos`
 --
 
@@ -48,14 +24,14 @@ DROP TABLE IF EXISTS `carrito_productos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `carrito_productos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_producto` int(10) unsigned NOT NULL,
-  `id_carrito` int(10) unsigned NOT NULL,
+  `id_producto` int(10) unsigned DEFAULT NULL,
+  `id_carrito` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `id_producto` (`id_producto`),
   KEY `id_carrito` (`id_carrito`),
   CONSTRAINT `carrito_productos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`),
-  CONSTRAINT `carrito_productos_ibfk_2` FOREIGN KEY (`id_carrito`) REFERENCES `carrito` (`id`)
+  CONSTRAINT `carrito_productos_ibfk_2` FOREIGN KEY (`id_carrito`) REFERENCES `carritos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -66,6 +42,56 @@ CREATE TABLE `carrito_productos` (
 LOCK TABLES `carrito_productos` WRITE;
 /*!40000 ALTER TABLE `carrito_productos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `carrito_productos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carritos`
+--
+
+DROP TABLE IF EXISTS `carritos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carritos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `total` decimal(6,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carritos`
+--
+
+LOCK TABLES `carritos` WRITE;
+/*!40000 ALTER TABLE `carritos` DISABLE KEYS */;
+INSERT INTO `carritos` VALUES (1,0.00);
+/*!40000 ALTER TABLE `carritos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categorias`
+--
+
+DROP TABLE IF EXISTS `categorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categorias` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categorias`
+--
+
+LOCK TABLES `categorias` WRITE;
+/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'Baño'),(2,'Cocina'),(3,'Decoracion'),(4,'Otros');
+/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -80,7 +106,7 @@ CREATE TABLE `colores` (
   `nombre` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,6 +115,7 @@ CREATE TABLE `colores` (
 
 LOCK TABLES `colores` WRITE;
 /*!40000 ALTER TABLE `colores` DISABLE KEYS */;
+INSERT INTO `colores` VALUES (1,'Amarillo'),(2,'Azul'),(3,'Blanco'),(4,'Marron'),(5,'Negro'),(6,'Rojo'),(7,'Rosa'),(8,'Verde'),(9,'Otro');
 /*!40000 ALTER TABLE `colores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,8 +131,8 @@ CREATE TABLE `historial_compras` (
   `id_carrito` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_carrito` (`id_carrito`),
-  CONSTRAINT `historial_compras_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `carrito` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `historial_compras_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `carritos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,6 +141,7 @@ CREATE TABLE `historial_compras` (
 
 LOCK TABLES `historial_compras` WRITE;
 /*!40000 ALTER TABLE `historial_compras` DISABLE KEYS */;
+INSERT INTO `historial_compras` VALUES (1,1);
 /*!40000 ALTER TABLE `historial_compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,9 +186,12 @@ CREATE TABLE `productos` (
   `stock` int(10) NOT NULL,
   `descuento` int(10) DEFAULT NULL,
   `descripcion` text NOT NULL,
+  `id_categoria` int(10) unsigned NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `id_categoria` (`id_categoria`),
+  CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -251,7 +282,7 @@ CREATE TABLE `sequelizemeta` (
 
 LOCK TABLES `sequelizemeta` WRITE;
 /*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
-INSERT INTO `sequelizemeta` VALUES ('001-carrito.js'),('002-sustentabilidad.js'),('003-colores.js'),('004-historial_compras.js'),('005-usuarios.js'),('006-productos.js'),('007-imagen_productos.js'),('008-productos_colores.js'),('009-productos_sustentabilidad.js'),('010-carrito_productos.js');
+INSERT INTO `sequelizemeta` VALUES ('001-carritos.js'),('002-sustentabilidad.js'),('003-categorias.js'),('004-colores.js'),('005-historial_compras.js'),('006-usuarios.js'),('007-productos.js'),('008-imagen_productos.js'),('009-productos_colores.js'),('010-productos_sustentabilidad.js'),('011-carrito_productos.js');
 /*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +298,7 @@ CREATE TABLE `sustentabilidad` (
   `nombre` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,6 +307,7 @@ CREATE TABLE `sustentabilidad` (
 
 LOCK TABLES `sustentabilidad` WRITE;
 /*!40000 ALTER TABLE `sustentabilidad` DISABLE KEYS */;
+INSERT INTO `sustentabilidad` VALUES (1,'Cruelty Free'),(2,'Envoltorio Sustentable'),(3,'Fair Trade'),(4,'Vegano');
 /*!40000 ALTER TABLE `sustentabilidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,9 +342,9 @@ CREATE TABLE `usuarios` (
   UNIQUE KEY `email` (`email`),
   KEY `carrito_id` (`carrito_id`),
   KEY `historial_compras_id` (`historial_compras_id`),
-  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carrito` (`id`),
+  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carritos` (`id`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`historial_compras_id`) REFERENCES `historial_compras` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,6 +353,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,0,'Admin','admin ','admin@gmail.com','$2a$10$RXUVA7gOH1AQ3UqZjRBj9ez8Aicl219ir4sf.ei7zdoq7/kEzVguC',0,' ',0,' 123',' ',' ',0,'admin@gmail.com-1597461064407.JPG',1,1,'2020-08-15 03:10:36','2020-08-15 03:11:04');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -333,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-11 19:20:57
+-- Dump completed on 2020-08-15  0:26:39

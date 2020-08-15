@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'ProductoColor'
+    let alias = 'Productos_colores'
     let cols = {
         id: {
             type: DataTypes.INTEGER(10).UNSIGNED,
@@ -19,10 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     let config = {
         tablename: 'productos_colores',
         timestamps: false,
-        underscores: true
+        underscored: true,
+        freezeTableName: true
     }
     
-    const Productos_Colores = sequelize.define(alias, cols, config);
+    const Producto_color = sequelize.define(alias, cols, config);
 
-    return Productos_Colores;
+    return Producto_color;
 }
