@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tablename:'sustentabilidad',
+        tableName:'sustentabilidad',
         timestamps: false
     }
     const Sustentabilidad = sequelize.define(alias, cols, config)

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tablename : 'historial_compras',
+        tableName : 'historial_compras',
         timestamps : false
     }
     const Historial_compras = sequelize.define(alias, cols, config);

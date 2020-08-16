@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tablename: 'productos_sustentabilidad',
+        tableName: 'productos_sustentabilidad',
         timestamps: false,
         underscored: true,
         freezeTableName: true

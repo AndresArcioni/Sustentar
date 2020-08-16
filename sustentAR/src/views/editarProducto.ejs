@@ -18,27 +18,27 @@
                         <h3 class="titulo-articulo">Seleccione la categoría del producto</h3>
                         <div class="col-12">
                             <div class="row">
-                                <% if(producto.categoria == 'Decoracion') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="3" checked>Deco.</span>
+                                <% if(producto.categoria.nombre == 'Decoracion') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=3 checked>Deco.</span>
                                 <% } else { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="3" >Deco.</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=3 >Deco.</span>
                                 <% } %>
-                                <% if(producto.categoria == 'Baño') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="1" checked>Baño</span>
+                                <% if(producto.categoria.nombre == 'Baño') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=1 checked>Baño</span>
                                 <% } else { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="1">Baño</span>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=1>Baño</span>
                                 <% } %>  
 
-                                <% if(producto.categoria == 'Cocina') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="2" checked>Cocina</span>                      
+                                <% if(producto.categoria.nombre == 'Cocina') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=2 checked>Cocina</span>                      
                                 <% } else {%> 
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="2">Cocina</span>  
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=2>Cocina</span>  
                                 <% } %> 
                                 
-                                <% if(producto.categoria == 'Otros') { %>
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="4" checked>Otros</span>
+                                <% if(producto.categoria.nombre == 'Otros') { %>
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=4 checked>Otros</span>
                                 <% } else {%> 
-                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value="4">Otros</span>  
+                                    <span class="col-5 col-lg-3"><input type="radio" name="categoria" value=4>Otros</span>  
                                 <% } %>
                             </div>
                         </div>
@@ -72,14 +72,14 @@
                             <div class="col-10 col-md-2">
                                 <div class="row">
                                     <label class="col-12" for="">Stock</label>
-                                    <input class="inputStyle col-6 col-md-11" type="text" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %>">
+                                    <input class="inputStyle col-6 col-md-11" type="number" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %>">
                                 </div>
                             </div>    
                             <div class="col-10 col-md-2">
                                 <div class="row">
                                     <label class="col-12" for="">Descuento</label>
                                     <% if(producto.descuento == " "){ %> 
-                                        <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="Descuento %..." name="descuento" value=" ">
+                                        <input class="inputStyle col-6 col-md-11" type="number" id="" placeholder="Descuento %..." name="descuento" value=" ">
                                     <% } else {%> 
                                         <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %>">
                                     <% } %>

@@ -45,7 +45,6 @@ module.exports = {
             include: [{association: 'imagenes'}]
         })
         .then(function(producto){
-            // return res.send(producto);
             db.Producto.findAll({
                 include: [{association: 'imagenes'}]
             })
@@ -58,22 +57,6 @@ module.exports = {
             })
             
         })
-
-        /*
-        let producto;
-        for(let i = 0; i < productos.length; i++){
-            if(productos[i].id == req.params.idProducto){
-                producto = productos[i];
-            }
-        }
-
-        let usuario = validarUsuario(req, res);
-        if(usuario){
-            res.render('detalleDelProducto', {producto : producto, usuario : usuario, productos: productos})
-        }else{
-            res.render('detalleDelProducto', {producto : producto, productos: productos})
-        }
-        */
         
     },
     agregarACarrito : function(req, res){
@@ -84,9 +67,22 @@ module.exports = {
     editarProducto : function(req, res){
 
 
+        db.Producto.findByPk(req.params.idProducto,{
+            include: [{association: 'imagenes'}, {association: 'colores'}/*,{model: 'Color'}/*, {association: 'sustentabilidad'}*/]
+        })
+        .then(function(producto) {
+            return res.send(producto)
+            if(req.session.idUsuario != undefined){
+                res.render('editarProducto', {producto: producto, usuario : req.session.idUsuario})
+            }else{
+                res.render('editarProducto', {producto: producto})
+            }            
+        })
+        .catch(function(error){
+            res.send(error)
+        })
 
-
-        let producto;
+        /*let producto;
         for(let i = 0; i < productos.length; i++){
             if(productos[i].id == req.params.idProducto){
                 producto = productos[i];
@@ -98,7 +94,7 @@ module.exports = {
             res.render('editarProducto', {producto: producto, usuario : usuario})
         }else{
             res.render('editarProducto', {producto: producto})
-        }
+        }*/
     },
     actualizarProducto : function(req, res){
         
@@ -157,6 +153,7 @@ module.exports = {
             db.Productos_sustentabilidad.bulkCreate(sustentabilidad);
 
         }).then(function(producto){
+            res.send(producto)
             res.redirect('/product/listadoDeProductos/');
         })
         .catch(function(error){

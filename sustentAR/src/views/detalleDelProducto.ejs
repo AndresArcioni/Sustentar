@@ -76,8 +76,8 @@
                     
                     <% for(let i = 0 ; i < productos.length ; i++){ %> 
                     <a href="/product/detail/<%= productos[i].id %> ">
-                    <img src="/images/productos/<%= productos[i].imagen1 %> " alt="">
-                    <p><%= productos[i].nombreProducto %> </p>
+                    <img src="/images/productos/<%= productos[i].imagenes[0].nombre %> " alt="">
+                    <p><%= productos[i].nombre %> </p>
                     <p><button>Ver</button></p>
                     </a>
                     <% } %> 

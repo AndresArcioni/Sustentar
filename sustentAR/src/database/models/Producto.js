@@ -28,11 +28,12 @@ module.exports = (sequelize, DataTypes) => {
         id_categoria: {
           type : DataTypes.INTEGER(10),
           allowNull : false,
-        }
-        
+        },
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE
     }
     let config = {
-        tablename: 'productos',
+        tableName: 'productos',
         timestamps: true,
         underscored: true
     }
@@ -50,9 +51,9 @@ module.exports = (sequelize, DataTypes) => {
       })
       Productos.belongsToMany(models.Color, {
         as: 'colores',
-        through: 'producto_colores',
-        foreignKey: 'id_colores',
-        otherKey: 'id'
+        through: 'productos_colores',
+        foreignKey: 'id_producto',
+        otherKey: 'id_colores'
       })
       Productos.belongsToMany(models.Sustentabilidad, {
         as: 'sustentabilidad',

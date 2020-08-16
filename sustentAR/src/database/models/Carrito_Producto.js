@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tablename: 'carrito_productos',
+        tableName: 'carrito_productos',
         timestamps: false,
         underscored: true
     }
