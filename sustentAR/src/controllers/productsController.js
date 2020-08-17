@@ -25,6 +25,7 @@ module.exports = {
         })
         .then(function(productos){
             if(req.session.idUsuario != undefined){
+                return res.send(productos);
                 res.redirect('listadoDeProductos', {productos: productos, usuario : req.session.idUsuario});
             }else{
                 res.render('listadoDeProductos', {productos: productos});
@@ -66,12 +67,27 @@ module.exports = {
     },
     editarProducto : function(req, res){
 
-
         db.Producto.findByPk(req.params.idProducto,{
-            include: [{association: 'imagenes'}, {association: 'colores'}/*,{model: 'Color'}/*, {association: 'sustentabilidad'}*/]
+            include: [
+                {association: 'imagenes'},
+                {
+                    model: db.Color,
+                    as: 'colores',
+                    through: {
+                      model: db.Producto_color
+                    }
+                },
+                {
+                    model: db.Sustentabilidad,
+                    as: 'sustentabilidad',
+                    through: {
+                      model: db.Producto_sustentabilidad
+                    }
+                }
+            ]
         })
         .then(function(producto) {
-            return res.send(producto)
+            //return res.send(producto)
             if(req.session.idUsuario != undefined){
                 res.render('editarProducto', {producto: producto, usuario : req.session.idUsuario})
             }else{
@@ -97,7 +113,8 @@ module.exports = {
         }*/
     },
     actualizarProducto : function(req, res){
-        
+        return res.send(req.body);
+        /*
         for (let i = 0; i < productos.length; i++){
             if(req.params.idProducto == productos[i].id){
                 let productoActualizado = {
@@ -115,7 +132,7 @@ module.exports = {
                 }
                 productos[i] = productoActualizado;
             }
-        }
+        }*/
     },
     crearProducto: function(req, res){
         //return res.send(req.body)
@@ -136,25 +153,66 @@ module.exports = {
             })
             db.Imagen_producto.bulkCreate(imagenes);
 
-            let colores = req.body.color.map(elemento => {
-                return {
-                    id_producto: nuevoProducto.id,
-                    id_colores: elemento
-                }
-            })
-            db.Productos_colores.bulkCreate(colores)
+            let arrSustConverter = [];
+            if (req.body.sustentabilidad.length == 1){
+                arrSustConverter.push(req.body.sustentabilidad);
 
-            let sustentabilidad = req.body.sustentabilidad.map(elemento => {
-                return {
-                    id_producto: nuevoProducto.id,
-                    id_sustentabilidad: elemento
-                }
-            })
-            db.Productos_sustentabilidad.bulkCreate(sustentabilidad);
+                let sust = arrSustConverter.map(elemento => {
+                    return {
+                        id_producto: nuevoProducto.id,
+                        id_sustentabilidad: elemento
+                    }
+                })
+                db.Producto_sustentabilidad.bulkCreate(sust); 
+            }else{
+                let sust = req.body.sustentabilidad.map(elemento => {
+                    return {
+                        id_producto: nuevoProducto.id,
+                        id_sustentabilidad: elemento
+                    }
+                })
+                db.Producto_sustentabilidad.bulkCreate(sust);
+            }
+/*
+            let sustentabilidad = [];
+            if(req.body.sustentabilidad.length == 1){
+                sustentabilidad.push(req.body.sustentabilidad);
+            }else{
+                sustentabilidad = req.body.sustentabilidad.map(elemento => {
+                    return {
+                        id_producto: nuevoProducto.id,
+                        id_sustentabilidad: elemento
+                    }
+                })
+            }
+            db.Productos_sustentabilidad.bulkCreate(sustentabilidad);*/
+            
+            //CAMBIAR COLOR COMO SUSTENTABILIDAD
+            let arrColorConverter = [];
+            if (req.body.color.length == 1){
+                arrColorConverter.push(req.body.color);
+
+                let color = arrColorConverter.map(elemento => {
+                    return {
+                        id_producto: nuevoProducto.id,
+                        id_colores: elemento
+                    }
+                })
+                db.Producto_color.bulkCreate(color); 
+            }else{
+                let color = req.body.color.map(elemento => {
+                    return {
+                        id_producto: nuevoProducto.id,
+                        id_colores: elemento
+                    }
+                })
+                db.Producto_color.bulkCreate(color);
+            }
+       
+          
 
         }).then(function(producto){
-            res.send(producto)
-            res.redirect('/product/listadoDeProductos/');
+            res.redirect('/product/listadoDeProductos');
         })
         .catch(function(error){
             res.send(error)
@@ -166,7 +224,6 @@ module.exports = {
             if(elemento.id == req.params.idProducto) {
                 productos.splice(productos.indexOf(elemento), 1)
                 fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
-        
         }})
         //PARA BORRAR LA IMAGEN AL BORRAR EL PRODUCTO
         //fs.unlinkSync(path.join(ruta de la imagen, nombre de la imagen));

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Productos_sustentabilidad'
+    let alias = 'Producto_sustentabilidad'
     let cols = {
         id:{
             type: DataTypes.INTEGER(10).UNSIGNED,
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true
     }
     
-    const Productos_sustentabilidad = sequelize.define(alias, cols, config);
+    const Producto_sustentabilidad = sequelize.define(alias, cols, config);
 
-    return Productos_sustentabilidad
+    return Producto_sustentabilidad
 }

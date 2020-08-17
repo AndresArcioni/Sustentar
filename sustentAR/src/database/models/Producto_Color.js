@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     let config = {
         tableName: 'productos_colores',
         timestamps: false,
-        underscored: true,
-        freezeTableName: true
+        underscored: true/*,
+        freezeTableName: true*/
     }
     
     const Producto_color = sequelize.define(alias, cols, config);

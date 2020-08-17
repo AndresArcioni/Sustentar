@@ -37,31 +37,31 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
         underscored: true
     }
-    const Productos = sequelize.define(alias, cols, config)
+    const Producto = sequelize.define(alias, cols, config)
 
-    Productos.associate = function(models){
+    Producto.associate = function(models){
       
-      Productos.hasMany(models.Imagen_producto, {
+      Producto.hasMany(models.Imagen_producto, {
           as : 'imagenes',
           foreignKey: 'id_producto'
       })
-      Productos.belongsTo(models.Categoria, {
+      Producto.belongsTo(models.Categoria, {
         as: 'categorias',
         foreignKey: 'id_categoria'
       })
-      Productos.belongsToMany(models.Color, {
+      Producto.belongsToMany(models.Color, {
         as: 'colores',
         through: 'productos_colores',
         foreignKey: 'id_producto',
         otherKey: 'id_colores'
       })
-      Productos.belongsToMany(models.Sustentabilidad, {
+      Producto.belongsToMany(models.Sustentabilidad, {
         as: 'sustentabilidad',
         through: 'productos_sustentabilidad',
         foreignKey: 'id_producto',
         otherKey: 'id'
       })
-      Productos.belongsToMany(models.Carrito, {
+      Producto.belongsToMany(models.Carrito, {
         as: 'carrito',
         through: 'carrito_productos',
         foreignKey: 'id_producto',
@@ -69,5 +69,5 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    return Productos
+    return Producto
 }
