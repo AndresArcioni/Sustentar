@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
+const validarUsuario = require('../validations/validarUsuario');
 
 
 //Traemos los productos de la DB
@@ -22,9 +23,9 @@ module.exports = {
         .then(function(listadoDeProductos){
             return listadoDeProductos
         })
-        .then(function(productos){
+        .then(function(productos){   
+                     
             if(req.session.idUsuario != undefined){
-                return res.send(productos);
                 res.redirect('listadoDeProductos', {productos: productos, usuario : req.session.idUsuario});
             }else{
                 res.render('listadoDeProductos', {productos: productos});
@@ -93,7 +94,6 @@ module.exports = {
             ]
         })
         .then(function(producto) {
-            return res.send(producto);
             if(req.session.idUsuario != undefined){
                 res.render('editarProducto', {producto: producto, usuario : req.session.idUsuario, colores, sustentabilidad, categorias})
             }else{
@@ -120,46 +120,108 @@ module.exports = {
     },
     actualizarProducto : function(req, res){
         
-        
+        //return res.send(req.files);
+
         db.Producto.update({
             nombre: req.body.nombreProducto,
             precio: req.body.precio,
             stock: req.body.stock,
             descuento: req.body.descuento,
             descripcion: req.body.descripcionProducto,
-            id_categoria: req.body.categoria,
-
-
-            //sustentabilidad: req.body.sustentabilidad, hacer un destroy y luego un create
-
-            //colores: req.body.colores,
-
-            //imagenes: (!req.files[0]) ? productos[i].imagen1 : req.files[0].filename,
-        },
-            {
+            id_categoria: req.body.categoria
+        },{
             where: {
-                id: req.params.idProducto
+                id:req.params.idProducto
             }
         })
-        /*
-        for (let i = 0; i < productos.length; i++){
-            if(req.params.idProducto == productos[i].id){
-                let productoActualizado = {
-                    id: productos[i].id,
-                    nombreProducto: req.body.nombreProducto,
-                    precio: req.body.precio,
-                    stock: req.body.stock,
-                    descuento: req.body.descuento,
-                    descripcionProducto: req.body.descripcionProducto,
-                    colores: req.body.colores,
-                    sustentabilidad: req.body.sustentabilidad,
-                    imagen1: (!req.files[0]) ? productos[i].imagen1 : req.files[0].filename,
-                    imagen2: (!req.files[1]) ? productos[i].imagen2: req.files[1].filename,
-                    imagen3: (!req.files[2]) ? productos[i].imagen3 : req.files[2].filename,
+        .then(function(productoActualizado){
+            //return res.send(productoActualizado);
+            db.Producto_sustentabilidad.destroy({
+                where: {
+                    id_producto: req.params.idProducto
                 }
-                productos[i] = productoActualizado;
+            })
+            .then(function(resultado){
+                let arrSustConverter = [];
+                if (req.body.sustentabilidad.length == 1){
+                    arrSustConverter.push(req.body.sustentabilidad);
+    
+                    let sust = arrSustConverter.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_sustentabilidad: elemento
+                        }
+                    })
+                    db.Producto_sustentabilidad.bulkCreate(sust); 
+                }else{
+                    let sust = req.body.sustentabilidad.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_sustentabilidad: elemento
+                        }
+                    })
+                    db.Producto_sustentabilidad.bulkCreate(sust);
+                }
+            })
+            .catch(function(sustErr){
+                return res.send(sustErr);
+            })
+
+            db.Producto_color.destroy({
+                where: {
+                    id_producto: req.params.idProducto
+                }
+            })
+            .then(function(resultado){
+                let arrColorConverter = [];
+                if (req.body.color.length == 1){
+                    arrColorConverter.push(req.body.color);
+    
+                    let color = arrColorConverter.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_colores: elemento
+                        }
+                    })
+                    db.Producto_color.bulkCreate(color); 
+                }else{
+                    let color = req.body.color.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_colores: elemento
+                        }
+                    })
+                    db.Producto_color.bulkCreate(color);
+                }
+            })
+            if(req.files != undefined){
+                db.Imagen_producto.destroy({
+                    where: {
+                        id_producto: req.params.idProducto
+                    }
+                })
+                .then(function(resultado) {
+                    let imagenes = req.files.map(elemento => {
+                        return {
+                            nombre: elemento.filename,
+                            id_producto: req.params.idProducto
+                        }
+                    })
+                    db.Imagen_producto.bulkCreate(imagenes);
+                })
+                .catch(function(imgErr){
+                    return res.send(imgErr);
+                })
             }
-        }*/
+            
+            
+        })
+        .then(function(){
+            res.redirect('/product/listadoDeProductos');
+        })
+        .catch(function(err){
+            return res.send(err);
+        })
     },
     crearProducto: function(req, res){
         //return res.send(req.body)

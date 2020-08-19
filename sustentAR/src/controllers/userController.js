@@ -50,7 +50,7 @@ module.exports = {
     registrarNuevoUsuario : function(req, res, next){
         
         let errores = validationResult(req);
-        
+        //PROBLEMAS ON LA IMAGEN
         if(errores.isEmpty()){
             let nuevoUsuario = {
                 nombre: req.body.nombre,
