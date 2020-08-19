@@ -22,3 +22,7 @@ html {
     background-color: #dddbd1;
     border: 2px solid  #dddbd1;
 }
+
+body{
+    height: 100vh;
+}

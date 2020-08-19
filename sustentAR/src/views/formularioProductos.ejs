@@ -16,14 +16,11 @@
         <form action="" method="POST" class="row" id="form-categoria" enctype="multipart/form-data">
             <div class="row  d-flex justify-content-around"> 
                    <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
-                  
-                   <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="1">Baño</p>
-                   <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="2">Cocina</p>
-                   <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="3">Decoración</p>
-                   <p class="col-5 col-lg-3"><input type="radio" name="categoria" value="4">Otros</p>
+                   <% categorias.forEach(function(categoria){ %>
+                        <p class="col-5 col-lg-3"> <input type="radio" name="categoria" value=<%=categoria.id%> > <%= categoria.nombre %> </p>
+                    <% }) %>
             </div>   
                 
-
             </article>
 
             <article class="col-10 datos-container">
@@ -59,52 +56,20 @@
                             <!--name="colores" id="colores"-->
                             <div class="row d-flex justify-content-center">
                                 <label class="col-12" for="colores" id="colores">Colores</label>
-                                <div class="col-5 col-sm-3 formColorDiv">
-                                    <input type="checkbox" id="color-amarillo" name="color" value="1">                                              
-                                    <label for="color-amarillo">Amarillo</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">
-                                    <input type="checkbox" id="color-azul" name="color" value="2" >
-                                    <label for="color-azul">Azul</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">                                    
-                                    <input type="checkbox" id="color-blanco" name="color" value="3" >
-                                    <label for="color-blanco">Blanco</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">            
-                                    <input type="checkbox" id="color-marron" name="color" value="4" >                            
-                                    <label for="color-marron">Marron</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">                    
-                                    <input type="checkbox" id="color-negro" name="color" value="5" >                      
-                                    <label for="color-negro">Negro</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">                    
-                                    <input type="checkbox" id="color-rojo" name="color" value="6" >                                
-                                    <label for="color-rojo">Rojo</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">                            
-                                    <input type="checkbox" id="color-rosa" name="color" value="7" >                             
-                                    <label for="color-rosa">Rosa</label>
-                                </div>
-                                <div class="col-5 col-sm-3 formColorDiv">
-                                    <input type="checkbox" id="color-verde" name="color" value="8" >
-                                    <label for="color-verde">Verde</label>
-                                </div>
-                                <div class="col-5 col-sm-3  formColorDiv">                                    
-                                    <input type="checkbox" id="color-otro" name="color" value="9" >                                       
-                                    <label for="color-otro">Otro</label>
-                                </div>
+                                <% colores.forEach(function(color){%>
+                                    <div class="col-5 col-sm-3 formColorDiv">
+                                        <input type="checkbox" id="color-<%=color.nombre%>" name="color" value=<%= color.id %>>                                              
+                                        <label for="color-<%=color.nombre%>"><%=color.nombre%></label>
+                                    </div>
+                                <% }) %>
                             </div>
                         </div>
 
                         <div class="col-12 sustentabilidad row d-flex justify-content-space-evenly">
-                            <label class="col-12" for="sustentabilidad" id="sustentabilidad">Sustentabilidad</label>                            
-                            <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=1>Cruelty Free</p>
-                            <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=2>Envoltorio Sustentable</p>
-                            <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=3>Fair Trade</p>
-                            <p class="col-5 col-lg-5"><input class="inputStyle" type="checkbox" name="sustentabilidad" value=4>Vegano</p>
-                            
+                            <label class="col-12" for="sustentabilidad" id="sustentabilidad">Sustentabilidad</label>
+                            <% sustentabilidad.forEach(function(sustent){%>
+                                <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=<%= sustent.id%>><%=sustent.nombre%></p>
+                            <% }) %>                           
                         </div>
 
                         <div class="imagenes col-12 row d-flex justify-content-center">

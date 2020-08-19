@@ -100,11 +100,10 @@ module.exports = {
         
     },
     misCompras: function(req, res){
-        let productosComprados = []; 
-        
-        let usuario = validarUsuario(req, res);
-        if(usuario){
-            res.render('misCompras', {productosComprados: productosComprados, usuario : usuario});
+
+        //FALTA PASAR A BASEDE DATOS
+        if(req.session.idUsuarioSession != undefined){
+            res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession});
         }else{
             res.render('misCompras', {productosComprados: productosComprados});
         }

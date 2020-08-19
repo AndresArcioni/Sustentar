@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const validarUsuario = require('../validations/validarUsuario.js');
 const db = require('../database/models');
 
 
@@ -36,8 +35,11 @@ module.exports = {
         })
         
     },
-    formularioProductos: function(req, res){
-        res.render('formularioProductos')
+    formularioProductos: async function(req, res){
+        let colores = await db.Color.findAll();
+        let sustentabilidad = await db.Sustentabilidad.findAll();
+        let categorias = await db.Categoria.findAll();
+        res.render('formularioProductos', {colores, categorias, sustentabilidad});
     },
     detail: function(req, res) {
 
@@ -65,7 +67,11 @@ module.exports = {
         //ACA TIENE QUE SUMAR AL CARRITO DEL USUARIO
         res.send(req.body);
     },
-    editarProducto : function(req, res){
+    editarProducto : async function(req, res){
+        
+        let colores = await db.Color.findAll();
+        let sustentabilidad = await db.Sustentabilidad.findAll();
+        let categorias = await db.Categoria.findAll();
 
         db.Producto.findByPk(req.params.idProducto,{
             include: [
@@ -87,11 +93,11 @@ module.exports = {
             ]
         })
         .then(function(producto) {
-            //return res.send(producto)
+            return res.send(producto);
             if(req.session.idUsuario != undefined){
-                res.render('editarProducto', {producto: producto, usuario : req.session.idUsuario})
+                res.render('editarProducto', {producto: producto, usuario : req.session.idUsuario, colores, sustentabilidad, categorias})
             }else{
-                res.render('editarProducto', {producto: producto})
+                res.render('editarProducto', {producto: producto, colores, sustentabilidad, categorias})
             }            
         })
         .catch(function(error){
@@ -113,7 +119,28 @@ module.exports = {
         }*/
     },
     actualizarProducto : function(req, res){
-        return res.send(req.body);
+        
+        
+        db.Producto.update({
+            nombre: req.body.nombreProducto,
+            precio: req.body.precio,
+            stock: req.body.stock,
+            descuento: req.body.descuento,
+            descripcion: req.body.descripcionProducto,
+            id_categoria: req.body.categoria,
+
+
+            //sustentabilidad: req.body.sustentabilidad, hacer un destroy y luego un create
+
+            //colores: req.body.colores,
+
+            //imagenes: (!req.files[0]) ? productos[i].imagen1 : req.files[0].filename,
+        },
+            {
+            where: {
+                id: req.params.idProducto
+            }
+        })
         /*
         for (let i = 0; i < productos.length; i++){
             if(req.params.idProducto == productos[i].id){
@@ -142,7 +169,7 @@ module.exports = {
             stock: req.body.stock,
             descuento: Number(req.body.descuento),
             descripcion: req.body.descripcion,
-            id_categoria: req.body.categoria
+            id_categoria: Number(req.body.categoria)
         })
         .then(function(nuevoProducto){
             let imagenes = req.files.map(elemento => {

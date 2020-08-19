@@ -112,9 +112,9 @@
 
                     <% for(let i = 0; i < productos.length; i++){ %>
                         <article class="col-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="/product/detail/<%= productos[i].id %>"><img class="col-12" src="/images/productos/<%= productos[i].imagen1 %>" alt="">
+                            <a href="/product/detail/<%= productos[i].id %>"><img class="col-12" src="/images/productos/<%= productos[i].imagenes[0].nombre %>" alt="">
                                 <div>
-                                    <h4><%= productos[i].nombreProducto %></h4>
+                                    <h4><%= productos[i].nombre %></h4>
                                     <h5 class="product-price"><%= productos[i].precio %></h5>
                                     <% if(productos[i].descuento != " "){ %>
                                         <h6 class="product-discount"> <%= productos[i].descuento %> </h6>
