@@ -16,7 +16,8 @@ async function obtenerProductos(){
     //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
     listarProductos: async function(req, res){//Falta traer caetogiras p/poder filtrar
-
+        
+        
         db.Producto.findAll({
             include: [{association: 'imagenes'}]
         })
@@ -308,14 +309,38 @@ module.exports = {
         })
     },
     borrarProducto : function(req, res){
-        console.log(req.params.idProducto);
-        productos.forEach(elemento => {
-            if(elemento.id == req.params.idProducto) {
-                productos.splice(productos.indexOf(elemento), 1)
-                fs.writeFileSync(path.join(__dirname, '../data/productos.json'), JSON.stringify(productos));
-        }})
-        //PARA BORRAR LA IMAGEN AL BORRAR EL PRODUCTO
-        //fs.unlinkSync(path.join(ruta de la imagen, nombre de la imagen));
-        res.redirect('/product/listadoDeProductos');
+        // return res.send(req.body)
+        db.Producto_sustentabilidad.destroy({
+            where: {
+                id_producto: req.params.idProducto
+            }
+        })
+        .then(function() {
+            db.Imagen_producto.destroy({
+                where: {
+                    id_producto: req.params.idProducto
+                }
+            })
+        })
+        .then(function(){
+            db.Producto_color.destroy({
+                where: {
+                    id_producto: req.params.idProducto
+                }
+            })
+        })
+        .then(function(){
+            db.Producto.destroy({
+                where: {
+                    id: req.params.idProducto
+                }
+            })
+        })
+        .then(function() {
+            res.redirect('/product/listadoDeProductos');
+        })
+        .catch(function(err) {
+            res.send(err)
+        })
     }
 }

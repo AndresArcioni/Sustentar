@@ -7,13 +7,17 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             unique: true
         },
+        cantidad_productos: {
+            type: DataTypes.INTEGER(30).UNSIGNED
+        },
         total : {
             type: DataTypes.DECIMAL(6,2)
         }
     }
     let config = {
         tableName : 'carritos',
-        timestamps : false
+        timestamps : false,
+        underscored: true
     }
     const Carrito = sequelize.define(alias, cols, config);
 
@@ -29,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
             as : 'usuario',
             foreignKey : 'carrito_id'
         })
+
+
+
         Carrito.belongsToMany(models.Producto, {
             as: 'productos',
             through: 'carrito_productos',

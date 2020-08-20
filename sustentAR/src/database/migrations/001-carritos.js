@@ -9,6 +9,9 @@ module.exports = {
         autoIncrement: true,
         unique: true
       },
+        cantidad_productos: {
+        type: Sequelize.DataTypes.INTEGER(30).UNSIGNED
+      },
       total:{
         type: Sequelize.DataTypes.DECIMAL(6,2)
       }

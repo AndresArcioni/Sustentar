@@ -48,16 +48,16 @@
                         <% }%>
                         <p class="product-description"><%= producto.descripcion %></p>
                     </div>
-                    <form action="/product/detail/1" method="POST" class="row">
+                    <form action="/carrito" method="POST" class="row">
                         <div class="col-12">
                             <label for="">Cantidad</label>
-                            <select action="/product/detail/1" method="POST" name="cantidad" id="cantidad" class="inputStyle">
+                            <select action="/product/detail/<%=producto.id%>" method="POST" name="cantidad" id="cantidad" class="inputStyle">
                                 <% for (let i = 1; i < producto.stock && i <= 5; i++) { %> 
                                     <option value="<%=i%>"><%=i%></option>
                                 <% } %> 
                             </select>
                         </div>
-                        <button name="botonAgregar" id="aCarrito" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                        <button name="idProducto" id="aCarrito" value="<%=producto.id%>" method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
                         <button formaction="/carrito" name="botonComprar" value="idProducto" method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
                     </form>
                     <div class="row d-flex justify-content-center">

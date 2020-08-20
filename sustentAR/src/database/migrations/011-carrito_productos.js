@@ -17,6 +17,9 @@ module.exports = {
           key : 'id'
         }
       },
+      cantidad_productos: {
+        type: Sequelize.DataTypes.INTEGER(30).UNSIGNED
+      },
       id_carrito: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull : true,
