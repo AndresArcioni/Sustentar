@@ -17,38 +17,27 @@
             
             <div class="carrito row">
                 
-
-                    <div class="infoPrincipalDelProducto col-12">
-                        <% for(let i = 0; i < productos.length; i++){ %>
-                            <img class="col-7 col-lg-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
-                            
-                            <div class="row dataContainer col-12 col-lg-8">
-                                <h2 class="col-12"><%=productos.nombre%>></h4>
-                                    <h3 class="col-12">Precio</h4>
-                                        
-                                        <h4 class="col-12">Cantidad</h4>
-                                        <h4 class="col-12">Color</h4>
-                                        
-                                    </div>
-                                    
-                                    <div class="btnDiv col-12">
-                                        <button type="button" class="colorBoton botonStyle">Eliminar</button>
-                                    </div>
-                                    
-                                    <div class="separacion col-12">
-                                        <div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                    <div class="btnDiv col-12">
-                                        <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
-                                    </div>
+                <% for(let i = 0; i < productos.length; i++){ %>
+                    <div class="col-10">
+                        <div class="row">
+                            <img class="col-12 col-md-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
+                            <div class="col-12 col-md-8">
+                                <h4><%=productos[i].nombre%></h5>
+                                <h6>Cantidad</h6>
+                                <h6>Color</h6>
+                                <button type="button" class="colorBoton botonStyle">Eliminar</button>
+                            </div>
+                            <div class="separacion col-12">
+                                <div>
                                 </div>
                             </div>
-                        <% } %>
+                            <div class="btnDiv col-12">
+                                <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+                            </div>
+                        </div>
                     </div>
-
+                    
+                    <% } %>
                 
                 
                 
