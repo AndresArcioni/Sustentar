@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         id_carrito: {
           type: DataTypes.INTEGER(10).UNSIGNED,
           allowNull : true
+        },
+        cantidad_productos: {
+          type: DataTypes.INTEGER(30).UNSIGNED
         }
     }
     let config = {

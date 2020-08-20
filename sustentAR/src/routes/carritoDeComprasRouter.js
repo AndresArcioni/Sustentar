@@ -6,7 +6,7 @@ const accesoMiddleware = require('../middlewares/accesoMiddleware')
 
 
 router.get('/', accesoMiddleware, carritoController.mostrarCarrito);
-router.post('/', carritoController.comprarProducto);
+router.post('/', carritoController.agregarACarrito);
 router.get('/infoUsuarioCompra', carritoController.editarInfoUsuario);
 router.get('/modoDePago', carritoController.selecionarModoDePago);
 router.get('/finalizarCompra', carritoController.finalizarCompra);

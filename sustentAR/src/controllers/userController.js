@@ -73,7 +73,8 @@ module.exports = {
             }
             
             db.Carrito.create({
-                total: 0
+                total: 0,
+                cantidad_productos: 0
             })
             .then(function(result){
                 

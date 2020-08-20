@@ -5,8 +5,22 @@ const db = require('../database/models');
 
 
 
-function validarUsuario(req, res){
+async function validarUsuario(req, res){
+    /*
     if(req.cookies.idUsuario != undefined){
+        db.Usuario.findByPk(req.cookies.idUsuario)
+        .then(function(usuario){
+            return usuario
+        })
+    }
+    if(req.session.idUsuarioSession != undefined){
+        
+        db.Usuario.findByPk(req.session.idUsuarioSession)
+        .then(function(usuario){
+            return usuario
+        })
+    }*/
+    /*if(req.cookies.idUsuario != undefined){
         return req.cookies.idUsuario;
     }else{
         if(req.session.idUsuarioSession != undefined){
@@ -14,6 +28,11 @@ function validarUsuario(req, res){
         }
     }
     return false;
+    */
+   
+/*
+    db.Usuario.findByPk()*/
+
     /*
     db.Usuario.findAll()
     .then(function(usuarios){
@@ -28,7 +47,7 @@ function validarUsuario(req, res){
                 }
             }
         }
-        return false;
+        return null;
     })*/
 }
 module.exports = validarUsuario;
