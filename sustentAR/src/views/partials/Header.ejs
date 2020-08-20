@@ -24,15 +24,15 @@
                             Cuenta <i class="fas fa-chevron-down"></i> 
                         </a>
                         <div class="collapse cuentaCollapseAbs" id="cuentaCollapse">
-                            <% if(typeof usuario == 'undefined') { %>
+                            <% if(typeof usuarioLogueado == 'undefined') { %>
                                 <div class="card card-body">
                                     <a href="/user/login">Ingresar</a>
                                     <a href="/user/registro">Registrarse</a>
                                 </div>
                             <% } else{ %>
                                 <div class="card card-body">
-                                    <a href="/user/misCompras/<%=usuario%>">Historial</a>
-                                    <a href="/user/cuenta/<%=usuario%>">Editar</a>
+                                    <a href="/user/misCompras/<%=usuarioLogueado.id%>">Historial</a>
+                                    <a href="/user/cuenta/<%=usuarioLogueado.id%>">Editar</a>
                                     <a href="/user/logout">Salir</a>
                                 </div>
                             <% } %>
