@@ -58,9 +58,9 @@
                             </select>
 
                             <label for="">Colores disponibles</label>
-                            <select action="/product/detail/<%=producto.color%>" method="POST" name="cantidad" id="cantidad" class="inputStyle">
+                            <select action="/product/detail/<%=producto.colores%>" method="POST" name="cantidad" id="cantidad" class="inputStyle">
                                 <% for (let i = 1; i < producto.colores.length; i++) { %> 
-                                    <option value="<%=color.id%>"><%=color.nombre%></option>
+                                    <option value="<%=producto.colores[i].id%>"><%=producto.colores[i].nombre%></option>
                                 <% } %> 
                             </select>
 

@@ -47,13 +47,30 @@ module.exports = {
 
 
         db.Producto.findByPk(req.params.idProducto, {
-            include: [{association: 'imagenes'}, {association: 'colores'}, {association: 'sustentabilidad'}]//Necesito traer colores, para que pueda seleccionar el que corresponde y sustentabilidad para mostrar la sustentabilidad que tiene el producto. tira error que no existe "colores" en la tabla productos_colores
+            include: [
+                {association: 'imagenes'},
+                {
+                    model: db.Color,
+                    as: 'colores',
+                    through: {
+                      model: db.Producto_color
+                    }
+                },
+                {
+                    model: db.Sustentabilidad,
+                    as: 'sustentabilidad',
+                    through: {
+                      model: db.Producto_sustentabilidad
+                    }
+                }
+            ]//Necesito traer colores, para que pueda seleccionar el que corresponde y sustentabilidad para mostrar la sustentabilidad que tiene el producto. tira error que no existe "colores" en la tabla productos_colores
         })
         .then(function(producto){
             db.Producto.findAll({
                 include: [{association: 'imagenes'}]
             })
             .then(function(productos){
+                //return res.send(producto)
                 if(req.session.idUsuario != undefined){
                     res.render('detalleDelProducto', {producto : producto,  usuario : req.session.idUsuario, productos: productos})
                 }else{

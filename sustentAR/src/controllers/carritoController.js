@@ -15,6 +15,7 @@ module.exports = {
                 }
             })
             .then(function(carritoProductos){
+                return res.send(carritoProductos);
                 db.Producto.findAll()//AGREGARLE LOS INCLUDES
                 .then(function(listadoDeProductos){
                     return listadoDeProductos
