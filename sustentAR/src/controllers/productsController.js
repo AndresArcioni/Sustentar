@@ -47,7 +47,7 @@ module.exports = {
 
 
         db.Producto.findByPk(req.params.idProducto, {
-            include: [{association: 'imagenes'}]
+            include: [{association: 'imagenes'}, {association: 'colores'}, {association: 'sustentabilidad'}]//Necesito traer colores, para que pueda seleccionar el que corresponde y sustentabilidad para mostrar la sustentabilidad que tiene el producto. tira error que no existe "colores" en la tabla productos_colores
         })
         .then(function(producto){
             db.Producto.findAll({
@@ -62,6 +62,7 @@ module.exports = {
             })
             
         })
+        .catch(error => res.send(error));
         
     },
     agregarACarrito : function(req, res){

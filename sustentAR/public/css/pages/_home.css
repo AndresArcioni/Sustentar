@@ -43,6 +43,7 @@
 
 #section-home-products {
     background-color: #dddbd1;
+    height: calc(100vh - 344,5px);
 }
 
 .productsList article a {
