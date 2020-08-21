@@ -70,7 +70,6 @@ module.exports = {
                 include: [{association: 'imagenes'}]
             })
             .then(function(productos){
-                //return res.send(producto)
                 if(req.session.idUsuario != undefined){
                     res.render('detalleDelProducto', {producto : producto,  usuario : req.session.idUsuario, productos: productos})
                 }else{

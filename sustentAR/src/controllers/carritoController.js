@@ -15,39 +15,32 @@ module.exports = {
                 }
             })
             .then(function(carritoProductos){
-                return res.send(carritoProductos);
-                db.Producto.findAll()//AGREGARLE LOS INCLUDES
+                db.Producto.findAll({
+                    include: [
+                        {association: 'imagenes'},
+                        {
+                            model: db.Color,
+                            as: 'colores',
+                            through: {
+                              model: db.Producto_color
+                            }
+                        }
+                    ]
+                })//AGREGARLE LOS INCLUDES
                 .then(function(listadoDeProductos){
                     return listadoDeProductos
                 })
                 .then(function(productos){
-                    let productosEnCarrito = [];
-                    /*
-                    if(typeof productos == 'object'){
-                        for(let i = 0; i < carritoProductos.length; i++){
-                            if(carritoProductos[i].id_producto == productos.id){
-                                productosEnCarrito.push(productos);
-                            }
-                        }
-                    }else{
-                        return res.send('aca');
-                        for(let i = 0; i < carritoProductos.length; i++){
-                            for(let j = 0; j < productos.length; j++){
-                                if(carritoProductos[i].id_producto == productos[j].id){
-                                    productosEnCarrito = productos[j];
-                                }
-                            }
+                    /*let productosEnCarrito = [];
+                    
+                    for(let i = 0; i < carritoProductos.length; i++){
+                        if(carritoProductos[i].id_producto == productos.id){
+                            productosEnCarrito.push(productos);
                         }
                     }*/
-                    for(let i = 0; i < carritoProductos.length; i++){
-                        for(let j = 0; j < productos.length; j++){
-                            if(carritoProductos[i].id_producto == productos[j].id){
-                                productosEnCarrito = productos[j];
-                            }
-                        }
-                    }
-
-                    res.render('carritoDeCompras', {productos: productosEnCarrito, cantidad: carritoProductos.cantidad_productos});
+                    //cantidad y productos se necesita un for porque cada uno es un array
+                    return res.send(productos);
+                    res.render('carritoDeCompras', {productos: productos, cantidad: carritoProductos});
                 })
                 .catch(function(error){
                     res.send(error)
@@ -77,28 +70,19 @@ module.exports = {
         res.render('finalizarCompra');
     },
     agregarACarrito : function(req, res){
-        
         db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(function(usuario){
             db.Carrito_productos.create({
-                id_producto : req.body.idProducto,
+                id_producto : req.body.idProductoAgregado,
                 id_carrito : usuario.carrito_id,
                 cantidad_productos : req.body.cantidad
+                //AGREGAR EL COLOR A ESTE MODELO Y MIGRACION PARA PODER HACER QUE SE MUESTRE EN EL CARRITO
             })
             .then(function(carritoProducto){
-                db.Producto.findByPk(req.body.idProducto)
+                db.Producto.findByPk(req.body.idProductoAgregado)
                 .then(function(producto){
                     res.redirect('/carrito')
                     //modificar stock
-                    /*
-                    db.Producto.update(producto, {
-                        where: {
-                            id: req.body.idProducto
-                        }
-                    })
-                    .then(function(result){
-                        res.redirect('/carrito')
-                    })*/
                 })
                 .catch(function(e) {
                     res.send(e)

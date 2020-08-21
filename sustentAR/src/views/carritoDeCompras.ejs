@@ -20,24 +20,25 @@
                 <% for(let i = 0; i < productos.length; i++){ %>
                     <div class="col-10">
                         <div class="row">
-                            <img class="col-12 col-md-3" src="../images/Logo_de_PaginaWeb.jpeg" alt="">
+                            <img class="col-12 col-md-3" src="/images/productos/<%=productos[i].imagenes[0].nombre%>" alt="">
                             <div class="col-12 col-md-8">
                                 <h4><%=productos[i].nombre%></h5>
-                                <h6>Cantidad</h6>
-                                <h6>Color</h6>
+                                <h6><%=cantidad.cantidad_productos%></h6>
+                                <h6><%=productos[i].colores.nombre%></h6>
                                 <button type="button" class="colorBoton botonStyle">Eliminar</button>
                             </div>
                             <div class="separacion col-12">
                                 <div>
                                 </div>
                             </div>
-                            <div class="btnDiv col-12">
-                                <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
-                            </div>
                         </div>
                     </div>
                     
-                    <% } %>
+                <% } %>
+                
+                <div class="btnDiv col-12">
+                    <button type="button" class="continuar botonStyle"><a href="carrito/infoUsuarioCompra">Continuar</a></button>
+                </div>
                 
                 
                 

@@ -51,21 +51,21 @@
                     <form action="/carrito" method="POST" class="row">
                         <div class="col-12">
                             <label for="">Cantidad</label>
-                            <select action="/product/detail/<%=producto.id%>" method="POST" name="cantidad" id="cantidad" class="inputStyle">
+                            <select name="cantidad" id="cantidad" class="inputStyle">
                                 <% for (let i = 1; i < producto.stock && i <= 5; i++) { %> 
                                     <option value="<%=i%>"><%=i%></option>
                                 <% } %> 
                             </select>
 
                             <label for="">Colores disponibles</label>
-                            <select action="/product/detail/<%=producto.colores%>" method="POST" name="cantidad" id="cantidad" class="inputStyle">
-                                <% for (let i = 1; i < producto.colores.length; i++) { %> 
+                            <select name="color" id="cantidad" class="inputStyle">
+                                <% for (let i = 0; i < producto.colores.length; i++) { %> 
                                     <option value="<%=producto.colores[i].id%>"><%=producto.colores[i].nombre%></option>
                                 <% } %> 
                             </select>
 
                         </div>
-                        <button name="botonAgregar" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                        <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
                         <button formaction="/carrito" name="botonComprar" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro continuar col-12 col-sm-4">Comprar</button>
                     </form>
                     <div class="row d-flex justify-content-center">
