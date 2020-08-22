@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
-
-
+const { brotliDecompress } = require('zlib');
 
 module.exports = {
     mostrarCarrito : function(req, res){
@@ -26,12 +25,11 @@ module.exports = {
                             }
                         }
                     ]
-                })//AGREGARLE LOS INCLUDES
+                })
                 .then(function(listadoDeProductos){
                     return listadoDeProductos
                 })
                 .then(function(productos){
-                    //carritoProductos y productos es un ARRAY con OBJETOS LITERALES
                     let productosARR = [];
                     for(let i = 0; i < carritoProductos.length; i++){
                         for(let j = 0; j < productos.length; j++){
@@ -41,16 +39,6 @@ module.exports = {
                         }
                         
                     }
-                    //return res.send(productosARR);
-
-                    /*let productosEnCarrito = [];
-                    
-                    for(let i = 0; i < carritoProductos.length; i++){
-                        if(carritoProductos[i].id_producto == productos.id){
-                            productosEnCarrito.push(productos);
-                        }
-                    }*/
-                    //cantidad y productos se necesita un for porque cada uno es un array
                     res.render('carritoDeCompras', {productos: productosARR, cantidad: carritoProductos});
                 })
                 .catch(function(error){
@@ -66,18 +54,12 @@ module.exports = {
         })
     },
     editarInfoUsuario : function(req, res){
-
-
         res.render('infoUsuarioCompra');
     },
     selecionarModoDePago : function(req, res){
-
         res.render('modoDePago');
     },
     finalizarCompra : function(req, res){
-
-        
-
         res.render('finalizarCompra');
     },
     agregarACarrito : function(req, res){
@@ -87,12 +69,11 @@ module.exports = {
                 id_producto : req.body.idProductoAgregado,
                 id_carrito : usuario.carrito_id,
                 cantidad_productos : req.body.cantidad
-                //AGREGAR EL COLOR A ESTE MODELO Y MIGRACION PARA PODER HACER QUE SE MUESTRE EN EL CARRITO
             })
             .then(function(carritoProducto){
                 db.Producto.findByPk(req.body.idProductoAgregado)
                 .then(function(producto){
-                    res.redirect('/carrito')
+                    res.redirect('/product/detail/' + req.body.idProductoAgregado)
                     //modificar stock
                 })
                 .catch(function(e) {
@@ -106,6 +87,27 @@ module.exports = {
         
         
         
+    },
+    borrarProductoDeCarrito: function(req, res){
+        db.Usuario.findByPk(req.session.idUsuarioSession)
+        .then(function(usuario){
+
+            db.Carrito_productos.destroy({
+                where: {
+                    id_carrito: usuario.carrito_id,
+                    id_producto: req.params.idProducto
+                }
+            })
+            .then(function(){
+                res.redirect('/carrito')
+            })
+            .catch(function(error){
+                res.send(error)
+            })
+        })
+        .catch(function(error){
+            res.send(error)
+        })
     }
 
 }
