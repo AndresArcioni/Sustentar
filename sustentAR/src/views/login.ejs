@@ -11,46 +11,52 @@
                 <form action="" method="POST" class="row d-inline-flex justify-content-center">
                     <h3 class="col-12">Iniciar Sesión</h3>
 
-                   
-                    <div class="col-7 col-lg-12">
-                        <label for="">Email</label>
-                        <br>
-                        <input class="inputStyle" type="email" name="email">
-                        <div class="col-8 col-lg-12" role="alert">
-                            <% if(typeof errores != 'undefined'){ %>
-                                <% for(let i = 0; i < errores.errors.length; i++){ %>
-                                    <% if(errores.errors[i].param == 'email'){ %>
-                                        <small class="text-danger"> <%= errores.errors[i].msg%>  </small>
-                                    <% } %> 
-                                <% } %>
-                             
-                            <% } %> 
+                    <div class="col-12">
+                        <div class="row">
+                            <label class="col-12" for="">Email</label>
+                            <div class="col-12 col-md-8">
+                                <input class="inputStyle" type="email" name="email">
+                            </div>
+                            <div class="col-12 col-md-8" role="alert">
+                                <% if(typeof errores != 'undefined'){ %>
+                                    <% for(let i = 0; i < errores.errors.length; i++){ %>
+                                        <% if(errores.errors[i].param == 'email'){ %>
+                                            <small class="text-danger"> <%= errores.errors[i].msg%>  </small>
+                                        <% } %> 
+                                    <% } %>
+                                        
+                                <% } %> 
+                            </div>
                         </div>
                         
                     </div>
-                    <div class="col-8 col-lg-10">
-                        <label for="">Contraseña</label>
-                        <br>
-                        <input class="inputStyle" type="password" name="contrasenia">
-                        <div class="col-8 col-lg-12" role="alert">
-                            <% if(typeof errores != 'undefined'){ %>
-                                <% for(let i = 0; i < errores.errors.length; i++){ %>
-                                    <% if(errores.errors[i].param == 'contrasenia'){ %>
-                                        <small class="text-danger"> <%= errores.errors[i].msg%>  </small>
-                                    <% } %> 
-                                <% } %>
-                             
-                            <% } %> 
-                            
+
+                    <div class="col-12">
+                        <div class="row">
+                            <label class="col-12" for="">Contraseña</label>
+                            <div class="col-12 col-md-8">
+                                <input class="inputStyle" type="password" name="contrasenia">
+                            </div>
+                            <div class="col-12 col-md-8" role="alert">
+                                <% if(typeof errores != 'undefined'){ %>
+                                    <% for(let i = 0; i < errores.errors.length; i++){ %>
+                                        <% if(errores.errors[i].param == 'contrasenia'){ %>
+                                            <small class="text-danger"> <%= errores.errors[i].msg%>  </small>
+                                        <% } %> 
+                                    <% } %>
+                                        
+                                <% } %> 
+                                        
+                            </div>
                         </div>
+                        
                     </div>
+
                     <div class="col-8 col-lg-10  container-recordar">
                            <p class="recordar"><input type="checkbox" name="recordame">Recordame</p>
-                            
                     </div>
                     <div class="col-8 col-lg-10  ">
                         <p>¿No tenés cuenta? <a href="/user/registro"><b>Registrate acá</b></a></p>
-                         
                     </div>
                     <div class="col-12">
                         <button type="submit" class="botonStyle">OK</button>

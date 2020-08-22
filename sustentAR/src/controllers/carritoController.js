@@ -31,6 +31,18 @@ module.exports = {
                     return listadoDeProductos
                 })
                 .then(function(productos){
+                    //carritoProductos y productos es un ARRAY con OBJETOS LITERALES
+                    let productosARR = [];
+                    for(let i = 0; i < carritoProductos.length; i++){
+                        for(let j = 0; j < productos.length; j++){
+                            if(carritoProductos[i].id_producto == productos[j].id){
+                                productosARR.push(productos[j]);
+                            }
+                        }
+                        
+                    }
+                    //return res.send(productosARR);
+
                     /*let productosEnCarrito = [];
                     
                     for(let i = 0; i < carritoProductos.length; i++){
@@ -39,8 +51,7 @@ module.exports = {
                         }
                     }*/
                     //cantidad y productos se necesita un for porque cada uno es un array
-                    return res.send(productos);
-                    res.render('carritoDeCompras', {productos: productos, cantidad: carritoProductos});
+                    res.render('carritoDeCompras', {productos: productosARR, cantidad: carritoProductos});
                 })
                 .catch(function(error){
                     res.send(error)

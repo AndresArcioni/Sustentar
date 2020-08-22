@@ -31,7 +31,9 @@
             -./IMPORTS.-
 ================================= */
 
-
+div.container-fluid{
+    min-height: 60vh;
+}
 
 /*========EDITAR CUENTA==========*/
 
