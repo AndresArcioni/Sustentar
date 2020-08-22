@@ -58,11 +58,18 @@
                             </select>
 
                             <label for="">Colores disponibles</label>
-                            <select name="color" id="cantidad" class="inputStyle">
+                            <select name="color" id="color" class="inputStyle">
                                 <% for (let i = 0; i < producto.colores.length; i++) { %> 
                                     <option value="<%=producto.colores[i].id%>"><%=producto.colores[i].nombre%></option>
                                 <% } %> 
                             </select>
+
+                            <ul>
+                                <h5>Sustentabilidad</h5>
+                                <% for (let i = 0; i < producto.sustentabilidad.length; i++) { %> 
+                                    <li> <%= producto.sustentabilidad[i].nombre %> </li>
+                                <% } %>
+                            </ul>
 
                         </div>
                         <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>

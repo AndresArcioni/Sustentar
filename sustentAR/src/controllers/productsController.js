@@ -19,18 +19,20 @@ module.exports = {
         
         
         db.Producto.findAll({
-            include: [{association: 'imagenes'}]
+            include: [{association: 'imagenes'}, {association: 'categorias'}]
         })
         .then(function(listadoDeProductos){
             return listadoDeProductos
         })
-        .then(function(productos){   
-                     
+        .then(function(productos){  
+            db.Categoria.findAll()
+            .then(function(categorias) {
             if(req.session.idUsuario != undefined){
-                res.redirect('listadoDeProductos', {productos: productos, usuario : req.session.idUsuario});
+                res.redirect('listadoDeProductos', {productos: productos, categorias:categorias, usuario : req.session.idUsuario});
             }else{
-                res.render('listadoDeProductos', {productos: productos});
+                res.render('listadoDeProductos', {productos: productos, categorias:categorias});
             }
+        })
         })
         .catch(function(error) {
             res.send(error)
@@ -63,7 +65,7 @@ module.exports = {
                       model: db.Producto_sustentabilidad
                     }
                 }
-            ]//Necesito traer colores, para que pueda seleccionar el que corresponde y sustentabilidad para mostrar la sustentabilidad que tiene el producto. tira error que no existe "colores" en la tabla productos_colores
+            ]
         })
         .then(function(producto){
             db.Producto.findAll({
@@ -242,7 +244,6 @@ module.exports = {
         })
     },
     crearProducto: function(req, res){
-        //return res.send(req.body)
         db.Producto.create({
             nombre: req.body.nombre,
             precio: Number(req.body.precio),
@@ -280,21 +281,6 @@ module.exports = {
                 })
                 db.Producto_sustentabilidad.bulkCreate(sust);
             }
-/*
-            let sustentabilidad = [];
-            if(req.body.sustentabilidad.length == 1){
-                sustentabilidad.push(req.body.sustentabilidad);
-            }else{
-                sustentabilidad = req.body.sustentabilidad.map(elemento => {
-                    return {
-                        id_producto: nuevoProducto.id,
-                        id_sustentabilidad: elemento
-                    }
-                })
-            }
-            db.Productos_sustentabilidad.bulkCreate(sustentabilidad);*/
-            
-            //CAMBIAR COLOR COMO SUSTENTABILIDAD
             let arrColorConverter = [];
             if (req.body.color.length == 1){
                 arrColorConverter.push(req.body.color);
@@ -315,9 +301,6 @@ module.exports = {
                 })
                 db.Producto_color.bulkCreate(color);
             }
-       
-          
-
         }).then(function(producto){
             res.redirect('/product/listadoDeProductos');
         })

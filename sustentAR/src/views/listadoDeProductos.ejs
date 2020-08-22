@@ -23,12 +23,9 @@
                     
                     <div class="collapse" id="filter">
                         <h4><label for="">Categoría</label></h4>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=1>Baño</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=2>Cocina</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=3>Decoración</p>
-                        <p class="checkboxFilter"><input type="checkbox" name="categoria" value=4>Otros</p>
-
-                    
+                            <% for(i=0; i<categorias.length; i++) { %>
+                                <p class="checkboxFilter"><input type="checkbox" name="categoria<%=categorias[i].nombre%>" value=<%= categorias[i].id %>><%= categorias[i].nombre %> </p>
+                            <% } %>
                         <h4>Precio</h4>
                         <input class="col-5 minMax inputStyle" placeholder="Minimo" type="text" id="min" name="min">
                         <input class="col-5 minMax inputStyle" placeholder="Maximo" type="text" id="max" name="max">
@@ -67,10 +64,10 @@
                                 Categoria
                             </button>
                             <form action="" method="GET" class="collapse col-12" id="collapseFiltro">
-                                <button type="submit" name="filtroDeCategoria" value=1 class="col-2 botonStyle botonFiltro">Baño</button>
-                                <button type="submit" name="filtroDeCategoria" value=2 class="col-2 botonStyle botonFiltro">Cocina</button>
-                                <button type="submit" name="filtroDeCategoria" value=3 class="col-2 botonStyle botonFiltro">Decoración</button>
-                                <button type="submit" name="filtroDeCategoria" value=4 class="col-2 botonStyle botonFiltro">Otros</button>
+                                
+                                <% for(i=0; i<categorias.length; i++) { %>
+                                    <button type="submit" name="filtroDeCategoria" value=<%= categorias[i].id %> class="col-2 botonStyle botonFiltro"><%=categorias[i].nombre%></button>
+                                <% } %>
     
                                 <input class="col-4 minMax" placeholder="Minimo" type="text" id="min" name="min">
                                 <input class="col-4 minMax" placeholder="Maximo" type="text" id="max" name="max">
