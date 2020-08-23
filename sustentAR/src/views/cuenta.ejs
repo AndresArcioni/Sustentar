@@ -21,12 +21,11 @@
                         <img class="avatar-usuario" src="/images/usuarios/<%= usuario.imagen_usuario %>" alt="avatar">
                         <h3><%= usuario.nombre + " " + usuario.apellido %></h3>
                         <p><%= usuario.email %></p>
-                        <p><%= usuario.dni %> </p>
-                        <p><%= usuario.domicilio + " " + usuario.departamento %> 
-                        </p>
-                        <p><%= usuario.entre_calles %> </p>
-                        <p><%= usuario.codigo_postal + " " + usuario.ciudad %></p>
-                        <p><%= usuario.telefono %></p>
+                        <p><%= (usuario.dni == null)? '' : usuario.dni %> </p>
+                        <p><%= (usuario.domicilio == '' && usuario.departamento == '') ? '' : usuario.domicilio + " " + usuario.departamento %></p>
+                        <p><%= (usuario.entre_calles == '') ? '' : usuario.entre_calles %> </p>
+                        <p><%= (usuario.codigo_postal == null) ? '' : usuario.codigo_postal %></p>
+                        <p><%= (usuario.telefono == null)? '' : usuario.telefono %></p>
 
                        
                     </div>
@@ -55,33 +54,33 @@
 
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="dni">DNI</label>
-                            <input class="inputStyle campo col-10" type="text" name="dni" placeholder="1234547" value="<%= usuario.dni %>" >
+                            <input class="inputStyle campo col-10" type="text" name="dni" placeholder="1234547" value="<%= (usuario.dni == null)? '' : usuario.dni %>" >
                         </div>
                         
                         <div class="col-12 col-sm-12 form-div row">
                             <label class="etiqueta col-12" for="domicilio">Dirección</label>
-                            <input class="inputStyle campo col-10" type="text" name="domicilio" placeholder="Direccion" value="<%= usuario.domicilio %>">
+                            <input class="inputStyle campo col-10" type="text" name="domicilio" placeholder="Direccion" value="<%= (usuario.domicilio == '') ? '' : usuario.domicilio %>">
                         </div>
                         
                         <div class="form-div col-7 col-sm-6 row">
                             <label class="etiqueta col-12" for="codigo_postal">C.P.</label>
-                            <input class="inputStyle campo col-10" type="text" name="codigo_postal" placeholder="C.P." value="<%= usuario.codigo_postal %>">
+                            <input class="inputStyle campo col-10" type="text" name="codigo_postal" placeholder="C.P." value="<%= (usuario.codigo_postal == null)? '' : usuario.codigo_postal %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">
                             <label class="etiqueta col-12" for="entre_calles">Entre Calles</label>
-                            <input class="inputStyle campo col-10" type="text" name="entre_calles" placeholder="Entre Calles" value="<%= usuario.entre_calles %>">
+                            <input class="inputStyle campo col-10" type="text" name="entre_calles" placeholder="Entre Calles" value="<%= (usuario.entre_calles == '') ? '' : usuario.entre_calles %>">
                         </div>
                         
                         <div class="col-12 col-lg-6 form-div row">
                             <label class="etiqueta col-12" for="departamento" >Departamento, piso, etc</label>
-                            <input class="inputStyle campo col-10" type="text" name="departamento" placeholder="Departamento, piso, ect" value="<%= usuario.departamento %>">
+                            <input class="inputStyle campo col-10" type="text" name="departamento" placeholder="Departamento, piso, ect" value="<%= (usuario.departamento == '') ? '' : usuario.departamento %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">
                             <label class="etiqueta col-12" for="telefono">Telefono 
                             </label>
-                            <input class="inputStyle campo col-10" type="text" name="telefono" placeholder="110000000" value="<%= usuario.telefono %>">
+                            <input class="inputStyle campo col-10" type="text" name="telefono" placeholder="110000000" value="<%= (usuario.telefono == null)? '' : usuario.telefono %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">

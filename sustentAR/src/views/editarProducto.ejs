@@ -9,23 +9,21 @@
     <div class="container-fluid">
     <div class="main-container-formulario-productos container">
 
-
+        <form action="/product/editarProducto/<%=producto.id%>?_method=PUT"  method="POST" enctype="multipart/form-data">   
         <section class="formulario-productos-container row">
-
+            
             <article class="col-10 categoria-container">
                 
-                <div class="form-categoria-producto row ">
-                    <form action="/product/editarProducto/<%=producto.id%>?_method=PUT" class="d-flex justify-content-center" method="POST" enctype="multipart/form-data">   
-                        <div class="row  d-flex justify-content-center"> 
-                            <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
-                            <% categorias.forEach(function(categoria){ %>
-                                <% if(producto.id_categoria == categoria.id) {%>
-                                    <p class="col-5 col-lg-3"><input type="radio" name="categoria" value=<%= categoria.id %> checked><%=categoria.nombre%></p>
-                                <% } else {%>
-                                    <p class="col-5 col-lg-3"><input type="radio" name="categoria" value=<%= categoria.id %>><%=categoria.nombre%></p>
-                                <% } %>
-                             <% }) %>
-                        </div>         
+                <div class="form-categoria-producto row d-flex justify-content-center">
+                    
+                    <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
+                    <% categorias.forEach(function(categoria){ %>
+                        <% if(producto.id_categoria == categoria.id) {%>
+                            <p class="col-5 col-lg-3"><input type="radio" name="categoria" value=<%= categoria.id %> checked><%=categoria.nombre%></p>
+                        <% } else {%>
+                            <p class="col-5 col-lg-3"><input type="radio" name="categoria" value=<%= categoria.id %>><%=categoria.nombre%></p>
+                        <% } %>
+                    <% }) %>
                     <!--</form>-->
                 </div>
 
@@ -38,9 +36,9 @@
 
                 <div class="datos-productos-container">
                     
-                    <!--<form action="/product/editarProducto/<%= producto.id %>?_method=put" method="post" enctype="multipart/form-data">                  -->
+                    
                         
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <div class="col-10"> 
                                 <div class="row">
                                     <label class="col-11" for="">Nombre</label>
@@ -69,29 +67,30 @@
                                     <% } %>
                                 </div> 
                             </div>                  
-                            <div class="col-10">
-                                <div class="row">
+                            <div class="col-12">
+                                <div class="row d-flex justify-content-center">
                                     <label class="col-12" for="">Descripción</label>
                                     <textarea class="inputStyle col-11" name="descripcionProducto" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"><%= producto.descripcion %></textarea>
                                 </div>
                             </div>
                             
                             <div class="col-12">
-                                <!--name="colores" id="colores"-->
                                 <div class="row">
                                     <label class="col-12" for="colores" id="colores">Colores</label>
                                     
-
-                                    <% colores.forEach(function(color){%>
-                                        <div class="col-5 col-sm-3 formColorDiv">
-                                            <input type="checkbox" id="color-<%=color.nombre%>" name="color" value=<%= color.id %> 
-                                                <% producto.colores.forEach(function(elemento) { %>
-                                                    <%= (elemento.productos_colores.id_colores == color.id) ? 'checked' : '' %>
-                                                <% }) %>
-                                            >                                              
-                                            <label for="color-<%=color.nombre%>"><%=color.nombre%></label>
-                                        </div>
-                                    <% }) %>
+                                    <div class="col-12 row d-flex justify-content-center">
+                                        <% colores.forEach(function(color){%>
+                                            <div class="col-5 col-sm-3 formColorDiv ">
+                                                <input type="checkbox" id="color-<%=color.nombre%>" name="color" value=<%= color.id %> 
+                                                    <% producto.colores.forEach(function(elemento) { %>
+                                                        <%= (elemento.productos_colores.id_colores == color.id) ? 'checked' : '' %>
+                                                    <% }) %>
+                                                >                                              
+                                                <label for="color-<%=color.nombre%>"><%=color.nombre%></label>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                    
                                 </div>
                             </div>
     
@@ -99,24 +98,27 @@
     
                                 <div class="row">
                                     <label class="col-12">Sustentabilidad</label>
-                                    <% sustentabilidad.forEach(function(sust){%>
-                                        <div class="row col-5 formColorDiv">
-                                            <p class="col-12">
-
-                                                <input type="checkbox" id="sustentabilidad-<%=sust.nombre%>" name="sustentabilidad" value=<%= sust.id %> 
-                                                <% producto.sustentabilidad.forEach(function(elemento) { %>
-                                                    <%= (elemento.productos_sustentabilidad.id_sustentabilidad == sust.id) ? 'checked' : '' %>
-                                                <% }) %>>
-
-                                                <label for="sustentabilidad-<%=sust.nombre%>"><%=sust.nombre%></label>
-                                            </p>                                          
-                                        </div>   
-                                    <% }) %>
+                                    <div class="col-12 row d-flex justify-content-center">
+                                        <% sustentabilidad.forEach(function(sust){%>
+                                            <div class="row col-5 formColorDiv">
+                                                <p class="col-12">
+                                                    
+                                                    <input class="inputStyle" type="checkbox" id="sustentabilidad-<%=sust.nombre%>" name="sustentabilidad" value=<%= sust.id %> 
+                                                    <% producto.sustentabilidad.forEach(function(elemento) { %>
+                                                        <%= (elemento.productos_sustentabilidad.id_sustentabilidad == sust.id) ? 'checked' : '' %>
+                                                    <% }) %>>
+    
+                                                    <label  for="sustentabilidad-<%=sust.nombre%>"><%=sust.nombre%></label>
+                                                </p>                                          
+                                            </div>   
+                                        <% }) %>
+                                    </div>
+                                    
                                 </div> 
                             </div>
                             
                             <div class="col-12">
-                                <div class="row">
+                                <div class="row d-flex justify-content-center">
                                     <h4 class="col-12 col-mb-3 titulo-imagenes">Añadir imágenes</h4>
                                     <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
                                         <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[0] == 'undefined') ? '' : producto.imagenes[0].nombre %>">
@@ -142,12 +144,12 @@
                             </div>
                         </div>
 
-                    </form>
+                    
                 </div>
             </article>
 
         </section>
-        
+        </form>
     </div>
     
     </div>

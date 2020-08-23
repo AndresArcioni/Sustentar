@@ -148,10 +148,10 @@ module.exports = {
         
         
     },
-    borrarProductoDeCarrito: function(req, res){
+    borrarProductoDeCarrito: async function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
-        .then(function(usuario){
-            db.Carrito_productos.findAll({
+        .then(async function(usuario){
+            let carrito = await db.Carrito_productos.findAll({
                 where: {
                     id_carrito: usuario.carrito_id,
                     id_producto: req.params.idProducto
@@ -160,7 +160,36 @@ module.exports = {
             .then(function(resultado){
                 return resultado;
             })
+            .catch(function(error){
+                res.send(error)
+            })
+            let cantidadEliminada = carrito[0].cantidad_productos;
+            db.Producto.findByPk(req.params.idProducto)
+            .then(function(producto){
+                db.Producto.update({
+                    stock: (producto.stock + cantidadEliminada)//VER COMO AGREGARLE LA CANTIDAD
+                },{
+                    where: {
+                        id: req.params.idProducto
+                    }
+                })
+                .then(function(resultado){
+                    db.Carrito_productos.destroy({
+                        where: {
+                            id_carrito: usuario.carrito_id,
+                            id_producto: req.params.idProducto
+                        }
+                    })
+                    .then(function(response){
+                        res.redirect('/carrito')
+                    })
+                })
+            })
+            
+            /*
             .then(function(carrito){
+                let carritov2 = carrito[0];
+                return res.send(carritov2.cantidad_productos);
                 db.Producto.update({
                     stock: (producto.stock + carrito.cantidad_productos)//VER COMO AGREGARLE LA CANTIDAD
                 },{
@@ -194,9 +223,7 @@ module.exports = {
                 })
                 
             })*/
-            .catch(function(error){
-                res.send(error)
-            })
+            
         })
         .catch(function(error){
             res.send(error)

@@ -57,7 +57,7 @@ module.exports = {
                 apellido: req.body.apellido,
                 contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
                 email: req.body.email,
-                imagen_usuario: (req.files[0] == undefined) ? '/images/usuarios/Logo_de_PaginaWeb.png'  : req.files[0].filename, 
+                imagen_usuario: (req.files[0] == undefined) ? 'Logo_de_PaginaWeb.png'  : req.files[0].filename, 
                 dni: null,
                 domicilio: " ",
                 departamento: " ",
