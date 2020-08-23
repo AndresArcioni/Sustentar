@@ -118,13 +118,22 @@
                             <div class="col-12">
                                 <div class="row">
                                     <h4 class="col-12 col-mb-3 titulo-imagenes">Añadir imágenes</h4>
-                                    <% for(let i = 0; i < producto.imagenes.length; i++) { %>
-                                        <div class="col-12 col-md-3 mt-2 mb-3 row">
-                                            <img class="col-12 col-mb-3" src="/images/productos/<%= producto.imagenes[i].nombre %>">
-                                            <input class="mt-2 col-mb-3 inputSeleccionarArchivo" type="file" name="imagen">
-                                            <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
-                                        </div>
-                                    <% } %>
+                                    <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
+                                        <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[0] == 'undefined') ? '' : producto.imagenes[0].nombre %>">
+                                        <input class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen">
+                                        <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
+                                    </div>
+                                    <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
+                                        <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[1] == 'undefined') ? '' : producto.imagenes[1].nombre %>">
+                                        <input class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen">
+                                        <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
+                                    </div>
+                                    <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
+                                        <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[2] == 'undefined') ? '' : producto.imagenes[2].nombre %>>">
+                                        <input class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen">
+                                        <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
+                                    </div>
+                                    
                                 </div>
                             </div>
     
@@ -140,8 +149,9 @@
         </section>
         
     </div>
-    <%- include('./partials/footer') %> 
+    
     </div>
+    <%- include('./partials/footer') %> 
     <%- include('./partials/scripts') %> 
 </body>
 </html>

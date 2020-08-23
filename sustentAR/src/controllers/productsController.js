@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
 const validarUsuario = require('../validations/validarUsuario');
-
+const { Op } = require("sequelize");
 
 //Traemos los productos de la DB
 async function obtenerProductos(){
@@ -12,32 +12,47 @@ async function obtenerProductos(){
     })
 }
 
-
+//[Op.substring]: 'hat',                   // LIKE '%hat%'
     //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
     listarProductos: async function(req, res){//Falta traer caetogiras p/poder filtrar
-        
-        
-        db.Producto.findAll({
-            include: [{association: 'imagenes'}, {association: 'categorias'}]
-        })
-        .then(function(listadoDeProductos){
-            return listadoDeProductos
-        })
-        .then(function(productos){  
-            db.Categoria.findAll()
-            .then(function(categorias) {
-            if(req.session.idUsuario != undefined){
-                res.redirect('listadoDeProductos', {productos: productos, categorias:categorias, usuario : req.session.idUsuario});
-            }else{
-                res.render('listadoDeProductos', {productos: productos, categorias:categorias});
-            }
-        })
-        })
-        .catch(function(error) {
-            res.send(error)
-        })
-        
+        // if(req.query.busquedaAvanzada != undefined){
+        //     db.Producto.findAll({
+        //         include: [{association: 'imagenes'}, {association: 'categorias'}]
+        //     }, {
+        //         where : {
+        //             nombre : {
+        //                 [Op.like]: '%' + req.query.busquedaAvanzada + '%'
+        //             }
+        //         }
+        //     })
+        //     .then(function(productoBuscado){
+        //         return res.send(productoBuscado)
+        //     })
+        //     .catch(function(e){
+        //         res.send(e)
+        //     })
+        // } else {}
+        //req.query.busquedaAvanzada
+            db.Producto.findAll({
+                include: [{association: 'imagenes'}, {association: 'categorias'}]
+            })
+            .then(function(listadoDeProductos){
+                return listadoDeProductos
+            })
+            .then(function(productos){  
+                db.Categoria.findAll()
+                .then(function(categorias) {
+                if(req.session.idUsuario != undefined){                
+                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : req.session.idUsuario});
+                }else{
+                    res.render('listadoDeProductos', {productos: productos, categorias:categorias});
+                }
+            })
+            })
+            .catch(function(error) {
+                res.send(error)
+            })
     },
     formularioProductos: async function(req, res){
         let colores = await db.Color.findAll();
@@ -138,9 +153,7 @@ module.exports = {
             res.render('editarProducto', {producto: producto})
         }*/
     },
-    actualizarProducto : function(req, res){
-        
-        //return res.send(req.files);
+    actualizarProducto : function(req, res){     
 
         db.Producto.update({
             nombre: req.body.nombreProducto,
@@ -214,24 +227,32 @@ module.exports = {
                     db.Producto_color.bulkCreate(color);
                 }
             })
-            if(req.files != undefined){
-                db.Imagen_producto.destroy({
+            if(req.files != ''){
+                db.Imagen_producto.findAll({
                     where: {
                         id_producto: req.params.idProducto
                     }
                 })
-                .then(function(resultado) {
-                    let imagenes = req.files.map(elemento => {
-                        return {
-                            nombre: elemento.filename,
+                .then(function(imagenesDeProducto){
+                    db.Imagen_producto.destroy({
+                        where: {
                             id_producto: req.params.idProducto
                         }
                     })
-                    db.Imagen_producto.bulkCreate(imagenes);
+                    .then(function(resultado) {
+                        let imagenes = req.files.map(elemento => {
+                            return {
+                                nombre: elemento.filename,
+                                id_producto: req.params.idProducto
+                            }
+                        })
+                        db.Imagen_producto.bulkCreate(imagenes);
+                    })
+                    .catch(function(imgErr){
+                        return res.send(imgErr);
+                    })
                 })
-                .catch(function(imgErr){
-                    return res.send(imgErr);
-                })
+                
             }
             
             

@@ -368,6 +368,20 @@ input.minMax{
     margin-bottom: 10px;    
 }
 
+.boton-agregar-producto{
+    position: relative;
+}
+
+#botonSeleccionarImg{
+    height: 30px;
+}
+
+#imgDeProducto{
+    padding: 0;
+    width: 120px;
+    height: 90px;
+}
+
 /*
 .productosDeBusqueda .producto:after{
     content:"";
@@ -718,5 +732,11 @@ a :hover{
     
     .card{
         background-color: #7fa08c;
+    }
+    
+    .boton-agregar-producto{
+        position: absolute;
+        right:11.5%;
+        top:39.5%;
     }
 }

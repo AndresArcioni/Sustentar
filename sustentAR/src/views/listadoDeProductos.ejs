@@ -10,14 +10,16 @@
                 <form action="" method="GET" class="busqueda row">
                     <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
                 </form>
+                <button class="boton-agregar-producto botonStyle" type="button">
+                    <a href="/product/formularioProductos">Agregar producto</a>
+                </button>
             
                 <nav class="mb-2 phoneFilter">
+
+                    
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#filter">
                         <i class="fas fa-filter"></i>Filtrar
-                    </button>
-
-                    <button class="boton-agregar-producto" type="button">
-                        <a href="/product/formularioProductos">Agregar producto</a>
                     </button>
 
                     
@@ -87,11 +89,6 @@
                         </div>
 
                     </div>
-
-                    <button class="boton-agregar-producto" type="button">
-                        <a href="/product/formularioProductos">Agregar producto</a>
-                    </button>
-
                 </div>
 
                 <div class="productosDeBusqueda col-12 col-md-12 col-lg-12">
@@ -101,7 +98,7 @@
                             
                             <a href="/product/detail/<%= productos[i].id %>">
                             <div>
-                                <img class="col-12" src="/images/productos/<%= productos[i].imagenes[0].nombre %>" alt="">
+                                <img class="col-12" src="/images/productos/<%= (typeof productos[i].imagenes[0] == 'undefined') ? '' : productos[i].imagenes[0].nombre %>" alt="">
                             </div>
                             <div class="productInfo col-12">
                                 <h4><%= productos[i].nombre %></h4>
@@ -116,6 +113,7 @@
                         
                     <% } %>                     
                 </div>
+                
             </div>
 
         </div>

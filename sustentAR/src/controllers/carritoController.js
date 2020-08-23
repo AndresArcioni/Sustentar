@@ -73,6 +73,13 @@ module.exports = {
             .then(function(carritoProducto){
                 db.Producto.findByPk(req.body.idProductoAgregado)
                 .then(function(producto){
+                    db.Producto.update({
+                        stock: (producto.stock - req.body.cantidad)
+                    },{
+                        where: {
+                            id: producto.id
+                        }
+                    })
                     res.redirect('/product/detail/' + req.body.idProductoAgregado)
                     //modificar stock
                 })
