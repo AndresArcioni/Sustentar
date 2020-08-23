@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = 'Historial_compra';//Camelcase?
+    let alias = 'Historial_compra';
     let cols = {
         id : {
             type : DataTypes.INTEGER(10).UNSIGNED,
@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         id_carrito: {
             type : DataTypes.INTEGER(10).UNSIGNED,
             allowNull: false
+        },
+        id_producto: {
+            type: DataTypes.INTEGER(10).UNSIGNED,
+            allowNull : true
         }
     }
     let config = {
@@ -27,6 +31,14 @@ module.exports = (sequelize, DataTypes) => {
         Historial_compras.belongsTo(models.Usuario, {
             as : 'usuario',
             foreignKey : 'historial_compras_id'
+        })
+
+        //id_historial_compras
+        Historial_compras.belongsToMany(models.Producto, {
+            as: 'productos',
+            through: 'historial_productos',
+            foreignKey: 'id_producto',
+            otherKey: 'id_historial_compras'
         })
     }
 

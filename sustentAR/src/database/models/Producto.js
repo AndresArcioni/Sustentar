@@ -49,6 +49,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'categorias',
         foreignKey: 'id_categoria'
       })
+      
+      Producto.belongsToMany(models.Historial_compra, {
+        as: 'historial_producto',
+        through: 'historial_productos',
+        foreignKey: 'id_producto',
+        otherKey: 'id_historial_compras'
+      })
+      
       Producto.belongsToMany(models.Color, {
         as: 'colores',
         through: 'productos_colores',
@@ -67,6 +75,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_producto',
         otherKey: 'id'
       })
+      
     }
 
     return Producto

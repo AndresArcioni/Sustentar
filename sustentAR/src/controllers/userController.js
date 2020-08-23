@@ -103,6 +103,7 @@ module.exports = {
     misCompras: function(req, res){
 
         //FALTA PASAR A BASEDE DATOS
+        
         if(req.session.idUsuarioSession != undefined){
             res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession});
         }else{
