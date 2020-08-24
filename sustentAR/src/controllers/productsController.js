@@ -42,10 +42,16 @@ module.exports = {
             })
             .then(function(productos){  
                 db.Categoria.findAll()
-                .then(function(categorias) {
-                if(req.session.idUsuario != undefined){    
-                    return res.send(usuario)            
-                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : req.session.idUsuario});
+                .then(async function(categorias) {
+                if(req.session.idUsuarioSession != undefined){
+                    let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession)
+                        .then(function(usuario) {
+                            return usuario
+                        })
+                        .catch(function(error) {
+                            res.send(error)
+                        })          
+                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
                 }else{
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias});
                 }
@@ -62,8 +68,6 @@ module.exports = {
         res.render('formularioProductos', {colores, categorias, sustentabilidad});
     },
     detail: function(req, res) {
-
-
         db.Producto.findByPk(req.params.idProducto, {
             include: [
                 {association: 'imagenes'},
@@ -84,12 +88,14 @@ module.exports = {
             ]
         })
         .then(function(producto){
+            
             db.Producto.findAll({
                 include: [{association: 'imagenes'}]
             })
             .then(function(productos){
+                return res.send(producto);
                 if(req.session.idUsuario != undefined){
-                    res.render('detalleDelProducto', {producto : producto,  usuario : req.session.idUsuario, productos: productos})
+                    res.render('detalleDelProducto', {producto : producto,  usuarioLogueado : req.session.idUsuarioSession, productos: productos})
                 }else{
                     res.render('detalleDelProducto', {producto : producto, productos: productos})
                 }

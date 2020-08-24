@@ -10,15 +10,17 @@
                 <form action="" method="GET" class="busqueda row">
                     <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
                 </form>
-                <%# if(usuario.rol != 1) { %>
-                    <button class="boton-agregar-producto botonStyle" type="button">
-                        <a href="/product/formularioProductos">Agregar producto</a>
-                    </button>
-                <%# } else{ %>
+                <% if(typeof usuario == 'undefined') { %>                    
                     <button class="boton-agregar-producto botonStyle d-none" type="button">
                         <a href="/product/formularioProductos">Agregar producto</a>
                     </button>
-                <%# } %>
+                <% } else { %>
+                    <% if(usuario.rol != 1){ %>
+                        <button class="boton-agregar-producto botonStyle" type="button">
+                            <a href="/product/formularioProductos">Agregar producto</a>
+                        </button>
+                    <% }%>
+                <% } %>
                 <nav class="mb-2 phoneFilter">
 
                     
