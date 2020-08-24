@@ -43,7 +43,8 @@ module.exports = {
             .then(function(productos){  
                 db.Categoria.findAll()
                 .then(function(categorias) {
-                if(req.session.idUsuario != undefined){                
+                if(req.session.idUsuario != undefined){    
+                    return res.send(usuario)            
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : req.session.idUsuario});
                 }else{
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias});
