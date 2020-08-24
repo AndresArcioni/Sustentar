@@ -173,6 +173,29 @@ module.exports = {
                 res.send(error)
             })
 
+            let historialProductoBase = {
+                id_producto: null,
+                cantidad_productos:null,
+                id_historial_compras: null,
+            }
+            let historialProductoArr = [];
+
+            for(let i = 0; i < carritos.length; i++){
+                historialProductoBase.id_producto = carritos[i].id_producto;
+                historialProductoBase.cantidad_productos = carritos[i].cantidad_productos;
+                historialProductoBase.id_historial_compras = usuario.historial_compras_id;
+                historialProductoArr.push(historialProductoBase)
+                console.log(historialProductoBase);
+            }
+            db.Historial_producto.bulkCreate(historialProductoArr)
+            
+            .then(function(historialProductos){
+                return historialProductos
+            })
+            .catch(function(e){
+                res.send(e)
+            })
+
             let productos = await db.Producto.findAll()
             .then(function(productos){
                 return productos;
@@ -183,7 +206,6 @@ module.exports = {
                 for(let j = 0; j < carritos.length; j++){
                     if(productos[i].id == carritos[j].id_producto){
                         productos[i].stock -= carritos[j].cantidad_productos;
-                        console.log(productos[i].stock);
                         productosFiltrados.push(productos[i]);
                     }
                 }

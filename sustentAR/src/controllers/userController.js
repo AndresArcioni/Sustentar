@@ -101,11 +101,35 @@ module.exports = {
         
     },
     misCompras: function(req, res){
-
-        //FALTA PASAR A BASEDE DATOS
         
         if(req.session.idUsuarioSession != undefined){
-            res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession});
+            db.Usuario.findByPk(req.session.idUsuarioSession)
+            .then(function(usuario){
+                db.Historial_producto.findAll({//queda terminarlo
+                    include: [
+                        {
+                            model : db.Producto,
+                            as : 'productos',
+                            through : {
+                                model: db.Historial_producto
+                            }
+                        }
+                    ]
+                },{
+                    where:{
+                        id_historial_compras : usuario.historial_compras_id
+                    }
+                })
+                .then(function(historial){ 
+                    res.send(historial)                   
+                    res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession, historial : historial});        
+                })
+                .catch(function(e){
+                    res.send(e)
+                })
+            })
+            
+            
         }else{
             res.render('misCompras', {productosComprados: productosComprados});
         }

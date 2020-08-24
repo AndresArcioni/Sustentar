@@ -164,6 +164,29 @@ div.container-fluid{
     margin-top: 25px;
 }
 
+.btnDivVolverCarrito{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
+
+.btnVolverCarrito{
+    background-color: #e0d1c6;
+    border-color: #baaa9e;
+}
+
+.btnVolverCarrito:hover{
+    background: #ffebdd;
+    transform: scale(1.1);
+}
+
+.btnVolverCarrito:focus{
+    background: #ffebdd;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid rgb(189, 138, 138);
+}
 
 .botonStyle a{
     text-decoration: none;

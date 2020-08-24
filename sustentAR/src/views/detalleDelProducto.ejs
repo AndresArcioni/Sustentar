@@ -86,14 +86,27 @@
                             </ul>
 
                         </div>
-                        <% if(producto.stock > 0){ %> 
-                        <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
-                        <% } else { %> 
-                            <div class="alert alert-danger" role="alert">
-                                Producto sin stock
-                            </div>
+                        <% if(typeof usuario != 'undefined') {%>
+                            <% if(usuario.rol != 1) {%> 
+                                <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4 d-none">Agregar al carrito</button>
+                            <% } else {%> 
+                                <% if(producto.stock > 0){ %> 
+                                <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                                <% } else { %> 
+                                    <div class="alert alert-danger" role="alert">
+                                        Producto sin stock
+                                    </div>
+                                <% } %> 
+                            <% } %> 
+                        <% } else {%>
+                            <% if(producto.stock > 0){ %> 
+                                <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                                <% } else { %> 
+                                    <div class="alert alert-danger" role="alert">
+                                        Producto sin stock
+                                    </div>
+                                <% } %> 
                         <% } %> 
-                        
                     </form>
                     <% if(typeof usuarioLogueado == 'undefined'){ %> 
                         <div class="row d-flex justify-content-center d-none">
