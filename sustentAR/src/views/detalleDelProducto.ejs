@@ -77,11 +77,11 @@
 
                             <ul>
                                 <h5>Sustentabilidad</h5>
-                                <% if(producto.sustentabilidad.length == 0) { %>
+                                <% if(producto.sustentabilidad.length == 1) { %>
                                     <li> <%= producto.sustentabilidad.nombre %> </li>
                                 <% } %>
                                 <% for (let i = 0; i < producto.sustentabilidad.length; i++) { %> 
-                                    <li> <%= producto.sustentabilidad[i].nombre %> </li>
+                                    <li><i class="fas fa-check"></i> <%= producto.sustentabilidad[i].nombre %> </li>
                                 <% } %>
                             </ul>
 

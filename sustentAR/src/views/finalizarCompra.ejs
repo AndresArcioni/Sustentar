@@ -21,7 +21,7 @@
                                     <h4><%=productos[i].nombre%></h5>
                                     <h6>Cantidad: <%=cantidad[i].cantidad_productos%></h6>
                                     <h6>Color Seleccionado: <%=productos[i].colores[0].nombre%></h6>
-
+                                    <h6>Precio: $<%=Number(productos[i].precio)%> X <%=Number(cantidad[i].cantidad_productos)%> = $<%=Number(productos[i].precio * cantidad[i].cantidad_productos)%></h6>
                                 </div>
                                 <div class="separacion col-12">
                                     <div>
@@ -56,7 +56,7 @@
                     </div>
     
                     <div class="btnDiv col-12">
-                        <button type="button" class="continuar botonStyle"><a href="/">Confirmar Compra</a></button>
+                        <button type="button" class="continuar botonStyle"><a href="/carrito/compraRealizada">Confirmar Compra</a></button>
                     </div>
                 </div>
             </div>

@@ -29,11 +29,11 @@ module.exports = [
             })
             .then(function(resultado){
                 if(resultado){
-                    return false;
+                    throw Error('Este mail ya está registrado');
                 }else{
                     return true;
                 }
             })
-            
+            return emailValido;
         }).withMessage('Este email ya esta registrado')
 ]

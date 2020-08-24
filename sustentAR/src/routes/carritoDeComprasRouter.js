@@ -7,7 +7,8 @@ const accesoMiddleware = require('../middlewares/accesoMiddleware')
 
 router.get('/', accesoMiddleware, carritoController.mostrarCarrito);
 router.post('/', accesoMiddleware, carritoController.agregarACarrito);
-router.delete('/:idProducto', carritoController.borrarProductoDeCarrito);
+router.delete('/:idProducto', accesoMiddleware, carritoController.borrarProductoDeCarrito)
+router.get('/compraRealizada', carritoController.limpiarCarrito);
 router.get('/infoUsuarioCompra', carritoController.editarInfoUsuario);
 router.get('/modoDePago', carritoController.selecionarModoDePago);
 router.get('/finalizarCompra', carritoController.finalizarCompra);

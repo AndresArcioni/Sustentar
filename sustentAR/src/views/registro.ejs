@@ -12,7 +12,8 @@
                     <div class="col-8 col-lg-10">
                         <label for="">Nombre</label>
                         <br>
-                        <input class="inputStyle" type="text" name="nombre" id="">
+                        <input class="inputStyle" type="text" name="nombre" id="inputNombre">
+                        <small class="text-danger erNombre"></small>
                     </div>
                     <div class="col-8 col-lg-10">
                         <% if(typeof errores != 'undefined'){ %>
@@ -28,13 +29,14 @@
                     <div class="col-8 col-lg-10">
                         <label for="">Apellido</label>
                         <br>
-                        <input class="inputStyle" type="text" name="apellido">
+                        <input class="inputStyle" type="text" name="apellido" id="inputApellido">
+                        <small class="text-danger erApellido"></small>
                     </div>
                     <div class="col-8 col-lg-10">
                         <% if(typeof errores != 'undefined'){ %>
                             <% for(let i = 0; i < errores.length; i++){ %>
                                 <% if(errores[i].param == "apellido"){ %>
-                                    <small class="text-danger"> <%= errores[i].msg%>  </small>
+                                    <small  class="text-danger"> <%= errores[i].msg%>  </small>
                                 <% } %> 
                             <% } %>
                          
@@ -43,7 +45,8 @@
                     <div class="col-8 col-lg-102">
                         <label for="">Email</label>
                         <br>
-                        <input class="inputStyle" type="email" name="email" id="">
+                        <input class="inputStyle" type="email" name="email" id="inputEmail">
+                        <small class="text-danger erEmail"></small>
                     </div>
                     
                     <div class="col-8 col-lg-10">
@@ -62,7 +65,8 @@
                     <div class="col-8 col-lg-10">
                         <label for="">Contraseña</label>
                         <br>
-                        <input class="inputStyle" type="password" name="contrasenia">
+                        <input class="inputStyle" type="password" name="contrasenia" id="inputContrasenia">
+                        <small class="text-danger erContrasenia"></small>
                     </div>
 
                     <div class="col-8 col-lg-10">
@@ -92,7 +96,7 @@
                     </div>
                     
                     <div class="col-12">
-                        <button type="submit"  class="botonStyle">Crear Cuenta</button>
+                        <button type="submit"  class="botonStyle btnSubmit">Crear Cuenta</button>
                     </div>
                    
                 </form>
@@ -104,6 +108,7 @@
 </div>
 
     <%- include('./partials/footer') %> 
-    <%- include('./partials/scripts') %> 
+    <%- include('./partials/scripts') %>
+    <script src="/js/registro.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
-const { brotliDecompress } = require('zlib');
 
 module.exports = {
     mostrarCarrito : function(req, res){
@@ -97,7 +96,7 @@ module.exports = {
                         for(let j = 0; j < productos.length; j++){
                             if(carritoProductos[i].id_producto == productos[j].id){
                                 productosARR.push(productos[j]);
-                                totalCompra += Number(productos[j].precio);
+                                totalCompra += Number(productos[j].precio * carritoProductos[i].cantidad_productos);
                             }
                         }
                     }
@@ -127,13 +126,6 @@ module.exports = {
             .then(function(carritoProducto){
                 db.Producto.findByPk(req.body.idProductoAgregado)
                 .then(function(producto){
-                    db.Producto.update({
-                        stock: (producto.stock - req.body.cantidad)
-                    },{
-                        where: {
-                            id: producto.id
-                        }
-                    })
                     res.redirect('/product/detail/' + req.body.idProductoAgregado)
                 })
                 .catch(function(e) {
@@ -149,81 +141,69 @@ module.exports = {
         
     },
     borrarProductoDeCarrito: async function(req, res){
-        db.Usuario.findByPk(req.session.idUsuarioSession)
+        await db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(async function(usuario){
-            let carrito = await db.Carrito_productos.findAll({
+
+            db.Carrito_productos.destroy({
                 where: {
-                    id_carrito: usuario.carrito_id,
                     id_producto: req.params.idProducto
                 }
+            })   
+
+        })
+        .then(function(){
+            res.redirect('/carrito')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+    },
+    limpiarCarrito: async function(req, res){
+        db.Usuario.findByPk(req.session.idUsuarioSession)
+        .then(async function(usuario){
+            let carritos = await db.Carrito_productos.findAll({
+                where: {
+                    id_carrito: usuario.carrito_id
+                }
             })
-            .then(function(resultado){
-                return resultado;
+            .then(function(carrito){
+                return carrito;
             })
             .catch(function(error){
                 res.send(error)
             })
-            let cantidadEliminada = carrito[0].cantidad_productos;
-            db.Producto.findByPk(req.params.idProducto)
-            .then(function(producto){
-                db.Producto.update({
-                    stock: (producto.stock + cantidadEliminada)//VER COMO AGREGARLE LA CANTIDAD
-                },{
-                    where: {
-                        id: req.params.idProducto
-                    }
-                })
-                .then(function(resultado){
-                    db.Carrito_productos.destroy({
-                        where: {
-                            id_carrito: usuario.carrito_id,
-                            id_producto: req.params.idProducto
-                        }
-                    })
-                    .then(function(response){
-                        res.redirect('/carrito')
-                    })
-                })
-            })
-            
-            /*
-            .then(function(carrito){
-                let carritov2 = carrito[0];
-                return res.send(carritov2.cantidad_productos);
-                db.Producto.update({
-                    stock: (producto.stock + carrito.cantidad_productos)//VER COMO AGREGARLE LA CANTIDAD
-                },{
-                    where: {
-                        id: req.params.idProducto
-                    }
-                })
-                .then(function(resultado){
-                    db.Carrito_productos.destroy({
-                        where: {
-                            id_carrito: usuario.carrito_id,
-                            id_producto: req.params.idProducto
-                        }
-                    })
-                    .then(function(response){
-                        res.redirect('/carrito')
-                    })
-                })
-            })
-            /*
-            .then(function(){
-                db.Producto.update({
-                    stock: (producto.stock + req.body.cantidad)//VER COMO AGREGARLE LA CANTIDAD
-                },{
-                    where: {
-                        id: req.params.idProducto
-                    }
-                })
-                .then(function(producto){
 
+            let productos = await db.Producto.findAll()
+            .then(function(productos){
+                return productos;
+            })
+
+            let productosFiltrados = []; 
+            for(let i = 0; i < productos.length; i++){
+                for(let j = 0; j < carritos.length; j++){
+                    if(productos[i].id == carritos[j].id_producto){
+                        productos[i].stock -= carritos[j].cantidad_productos;
+                        console.log(productos[i].stock);
+                        productosFiltrados.push(productos[i]);
+                    }
+                }
+            }
+
+            for(let i = 0; i < productosFiltrados.length; i++){
+                db.Carrito_productos.destroy({
+                    where: {
+                        id_producto: productosFiltrados[i].id
+                    }
                 })
-                
-            })*/
+            }   
             
+            db.Producto.update(productos)
+            .then(function(productosActualizados){
+                return productosActualizados;
+            })
+        })
+        .then(function(){
+            res.redirect('/')
         })
         .catch(function(error){
             res.send(error)

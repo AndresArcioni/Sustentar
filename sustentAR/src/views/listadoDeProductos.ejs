@@ -35,11 +35,6 @@
                             <% for(i=0; i<categorias.length; i++) { %>
                                 <p class="checkboxFilter"><input type="checkbox" name="categoria<%=categorias[i].nombre%>" value=<%= categorias[i].id %>><%= categorias[i].nombre %> </p>
                             <% } %>
-                        <h4>Precio</h4>
-                        <input class="col-5 minMax inputStyle" placeholder="Minimo" type="text" id="min" name="min">
-                        <input class="col-5 minMax inputStyle" placeholder="Maximo" type="text" id="max" name="max">
-
-
                         <div class="">
                             <button type="button" class="botonStyle">Continuar</button>
                         </div>
@@ -78,8 +73,6 @@
                                     <button type="submit" name="filtroDeCategoria" value=<%= categorias[i].id %> class="col-2 botonStyle botonFiltro"><%=categorias[i].nombre%></button>
                                 <% } %>
     
-                                <input class="col-4 minMax" placeholder="Minimo" type="text" id="min" name="min">
-                                <input class="col-4 minMax" placeholder="Maximo" type="text" id="max" name="max">
                             </form>
                             
                             <div class="col-12"></div>

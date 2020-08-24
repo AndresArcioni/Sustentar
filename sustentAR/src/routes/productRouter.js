@@ -4,6 +4,7 @@ const router = express.Router();
 const path = require('path');
 const productsController = require(path.join(__dirname, '../controllers/productsController.js'));
 const multer = require('multer'); 
+const validarProducto = require('../validations/validarProducto');
 
 let storage = multer.diskStorage({
     destination:function(req, file, cb){
@@ -19,7 +20,7 @@ let upload = multer({storage:storage});
 // /PRODUCT
 router.get('/listadoDeProductos', productsController.listarProductos);
 router.get('/formularioProductos', productsController.formularioProductos);
-router.post('/formularioProductos', upload.any(), productsController.crearProducto);
+router.post('/formularioProductos', upload.any(), validarProducto, productsController.crearProducto);
 router.get('/editarProducto/:idProducto', productsController.editarProducto);
 router.put('/editarProducto/:idProducto', upload.any(), productsController.actualizarProducto);
 router.get('/detail/:idProducto', productsController.detail);
