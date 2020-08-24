@@ -148,6 +148,11 @@ div.container-fluid{
     border: 2px solid rgb(189, 138, 138);
 }
 
+.img-editar-cuenta{
+    height: 100px;
+    width: 100px;
+}
+
 
 
 /*=============SECCION DE CARRITO==================*/
@@ -738,5 +743,10 @@ a :hover{
         position: absolute;
         right:11.5%;
         top:39.5%;
+    }
+
+    .img-editar-cuenta{
+        height: 150px;
+        width: 150px;
     }
 }

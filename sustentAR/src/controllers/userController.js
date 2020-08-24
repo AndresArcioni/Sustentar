@@ -118,13 +118,13 @@ module.exports = {
             apellido: req.body.apellido,
             email: req.body.email,
             /*contrasenia: ,AGREGAR FUNCIONALIDAD*/
-            dni: (req.body.dni == undefined) ? " " : req.body.dni,
+            dni: (req.body.dni == null) ? null : req.body.dni,
             domicilio: (req.body.domicilio == undefined) ? " " : req.body.domicilio,
-            codigo_postal: (req.body.codigo_postal == undefined) ? " " : req.body.codigo_postal,
+            codigo_postal: (req.body.codigo_postal == undefined) ? null : req.body.codigo_postal,
             entre_calles: (req.body.entre_calles == undefined) ? " " : req.body.entre_calles,
             departamento: (req.body.departamento == undefined) ? " " :  req.body.departamento,
             ciudad: (req.body.ciudad == undefined) ? " " : req.body.ciudad,
-            telefono: (req.body.telefono == undefined) ? " " : req.body.telefono,
+            telefono: (req.body.telefono == undefined) ? null : req.body.telefono,
             imagen_usuario: (!req.files[0]) ? this.imagen_usuario : req.files[0].filename,
             updated_at: new Date()
         }, {
@@ -133,6 +133,7 @@ module.exports = {
             }
         })
         .then(function(usuario){
+            return res.send(usuario)
             res.redirect('/user/cuenta/' + req.params.idUsuario);
         })
         .catch(function(error){

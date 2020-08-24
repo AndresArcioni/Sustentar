@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         dni: {
-            type: DataTypes.INTEGER(11)
+            type: DataTypes.INTEGER(11),
+            allowNull: true
         },
         domicilio: {
             type: DataTypes.STRING(100)

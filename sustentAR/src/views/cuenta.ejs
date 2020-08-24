@@ -54,7 +54,7 @@
 
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="dni">DNI</label>
-                            <input class="inputStyle campo col-10" type="text" name="dni" placeholder="1234547" value="<%= (usuario.dni == null)? '' : usuario.dni %>" >
+                            <input class="inputStyle campo col-10" type="number" name="dni" placeholder="1234547" value="<%= (usuario.dni == null)? null : usuario.dni %>" >
                         </div>
                         
                         <div class="col-12 col-sm-12 form-div row">
@@ -80,11 +80,13 @@
                         <div class="col-12 col-lg-6 form-div row">
                             <label class="etiqueta col-12" for="telefono">Telefono 
                             </label>
-                            <input class="inputStyle campo col-10" type="text" name="telefono" placeholder="110000000" value="<%= (usuario.telefono == null)? '' : usuario.telefono %>">
+                            <input class="inputStyle campo col-10" type="text" name="telefono" placeholder="110000000" value="<%= (usuario.telefono == null)? null : usuario.telefono %>">
                         </div>
 
                         <div class="col-12 col-lg-6 form-div row">
-                            <img class="col-12" src="/images/usuarios/<%= usuario.imagen_usuario %> " alt="">
+                            <div class="col-12">
+                                <img class=" img-editar-cuenta" src="/images/usuarios/<%= usuario.imagen_usuario %> " alt="">
+                            </div>
                             <label class="etiqueta col-12" for="imagen_usuario">Avatar 
                             </label>
                             <input class="inputStyle campo col-10" type="file" name="imagen_usuario">
