@@ -88,14 +88,20 @@ module.exports = {
                 }
             ]
         })
-        .then(function(producto){
-            //return res.send(producto)
+        .then(function(producto){            
             db.Producto.findAll({
                 include: [{association: 'imagenes'}]
             })
-            .then(function(productos){
-                if(req.session.idUsuario != undefined){
-                    res.render('detalleDelProducto', {producto : producto,  usuarioLogueado : req.session.idUsuarioSession, productos: productos})
+            .then(async function(productos){
+                if(req.session.idUsuarioSession != undefined){
+                    let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession)
+                        .then(function(usuario) {
+                            return usuario
+                        })
+                        .catch(function(error) {
+                            res.send(error)
+                        })       
+                    res.render('detalleDelProducto', {producto : producto,  usuarioLogueado : req.session.idUsuarioSession, usuario : usuario ,productos: productos})
                 }else{
                     res.render('detalleDelProducto', {producto : producto, productos: productos})
                 }
@@ -136,8 +142,8 @@ module.exports = {
             ]
         })
         .then(function(producto) {
-            if(req.session.idUsuario != undefined){
-                res.render('editarProducto', {producto: producto, usuario : req.session.idUsuario, colores, sustentabilidad, categorias})
+            if(req.session.idUsuarioSession != undefined){
+                res.render('editarProducto', {producto: producto, usuarioLogueado : req.session.idUsuarioSession, colores, sustentabilidad, categorias})
             }else{
                 res.render('editarProducto', {producto: producto, colores, sustentabilidad, categorias})
             }            

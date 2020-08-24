@@ -95,12 +95,23 @@
                         <% } %> 
                         
                     </form>
-                    <div class="row d-flex justify-content-center">
-                        <button type="button" class="ml-3 mt-4 col-6 boton-editar botonStyle"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
-                        <form class="col-6" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
-                            <button type="submit" class="ml-1 mt-4 col-12 boton-editar botonStyle">Eliminar Producto</button>
-                        </form>
-                    </div>
+                    <% if(typeof usuarioLogueado == 'undefined'){ %> 
+                        <div class="row d-flex justify-content-center d-none">
+                            <button type="button" class="ml-3 mt-4 col-6 boton-editar botonStyle d-none"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
+                            <form class="col-6" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
+                                <button type="submit" class="ml-1 mt-4 col-12 boton-editar botonStyle d-none">Eliminar Producto</button>
+                            </form>
+                        </div>
+                    <% } else {%> 
+                        <% if(usuario.rol != 1) {%> 
+                            <div class="row d-flex justify-content-center">
+                                <button type="button" class="ml-3 mt-4 col-6 boton-editar botonStyle"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
+                                <form class="col-6" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
+                                    <button type="submit" class="ml-1 mt-4 col-12 boton-editar botonStyle">Eliminar Producto</button>
+                                </form>
+                            </div>
+                        <% } %> 
+                    <% } %> 
                 </div> 
                 
             </div>
