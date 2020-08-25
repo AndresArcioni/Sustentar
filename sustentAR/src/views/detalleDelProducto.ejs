@@ -108,7 +108,7 @@
                                 <% } %> 
                         <% } %> 
                     </form>
-                    <% if(typeof usuario == 'undefined'){ %> 
+                    <% if(typeof usuarioLogueado == 'undefined'){ %> 
                         <div class="row d-flex justify-content-center d-none">
                             <button type="button" class="ml-3 mt-4 col-6 boton-editar botonStyle d-none"><a href="/product/editarProducto/<%=producto.id%>">Editar Producto</a></button>
                             <form class="col-6" action="/product/borrar/<%=producto.id%>?_method=DELETE" method="POST">
