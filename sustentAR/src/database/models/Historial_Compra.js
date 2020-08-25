@@ -9,10 +9,6 @@ module.exports = (sequelize, DataTypes) => {
         id_carrito: {
             type : DataTypes.INTEGER(10).UNSIGNED,
             allowNull: false
-        },
-        id_producto: {
-            type: DataTypes.INTEGER(10).UNSIGNED,
-            allowNull : true
         }
     }
     let config = {
@@ -38,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
             as: 'productos',
             through: 'historial_productos',
             foreignKey: 'id_producto',
-            otherKey: 'id_historial_compras'
+            otherKey: 'id'
         })
     }
 
