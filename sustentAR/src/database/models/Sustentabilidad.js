@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             as: 'productos',
             through: 'productos_sustentabilidad',
             foreignKey: 'id_sustentabilidad',
-            otherKey: 'id'
+            otherKey: 'id_producto'
         })
     }
 

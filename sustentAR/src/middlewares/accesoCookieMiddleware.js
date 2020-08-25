@@ -8,7 +8,7 @@ function accesoCookieMiddleware (req, res, next){
         db.Usuario.findByPk(req.cookies.idUsuario)
         .then(function(usuario){
             if(req.cookies.idUsuario == usuario.id){
-                req.session.idUsuarioSession = usuario.id
+                req.session.idUsuarioSession = usuario.id;
             }
         })
     }

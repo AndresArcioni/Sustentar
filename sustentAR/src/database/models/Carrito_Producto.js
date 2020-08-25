@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         cantidad_productos: {
           type: DataTypes.INTEGER(30).UNSIGNED
+        },
+        id_colores: {
+          type: DataTypes.INTEGER(10).UNSIGNED,
+          allowNull: false
         }
     }
     let config = {

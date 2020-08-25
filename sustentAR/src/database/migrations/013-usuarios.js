@@ -54,14 +54,6 @@ module.exports = {
           key: 'id'
         }
       },
-      historial_compras_id: {
-        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false,
-        references: {
-          model: 'historial_compras',
-          key: 'id'
-        }
-      },
       created_at: Sequelize.DataTypes.DATE,
 
       updated_at: Sequelize.DataTypes.DATE

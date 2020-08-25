@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         id_carrito: {
             type : DataTypes.INTEGER(10).UNSIGNED,
             allowNull: false
+        },
+        usuario_id: {
+            type : DataTypes.INTEGER(10).UNSIGNED,
+            allowNull: false
         }
     }
     let config = {
@@ -26,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
 
         Historial_compras.belongsTo(models.Usuario, {
             as : 'usuario',
-            foreignKey : 'historial_compras_id'
+            foreignKey : 'usuario_id'
         })
 
         //id_historial_compras

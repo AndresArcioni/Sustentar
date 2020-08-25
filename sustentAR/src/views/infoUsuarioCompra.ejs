@@ -33,41 +33,41 @@
     
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="dni">DNI</label>
-                            <input class="campo col-10"inputStyle type="text" name="dni" placeholder="1234547" value="<%=(usuario.dni != null) ? usuario.dni : '' %>">
+                            <input id="dni" class="campo col-10"inputStyle type="text" name="dni" placeholder="1234547" value="<%=(usuario.dni != null) ? usuario.dni : '' %>">
                         </div>
                         
                         <div class="col-12 col-sm-12 form-div row">
                             <label class="etiqueta col-12" for="direccion">Dirección</label>
-                            <input class="campo col-10"inputStyle type="text" name="direccion" placeholder="Direccion" value="<%=(usuario.domicilio != '') ? usuario.domicilio : ''%>">
+                            <input id="direccion" class="campo col-10"inputStyle type="text" name="direccion" placeholder="Direccion" value="<%=(usuario.domicilio != '') ? usuario.domicilio : ''%>">
                         </div>
                         
                         <div class="form-div col-7 col-sm-6 row">
                             <label class="etiqueta col-12" for="cp">C.P.</label>
-                            <input class="campo col-10"inputStyle type="text" name="cp" placeholder="C.P." value="<%= (usuario.codigo_postal != null) ? usuario.codigo_postal : '' %>">
+                            <input id="cp" class="campo col-10"inputStyle type="text" name="cp" placeholder="C.P." value="<%= (usuario.codigo_postal != null) ? usuario.codigo_postal : '' %>">
                         </div>
     
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="entreCalles">Entre Calles</label>
-                            <input class="campo col-10"inputStyle type="text" name="entreCalles" placeholder="Entre Calles" value="<%=(usuario.entre_calles != '') ? usuario.entre_calles : '' %>">
+                            <input id="entreCalles" class="campo col-10"inputStyle type="text" name="entreCalles" placeholder="Entre Calles" value="<%=(usuario.entre_calles != '') ? usuario.entre_calles : '' %>">
                         </div>
                         
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="depto">Departamento, piso, etc</label>
-                            <input class="campo col-10"inputStyle type="text" name="depto" placeholder="Departamento, piso, ect" value="<%=(usuario.departamento != '') ? usuario.departamento : ''%>">
+                            <input id="depto" class="campo col-10"inputStyle type="text" name="depto" placeholder="Departamento, piso, ect" value="<%=(usuario.departamento != '') ? usuario.departamento : ''%>">
                         </div>
     
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="telefono">Teléfono 
                             </label>
-                            <input class="campo col-10"inputStyle type="text" name="telefono" placeholder="110000000" value="<%= (usuario.telefono != null) ? usuario.telefono : '' %>">
+                            <input id="telefono" class="campo col-10"inputStyle type="text" name="telefono" placeholder="110000000" value="<%= (usuario.telefono != null) ? usuario.telefono : '' %>">
                         </div>
 
                         <div class="btnDiv col-6 btnDivVolverCarrito">
-                            <button type="button" class="btnVolverCarrito botonStyle"><a href="modoDePago">Volver a Carrito</a></button>
+                            <button type="button" class="btnVolverCarrito botonStyle"><a href="carritoDeCompras">Volver a Carrito</a></button>
                         </div>
     
                         <div class="btnDiv col-6">
-                            <button type="button" class="continuar botonStyle"><a href="modoDePago">Confirmar</a></button>
+                            <button id="btnConfirmar" type="button" class="continuar botonStyle"><a href="modoDePago">Confirmar</a></button>
                         </div>
     
                     </form>
@@ -78,6 +78,8 @@
 
 
         <%- include('./partials/footer.ejs') %>
-        <%- include('./partials/scripts.ejs') %> 
+        <%- include('./partials/scripts.ejs') %>
+        <script src="/js/validarInfoUsuarioCompra.js"></script> 
+
     </body>
 </html>

@@ -26,12 +26,11 @@
                                     <div class="col-12 col-md-8">
                                         <h4><%=productos[i].nombre%></h5>
                                         <h6>Cantidad: <%=cantidad[i].cantidad_productos%></h6>
-                                        <h6>Color Seleccionado: <%=productos[i].colores[0].nombre%></h6>
+                                        <h6>Color Seleccionado: <%=colores[cantidad[i].id_colores-1].nombre%></h6>
                                         <h6>Precio: $<%=productos[i].precio%></h6>
                                         <form action="carrito/<%=productos[i].id%>?_method=DELETE" method="POST" enctype="multipart/form-data">
                                             <button type="submit" class="colorBoton botonStyle">Eliminar</button>
                                         </form>
-    
                                     </div>
                                     <div class="separacion col-12">
                                         <div>

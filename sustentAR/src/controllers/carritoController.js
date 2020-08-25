@@ -38,7 +38,10 @@ module.exports = {
                         }
                         
                     }
-                    res.render('carritoDeCompras', {productos: productosARR, cantidad: carritoProductos});
+                    db.Color.findAll()
+                    .then(function(colores){
+                        res.render('carritoDeCompras', {productos: productosARR, cantidad: carritoProductos, colores});
+                    })
                 })
                 .catch(function(error){
                     res.send(error)
@@ -121,7 +124,8 @@ module.exports = {
             db.Carrito_productos.create({
                 id_producto : req.body.idProductoAgregado,
                 id_carrito : usuario.carrito_id,
-                cantidad_productos : req.body.cantidad
+                cantidad_productos : req.body.cantidad,
+                id_colores: req.body.color
             })
             .then(function(carritoProducto){
                 db.Producto.findByPk(req.body.idProductoAgregado)
@@ -161,6 +165,13 @@ module.exports = {
     limpiarCarrito: async function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(async function(usuario){
+
+            let historialDeCompra = await db.Historial_compra.findAll({
+                where: {
+                    usuario_id: usuario.id
+                }
+            })
+
             let carritos = await db.Carrito_productos.findAll({
                 where: {
                     id_carrito: usuario.carrito_id
@@ -183,7 +194,7 @@ module.exports = {
             for(let i = 0; i < carritos.length; i++){
                 historialProductoBase.id_producto = carritos[i].id_producto;
                 historialProductoBase.cantidad_productos = carritos[i].cantidad_productos;
-                historialProductoBase.id_historial_compras = usuario.historial_compras_id;
+                historialProductoBase.id_historial_compras = historialDeCompra[i].id;
                 historialProductoArr.push(historialProductoBase)
                 console.log(historialProductoBase);
             }

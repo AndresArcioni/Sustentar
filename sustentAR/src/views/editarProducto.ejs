@@ -122,17 +122,17 @@
                                     <h4 class="col-12 col-mb-3 titulo-imagenes">Añadir imágenes</h4>
                                     <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
                                         <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[0] == 'undefined') ? '' : producto.imagenes[0].nombre %>">
-                                        <input onchange="previewImg(0);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen">
+                                        <input onchange="previewImg(0);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagenPrincipal">
                                         <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
                                     </div>
                                     <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
                                         <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[1] == 'undefined') ? '' : producto.imagenes[1].nombre %>">
-                                        <input onchange="previewImg(1);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen">
+                                        <input onchange="previewImg(1);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagenSecundaria">
                                         <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
                                     </div>
                                     <div class="col-12 col-md-3 mt-2 mb-3 row d-flex justify-content-center">
                                         <img id="imgDeProducto" class="col-12 mb-3" src="/images/productos/<%= (typeof producto.imagenes[2] == 'undefined') ? '' : producto.imagenes[2].nombre %>">
-                                        <input onchange="previewImg(2);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagen">
+                                        <input onchange="previewImg(2);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagenTercera">
                                         <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
                                     </div>
                                     

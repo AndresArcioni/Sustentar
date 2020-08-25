@@ -12,29 +12,30 @@ async function obtenerProductos(){
         return listadoDeProductos.json()
     })
 }
+/**--------------------------------------------- */
+//No se olviden de arreglar la base de datos
+/**--------------------------------------------- */
 
-//[Op.substring]: 'hat',                   // LIKE '%hat%'
-    //  <<--PRODUCTSCONTROLLER-->>   //
 module.exports = {
-    listarProductos: async function(req, res){//Falta traer caetogiras p/poder filtrar
-        // if(req.query.busquedaAvanzada != undefined){
-        //     db.Producto.findAll({
-        //         include: [{association: 'imagenes'}, {association: 'categorias'}]
-        //     }, {
-        //         where : {
-        //             nombre : {
-        //                 [Op.like]: '%' + req.query.busquedaAvanzada + '%'
-        //             }
-        //         }
-        //     })
-        //     .then(function(productoBuscado){
-        //         return res.send(productoBuscado)
-        //     })
-        //     .catch(function(e){
-        //         res.send(e)
-        //     })
-        // } else {}
-        //req.query.busquedaAvanzada
+    listarProductos: async function(req, res){
+        if(req.query.busquedaAvanzada != undefined){
+            db.Producto.findAll({
+                where : {
+                    nombre : {
+                        [Op.like]: '%' + req.query.busquedaAvanzada + '%'
+                    }
+                }
+            },{
+                include: [{association: 'imagenes'}, {association: 'categorias'}]
+            })
+            .then(function(productoBuscado){
+                return res.send(productoBuscado)
+            })
+            .catch(function(e){
+                res.send(e)
+            })
+            
+        } else {
             db.Producto.findAll({
                 include: [{association: 'imagenes'}, {association: 'categorias'}]
             })
@@ -61,6 +62,9 @@ module.exports = {
             .catch(function(error) {
                 res.send(error)
             })
+        }
+        //req.query.busquedaAvanzada
+            
     },
     formularioProductos: async function(req, res){
         let colores = await db.Color.findAll();
@@ -145,7 +149,7 @@ module.exports = {
             if(req.session.idUsuarioSession != undefined){
                 res.render('editarProducto', {producto: producto, usuarioLogueado : req.session.idUsuarioSession, colores, sustentabilidad, categorias})
             }else{
-                res.render('editarProducto', {producto: producto, colores, sustentabilidad, categorias})
+                res.render('login', {producto: producto, colores, sustentabilidad, categorias})
             }            
         })
         .catch(function(error){
@@ -180,95 +184,136 @@ module.exports = {
                 id:req.params.idProducto
             }
         })
-        .then(function(productoActualizado){
+        .then(async function(productoActualizado){
+
+            //ARREGLAR SUSTENTABILIDAD
             //return res.send(productoActualizado);
             db.Producto_sustentabilidad.destroy({
                 where: {
                     id_producto: req.params.idProducto
                 }
             })
-            .then(function(resultado){
-                let arrSustConverter = [];
-                if (req.body.sustentabilidad.length == 1){
-                    arrSustConverter.push(req.body.sustentabilidad);
-    
-                    let sust = arrSustConverter.map(elemento => {
-                        return {
-                            id_producto: req.params.idProducto,
-                            id_sustentabilidad: elemento
-                        }
-                    })
-                    db.Producto_sustentabilidad.bulkCreate(sust); 
-                }else{
-                    let sust = req.body.sustentabilidad.map(elemento => {
-                        return {
-                            id_producto: req.params.idProducto,
-                            id_sustentabilidad: elemento
-                        }
-                    })
-                    db.Producto_sustentabilidad.bulkCreate(sust);
-                }
-            })
-            .catch(function(sustErr){
-                return res.send(sustErr);
-            })
+            let arrSustConverter = [];
+            if (req.body.sustentabilidad.length == 1){
+                arrSustConverter.push(req.body.sustentabilidad);
 
-            db.Producto_color.destroy({
+                let sust = arrSustConverter.map(elemento => {
+                    return {
+                        id_producto: req.params.idProducto,
+                        id_sustentabilidad: elemento
+                    }
+                })
+                db.Producto_sustentabilidad.bulkCreate(sust); 
+            }else{
+                let sust = req.body.sustentabilidad.map(elemento => {
+                    return {
+                        id_producto: req.params.idProducto,
+                        id_sustentabilidad: elemento
+                    }
+                })
+                db.Producto_sustentabilidad.bulkCreate(sust);
+            }
+            
+
+            let destroyProdColor = await db.Producto_color.destroy({
                 where: {
                     id_producto: req.params.idProducto
                 }
             })
-            .then(function(resultado){
-                let arrColorConverter = [];
-                if (req.body.color.length == 1){
-                    arrColorConverter.push(req.body.color);
-    
-                    let color = arrColorConverter.map(elemento => {
-                        return {
-                            id_producto: req.params.idProducto,
-                            id_colores: elemento
-                        }
-                    })
-                    db.Producto_color.bulkCreate(color); 
-                }else{
-                    let color = req.body.color.map(elemento => {
-                        return {
-                            id_producto: req.params.idProducto,
-                            id_colores: elemento
-                        }
-                    })
-                    db.Producto_color.bulkCreate(color);
+            let arrColorConverter = [];
+            if (req.body.color.length == 1){
+                arrColorConverter.push(req.body.color);
+
+                let color = arrColorConverter.map(elemento => {
+                    return {
+                        id_producto: req.params.idProducto,
+                        id_colores: elemento
+                    }
+                })
+                db.Producto_color.bulkCreate(color); 
+            }else{
+                let color = req.body.color.map(elemento => {
+                    return {
+                        id_producto: req.params.idProducto,
+                        id_colores: elemento
+                    }
+                })
+                db.Producto_color.bulkCreate(color);
+            }
+
+            //cambiar imagenes
+            let img = await db.Imagen_producto.findAll();
+            
+            /*
+            db.Imagen_producto.findAll({
+                where: {
+                    id_producto: req.params.idProducto
                 }
             })
+            .then(function(imagenesDeProducto){
+                return res.send(imagenesDeProducto);
+                db.Imagen_producto.destroy({
+                    where: {
+                        id_producto: req.params.idProducto
+                    }
+                })
+                .then(function(resultado) {
+                    let imagenes = req.files.map(elemento => {
+                        return {
+                            nombre: elemento.filename,
+                            id_producto: req.params.idProducto
+                        }
+                    })
+                    db.Imagen_producto.bulkCreate(imagenes);
+                })
+                .catch(function(imgErr){
+                    return res.send(imgErr);
+                })
+            })*/
+
+            /*
             if(req.files != ''){
+                try {
+                    db.Producto.findAll().then(response => res.send(response))
+                    .catch(function(e){
+                        return res.send(e);
+                    })
+                    return res.send(imagenes);
+                }catch(e) {
+                    return res.send(e)
+                }
+                return res.send('salimos y no encontramos nada')
                 db.Imagen_producto.findAll({
                     where: {
                         id_producto: req.params.idProducto
                     }
                 })
                 .then(function(imagenesDeProducto){
-                    db.Imagen_producto.destroy({
-                        where: {
-                            id_producto: req.params.idProducto
+                    //return res.send('imagenesDeProducto');
+                    let checkFieldnames = [false, false, false];
+
+                    req.files.forEach(function(imagen){
+                        if(imagen.fieldname != ''){
+                            switch(imagen.fieldname){
+                                case 'imagenPrincipal':
+                                    checkFieldnames[0] = true;
+                                    break;
+                                case 'imagenSecundaria': 
+                                    checkFieldnames[1] = true;
+                                    break;
+                                case 'imagenTercera': 
+                                    checkFieldnames[2] = true;
+                                    break;
+                                default: 
+                            }
                         }
                     })
-                    .then(function(resultado) {
-                        let imagenes = req.files.map(elemento => {
-                            return {
-                                nombre: elemento.filename,
-                                id_producto: req.params.idProducto
-                            }
-                        })
-                        db.Imagen_producto.bulkCreate(imagenes);
-                    })
-                    .catch(function(imgErr){
-                        return res.send(imgErr);
-                    })
+                    return res.send(checkFieldnames);
                 })
-                
-            }
-            
-            
+                .catch(function(err){
+                    return res.send(err)
+                })
+            }*/
         })
         .then(function(){
             res.redirect('/product/listadoDeProductos');

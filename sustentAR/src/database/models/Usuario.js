@@ -57,10 +57,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(10).UNSIGNED,
             allowNull: false
         },
-        historial_compras_id: {
-            type: DataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
-        },
         created_at: DataTypes.DATE,
         updated_at: DataTypes.DATE
     };
@@ -79,7 +75,7 @@ module.exports = (sequelize, DataTypes) => {
 
         Usuario.hasMany(models.Historial_compra, {
             as: 'historial_compras',
-            foreignKey: 'historial_compras_id'
+            foreignKey: 'usuario_id'
         })
     };
 

@@ -68,8 +68,7 @@ module.exports = {
                 rol: 1,
                 created_at: new Date(),
                 updated_at: new Date(),
-                carrito_id: '',
-                historial_compras_id: ''
+                carrito_id: ''
             }
             
             db.Carrito.create({
@@ -80,18 +79,10 @@ module.exports = {
                 
                 nuevoUsuario.carrito_id = result.id;
                 
-                db.Historial_compra.create({
-                    id_carrito: result.id
-                })
-                .then(function(resultado){
-
-                    nuevoUsuario.historial_compras_id = resultado.id;
-                    
-                    db.Usuario.create(nuevoUsuario)
-                    .then(function(){
-                        res.redirect('/user/login')
-                    })
-                })                
+                db.Usuario.create(nuevoUsuario)
+                .then(function(){
+                    res.redirect('/user/login')
+                })               
             })
             .catch(function(e){
                 res.send(e);
@@ -101,29 +92,46 @@ module.exports = {
         }
         
     },
-    misCompras: function(req, res){
+    misCompras: async function(req, res){
         
         if(req.session.idUsuarioSession != undefined){
-            
-            db.Usuario.findByPk(req.session.idUsuarioSession)
-            .then(function(usuario){
-                db.Historial_compra.findAll({
-                    where: {
-                        id: usuario.historial_compras_id
+            try {
+                let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
+                
+                let historial = await db.Historial_compra.findAll({
+                    where:{
+                        usuario_id: usuario.id
                     }
-                })
-                .then(function(historial){   
-                    return res.send(historial);               
-                    res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession, historial : historial});        
-                })
-                .catch(function(e){
-                    res.send(e)
-                })
-            })
-            .catch(function(e){
-                res.send(e)
-            })
+                });
+                
+                let historiales = [];
+                let historialProducto = await db.Historial_producto.findAll()
+                
+                historial.forEach(cadaHistorial => {
+                    historialProducto.forEach(function(elemento){
+                        if(elemento.id_historial_compras == cadaHistorial.id){
+                            historiales.push(elemento)
+                        }
+                    })
+                });
 
+                let productosComprados = [];
+                let productos = await db.Producto.findAll({
+                    include: [{association: 'imagenes'}]
+                });
+                
+                historiales.forEach(cadaHistorial => {
+                    productos.forEach(function(producto){
+                        if(producto.id == cadaHistorial.id_producto){
+                            productosComprados.push(producto);
+                        }
+                    })
+                });
+                res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession, historial : historial, cantidadDeProducto: historiales});
+
+            }catch(e){
+                return res.send('e');
+            }
         }else{
             res.render('misCompras', {productosComprados: productosComprados});
         }

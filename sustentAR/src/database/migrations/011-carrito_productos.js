@@ -27,6 +27,14 @@ module.exports = {
           model : 'carritos',
           key : 'id'
         }
+      },
+      id_colores: {
+        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+        allowNull: false,
+        references : {
+          model : 'colores',
+          key : 'id'
+        }
       }
     })
   },

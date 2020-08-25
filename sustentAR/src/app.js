@@ -30,7 +30,7 @@ const productRouter = require('./routes/productRouter.js');// Ruta de productos
 const userRouter = require('./routes/userRouter.js');
 const accesoMiddleware = require('./middlewares/accesoMiddleware')
 
-app.use('/',mainRouter);
+app.use('/', mainRouter);
 app.use('/carrito', carritoRouter);
 app.use('/product', productRouter);
 app.use('/user', userRouter);
