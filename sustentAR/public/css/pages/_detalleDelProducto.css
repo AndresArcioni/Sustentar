@@ -41,6 +41,7 @@
 }
 
 .interesar {
+    min-height: 45vh !important;
     margin-top: 25px;
     background-color:rgba(199, 196, 189, 0.479) ;
 }

@@ -32,7 +32,9 @@
 ================================= */
 
 div.container-fluid{
-    min-height: 60vh;
+    /*208 102 60vh;*/
+    
+    min-height: calc((100vh - 208px) - 230px);
 }
 
 /*========EDITAR CUENTA==========*/
@@ -156,6 +158,8 @@ div.container-fluid{
 
 
 /*=============SECCION DE CARRITO==================*/
+
+
 
 .btnDiv{
     display: flex;
@@ -329,6 +333,7 @@ button.continuar{
 
 /*==============VISTA DE COMPRAS===================*/
 .busquedaContainer{
+    position: relative;
     border-radius: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -717,7 +722,12 @@ a :hover{
 
 
 @media (min-width: 768px) {
+    div.container-fluid{
+        /*208 102 60vh;*/
+        min-height: calc((100vh - 200px) - 100px);
+    }
     .busquedaContainer{
+        position: relative;
         background-color: #dddbd1;
         border: 2px solid  #dddbd1;
         width: 80%;
@@ -764,8 +774,13 @@ a :hover{
     
     .boton-agregar-producto{
         position: absolute;
+<<<<<<< HEAD
         right:11.5%;
         top:31%;
+=======
+        right:0;
+        top:87px;
+>>>>>>> 98ab91e24ee24d6b1cb476e9d468889d384f5529
     }
 
     .img-editar-cuenta{

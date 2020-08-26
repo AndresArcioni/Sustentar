@@ -19,8 +19,9 @@ let upload = multer({storage:storage});
 
 // /PRODUCT
 router.get('/listadoDeProductos', productsController.listarProductos);
-router.get('/listadoDeProductos/:ordenados', productsController.listarProductos);
-router.get('/listadoDeProductos/:filtrardos', productsController.listarProductos);
+router.get('/listadoDeProductos/busquedaAvanzada?', productsController.busquedaAvanzada);
+router.get('/listadoDeProductos/ordenar?', productsController.ordenar);
+router.get('/listadoDeProductos/filtrar?', productsController.filtrar);
 
 
 router.get('/formularioProductos', productsController.formularioProductos);
