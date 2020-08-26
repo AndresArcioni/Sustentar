@@ -32,7 +32,9 @@
 ================================= */
 
 div.container-fluid{
-    min-height: 60vh;
+    /*208 102 60vh;*/
+    
+    min-height: calc((100vh - 208px) - 230px);
 }
 
 /*========EDITAR CUENTA==========*/
@@ -720,6 +722,10 @@ a :hover{
 
 
 @media (min-width: 768px) {
+    div.container-fluid{
+        /*208 102 60vh;*/
+        min-height: calc((100vh - 200px) - 100px);
+    }
     .busquedaContainer{
         position: relative;
         background-color: #dddbd1;
