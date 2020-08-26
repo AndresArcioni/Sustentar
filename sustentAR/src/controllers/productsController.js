@@ -33,7 +33,7 @@ module.exports = {
                         .catch(function(error) {
                             res.redirect('/error');
                         })          
-                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
                 }else{
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias});
                 }
@@ -56,7 +56,7 @@ module.exports = {
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
         }else{
             res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
@@ -75,7 +75,7 @@ module.exports = {
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
         }else{
             res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
@@ -95,7 +95,7 @@ module.exports = {
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
         }else{
             res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
@@ -139,7 +139,7 @@ module.exports = {
                         .catch(function(error) {
                             res.redirect('/error');
                         })       
-                    res.render('detalleDelProducto', {producto : producto,  usuarioLogueado : req.session.idUsuarioSession, usuario : usuario ,productos: productos})
+                    res.render('detalleDelProducto', {producto : producto,  usuario : req.session.idUsuarioSession, user : usuario ,productos: productos})
                 }else{
                     res.render('detalleDelProducto', {producto : producto, productos: productos})
                 }
@@ -176,7 +176,7 @@ module.exports = {
         })
         .then(function(producto) {
             if(req.session.idUsuarioSession != undefined){
-                res.render('editarProducto', {producto: producto, usuarioLogueado : req.session.idUsuarioSession, colores, sustentabilidad, categorias})
+                res.render('editarProducto', {producto: producto, colores, sustentabilidad, categorias, usuario: req.session.idUsuarioSession})
             }else{
                 res.render('login', {producto: producto, colores, sustentabilidad, categorias})
             }            
@@ -362,7 +362,7 @@ module.exports = {
             })
             .then(function(producto) {
                 if(req.session.idUsuarioSession != undefined){
-                    res.render('editarProducto', {colores, categorias, sustentabilidad, producto, errores: errores.errors});
+                    res.render('editarProducto', {colores, categorias, sustentabilidad, producto, errores: errores.errors, usuario : req.session.idUsuarioSession});
                 }else{
                     res.redirect('/user/login')
                 }            
@@ -466,7 +466,12 @@ module.exports = {
                     location: 'body'
                 })
             }
-            res.render('formularioProductos', {colores, categorias, sustentabilidad, errores: errores.errors});
+            if(req.session.idUsuarioSession != undefined){
+                res.render('formularioProductos', {colores, categorias, sustentabilidad, errores: errores.errors, usuario : req.session.idUsuarioSession});
+            }else{
+                res.redirect('/user/login')
+            }  
+            
         }
 
         
