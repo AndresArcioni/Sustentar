@@ -20,7 +20,7 @@ module.exports = {
             }
         })
         .catch(function(error) {
-            res.send(error)
+            res.redirect('/error');
         })
         
     },

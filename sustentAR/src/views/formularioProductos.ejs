@@ -8,145 +8,147 @@
     <%- include('./partials/Header') %> 
     
     <div class="main-container-formulario-productos container-fluid">
-        <section class="formulario-productos-container row">
-            
-            <article class="col-10 categoria-container">
-                
-        <form action="" method="POST" class="row" id="form-categoria" enctype="multipart/form-data">
-            <div class="row  d-flex justify-content-around"> 
-                    <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
-                    <% categorias.forEach(function(categoria){ %>
-                        <p class="col-5 col-lg-3"> <input type="radio" name="categoria" value=<%=categoria.id%> > <%= categoria.nombre %> </p>
-                    <% }) %>
-                    <% if(typeof errores != 'undefined'){ %>
-                        <% for(let i = 0; i < errores.length; i++){ %>
-                            <% if(errores[i].param == "categoria"){ %>
-                                <small class="text-danger"> <%= errores[i].msg%> </small>
-                            <% } %> 
-                        <% } %>
-                    <% } %>
-            </div>   
-                
-            </article>
+        <form action="" method="POST" id="form-categoria" enctype="multipart/form-data">
+            <section class="formulario-productos-container row">
 
-            <article class="col-10 datos-container">
-                <h3 class="titulo-articulo">
-                    Ingrese los datos del producto
-                </h3>
+                <article class="col-10 categoria-container">
 
-                <div class="datos-productos-container">
-                    <div class="row  d-flex justify-content-center">                  
-                        
-                        <div class="col-8 col-lg-6 row "> 
-                            <label class="col-12" for="">Nombre</label>
-                            <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombre">
+                
+                    <div class="form-categoria-producto row d-flex justify-content-center"> 
+                            <h3 class="col-12 titulo-articulo">Seleccione la categoría del producto</h3>
+                            <% categorias.forEach(function(categoria){ %>
+                                <p class="col-5 col-md-3"> <input type="radio" name="categoria" value=<%=categoria.id%> > <%= categoria.nombre %> </p>
+                            <% }) %>
                             <% if(typeof errores != 'undefined'){ %>
                                 <% for(let i = 0; i < errores.length; i++){ %>
-                                    <% if(errores[i].param == "nombre"){ %>
+                                    <% if(errores[i].param == "categoria"){ %>
                                         <small class="text-danger"> <%= errores[i].msg%> </small>
                                     <% } %> 
                                 <% } %>
                             <% } %>
-                        </div>    
-                        <div class="col-6 col-lg-5 row "> 
-                            <label class="col-12" for="">Precio</label>
-                            <input class="inputStyle col-11" type="number" id="" placeholder="$Precio..." name="precio">
-                            <% if(typeof errores != 'undefined'){ %>
-                                <% for(let i = 0; i < errores.length; i++){ %>
-                                    <% if(errores[i].param == "precio"){ %>
-                                        <small class="text-danger"> <%= errores[i].msg%> </small>
-                                    <% } %> 
-                                <% } %>
-                            <% } %>
-                        </div>
-                        <div class="col-6 col-lg-5 row "> 
-                            <label class="col-12" for="">Stock</label>
-                            <input class="inputStyle col-11" type="number" id="stock" placeholder="Stock..." name="stock">
-                            <% if(typeof errores != 'undefined'){ %>
-                                <% for(let i = 0; i < errores.length; i++){ %>
-                                    <% if(errores[i].param == "stock"){ %>
-                                        <small class="text-danger"> <%= errores[i].msg%> </small>
-                                    <% } %> 
-                                <% } %>
-                            <% } %>
-                        </div>    
-                        <div class="col-6  col-lg-5 row "> 
-                            <label class="col-12" for="">Descuento</label>
-                            <input class="inputStyle col-11" type="number" id="" placeholder="Descuento %..." name="descuento">
-                        </div>                          
-                        <div class="col-11 row">
-                            <label class="col-12" for="">Descripción</label>
-                            <textarea class="inputStyle col-11" name="descripcion" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"></textarea>
-                            <% if(typeof errores != 'undefined'){ %>
-                                <% for(let i = 0; i < errores.length; i++){ %>
-                                    <% if(errores[i].param == "descripcion"){ %>
-                                        <small class="text-danger"> <%= errores[i].msg%> </small>
-                                    <% } %> 
-                                <% } %>
-                            <% } %>
-                        </div>
-                        
-                        <div class="col-12">
-                            <!--name="colores" id="colores"-->
-                            <div class="row d-flex justify-content-center">
-                                <label class="col-12" for="colores" id="colores">Colores</label>
-                                <% colores.forEach(function(color){%>
-                                    <div class="col-5 col-sm-3 formColorDiv">
-                                        <input type="checkbox" id="color-<%=color.nombre%>" name="color" value=<%= color.id %>>                                              
-                                        <label for="color-<%=color.nombre%>"><%=color.nombre%></label>
-                                    </div>
-                                <% }) %>
+                    </div>   
+
+                </article>
+
+                <article class="col-10 datos-container">
+                    <h3 class="titulo-articulo">
+                        Ingrese los datos del producto
+                    </h3>
+
+                    <div class="datos-productos-container">
+                        <div class="row  d-flex justify-content-center">                  
+
+                            <div class="col-8 col-lg-6 row "> 
+                                <label class="col-12" for="">Nombre</label>
+                                <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombre">
                                 <% if(typeof errores != 'undefined'){ %>
                                     <% for(let i = 0; i < errores.length; i++){ %>
-                                        <% if(errores[i].param == "color"){ %>
+                                        <% if(errores[i].param == "nombre"){ %>
+                                            <small class="text-danger"> <%= errores[i].msg%> </small>
+                                        <% } %> 
+                                    <% } %>
+                                <% } %>
+                            </div>    
+                            <div class="col-6 col-lg-5 row "> 
+                                <label class="col-12" for="">Precio</label>
+                                <input class="inputStyle col-11" type="number" id="" placeholder="$Precio..." name="precio">
+                                <% if(typeof errores != 'undefined'){ %>
+                                    <% for(let i = 0; i < errores.length; i++){ %>
+                                        <% if(errores[i].param == "precio"){ %>
                                             <small class="text-danger"> <%= errores[i].msg%> </small>
                                         <% } %> 
                                     <% } %>
                                 <% } %>
                             </div>
-                        </div>
-
-                        <div class="col-12 sustentabilidad row d-flex justify-content-space-evenly">
-                            <label class="col-12" for="sustentabilidad" id="sustentabilidad">Sustentabilidad</label>
-                                <% sustentabilidad.forEach(function(sustent){%>
-                                    <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=<%= sustent.id%>><%=sustent.nombre%></p>
-                                <% }) %>
+                            <div class="col-6 col-lg-5 row "> 
+                                <label class="col-12" for="">Stock</label>
+                                <input class="inputStyle col-11" type="number" id="stock" placeholder="Stock..." name="stock">
                                 <% if(typeof errores != 'undefined'){ %>
                                     <% for(let i = 0; i < errores.length; i++){ %>
-                                        <% if(errores[i].param == "sustentabilidad"){ %>
+                                        <% if(errores[i].param == "stock"){ %>
                                             <small class="text-danger"> <%= errores[i].msg%> </small>
                                         <% } %> 
                                     <% } %>
-                                <% } %>                       
-                        </div>
-
-                        <div class="imagenes col-12 row d-flex justify-content-center">
-                            <label class="col-12" for="">
-                                <h4 class="titulo-imagenes">Añadir imágenes</h4>
-                            </label>
-
-                            <input class=" col-10 col-lg-3" type="file" name="imagen">
-                            <input class=" col-10 col-lg-3" type="file" name="imagen">
-                            <input class=" col-10 col-lg-3" type="file" name="imagen">
-
-                            <% if(typeof errores != 'undefined'){ %>
-                                <% for(let i = 0; i < errores.length; i++){ %>
-                                    <% if(errores[i].param == "imagen"){ %>
-                                        <small class="text-danger"> <%= errores[i].msg%> </small>
-                                    <% } %> 
                                 <% } %>
-                            <% } %>  
-                        </div>
+                            </div>    
+                            <div class="col-6  col-lg-5 row "> 
+                                <label class="col-12" for="">Descuento</label>
+                                <input class="inputStyle col-11" type="number" id="" placeholder="Descuento %..." name="descuento">
+                            </div>                          
+                            <div class="col-11 row">
+                                <label class="col-12" for="">Descripción</label>
+                                <textarea class="inputStyle col-11" name="descripcion" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"></textarea>
+                                <% if(typeof errores != 'undefined'){ %>
+                                    <% for(let i = 0; i < errores.length; i++){ %>
+                                        <% if(errores[i].param == "descripcion"){ %>
+                                            <small class="text-danger"> <%= errores[i].msg%> </small>
+                                        <% } %> 
+                                    <% } %>
+                                <% } %>
+                            </div>
 
-                        <div class="col-12 d-flex justify-content-center">
-                            <button id="btnSubmit" class="botonStyle col-8" type="submit" > Publicar producto</button>
+                            <div class="col-12">
+                                <!--name="colores" id="colores"-->
+                                <div class="row d-flex justify-content-center">
+                                    <label class="col-12" for="colores" id="colores">Colores</label>
+                                    <% colores.forEach(function(color){%>
+                                        <div class="col-5 col-sm-3 formColorDiv">
+                                            <input type="checkbox" id="color-<%=color.nombre%>" name="color" value=<%= color.id %>>                                              
+                                            <label for="color-<%=color.nombre%>"><%=color.nombre%></label>
+                                        </div>
+                                    <% }) %>
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "color"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+
+                            <div class="col-12 sustentabilidad row d-flex justify-content-space-evenly">
+                                <label class="col-12" for="sustentabilidad" id="sustentabilidad">Sustentabilidad</label>
+                                    <% sustentabilidad.forEach(function(sustent){%>
+                                        <p class="col-5 col-lg-5"><input class="inputStyle"  type="checkbox" name="sustentabilidad" value=<%= sustent.id%>><%=sustent.nombre%></p>
+                                    <% }) %>
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "sustentabilidad"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>                       
+                            </div>
+
+                            <div class="imagenes col-12 row d-flex justify-content-center">
+                                <label class="col-12" for="">
+                                    <h4 class="titulo-imagenes">Añadir imágenes</h4>
+                                </label>
+
+                                <input class=" col-10 col-lg-3" type="file" name="imagen">
+                                <input class=" col-10 col-lg-3" type="file" name="imagen">
+                                <input class=" col-10 col-lg-3" type="file" name="imagen">
+
+                                <% if(typeof errores != 'undefined'){ %>
+                                    <% for(let i = 0; i < errores.length; i++){ %>
+                                        <% if(errores[i].param == "imagen"){ %>
+                                            <small class="text-danger"> <%= errores[i].msg%> </small>
+                                        <% } %> 
+                                    <% } %>
+                                <% } %>  
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-center">
+                                <button id="btnSubmit" class="botonStyle col-8" type="submit" > Publicar producto</button>
+                            </div>
                         </div>
+                    
                     </div>
-        </form>
-                </div>
-            </article>
+                </article>
 
-        </section>
+            </section>
+        </form>
          
     </div>
 

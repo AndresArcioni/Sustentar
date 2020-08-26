@@ -34,10 +34,10 @@ module.exports = [
                     return true;
                 }
             }
-            throw Error('La contraseña ingresada es incorrecta. Debe contener entre 8 y 16 caracteres');
+            throw Error('La contraseña ingresada es incorrecta.');
         })
         return contraseniaValida;
-    }).withMessage('La contraseña ingresada no corresponde al usuario')
+    }).withMessage('La contraseña ingresada es incorrecta.')
     
 ]
 

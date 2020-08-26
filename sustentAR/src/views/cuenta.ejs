@@ -6,7 +6,7 @@
 <body>
     <div class="main-container-account">
             <%- include('./partials/Header') %> 
-            <section class="container-edit container-fluid">
+            <div class="container-edit container-fluid">
                 <article class="container-saludo">
                     <br>
                      <h1 class="saludo">Hola, <b><%= usuario.nombre%></b></h1>
@@ -30,14 +30,22 @@
                        
                     </div>
                     
-                    <button class="botonStyle col-4 boton-editar" data-toggle="collapse" data-target="#content">Editar</button>
+                    <button class="botonStyle col-5 col-md-4 boton-editar" data-toggle="collapse" data-target="#content">Editar</button>
                  
                     <form class="formulario-editar-cuenta  row collapse" action="/user/cuenta/<%= usuario.id %>?_method=put" method="POST" id="content" enctype="multipart/form-data">
 
                         <div class="col-7 col-sm-6 form-div row"  nombre>
                             <label class="etiqueta col-12" id="label nombre"  for="nombre">Nombre</label>
                             <input class="inputStyle campo col-10" type="text" name="nombre" placeholder="Nombre" value="<%= usuario.nombre %>">
-                           
+                        </div>
+                        <div class="col-8 col-lg-10">
+                            <% if(typeof errores != 'undefined'){ %>
+                                <% for(let i = 0; i < errores.length; i++){ %>
+                                    <% if(errores[i].param == "nombre"){ %>
+                                        <small class="text-danger"> <%= errores[i].msg%> </small>
+                                    <% } %> 
+                                <% } %>
+                            <% } %>
                         </div>
 
                         <div class="col-7 col-sm-6 form-div row" >
@@ -45,22 +53,42 @@
                             <input class="inputStyle campo col-10" 
                             type="text" name="apellido" placeholder="Apellido" value="<%= usuario.apellido %> "> 
                         </div>
+                        <div class="col-8 col-lg-10">
+                            <% if(typeof errores != 'undefined'){ %>
+                                <% for(let i = 0; i < errores.length; i++){ %>
+                                    <% if(errores[i].param == "apellido"){ %>
+                                        <small class="text-danger"> <%= errores[i].msg%> </small>
+                                    <% } %> 
+                                <% } %>
+                            <% } %>
+                        </div>
 
                         <div class="col-12 col-sm-12 form-div row email">
                             <label class="etiqueta col-12" for="email" >Email</label>
                             <input class="inputStyle campo col-10" type="email" name="email" placeholder="usuario@mail.com" value="<%= usuario.email %>">
+                        </div><div class="col-8 col-lg-10">
+                            <% if(typeof errores != 'undefined'){ %>
+                                <% for(let i = 0; i < errores.length; i++){ %>
+                                    <% if(errores[i].param == "email"){ %>
+                                        <small class="text-danger"> <%= errores[i].msg%> </small>
+                                    <% } %> 
+                                <% } %>
+                            <% } %>
                         </div>
+
 
 
                         <div class="col-7 col-sm-6 form-div row">
                             <label class="etiqueta col-12" for="dni">DNI</label>
                             <input class="inputStyle campo col-10" type="number" name="dni" placeholder="1234547" value="<%= (usuario.dni == null)? null : usuario.dni %>" >
                         </div>
+             
                         
                         <div class="col-12 col-sm-12 form-div row">
                             <label class="etiqueta col-12" for="domicilio">Dirección</label>
                             <input class="inputStyle campo col-10" type="text" name="domicilio" placeholder="Direccion" value="<%= (usuario.domicilio == '') ? '' : usuario.domicilio %>">
                         </div>
+                 
                         
                         <div class="form-div col-7 col-sm-6 row">
                             <label class="etiqueta col-12" for="codigo_postal">C.P.</label>
@@ -99,9 +127,7 @@
                     </form>
                     
             </article>
-        </section>
-        <!-- </div>
-        </div> -->
+        </div>
         <%- include('./partials/footer') %> 
     </div>
     <%- include('./partials/scripts') %>

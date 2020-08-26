@@ -12,9 +12,7 @@ async function obtenerProductos(){
         return listadoDeProductos.json()
     })
 }
-/**--------------------------------------------- */
-//No se olviden de arreglar la base de datos
-/**--------------------------------------------- */
+
 
 module.exports = {
     listarProductos: async function(req, res){
@@ -33,7 +31,7 @@ module.exports = {
                             return usuario
                         })
                         .catch(function(error) {
-                            res.send(error)
+                            res.redirect('/error');
                         })          
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
                 }else{
@@ -42,7 +40,7 @@ module.exports = {
             })
         })
         .catch(function(error) {
-            res.send(error)
+            res.redirect('/error');
         })  
     },
     ordenar: async function(req, res){
@@ -139,7 +137,7 @@ module.exports = {
                             return usuario
                         })
                         .catch(function(error) {
-                            res.send(error)
+                            res.redirect('/error');
                         })       
                     res.render('detalleDelProducto', {producto : producto,  usuarioLogueado : req.session.idUsuarioSession, usuario : usuario ,productos: productos})
                 }else{
@@ -148,16 +146,11 @@ module.exports = {
             })
             
         })
-        .catch(error => res.send(error));
+        .catch(error => res.redirect('/error'));
         
-    },
-    agregarACarrito : function(req, res){
-        let data = req.body;
-        //ACA TIENE QUE SUMAR AL CARRITO DEL USUARIO
-        res.send(req.body);
     },
     editarProducto : async function(req, res){
-        
+    
         let colores = await db.Color.findAll();
         let sustentabilidad = await db.Sustentabilidad.findAll();
         let categorias = await db.Categoria.findAll();
@@ -189,174 +182,206 @@ module.exports = {
             }            
         })
         .catch(function(error){
-            res.send(error)
+            res.redirect('/error');
         })
 
-        /*let producto;
-        for(let i = 0; i < productos.length; i++){
-            if(productos[i].id == req.params.idProducto){
-                producto = productos[i];
-            }
-        }
-
-        let usuario = validarUsuario(req, res);
-        if(usuario){
-            res.render('editarProducto', {producto: producto, usuario : usuario})
-        }else{
-            res.render('editarProducto', {producto: producto})
-        }*/
     },
-    actualizarProducto : function(req, res){     
-
-        db.Producto.update({
-            nombre: req.body.nombreProducto,
-            precio: req.body.precio,
-            stock: req.body.stock,
-            descuento: req.body.descuento,
-            descripcion: req.body.descripcionProducto,
-            id_categoria: req.body.categoria
-        },{
-            where: {
-                id:req.params.idProducto
-            }
-        })
-        .then(async function(productoActualizado){
-
-            //ARREGLAR SUSTENTABILIDAD
-            //return res.send(productoActualizado);
-            db.Producto_sustentabilidad.destroy({
+    actualizarProducto : async function(req, res){     
+        let errores = validationResult(req);
+        if(errores.isEmpty()){
+            db.Producto.update({
+                nombre: req.body.nombre,
+                precio: req.body.precio,
+                stock: req.body.stock,
+                descuento: req.body.descuento,
+                descripcion: req.body.descripcion,
+                id_categoria: req.body.categoria
+            },{
                 where: {
-                    id_producto: req.params.idProducto
+                    id:req.params.idProducto
                 }
             })
-            let arrSustConverter = [];
-            if (req.body.sustentabilidad.length == 1){
-                arrSustConverter.push(req.body.sustentabilidad);
-
-                let sust = arrSustConverter.map(elemento => {
-                    return {
-                        id_producto: req.params.idProducto,
-                        id_sustentabilidad: elemento
-                    }
-                })
-                db.Producto_sustentabilidad.bulkCreate(sust); 
-            }else{
-                let sust = req.body.sustentabilidad.map(elemento => {
-                    return {
-                        id_producto: req.params.idProducto,
-                        id_sustentabilidad: elemento
-                    }
-                })
-                db.Producto_sustentabilidad.bulkCreate(sust);
-            }
-            
-
-            let destroyProdColor = await db.Producto_color.destroy({
-                where: {
-                    id_producto: req.params.idProducto
-                }
-            })
-            let arrColorConverter = [];
-            if (req.body.color.length == 1){
-                arrColorConverter.push(req.body.color);
-
-                let color = arrColorConverter.map(elemento => {
-                    return {
-                        id_producto: req.params.idProducto,
-                        id_colores: elemento
-                    }
-                })
-                db.Producto_color.bulkCreate(color); 
-            }else{
-                let color = req.body.color.map(elemento => {
-                    return {
-                        id_producto: req.params.idProducto,
-                        id_colores: elemento
-                    }
-                })
-                db.Producto_color.bulkCreate(color);
-            }
-
-            //cambiar imagenes
-            let img = await db.Imagen_producto.findAll();
-            
-            /*
-            db.Imagen_producto.findAll({
-                where: {
-                    id_producto: req.params.idProducto
-                }
-            })
-            .then(function(imagenesDeProducto){
-                return res.send(imagenesDeProducto);
-                db.Imagen_producto.destroy({
+            .then(async function(productoActualizado){
+    
+                db.Producto_sustentabilidad.destroy({
                     where: {
                         id_producto: req.params.idProducto
                     }
                 })
-                .then(function(resultado) {
-                    let imagenes = req.files.map(elemento => {
+                let arrSustConverter = [];
+                if (req.body.sustentabilidad.length == 1){
+                    arrSustConverter.push(req.body.sustentabilidad);
+    
+                    let sust = arrSustConverter.map(elemento => {
                         return {
-                            nombre: elemento.filename,
-                            id_producto: req.params.idProducto
+                            id_producto: req.params.idProducto,
+                            id_sustentabilidad: elemento
                         }
                     })
-                    db.Imagen_producto.bulkCreate(imagenes);
-                })
-                .catch(function(imgErr){
-                    return res.send(imgErr);
-                })
-            })*/
-
-            /*
-            if(req.files != ''){
-                try {
-                    db.Producto.findAll().then(response => res.send(response))
-                    .catch(function(e){
-                        return res.send(e);
+                    db.Producto_sustentabilidad.bulkCreate(sust); 
+                }else{
+                    let sust = req.body.sustentabilidad.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_sustentabilidad: elemento
+                        }
                     })
-                    return res.send(imagenes);
-                }catch(e) {
-                    return res.send(e)
+                    db.Producto_sustentabilidad.bulkCreate(sust);
                 }
-                return res.send('salimos y no encontramos nada')
+                
+    
+                let destroyProdColor = await db.Producto_color.destroy({
+                    where: {
+                        id_producto: req.params.idProducto
+                    }
+                })
+                let arrColorConverter = [];
+                if (req.body.color.length == 1){
+                    arrColorConverter.push(req.body.color);
+    
+                    let color = arrColorConverter.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_colores: elemento
+                        }
+                    })
+                    db.Producto_color.bulkCreate(color); 
+                }else{
+                    let color = req.body.color.map(elemento => {
+                        return {
+                            id_producto: req.params.idProducto,
+                            id_colores: elemento
+                        }
+                    })
+                    db.Producto_color.bulkCreate(color);
+                }
+    
+                //cambiar imagenes
+                let img = await db.Imagen_producto.findAll();
+                
+                /*
                 db.Imagen_producto.findAll({
                     where: {
                         id_producto: req.params.idProducto
                     }
                 })
                 .then(function(imagenesDeProducto){
-                    //return res.send('imagenesDeProducto');
-                    let checkFieldnames = [false, false, false];
-
-                    req.files.forEach(function(imagen){
-                        if(imagen.fieldname != ''){
-                            switch(imagen.fieldname){
-                                case 'imagenPrincipal':
-                                    checkFieldnames[0] = true;
-                                    break;
-                                case 'imagenSecundaria': 
-                                    checkFieldnames[1] = true;
-                                    break;
-                                case 'imagenTercera': 
-                                    checkFieldnames[2] = true;
-                                    break;
-                                default: 
-                            }
+                    return res.send(imagenesDeProducto);
+                    db.Imagen_producto.destroy({
+                        where: {
+                            id_producto: req.params.idProducto
                         }
                     })
-                    return res.send(checkFieldnames);
-                })
-                .catch(function(err){
-                    return res.send(err)
+                    .then(function(resultado) {
+                        let imagenes = req.files.map(elemento => {
+                            return {
+                                nombre: elemento.filename,
+                                id_producto: req.params.idProducto
+                            }
+                        })
+                        db.Imagen_producto.bulkCreate(imagenes);
+                    })
+                    .catch(function(imgErr){
+                        return res.send(imgErr);
+                    })
+                })*/
+    
+                /*
+                if(req.files != ''){
+                    try {
+                        db.Producto.findAll().then(response => res.send(response))
+                        .catch(function(e){
+                            return res.send(e);
+                        })
+                        return res.send(imagenes);
+                    }catch(e) {
+                        return res.send(e)
+                    }
+                    return res.send('salimos y no encontramos nada')
+                    db.Imagen_producto.findAll({
+                        where: {
+                            id_producto: req.params.idProducto
+                        }
+                    })
+                    .then(function(imagenesDeProducto){
+                        //return res.send('imagenesDeProducto');
+                        let checkFieldnames = [false, false, false];
+    
+                        req.files.forEach(function(imagen){
+                            if(imagen.fieldname != ''){
+                                switch(imagen.fieldname){
+                                    case 'imagenPrincipal':
+                                        checkFieldnames[0] = true;
+                                        break;
+                                    case 'imagenSecundaria': 
+                                        checkFieldnames[1] = true;
+                                        break;
+                                    case 'imagenTercera': 
+                                        checkFieldnames[2] = true;
+                                        break;
+                                    default: 
+                                }
+                            }
+                        })
+                        return res.send(checkFieldnames);
+                    })
+                    .catch(function(err){
+                        res.redirect('/error');
+                    })
+                }*/
+            })
+            .then(function(){
+                res.redirect('/product/listadoDeProductos');
+            })
+            .catch(function(err){
+                res.redirect('/error');;
+            })
+        }else{
+            let colores = await db.Color.findAll();
+            let sustentabilidad = await db.Sustentabilidad.findAll();
+            let categorias = await db.Categoria.findAll();
+
+            db.Producto.findByPk(req.params.idProducto,{
+                include: [
+                    {association: 'imagenes'},
+                    {
+                        model: db.Color,
+                        as: 'colores',
+                        through: {
+                          model: db.Producto_color
+                        }
+                    },
+                    {
+                        model: db.Sustentabilidad,
+                        as: 'sustentabilidad',
+                        through: {
+                          model: db.Producto_sustentabilidad
+                        }
+                    }
+                ]
+            })
+            .then(function(producto) {
+                if(req.session.idUsuarioSession != undefined){
+                    res.render('editarProducto', {colores, categorias, sustentabilidad, producto, errores: errores.errors});
+                }else{
+                    res.redirect('/user/login')
+                }            
+            })
+            .catch(function(error){
+                res.redirect('/error');
+            })
+/*
+            if(req.files[0] == undefined){
+                errores.errors.push({
+                    param: 'imagen',
+                    msg: 'Debes que ingresar al menos 1 imagen',
+                    location: 'body'
                 })
             }*/
-        })
-        .then(function(){
-            res.redirect('/product/listadoDeProductos');
-        })
-        .catch(function(err){
-            return res.send(err);
-        })
+            
+        }
+        
+        
     },
     crearProducto: async function(req, res){
         let errores = validationResult(req);
@@ -422,13 +447,17 @@ module.exports = {
                 res.redirect('/product/listadoDeProductos');
             })
             .catch(function(error){
-                res.send(error)
+                res.redirect('/error');
             })
         }else{
             //return res.send(errores)
             let colores = await db.Color.findAll();
             let sustentabilidad = await db.Sustentabilidad.findAll();
-            let categorias = await db.Categoria.findAll();
+            let categorias = await db.Categoria.findAll({
+                where: {
+                    id: req.params.idProducto
+                }
+            });
 
             if(req.files[0] == undefined){
                 errores.errors.push({
@@ -489,7 +518,7 @@ module.exports = {
             })
         })
         .catch(function(err) {
-            res.send(err)
+            res.redirect('/error');
         })
     }
 }

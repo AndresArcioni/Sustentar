@@ -27,9 +27,9 @@ router.get('/listadoDeProductos/filtrar?', productsController.filtrar);
 router.get('/formularioProductos', productsController.formularioProductos);
 router.post('/formularioProductos', upload.any(), validarProducto, productsController.crearProducto);
 router.get('/editarProducto/:idProducto', productsController.editarProducto);
-router.put('/editarProducto/:idProducto', upload.any(), productsController.actualizarProducto);
+router.put('/editarProducto/:idProducto', upload.any(), validarProducto, productsController.actualizarProducto);
 router.get('/detail/:idProducto', productsController.detail);
-router.post('/detail/:idProducto', productsController.agregarACarrito);
+/*router.post('/detail/:idProducto', productsController.agregarACarrito);*/
 router.delete('/borrar/:idProducto', productsController.borrarProducto);
 
 module.exports = router;

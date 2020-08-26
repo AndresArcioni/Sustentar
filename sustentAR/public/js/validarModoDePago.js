@@ -76,7 +76,7 @@ window.addEventListener('load', function(){
             Swal.fire({
                 position: 'top-center',
                 icon: 'info',
-                title: 'Estamos procesando el pago.',
+                title: 'Estamos procesando el metodo de pago.',
                 showConfirmButton: false,
                 timer: 3000
               })
@@ -84,7 +84,7 @@ window.addEventListener('load', function(){
             setTimeout( function () { 
               form.submit();
             }, 3000);
-            
+        
         }
     })
 })

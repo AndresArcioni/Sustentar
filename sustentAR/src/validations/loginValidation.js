@@ -8,7 +8,7 @@ const db = require('../database/models');
 
 module.exports = [
     check('email')
-    .isEmail().withMessage('Ingresa un mail válido / '),
+    .isEmail().withMessage('Ingresa un mail válido'),
     check('contrasenia')
     .isLength({min: 8, max: 16}).withMessage(' ')
 ]

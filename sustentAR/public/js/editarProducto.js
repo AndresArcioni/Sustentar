@@ -14,7 +14,7 @@ function previewImg(index){
 }
 
 window.addEventListener('load', function() {
-
+    
 let botonSeleccionarImg = qs('#botonSeleccionarImg');
 let inputSeleccionarArchivo = qs('.inputSeleccionarArchivo');
 

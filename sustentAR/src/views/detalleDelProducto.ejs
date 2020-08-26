@@ -7,10 +7,6 @@
         
         <div id="contenedor-detalle-producto" class="container-fluid">
 
-            <div class="alert alert-success agregadoExito d-none" role="alert">
-                Se ha agregado el producto al carrito con exito!
-            </div> 
-
             <h4><%= producto.nombre %></h4>
             
             
@@ -91,7 +87,7 @@
                                 <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4 d-none">Agregar al carrito</button>
                             <% } else {%> 
                                 <% if(producto.stock > 0){ %> 
-                                <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
+                                    <button name="idProductoAgregado" id="aCarrito" value=<%=producto.id%> method="POST" type="submit" class="botonStyle botonFiltro col-12 col-sm-4">Agregar al carrito</button>
                                 <% } else { %> 
                                     <div class="alert alert-danger" role="alert">
                                         Producto sin stock

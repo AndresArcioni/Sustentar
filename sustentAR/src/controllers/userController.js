@@ -89,12 +89,12 @@ module.exports = {
                         res.redirect('/user/login')
                     })
                     .catch(function(e) {
-                        res.send(e)
+                      res.redirect('/error')
                     })
                 })               
             })
             .catch(function(e){
-                res.send(e);
+                res.redirect('/error')
             })
         } else {
             res.render('registro', {errores : errores.errors});
@@ -139,7 +139,7 @@ module.exports = {
                 res.render('misCompras', {productosComprados: productosComprados, usuario : req.session.idUsuarioSession, historial : historial, cantidadDeProducto: historiales});
 
             }catch(e){
-                return res.send('e');
+                res.redirect('/error')
             }
         }else{
             res.render('misCompras', {productosComprados: productosComprados});
@@ -147,32 +147,41 @@ module.exports = {
         
     }, 
     editarCuenta: function(req, res){
+        let errores = validationResult(req);
         
-        db.Usuario.update({
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            email: req.body.email,
-            /*contrasenia: ,AGREGAR FUNCIONALIDAD*/
-            dni: (req.body.dni == '') ? null : req.body.dni,
-            domicilio: (req.body.domicilio == '') ? " " : req.body.domicilio,
-            codigo_postal: (req.body.codigo_postal == '') ? null : req.body.codigo_postal,
-            entre_calles: (req.body.entre_calles == '') ? " " : req.body.entre_calles,
-            departamento: (req.body.departamento == '') ? " " :  req.body.departamento,
-            ciudad: (req.body.ciudad == '') ? " " : req.body.ciudad,
-            telefono: (req.body.telefono == '') ? null : req.body.telefono,
-            imagen_usuario: (!req.files[0]) ? this.imagen_usuario : req.files[0].filename,
-            updated_at: new Date()
-        }, {
-            where: {
-                id: req.params.idUsuario
-            }
-        })
-        .then(function(usuario){
-            res.redirect('/user/cuenta/' + req.params.idUsuario);
-        })
-        .catch(function(error){
-            res.send(error)
-        })
+        if(errores.isEmpty()){
+            db.Usuario.update({
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                email: req.body.email,
+                /*contrasenia: ,AGREGAR FUNCIONALIDAD*/
+                dni: (req.body.dni == '') ? null : req.body.dni,
+                domicilio: (req.body.domicilio == '') ? " " : req.body.domicilio,
+                codigo_postal: (req.body.codigo_postal == '') ? null : req.body.codigo_postal,
+                entre_calles: (req.body.entre_calles == '') ? " " : req.body.entre_calles,
+                departamento: (req.body.departamento == '') ? " " :  req.body.departamento,
+                ciudad: (req.body.ciudad == '') ? " " : req.body.ciudad,
+                telefono: (req.body.telefono == '') ? null : req.body.telefono,
+                imagen_usuario: (!req.files[0]) ? this.imagen_usuario : req.files[0].filename,
+                updated_at: new Date()
+            }, {
+                where: {
+                    id: req.params.idUsuario
+                }
+            })
+            .then(function(usuario){
+                res.redirect('/user/cuenta/' + req.params.idUsuario);
+            })
+            .catch(function(error){
+                res.redirect('/error')
+            })
+        }else{
+            db.Usuario.findByPk(req.session.idUsuarioSession)
+            .then(function(usuario){
+                res.render('cuenta', {usuario, errores: errores.errors} );
+            })
+        }
+        
     },
     logout: function(req, res, next){
         req.session.destroy();

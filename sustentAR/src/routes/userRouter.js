@@ -6,6 +6,7 @@ const userController = require(path.join(__dirname, '../controllers/userControll
 const loginValidation = require('../validations/loginValidation');
 const validarUsuario = require('../validations/validarUsuario');
 const registerValidation = require('../validations/registerValidation');
+const editarCuenta = require('../validations/editarCuenta');
 const accesoMiddleware = require('../middlewares/accesoMiddleware');
 
 
@@ -23,7 +24,7 @@ let upload = multer({storage:storage});
 
 //PERFIL USUARIO
 router.get('/cuenta/:idUsuario', accesoMiddleware, userController.cuenta);
-router.put('/cuenta/:idUsuario', upload.any(), userController.editarCuenta);
+router.put('/cuenta/:idUsuario', upload.any(), editarCuenta, userController.editarCuenta);
 
 //LOGIN
 router.get('/login', userController.login);

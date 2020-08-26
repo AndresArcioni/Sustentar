@@ -43,16 +43,16 @@ module.exports = {
                         res.render('carritoDeCompras', {productos: productosARR, cantidad: carritoProductos, colores});
                     })
                 })
-                .catch(function(error){
-                    res.send(error)
+                .catch(function(){
+                    res.redirect('/error');
                 })
             })
-            .catch(function(error){
-                res.send(error)
+            .catch(function(){
+                res.redirect('/error');
             })
         })
-        .catch(function(error){
-            res.send(error)
+        .catch(function(){
+            res.redirect('/error');
         })
     },
     editarInfoUsuario : function(req, res){
@@ -60,14 +60,14 @@ module.exports = {
         .then(function(usuario){
             res.render('infoUsuarioCompra', {usuario});
         })
-        .catch(function(e){
-            res.send(e)
+        .catch(function(){
+            res.redirect('/error');
         })
     },
     selecionarModoDePago : function(req, res){
         res.render('modoDePago');
     },
-    compraOk: function(res,res) {
+    modoDePagoConfirmado: function(res,res) {
         res.redirect('/carrito/finalizarCompra');
     },
     finalizarCompra: function(req, res){
@@ -92,48 +92,59 @@ module.exports = {
                     }
                 ]
             })
-        .then(function(listadoDeProductos){
-            return listadoDeProductos
-        })
-        .then(function(productos){
-            let productosARR = [];
-            for(let i = 0; i < carritoProductos.length; i++){
-                for(let j = 0; j < productos.length; j++){
-                    if(carritoProductos[i].id_producto == productos[j].id){
-                        productosARR.push(productos[j]);
+            .then(function(listadoDeProductos){
+                return listadoDeProductos
+            })
+            .then(function(productos){
+                let productosARR = [];
+                for(let i = 0; i < carritoProductos.length; i++){
+                    for(let j = 0; j < productos.length; j++){
+                        if(carritoProductos[i].id_producto == productos[j].id){
+                            productosARR.push(productos[j]);
+                        }
                     }
+
                 }
-                
-            }
-            db.Color.findAll()
-            .then(function(colores){
-                res.render('finalizarCompra', {productos: productosARR, cantidad: carritoProductos, colores});
+                db.Color.findAll()
+                .then(function(colores){
+                    res.render('finalizarCompra', {productos: productosARR, cantidad: carritoProductos, colores});
+                    })
+                })
+                .catch(function(){
+                    res.redirect('/error');
                 })
             })
+            .catch(function(){
+                res.redirect('/error');
+            })
         })
+        .catch(function(){
+            res.redirect('/error');
         })
     },
     agregarACarrito : function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(function(usuario){
-            db.Carrito_productos.create({
-                id_producto : req.body.idProductoAgregado,
-                id_carrito : usuario.carrito_id,
-                cantidad_productos : req.body.cantidad,
-                id_colores: req.body.color
+            db.Producto.findByPk(req.body.idProductoAgregado)
+            .then(function(producto){
+                if(producto.stock > 0){
+                    db.Carrito_productos.create({
+                        id_producto : req.body.idProductoAgregado,
+                        id_carrito : usuario.carrito_id,
+                        cantidad_productos : req.body.cantidad,
+                        id_colores: req.body.color
+                    })
+                    .then(function(carritoProducto){
+                        res.redirect('/carrito')
+                    })
+                    .catch(function(e) {
+                        res.send(e)
+                    })
+                } else {
+                    res.redirect('/error')
+                }
             })
-            .then(function(carritoProducto){
-                db.Producto.findByPk(req.body.idProductoAgregado)
-                .then(function(producto){
-                    res.redirect('/product/detail/' + req.body.idProductoAgregado)
-                })
-                .catch(function(e) {
-                    res.send(e)
-                })
-            })
-            .catch(function(e) {
-                res.send(e)
-            })
+            
         })  
     },
     borrarProductoDeCarrito: async function(req, res){
@@ -151,7 +162,7 @@ module.exports = {
             res.redirect('/carrito')
         })
         .catch(function(error){
-            res.send(error)
+            res.redirect('/error');
         })
     },
     limpiarCarrito: function(req, res){
@@ -191,6 +202,14 @@ module.exports = {
                     if(productos[i].id == carritos[j].id_producto){
                         productos[i].stock -= carritos[j].cantidad_productos;
                         productosFiltrados.push(productos[i]);
+                        
+                        let prod = await db.Producto.update({
+                            stock: productos[i].stock 
+                        }, {
+                            where: {
+                                id: productos[i].id
+                            }
+                        })
                     }
                 }
             }
@@ -202,21 +221,13 @@ module.exports = {
                     }
                 })
             }   
-            
-            for(let i = 0; i < productos.length; i++){
-                await db.Producto.update(productos[i], {
-                    where: {
-                        id: productos[i].id
-                    }
-                })
-            }
-              
+
         })
         .then(function(){
             res.redirect('/')
         })
         .catch(function(error){
-            res.send(error)
+            res.redirect('/error');
         })
     }
 

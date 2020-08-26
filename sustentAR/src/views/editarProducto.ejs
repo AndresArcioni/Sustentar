@@ -24,7 +24,14 @@
                             <p class="col-5 col-lg-3"><input type="radio" name="categoria" value=<%= categoria.id %>><%=categoria.nombre%></p>
                         <% } %>
                     <% }) %>
-                    <!--</form>-->
+                    <% if(typeof errores != 'undefined'){ %>
+                        <% for(let i = 0; i < errores.length; i++){ %>
+                            <% if(errores[i].param == "categoria"){ %>
+                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                            <% } %> 
+                        <% } %>
+                    <% } %>
+                    
                 </div>
 
             </article>
@@ -42,19 +49,40 @@
                             <div class="col-10"> 
                                 <div class="row">
                                     <label class="col-11" for="">Nombre</label>
-                                    <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombreProducto" value="<%=producto.nombre%>">
+                                    <input class="inputStyle col-11" type="text" id="nombreProducto" placeholder="Nombre..." name="nombre" value="<%=producto.nombre%>">
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "nombre"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>
                                 </div>
                             </div>            
                             <div class="col-10 col-md-2">
                                 <div class="row">
                                     <label class="col-12" for="">Precio</label>
                                     <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="$Precio..." name="precio" value="<%= producto.precio %>" >
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "precio"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>
                                 </div>
                             </div>
                             <div class="col-10 col-md-2">
                                 <div class="row">
                                     <label class="col-12" for="">Stock</label>
                                     <input class="inputStyle col-6 col-md-11" type="number" id="stock" placeholder="Stock..." name="stock" value="<%= producto.stock %>">
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "stock"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>
                                 </div>
                             </div>    
                             <div class="col-10 col-md-2">
@@ -65,12 +93,19 @@
                                     <% } else {%> 
                                         <input class="inputStyle col-6 col-md-11" type="text" id="" placeholder="Descuento %..." name="descuento" value="<%= producto.descuento %>">
                                     <% } %>
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "descripcion"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>
                                 </div> 
                             </div>                  
                             <div class="col-12">
                                 <div class="row d-flex justify-content-center">
                                     <label class="col-12" for="">Descripción</label>
-                                    <textarea class="inputStyle col-11" name="descripcionProducto" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"><%= producto.descripcion %></textarea>
+                                    <textarea class="inputStyle col-11" name="descripcion" id="descripcionProducto" cols="30" rows="5" placeholder="Descripción"><%= producto.descripcion %></textarea>
                                 </div>
                             </div>
                             
@@ -89,6 +124,13 @@
                                                 <label for="color-<%=color.nombre%>"><%=color.nombre%></label>
                                             </div>
                                         <% }) %>
+                                        <% if(typeof errores != 'undefined'){ %>
+                                            <% for(let i = 0; i < errores.length; i++){ %>
+                                                <% if(errores[i].param == "color"){ %>
+                                                    <small class="text-danger"> <%= errores[i].msg%> </small>
+                                                <% } %> 
+                                            <% } %>
+                                        <% } %>
                                     </div>
                                     
                                 </div>
@@ -112,6 +154,14 @@
                                                 </p>                                          
                                             </div>   
                                         <% }) %>
+
+                                        <% if(typeof errores != 'undefined'){ %>
+                                            <% for(let i = 0; i < errores.length; i++){ %>
+                                                <% if(errores[i].param == "sustentabilidad"){ %>
+                                                    <small class="text-danger"> <%= errores[i].msg%> </small>
+                                                <% } %> 
+                                            <% } %>
+                                        <% } %>  
                                     </div>
                                     
                                 </div> 
@@ -135,6 +185,14 @@
                                         <input onchange="previewImg(2);" id="inputFile" class="mt-2 mb-3 inputSeleccionarArchivo" type="file" name="imagenTercera">
                                         <input type="button" name="imagen"  id="botonSeleccionarImg" value="Seleccionar imagen">
                                     </div>
+                                    
+                                    <% if(typeof errores != 'undefined'){ %>
+                                        <% for(let i = 0; i < errores.length; i++){ %>
+                                            <% if(errores[i].param == "imagen"){ %>
+                                                <small class="text-danger"> <%= errores[i].msg%> </small>
+                                            <% } %> 
+                                        <% } %>
+                                    <% } %>  
                                     
                                 </div>
                             </div>
