@@ -1,7 +1,7 @@
 function qs(element) {
     return document.querySelector(element)
 };
-
+/*
 window.addEventListener('load', function() {
     let dni = qs('#dni')
     let direccion = qs('#direccion')
@@ -54,4 +54,4 @@ window.addEventListener('load', function() {
             window.location.replace("/carrito/modoDePago");
         }
     })
-}) 
+})*/ 

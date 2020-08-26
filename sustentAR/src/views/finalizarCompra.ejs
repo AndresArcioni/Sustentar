@@ -30,7 +30,7 @@
                             </div>
                         </div>
 
-                    <% } %>
+                    
     
                     <div class="separacion col-12">
                         <div>
@@ -49,11 +49,11 @@
     
                     <div class="total col-12">
                         <div class="row">
-                            <h3 class="col-6 col-md-10">Total</h3>
-                            <h3 class="col-2">$<%=precioFinal%></h3>
+                            <h3 class="col-6 col-md-10">Total producto</h3>
+                            <h3 class="col-2">$<%=Number(productos[i].precio * cantidad[i].cantidad_productos)%></h3>
                         </div>
-                        
                     </div>
+                    <% } %>
     
                     <div class="btnDiv col-12">
                         <button type="button" class="continuar botonStyle"><a href="/carrito/compraRealizada">Confirmar Compra</a></button>

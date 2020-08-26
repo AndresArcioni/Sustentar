@@ -805,8 +805,13 @@ a :hover{
     
     .boton-agregar-producto{
         position: absolute;
+<<<<<<< HEAD
+        right:11.5%;
+        top:31%;
+=======
         right:0;
         top:87px;
+>>>>>>> 98ab91e24ee24d6b1cb476e9d468889d384f5529
     }
 
     .img-editar-cuenta{

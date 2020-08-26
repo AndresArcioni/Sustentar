@@ -67,57 +67,53 @@ module.exports = {
     selecionarModoDePago : function(req, res){
         res.render('modoDePago');
     },
-    finalizarCompra : function(req, res){
-        db.Usuario.findByPk(req.session.idUsuarioSession)
-        .then(function(usuario){
-            
-            db.Carrito_productos.findAll({
-                where: {
-                    id_carrito: usuario.carrito_id
-                }
-            })
-            .then(function(carritoProductos){
-                db.Producto.findAll({
-                    include: [
-                        {association: 'imagenes'},
-                        {
-                            model: db.Color,
-                            as: 'colores',
-                            through: {
-                              model: db.Producto_color
-                            }
-                        }
-                    ]
-                })
-                .then(function(listadoDeProductos){
-                    return listadoDeProductos
-                })
-                .then(function(productos){
-                    let productosARR = [];
-                    let totalCompra = 0;
-                    for(let i = 0; i < carritoProductos.length; i++){
-                        for(let j = 0; j < productos.length; j++){
-                            if(carritoProductos[i].id_producto == productos[j].id){
-                                productosARR.push(productos[j]);
-                                totalCompra += Number(productos[j].precio * carritoProductos[i].cantidad_productos);
-                            }
-                        }
-                    }
-                    res.render('finalizarCompra', {productos: productosARR, cantidad: carritoProductos, precioFinal: totalCompra});
-                })
-                .catch(function(error){
-                    res.send(error)
-                })
-            })
-            .catch(function(error){
-                res.send(error)
-            })
-        })
-        .catch(function(error){
-            res.send(error)
-        })
-        
+    compraOk: function(res,res) {
+        res.redirect('/carrito/finalizarCompra');
     },
+    finalizarCompra: function(req, res){
+db.Usuario.findByPk(req.session.idUsuarioSession)
+.then(function(usuario){
+
+    db.Carrito_productos.findAll({
+        where: {
+            id_carrito: usuario.carrito_id
+        }
+    })
+    .then(function(carritoProductos){
+        db.Producto.findAll({
+            include: [
+                {association: 'imagenes'},
+                {
+                    model: db.Color,
+                    as: 'colores',
+                    through: {
+                      model: db.Producto_color
+                    }
+                }
+            ]
+        })
+        .then(function(listadoDeProductos){
+            return listadoDeProductos
+        })
+        .then(function(productos){
+            let productosARR = [];
+            for(let i = 0; i < carritoProductos.length; i++){
+                for(let j = 0; j < productos.length; j++){
+                    if(carritoProductos[i].id_producto == productos[j].id){
+                        productosARR.push(productos[j]);
+                    }
+                }
+                
+            }
+            db.Color.findAll()
+            .then(function(colores){
+                res.render('finalizarCompra', {productos: productosARR, cantidad: carritoProductos, colores});
+                })
+            })
+        })
+        })
+    },
+  
     agregarACarrito : function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(function(usuario){
