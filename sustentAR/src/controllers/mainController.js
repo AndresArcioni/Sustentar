@@ -23,5 +23,8 @@ module.exports = {
             res.send(error)
         })
         
+    },
+    error : function(req, res){
+        res.render('error')
     }
 };
