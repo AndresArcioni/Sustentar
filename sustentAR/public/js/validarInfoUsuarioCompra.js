@@ -32,11 +32,13 @@ window.addEventListener('load', function() {
         if(depto.value.length < 1){
             errores++;
         }
-        if(telefono.value.length != 8){
+        if(telefono.value.length < 8){
+            console.log('telefono mal')
             specificErrors++;
             errores++;
         }
         if(cp.value.length != 4){
+            console.log('cp mal')
             specificErrors++;
             errores++;
         }
@@ -48,8 +50,9 @@ window.addEventListener('load', function() {
                 swal('Faltan campos por completar... ¿seguro que quieres continuar?')
             }
         }else{
-            location.href(evento);
-            //formInfoUsuario.submit();
+            // console.log('hola');
+            // btnConfirmar.unbind('click').click();
+            // btnConfirmar.click()
         }
     })
 }) 
