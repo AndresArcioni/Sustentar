@@ -11,6 +11,7 @@ router.delete('/:idProducto', accesoMiddleware, carritoController.borrarProducto
 router.get('/compraRealizada', carritoController.limpiarCarrito);
 router.get('/infoUsuarioCompra', carritoController.editarInfoUsuario);
 router.get('/modoDePago', carritoController.selecionarModoDePago);
+router.post('/modoDePago', carritoController.compraOk);
 router.get('/finalizarCompra', carritoController.finalizarCompra);
 
 module.exports = router;

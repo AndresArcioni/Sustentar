@@ -4,63 +4,87 @@ function qs(element) {
 
 window.addEventListener('load', function(){
 
-    let formContent = qs('#content');
-    let dni = qs('#dni');
-    let nroTarjeta = qs('#nroTarjeta');
-    let codSeguridad = qs('#codSeguridad');
-    let nombreTitular = qs('#nombreTitular');
-    let fNacimiento = qs('#f-Nacimiento');
+    let form = qs('#content');
+    let dni = qs('input#dni');
+    let errorDni = qs("small#dni");
+    let nroTarjeta = qs('input#nroTarjeta');
+    let errorNroTarjeta = qs("small#nroTarjeta");
+    let codSeguridad = qs('input#codSeguridad');
+    let errorCodSeguridad = qs("small#codSeguridad");
+    let nombreTitular = qs('input#nombreTitular');
+    let errorNombreTitular = qs("small#nombreTitular");
     let btnConfirmar = qs('#btnConfirmar');
 
 
-    let errores = {};
 
-    dni.addEventListener('keyup', function() {
-        if(dni.value.length == 8) {
-            nroTarjeta.disabled = false;  
-        } else {
-            errores.dni = "Inserta un DNI válido. 8 numeros consecutivos sin espacios, ni puntos. "
+    nroTarjeta.addEventListener('input', function (e) {
+        let foo = this.value.split("-").join("");
+        if (foo.length > 0) {
+            foo = foo.match(new RegExp('.{1,4}', 'g')).join("-");
         }
-    })
-    
-    nroTarjeta.addEventListener('keyup', function() {
-        if(nroTarjeta.value.length == 16) {
-            codSeguridad.disabled=false;
-        } else {
-            errores.nroTarjeta = "Inserta una tarjeta válida. Deben ser 16 numeros consecutivos, sin espacios, ni - "
-        }
-    })
+        this.value = foo;
+    });
 
-    codSeguridad.addEventListener('keyup', function() {
-        if(codSeguridad.value.length == 3) {
-            nombreTitular.disabled=false;
-        } else {
-            errores.codSeguridad = "Inserta un codigo de seguridad válido. Es el numero de tres cifras que figura en el dorso de la tarjeta. "
-        }
-    })
 
-    nombreTitular.addEventListener('keyup', function() {
-        if(nombreTitular.value.length >= 3) {
-            fNacimiento.disabled=false;
-        } else {
-            errores.nombreTitular = "Inserta el nombre tal y como figura en la tarjeta. "
-        }
-    })
-
-    fNacimiento.addEventListener('keyup', function() {
-        if(fNacimiento.value.length != '') {
-            console.log('OK')
-        } else {
-            errores.fNacimiento = "Inserta una fecha válida. El formato es DD/MM/YYYY, por ejemplo 01/12/2019 "
-        }
-    })
-
-    /*
     btnConfirmar.addEventListener('click', function(e) {
-        e.preventDefault(formContent);
+        e.preventDefault(form);
 
-        if(errores < 1) {
-            formContent.submit()
+        let errores = {};
+
+        if(dni.value.length != 8) {
+            errores.dni = "Inserta un DNI válido. 8 numeros sin espacios, ni puntos."
         }
-    })*/
+
+        if(nroTarjeta.value.length != 19) {
+            errores.nroTarjeta = "Inserta una tarjeta válida. Deben ser 16 numeros consecutivos, sin espacios, ni -."
+        }
+
+        if(codSeguridad.value.length != 3) {
+            if(codSeguridad.value.length != 4) {
+            errores.codSeguridad = "Inserta un codigo de seguridad válido. Es el numero de tres o cuatro cifras que figura en el dorso de la tarjeta."
+        }
+        }
+
+        if(nombreTitular.value.length < 5) {
+            errores.nombreTitular = "Inserta el nombre como figura en la tarjeta. "
+        }
+        
+
+        if(Object.keys(errores).length >= 1) {
+            if(errores.dni) {
+                errorDni.innerText = errores.dni;
+            } else {
+                errorDni.innerText = '';
+            }
+            if(errores.nroTarjeta) {
+                errorNroTarjeta.innerText = errores.nroTarjeta;
+            } else {
+                errorNroTarjeta.innerText = '';
+            }
+            if(errores.codSeguridad) {
+                errorCodSeguridad.innerText = errores.codSeguridad;
+            } else {
+                errorCodSeguridad.innerText = '';
+            }
+            if(errores.nombreTitular) {
+                errorNombreTitular.innerText = errores.nombreTitular;
+            } else {
+                errorNombreTitular.innerText = '';
+            }
+
+        } else {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'info',
+                title: 'Estamos procesando el pago.',
+                showConfirmButton: false,
+                timer: 3000
+              })
+            
+            setTimeout( function () { 
+              form.submit();
+            }, 3000);
+            
+        }
+    })
 })
