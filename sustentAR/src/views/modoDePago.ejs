@@ -2,7 +2,6 @@
 <html lang="en">
 
 <%- include('./partials/Head') %>
-<link rel="stylesheet" href="/css/styleSheetGuido.css">
 
 <body>
 
@@ -21,7 +20,7 @@
     
                 <form class="formulario-editar-cuenta  row" action="" id="content">
     
-                    <div class="col-7 col-sm-7 form-div row"  nombre>
+                    <div class="col-7 col-sm-7 form-div row">
                         <label class="etiqueta col-12" id=""  for="">DNI</label>
                         <input class="campo col-10 inputStyle" type="text" name="dni" id="dni" placeholder="DNI">
                        
@@ -29,23 +28,23 @@
     
                     <div class="col-8 col-sm-8 form-div row">
                         <label class="etiqueta col-12" for="">Numero de tarjeta</label>
-                        <input class="campo col-10 inputStyle" type="text" name="nroTarjeta" id="nroTarjeta" disabled placeholder="Numero de tarjeta"> 
+                        <input class="campo col-10 inputStyle" type="text" name="nroTarjeta" id="nroTarjeta" placeholder="Numero de tarjeta XXXX-XXXX-XXXX-XXXX" disabled> 
                     </div>
     
                     <div class="col-4 col-sm-4 form-div row">
                         <label class="etiqueta col-12" for="" >Codigo</label>
-                        <input class="campo col-10 inputStyle" type="text" name="codSeguridad" id="codSeguridad" disabled placeholder="Codigo de Seguridad">
+                        <input class="campo col-10 inputStyle" type="text" name="codSeguridad" id="codSeguridad" placeholder="Codigo de Seguridad" disabled>
                     </div>
     
     
                     <div class="col-8 col-sm-8 form-div row">
-                        <label class="etiqueta col-12" for="">Nombre del titular</label>
-                        <input class="campo col-10 inputStyle" type="text" name="nombreTitular" id="nombreTitular" disabled placeholder="Nombre del Titular" >
+                        <label class="etiqueta col-12" for="">Nombre y Apellido (como figura en al tarjeta)</label>
+                        <input class="campo col-10 inputStyle" type="text" name="nombreTitular" id="nombreTitular" placeholder="JOSE, PEREZ"  disabled>
                     </div>
                     
                     <div class="col-7 col-sm-7 form-div row">
                         <label class="etiqueta col-12" for="">Fecha de nacimiento</label>
-                        <input class="campo col-10 inputStyle" type="text" name="f-Nacimiento" id="f-Nacimiento" disabled placeholder="Fecha de Nacimiento">
+                        <input class="campo col-10 inputStyle" type="text" name="f-Nacimiento" id="f-Nacimiento" placeholder="DD/MM/YYYYY" disabled>
                     </div>
                     <div class="btnDiv col-6 btnDivVolverCarrito">
                         <button type="button" class="botonStyle btnVolverCarrito "><a href="carrito/infoUsuarioCompra">Volver a Informacion de Usuario</a></button>
