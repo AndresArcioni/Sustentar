@@ -54,4 +54,4 @@ window.addEventListener('load', function() {
             window.location.replace("/carrito/modoDePago");
         }
     })
-})*/ 
+})*/

@@ -80,8 +80,17 @@ module.exports = {
                 nuevoUsuario.carrito_id = result.id;
                 
                 db.Usuario.create(nuevoUsuario)
-                .then(function(){
-                    res.redirect('/user/login')
+                .then(function(usuarioCreado){
+                    db.Historial_compra.create({
+                        id_carrito: usuarioCreado.carrito_id,
+                        usuario_id: usuarioCreado.id
+                    })
+                    .then(function() {
+                        res.redirect('/user/login')
+                    })
+                    .catch(function(e) {
+                        res.send(e)
+                    })
                 })               
             })
             .catch(function(e){

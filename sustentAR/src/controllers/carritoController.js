@@ -71,27 +71,27 @@ module.exports = {
         res.redirect('/carrito/finalizarCompra');
     },
     finalizarCompra: function(req, res){
-db.Usuario.findByPk(req.session.idUsuarioSession)
-.then(function(usuario){
+        db.Usuario.findByPk(req.session.idUsuarioSession)
+            .then(function(usuario){
 
-    db.Carrito_productos.findAll({
-        where: {
+        db.Carrito_productos.findAll({
+            where: {
             id_carrito: usuario.carrito_id
-        }
-    })
-    .then(function(carritoProductos){
-        db.Producto.findAll({
-            include: [
-                {association: 'imagenes'},
-                {
-                    model: db.Color,
-                    as: 'colores',
-                    through: {
-                      model: db.Producto_color
-                    }
-                }
-            ]
+            }
         })
+        .then(function(carritoProductos){
+            db.Producto.findAll({
+                include: [
+                    {association: 'imagenes'},
+                    {
+                        model: db.Color,
+                        as: 'colores',
+                        through: {
+                        model: db.Producto_color
+                        }
+                    }
+                ]
+            })
         .then(function(listadoDeProductos){
             return listadoDeProductos
         })
@@ -113,7 +113,6 @@ db.Usuario.findByPk(req.session.idUsuarioSession)
         })
         })
     },
-  
     agregarACarrito : function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(function(usuario){
@@ -135,10 +134,7 @@ db.Usuario.findByPk(req.session.idUsuarioSession)
             .catch(function(e) {
                 res.send(e)
             })
-        })
-        
-        
-        
+        })  
     },
     borrarProductoDeCarrito: async function(req, res){
         await db.Usuario.findByPk(req.session.idUsuarioSession)
@@ -158,32 +154,23 @@ db.Usuario.findByPk(req.session.idUsuarioSession)
             res.send(error)
         })
     },
-    limpiarCarrito: async function(req, res){
+    limpiarCarrito: function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
         .then(async function(usuario){
-
             let historialDeCompra = await db.Historial_compra.findAll({
                 where: {
                     usuario_id: usuario.id
                 }
             })
-
             let carritos = await db.Carrito_productos.findAll({
                 where: {
                     id_carrito: usuario.carrito_id
                 }
             })
-            .then(function(carrito){
-                return carrito;
-            })
-            .catch(function(error){
-                res.send(error)
-            })
-
             let historialProductoBase = {
                 id_producto: null,
                 cantidad_productos:null,
-                id_historial_compras: null,
+                id_historial_compras: null
             }
             let historialProductoArr = [];
 
@@ -194,19 +181,9 @@ db.Usuario.findByPk(req.session.idUsuarioSession)
                 historialProductoArr.push(historialProductoBase)
                 console.log(historialProductoBase);
             }
-            db.Historial_producto.bulkCreate(historialProductoArr)
-            
-            .then(function(historialProductos){
-                return historialProductos
-            })
-            .catch(function(e){
-                res.send(e)
-            })
+            let historial_producto = await db.Historial_producto.bulkCreate(historialProductoArr)
 
             let productos = await db.Producto.findAll()
-            .then(function(productos){
-                return productos;
-            })
 
             let productosFiltrados = []; 
             for(let i = 0; i < productos.length; i++){
@@ -219,17 +196,21 @@ db.Usuario.findByPk(req.session.idUsuarioSession)
             }
 
             for(let i = 0; i < productosFiltrados.length; i++){
-                db.Carrito_productos.destroy({
+                await db.Carrito_productos.destroy({
                     where: {
                         id_producto: productosFiltrados[i].id
                     }
                 })
             }   
             
-            db.Producto.update(productos)
-            .then(function(productosActualizados){
-                return productosActualizados;
-            })
+            for(let i = 0; i < productos.length; i++){
+                await db.Producto.update(productos[i], {
+                    where: {
+                        id: productos[i].id
+                    }
+                })
+            }
+              
         })
         .then(function(){
             res.redirect('/')
