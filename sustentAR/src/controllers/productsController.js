@@ -18,33 +18,15 @@ async function obtenerProductos(){
 
 module.exports = {
     listarProductos: async function(req, res){
-        if(req.query.busquedaAvanzada != undefined){
-            db.Producto.findAll({
-                where : {
-                    nombre : {
-                        [Op.like]: '%' + req.query.busquedaAvanzada + '%'
-                    }
-                }
-            },{
-                include: [{association: 'imagenes'}, {association: 'categorias'}]
-            })
-            .then(function(productoBuscado){
-                return res.send(productoBuscado)
-            })
-            .catch(function(e){
-                res.send(e)
-            })
-            
-        } else {
-            db.Producto.findAll({
-                include: [{association: 'imagenes'}, {association: 'categorias'}]
-            })
-            .then(function(listadoDeProductos){
-                return listadoDeProductos
-            })
-            .then(function(productos){  
-                db.Categoria.findAll()
-                .then(async function(categorias) {
+        db.Producto.findAll({
+            include: [{association: 'imagenes'}, {association: 'categorias'}]
+        })
+        .then(function(listadoDeProductos){
+            return listadoDeProductos
+        })
+        .then(function(productos){  
+            db.Categoria.findAll()
+            .then(async function(categorias) {
                 if(req.session.idUsuarioSession != undefined){
                     let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession)
                         .then(function(usuario) {
@@ -58,13 +40,103 @@ module.exports = {
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias});
                 }
             })
-            })
-            .catch(function(error) {
-                res.send(error)
-            })
+        })
+        .catch(function(error) {
+            res.send(error)
+        })  
+    },
+    ordenar: async function(req, res){
+        //precio : req.query.ordenar
+        let productos = await db.Producto.findAll({
+            order: [
+                ['precio', (req.query.ordenar == 'mayor')? 'DESC' : 'ASC']
+            ]
+        })
+        
+        let productosConImagenes = await db.Producto.findAll({
+            include: [{association: 'imagenes'}]
+        })
+
+        let productosFiltrados = [];
+        for(let i = 0 ;i < productos.length; i++){
+            for(let j = 0 ; j < productosConImagenes.length; j++){
+                if(productos[i].id == productosConImagenes[j].id){
+                    productosFiltrados.push(productosConImagenes[j]);
+                }
+            }
         }
-        //req.query.busquedaAvanzada
             
+        let categorias = await db.Categoria.findAll();
+
+        if(req.session.idUsuarioSession != undefined){
+            let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
+
+            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+        }else{
+            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias});
+        }
+
+    },
+    filtrar: async function(req, res){
+        let productos = await db.Producto.findAll({
+            where : {
+                id_categoria : req.query.filtroDeCategoria
+            }
+        })
+        let productosConImagenes = await db.Producto.findAll({
+            include: [{association: 'imagenes'}]
+        })
+
+        let productosFiltrados = [];
+        for(let i = 0 ;i < productos.length; i++){
+            for(let j = 0 ; j < productosConImagenes.length; j++){
+                if(productos[i].id == productosConImagenes[j].id){
+                    productosFiltrados.push(productosConImagenes[j]);
+                }
+            }
+        }
+            
+        let categorias = await db.Categoria.findAll();
+
+        if(req.session.idUsuarioSession != undefined){
+            let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
+
+            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+        }else{
+            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias});
+        }
+    },
+    busquedaAvanzada: async function(req, res){
+        let productos = await db.Producto.findAll(
+        {
+            where : {
+                nombre : {
+                    [Op.like]: '%' + req.query.busquedaAvanzada + '%'
+                }
+            }
+        })
+        let productosConImagenes = await db.Producto.findAll({
+            include: [{association: 'imagenes'}]
+        })
+
+        let productosFiltrados = [];
+        for(let i = 0 ;i < productos.length; i++){
+            for(let j = 0 ; j < productosConImagenes.length; j++){
+                if(productos[i].id == productosConImagenes[j].id){
+                    productosFiltrados.push(productosConImagenes[j]);
+                }
+            }
+        }
+        
+        let categorias = await db.Categoria.findAll();
+
+        if(req.session.idUsuarioSession != undefined){
+            let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
+
+            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+        }else{
+            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias});
+        }
     },
     formularioProductos: async function(req, res){
         let colores = await db.Color.findAll();

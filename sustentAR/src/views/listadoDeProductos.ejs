@@ -7,9 +7,11 @@
         <div class="container-fluid">
             
             <div class="busquedaContainer">
-                <form action="" method="GET" class="busqueda row">
+                <!--/product/listadoDeProductos/busquedaAvanzada?-->
+                <form action="/product/listadoDeProductos/busquedaAvanzada?" method="GET" class="busqueda row">
                     <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
                 </form>
+
                 <% if(typeof usuario == 'undefined') { %>                    
                     <button class="boton-agregar-producto botonStyle d-none" type="button">
                         <a href="/product/formularioProductos">Agregar producto</a>
@@ -21,37 +23,32 @@
                         </button>
                     <% }%>
                 <% } %>
+
                 <nav class="mb-2 phoneFilter">
 
                     
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#filter">
-                        <i class="fas fa-filter"></i>Filtrar
+                        <i class="fas fa-filter"></i>Categoria
                     </button>
 
-                    
-                    <div class="collapse" id="filter">
-                        <h4><label for="">Categoría</label></h4>
-                            <% for(i=0; i<categorias.length; i++) { %>
-                                <p class="checkboxFilter"><input type="checkbox" name="categoria<%=categorias[i].nombre%>" value=<%= categorias[i].id %>><%= categorias[i].nombre %> </p>
-                            <% } %>
-                        <div class="">
-                            <button type="button" class="botonStyle">Continuar</button>
-                        </div>
-                    </div>
+                    <form action="/product/listadoDeProductos/filtrar?" method="GET" class="collapse col-12" id="filter">
+                        
+                        <% for(i=0; i<categorias.length; i++) { %>
+                            <button type="submit" name="filtroDeCategoria" value=<%= categorias[i].id %> class="col-7 botonStyle botonFiltro"><%=categorias[i].nombre%></button>
+                        <% } %>
+
+                    </form>
+
                     <br>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#orderBy">
                         <i class="fas fa-chevron-circle-down"></i> Ordenar por 
                     </button>
-                    
-                    <div class="collapse" id="orderBy">
-                        <div class="collapse col-12 row" id="orderBy">
-                            <button class="col-7 botonStyle">Mayor precio</button>
-                            <button class="col-7 botonStyle">Menor precio</button>
-                            <button class="col-7 botonStyle">Destacados</button>
-                        </div>
-                    </div>
+                    <form action="/product/listadoDeProductos/ordenar?" class="collapse col-12 row" id="orderBy">
+                        <button type="submit" name="ordenar" value="menor" class="col-7 botonStyle botonFiltro">Menor precio</button>
+                        <button type="submit" name="ordenar" value="mayor" class="col-7 botonStyle botonFiltro">Mayor precio</button>
+                    </form>
                 </nav>
 
                 
@@ -67,7 +64,7 @@
                             <button class="collapseFiltros botonStyle col-2" type="button" data-toggle="collapse" data-target="#collapseFiltro">
                                 Categoria
                             </button>
-                            <form action="" method="GET" class="collapse col-12" id="collapseFiltro">
+                            <form action="/product/listadoDeProductos/filtrar?" method="GET" class="collapse col-12" id="collapseFiltro">
                                 
                                 <% for(i=0; i<categorias.length; i++) { %>
                                     <button type="submit" name="filtroDeCategoria" value=<%= categorias[i].id %> class="col-2 botonStyle botonFiltro"><%=categorias[i].nombre%></button>
@@ -81,10 +78,9 @@
                             <button class="collapseFiltros botonStyle col-2" type="button" data-toggle="collapse" data-target="#collapseOrdenar">
                                 Ordenar por 
                             </button>
-                            <form class="collapse col-12 row" id="collapseOrdenar">
-                                <button type="submit" name="ordenar" value="mayor" class="col-2 botonStyle botonFiltro">Mayor precio</button>
+                            <form action="/product/listadoDeProductos/ordenar?" class="collapse col-12 row" id="collapseOrdenar">
                                 <button type="submit" name="ordenar" value="menor" class="col-2 botonStyle botonFiltro">Menor precio</button>
-                                <button type="submit" name="ordenar" value="destacado" class="col-2 botonStyle botonFiltro">Destacados</button>
+                                <button type="submit" name="ordenar" value="mayor" class="col-2 botonStyle botonFiltro">Mayor precio</button>
                             </form>
                         </div>
 

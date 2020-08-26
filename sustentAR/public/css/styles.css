@@ -331,6 +331,7 @@ button.continuar{
 
 /*==============VISTA DE COMPRAS===================*/
 .busquedaContainer{
+    position: relative;
     border-radius: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -720,6 +721,7 @@ a :hover{
 
 @media (min-width: 768px) {
     .busquedaContainer{
+        position: relative;
         background-color: #dddbd1;
         border: 2px solid  #dddbd1;
         width: 80%;
@@ -766,8 +768,8 @@ a :hover{
     
     .boton-agregar-producto{
         position: absolute;
-        right:11.5%;
-        top:47%;
+        right:0;
+        top:87px;
     }
 
     .img-editar-cuenta{
