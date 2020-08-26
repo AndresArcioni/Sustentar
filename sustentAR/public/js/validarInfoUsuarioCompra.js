@@ -45,14 +45,13 @@ window.addEventListener('load', function() {
         
         if(errores > 0){
             if(specificErrors > 0){
-                swal('Verifica haber ingresado correctamente: dni, telefono y codigo postal')
+                swal('Verifica haber ingresado correctamente: DNI, Telefono y Codigo Postal')
             }else{
-                swal('Faltan campos por completar... ¿seguro que quieres continuar?')
+                swal('Faltan campos por completar... ¿Seguro que quieres continuar?')
             }
         }else{
-            // console.log('hola');
-            // btnConfirmar.unbind('click').click();
-            // btnConfirmar.click()
+            formInfoUsuario.submit();
+            window.location.replace("/carrito/modoDePago");
         }
     })
 }) 
