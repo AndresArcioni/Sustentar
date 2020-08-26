@@ -46,34 +46,21 @@ module.exports = {
         })  
     },
     ordenar: async function(req, res){
-        //precio : req.query.ordenar
         let productos = await db.Producto.findAll({
+            include: [{association: 'imagenes'}],
             order: [
                 ['precio', (req.query.ordenar == 'mayor')? 'DESC' : 'ASC']
             ]
         })
-        
-        let productosConImagenes = await db.Producto.findAll({
-            include: [{association: 'imagenes'}]
-        })
 
-        let productosFiltrados = [];
-        for(let i = 0 ;i < productos.length; i++){
-            for(let j = 0 ; j < productosConImagenes.length; j++){
-                if(productos[i].id == productosConImagenes[j].id){
-                    productosFiltrados.push(productosConImagenes[j]);
-                }
-            }
-        }
-            
         let categorias = await db.Categoria.findAll();
 
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
         }else{
-            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
 
     },
@@ -81,61 +68,38 @@ module.exports = {
         let productos = await db.Producto.findAll({
             where : {
                 id_categoria : req.query.filtroDeCategoria
-            }
-        })
-        let productosConImagenes = await db.Producto.findAll({
+            },
             include: [{association: 'imagenes'}]
         })
 
-        let productosFiltrados = [];
-        for(let i = 0 ;i < productos.length; i++){
-            for(let j = 0 ; j < productosConImagenes.length; j++){
-                if(productos[i].id == productosConImagenes[j].id){
-                    productosFiltrados.push(productosConImagenes[j]);
-                }
-            }
-        }
-            
         let categorias = await db.Categoria.findAll();
 
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
         }else{
-            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
     },
     busquedaAvanzada: async function(req, res){
-        let productos = await db.Producto.findAll(
-        {
+        let productos = await db.Producto.findAll({
             where : {
                 nombre : {
                     [Op.like]: '%' + req.query.busquedaAvanzada + '%'
                 }
-            }
-        })
-        let productosConImagenes = await db.Producto.findAll({
+            },
             include: [{association: 'imagenes'}]
-        })
+        });
 
-        let productosFiltrados = [];
-        for(let i = 0 ;i < productos.length; i++){
-            for(let j = 0 ; j < productosConImagenes.length; j++){
-                if(productos[i].id == productosConImagenes[j].id){
-                    productosFiltrados.push(productosConImagenes[j]);
-                }
-            }
-        }
-        
         let categorias = await db.Categoria.findAll();
 
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
         }else{
-            res.render('listadoDeProductos', {productos: productosFiltrados, categorias:categorias});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
     },
     formularioProductos: async function(req, res){
