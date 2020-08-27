@@ -5,6 +5,7 @@ const path = require('path');
 const productsController = require(path.join(__dirname, '../controllers/productsController.js'));
 const multer = require('multer'); 
 const validarProducto = require('../validations/validarProducto');
+const accesoMiddleware = require('../middlewares/accesoMiddleware');
 
 let storage = multer.diskStorage({
     destination:function(req, file, cb){
@@ -26,10 +27,10 @@ router.get('/listadoDeProductos/filtrar?', productsController.filtrar);
 
 router.get('/formularioProductos', productsController.formularioProductos);
 router.post('/formularioProductos', upload.any(), validarProducto, productsController.crearProducto);
-router.get('/editarProducto/:idProducto', productsController.editarProducto);
-router.put('/editarProducto/:idProducto', upload.any(), validarProducto, productsController.actualizarProducto);
+router.get('/editarProducto/:idProducto', accesoMiddleware, productsController.editarProducto);
+router.put('/editarProducto/:idProducto', accesoMiddleware, upload.any(), validarProducto, productsController.actualizarProducto);
 router.get('/detail/:idProducto', productsController.detail);
 /*router.post('/detail/:idProducto', productsController.agregarACarrito);*/
-router.delete('/borrar/:idProducto', productsController.borrarProducto);
+router.delete('/borrar/:idProducto', accesoMiddleware, productsController.borrarProducto);
 
 module.exports = router;

@@ -72,53 +72,49 @@ module.exports = {
     },
     finalizarCompra: function(req, res){
         db.Usuario.findByPk(req.session.idUsuarioSession)
-            .then(function(usuario){
-
-        db.Carrito_productos.findAll({
-            where: {
-            id_carrito: usuario.carrito_id
-            }
-        })
-        .then(function(carritoProductos){
-            db.Producto.findAll({
-                include: [
-                    {association: 'imagenes'},
-                    {
-                        model: db.Color,
-                        as: 'colores',
-                        through: {
-                        model: db.Producto_color
-                        }
-                    }
-                ]
-            })
-            .then(function(listadoDeProductos){
-                return listadoDeProductos
-            })
-            .then(function(productos){
-                let productosARR = [];
-                for(let i = 0; i < carritoProductos.length; i++){
-                    for(let j = 0; j < productos.length; j++){
-                        if(carritoProductos[i].id_producto == productos[j].id){
-                            productosARR.push(productos[j]);
-                        }
-                    }
-
+        .then(function(usuario){
+            db.Carrito_productos.findAll({
+                where: {
+                    id_carrito: usuario.carrito_id
                 }
-                db.Color.findAll()
-                .then(function(colores){
-                    res.render('finalizarCompra', {productos: productosARR, cantidad: carritoProductos, colores});
+            })
+            .then(function(carritoProductos){
+                db.Producto.findAll({
+                    include: [
+                        {association: 'imagenes'},
+                        {
+                            model: db.Color,
+                            as: 'colores',
+                            through: {
+                            model: db.Producto_color
+                            }
+                        }
+                    ]
+                })
+                .then(function(listadoDeProductos){
+                    return listadoDeProductos
+                })
+                .then(function(productos){
+                    let productosARR = [];
+                    for(let i = 0; i < carritoProductos.length; i++){
+                        for(let j = 0; j < productos.length; j++){
+                            if(carritoProductos[i].id_producto == productos[j].id){
+                                productosARR.push(productos[j]);
+                            }
+                        }
+                    
+                    }
+                    db.Color.findAll()
+                    .then(function(colores){
+                        res.render('finalizarCompra', {productos: productosARR, cantidad: carritoProductos, colores});
                     })
                 })
-                .catch(function(){
+                .catch(function(e){
                     res.redirect('/error');
                 })
             })
-            .catch(function(){
-                res.redirect('/error');
-            })
         })
-        .catch(function(){
+        .catch(function(e){
             res.redirect('/error');
         })
     },
@@ -190,7 +186,6 @@ module.exports = {
                 historialProductoBase.cantidad_productos = carritos[i].cantidad_productos;
                 historialProductoBase.id_historial_compras = historialDeCompra[i].id;
                 historialProductoArr.push(historialProductoBase)
-                console.log(historialProductoBase);
             }
             let historial_producto = await db.Historial_producto.bulkCreate(historialProductoArr)
 
@@ -229,6 +224,9 @@ module.exports = {
         .catch(function(error){
             res.redirect('/error');
         })
+    },
+    infoUsuarioGuardada: function(req, res){
+        res.redirect('/carrito/modoDePago');
     }
 
 }
