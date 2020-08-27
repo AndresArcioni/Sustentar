@@ -32,13 +32,11 @@ window.addEventListener('load', function() {
         if(depto.value.length < 1){
             errores++;
         }
-        if(telefono.value.length < 8){
-            console.log('telefono mal')
+        if(telefono.value.length < 8){        
             specificErrors++;
             errores++;
         }
-        if(cp.value.length != 4){
-            console.log('cp mal')
+        if(cp.value.length != 4){            
             specificErrors++;
             errores++;
         }

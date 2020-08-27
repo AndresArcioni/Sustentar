@@ -73,17 +73,13 @@ window.addEventListener('load', function(){
             }
 
         } else {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'info',
-                title: 'Estamos procesando el metodo de pago.',
-                showConfirmButton: false,
-                timer: 3000
-              })
+            swal("Perfecto!", "La informacion fue enviada con exito", "success");
             
             setTimeout( function () { 
+                console.log('hola')
               form.submit();
-            }, 3000);
+              window.location.replace("/carrito/finalizarCompra");
+            }, 2000);
         
         }
     })
