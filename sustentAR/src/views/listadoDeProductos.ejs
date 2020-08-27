@@ -12,12 +12,12 @@
                     <input class="inputDeBusqueda inputStyle col-10" placeholder="Escriba el producto que desea buscar" type="text" id="busquedaAvanzada" name="busquedaAvanzada">
                 </form>
 
-                <% if(typeof usuarioLogueado == 'undefined') { %>                    
+                <% if(typeof usuario == 'undefined') { %>                    
                     <button class="boton-agregar-producto botonStyle d-none" type="button">
                         <a href="/product/formularioProductos">Agregar producto</a>
                     </button>
                 <% } else { %>
-                    <% if(usuario.rol != 1){ %>
+                    <% if(user.rol != 1){ %>
                         <button class="boton-agregar-producto botonStyle" type="button">
                             <a href="/product/formularioProductos">Agregar producto</a>
                         </button>
@@ -50,9 +50,6 @@
                         <button type="submit" name="ordenar" value="mayor" class="col-7 botonStyle botonFiltro">Mayor precio</button>
                     </form>
                 </nav>
-
-                
-
                 <div class="pcFilterContainer">
                     <div class="filtrosPC row">
 

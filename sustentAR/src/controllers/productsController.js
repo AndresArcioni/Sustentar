@@ -33,7 +33,8 @@ module.exports = {
                         .catch(function(error) {
                             res.redirect('/error');
                         })          
-                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+                    res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
+                    //res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
                 }else{
                     res.render('listadoDeProductos', {productos: productos, categorias:categorias});
                 }
@@ -61,7 +62,7 @@ module.exports = {
             .catch(function(error){
                 res.redirect('/error');
             })
-            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
         }else{
             res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
@@ -80,7 +81,7 @@ module.exports = {
         if(req.session.idUsuarioSession != undefined){
             let usuario = await db.Usuario.findByPk(req.session.idUsuarioSession);
 
-            res.render('listadoDeProductos', {productos: productos, categorias:categorias, usuario : usuario, usuarioLogueado : req.session.idUsuarioSession});
+            res.render('listadoDeProductos', {productos: productos, categorias:categorias, user : usuario, usuario : req.session.idUsuarioSession});
         }else{
             res.render('listadoDeProductos', {productos: productos, categorias:categorias});
         }
